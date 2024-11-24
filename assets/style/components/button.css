@@ -1,0 +1,12 @@
+.normal-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #2997E1;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    height: 40px;
+    border: unset;
+}

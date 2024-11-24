@@ -1,0 +1,119 @@
+@import url("../components/header.css");
+@import url("../components/footer.css");
+@import url("../components/letter-title.css");
+
+.root{
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.bg-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    left: 0;
+}
+
+.bg-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 104px 0;
+}
+.content-container .row-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 140px;
+}
+
+.content-container .content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-container .content-wrapper .title-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.content-container .content-wrapper .title-area h1 span{
+    font-size: 56px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.content-container .content-wrapper .title-area h6{
+    color: #949698;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.content-container .content-wrapper .content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.content-container .content-wrapper .content-area p{
+    color: #949698;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.content-container .content-wrapper .content-area span{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.content-container .content-wrapper .bottom-area{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.content-container .content-wrapper .bottom-area p{
+   margin-bottom: 0;
+   color: #fff;
+   font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.content-container .circle-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.content-container .circle-wrapper img{
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+}
+
+.content-container .circle-wrapper span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    font-weight: 700;
+    color: #fff;
+}

@@ -1,0 +1,7 @@
+.radius-box{
+    background: rgba(0, 0, 0, 0.72);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
