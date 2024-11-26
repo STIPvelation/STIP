@@ -1,3 +1,5 @@
+@import url("../variable.css");
+
 .input-box {
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
     width: 100%;
 }
 
-.input-box.button{
+.input-box.button {
     gap: 16px;
 }
 
@@ -26,7 +28,7 @@
 .input-box input {
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #949698;
+    border-bottom: 1px solid var(--gray-color);
     font-size: 16px;
     font-weight: 500;
     color: #fff;
@@ -40,7 +42,7 @@
 }
 
 .input-box input::placeholder {
-    color: #949698;
+    color: var(--gray-color);
     font-size: 16px;
     font-weight: 500;
 }

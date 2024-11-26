@@ -1,12 +1,18 @@
+@import url("../variable.css");
+
 .normal-button {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: #2997E1;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     font-size: 16px;
     font-weight: 700;
     height: 40px;
     border: unset;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }

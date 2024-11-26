@@ -26,43 +26,7 @@
 <body>
     <div class="root">
         <!-- header start -->
-        <header class="header-container">
-            <div class="header-wrapper">
-                <div class="header-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="logo" />
-                    </a>
-                </div>
-                <nav class="header-nav">
-                    <ul>
-                        <li><a class="nav-item" href="listing.html">Listing</a></li>
-                        <li><a class="nav-item" href="about.html">About us</a></li>
-                        <li><a class="nav-item" href="product.html">Product</a></li>
-                        <li><a class="nav-item" href="contact.html">Contact</a></li>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                한국어
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <div class="dropdown-item">한국어</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">English</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">日本語</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">中文</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
         <!-- header end -->
 
         <div class="bg-video">
@@ -198,22 +162,45 @@
         <!-- footer end -->
     </div>
     <script>
-        document.querySelector('.dropdown-menu').addEventListener('click', (e) => {
-            document.querySelector('.btn-secondary').innerHTML = e.target.textContent;
-        });
-    </script>
-    <script>
-        const swiper =new Swiper('.swiper', {
-                autoplay: {
-                    delay: 0, //add
-                    disableOnInteraction: false,
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+        })
+        const swiper = new Swiper('.swiper', {
+            autoplay: {
+                delay: 0, //add
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                900: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
                 },
-                speed: 10000,
-                loop: true,
-                loopAdditionalSlides: 1,
-                slidesPerView: 5,
-            })
+                1100: {
+                    slidesPerView: 5,
+                    spaceBetween: 10,
+                },
+                1200: {
+                    slidesPerView: 6,
+                    spaceBetween: 10,
+                },
+            },
+            responsive: [{
+                breakpoint: 900,
+                slidesPerView: 3,
+                spaceBetween: 10,
+            }, ],
+            speed: 10000,
+            loop: true,
+            loopAdditionalSlides: 1,
+            slidesPerView: 3,
+            spaceBetween: 10,
+        })
     </script>
+    <script src="components/header.js" defer></script>
 </body>
 
 </html>

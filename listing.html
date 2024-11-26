@@ -24,46 +24,13 @@
 <body>
     <div class="root">
         <!-- header start -->
-        <header class="header-container">
-            <div class="header-wrapper">
-                <div class="header-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="logo" />
-                    </a>
-                </div>
-                <nav class="header-nav">
-                    <ul>
-                        <li><a class="nav-item active" href="listing.html">Listing</a></li>
-                        <li><a class="nav-item" href="about.html">About us</a></li>
-                        <li><a class="nav-item" href="product.html">Product</a></li>
-                        <li><a class="nav-item" href="contact.html">Contact</a></li>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                한국어
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <div class="dropdown-item">한국어</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">English</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">日本語</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">中文</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
         <!-- header end -->
         <div class="bg-image">
             <img src="assets/images/bg-image.jpg" alt="bg-image" />
+        </div>
+        <div class="bg-mobile-image">
+            <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
         </div>
         <main class="content-container">
             <div class="content-wrapper">
@@ -99,61 +66,93 @@
                             <button class="normal-button">Connect</button>
                         </div>
                     </div>
-                    <div class="radius-box swiper-container">
-                        <div class="swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news.png" alt="1" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-01.png" alt="2" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-02.png" alt="3" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-03.png" alt="4" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-04.png" alt="5" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-05.png" alt="6" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-06.png" alt="7" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-07.png" alt="8" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-08.png" alt="9" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-09.png" alt="10" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-10.png" alt="11" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-11.png" alt="12" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-12.png" alt="13" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-13.png" alt="14" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-14.png" alt="15" />
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/news/news-15.png" alt="16" />
-                                </div>
+                    <div class="radius-box frame">
+                        <div class="radius-box swiper-container" id="swiperContainer">
+                            <div class="swiper grid-swiper" id="swiperWrapper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide swiper-grid-box">
+                                        <img src="assets/images/news/news.png" alt="1" />
+                                        <img src="assets/images/news/news-01.png" alt="2" />
+                                        <img src="assets/images/news/news-02.png" alt="3" />
+                                        <img src="assets/images/news/news-03.png" alt="4" />
+                                        <img src="assets/images/news/news-04.png" alt="5" />
+                                        <img src="assets/images/news/news-05.png" alt="6" />
 
+                                    </div>
+                                    <div class="swiper-slide swiper-grid-box">
+                                        <img src="assets/images/news/news-06.png" alt="7" />
+                                        <img src="assets/images/news/news-07.png" alt="8" />
+                                        <img src="assets/images/news/news-08.png" alt="9" />
+                                        <img src="assets/images/news/news-09.png" alt="10" />
+                                        <img src="assets/images/news/news-10.png" alt="11" />
+                                        <img src="assets/images/news/news-11.png" alt="12" />
+                                    </div>
+                                    <div class="swiper-slide swiper-grid-box">
+                                        <img src="assets/images/news/news-12.png" alt="13" />
+                                        <img src="assets/images/news/news-13.png" alt="14" />
+                                        <img src="assets/images/news/news-14.png" alt="15" />
+                                        <img src="assets/images/news/news-15.png" alt="16" />
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
                             </div>
+                            <div class="single-swiper" id="singleSwiperWrapper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news.png" alt="1" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-01.png" alt="2" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-02.png" alt="3" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-03.png" alt="4" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-04.png" alt="5" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-05.png" alt="6" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-06.png" alt="7" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-07.png" alt="8" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-08.png" alt="9" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-09.png" alt="10" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-10.png" alt="11" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-11.png" alt="12" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-12.png" alt="13" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-13.png" alt="14" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-14.png" alt="15" />
+                                    </div>
+                                    <div class="swiper-slide single-view">
+                                        <img src="assets/images/news/news-15.png" alt="16" />
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -172,7 +171,6 @@
                     <span>연락처: 02-2238-4345</span>
                     <span>이메일: support@stipvelation.com</span>
                     <span>사업자등록번호: 644-86-01439</span>
-                    <!-- <span>사업자등록번호: 123-45-67890</span> -->
                 </div>
             </div>
 
@@ -180,7 +178,18 @@
         <!-- footer end -->
     </div>
     <script>
-        const swiper = new Swiper('.swiper', {
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+        })
+        const swiperContainer = document.getElementById('swiperContainer');
+
+        const swiperWrapper = document.getElementById('swiperWrapper');
+        const spaceBetween = swiperContainer.offsetWidth - swiperWrapper.offsetWidth;
+        const swiper = new Swiper('.grid-swiper', {
             slidesPerView: 'auto',
             loop: true,
             autoplay: {
@@ -189,7 +198,50 @@
             },
             speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
             slidesPerView: 1,
+            spaceBetween,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            on: {
+                beforeResize: function () {
+                    const vw = window.innerWidth;
+                    if (vw < 1000) {
+                        this.params.spaceBetween = 20;
+
+                        return;
+                    }
+                    if (vw < 1380) {
+
+                        this.params.spaceBetween = 10;
+                        return;
+                    }
+
+                    this.params.spaceBetween = swiperContainer.offsetWidth - 32 - swiperWrapper.offsetWidth;
+                }
+            }
+        });
+
+        const singleSwiper = new Swiper('.single-swiper', {
+            slidesPerView: 'auto',
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                700: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                },
+            },
             spaceBetween: 10,
+            speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+            slidesPerView: 3,
         });
     </script>
     <script>
@@ -197,6 +249,7 @@
             document.querySelector('.btn-secondary').innerHTML = e.target.textContent;
         });
     </script>
+    <script src="components/header.js" defer></script>
 </body>
 
 </html>

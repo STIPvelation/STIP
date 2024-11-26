@@ -22,51 +22,16 @@
 
 <body>
     <div class="root">
-        <!-- header start -->
-        <header class="header-container">
-            <div class="header-wrapper">
-                <div class="header-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="logo" />
-                    </a>
-                </div>
-                <nav class="header-nav">
-                    <ul>
-                        <li><a class="nav-item" href="listing.html">Listing</a></li>
-                        <li><a class="nav-item" href="about.html">About us</a></li>
-                        <li><a class="nav-item" href="product.html">Product</a></li>
-                        <li><a class="nav-item active" href="contact.html">Contact</a></li>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                한국어
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <div class="dropdown-item">한국어</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">English</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">日本語</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">中文</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
         <!-- header end -->
-
         <div class="bg-image">
             <img src="assets/images/bg-image.jpg" alt="bg-image" />
         </div>
+        <div class="bg-mobile-image">
+            <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
+        </div>
         <main class="content-container">
-            <div class="contact-wrapper">
+            <div class="contact-wrapper contact">
                 <div class="title-wrapper">
                     <h1 class="letter-title">
                         <span>
@@ -166,11 +131,13 @@
         <!-- footer end -->
     </div>
     <script>
-        document.querySelector('.dropdown-menu').addEventListener('click', (e) => {
-            document.querySelector('.btn-secondary').innerHTML = e.target.textContent;
-        });
-    </script>
-    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+        })
         const selectBox = document.querySelector('.select-box');
         const boxArea = selectBox.querySelector('.box-area');
         const selectedBox = boxArea.querySelector('.selected-item');
@@ -193,6 +160,7 @@
 
 
     </script>
+    <script src="components/header.js" defer></script>
 </body>
 
 </html>

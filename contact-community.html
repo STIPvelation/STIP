@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,50 +19,16 @@
         }
     </style>
 </head>
+
 <body>
     <div class="root">
-        <!-- header start -->
-        <header class="header-container">
-            <div class="header-wrapper">
-                <div class="header-logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo.svg" alt="logo" />
-                    </a>
-                </div>
-                <nav class="header-nav">
-                    <ul>
-                        <li><a class="nav-item" href="listing.html">Listing</a></li>
-                        <li><a class="nav-item" href="about.html">About us</a></li>
-                        <li><a class="nav-item" href="product.html">Product</a></li>
-                        <li><a class="nav-item active" href="contact.html">Contact</a></li>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                한국어
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <div class="dropdown-item">한국어</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">English</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">日本語</div>
-                                </li>
-                                <li>
-                                    <div class="dropdown-item">中文</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
         <!-- header end -->
-
         <div class="bg-image">
             <img src="assets/images/bg-image.jpg" alt="bg-image" />
+        </div>
+        <div class="bg-mobile-image">
+            <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
         </div>
         <main class="content-container">
             <div class="contact-wrapper">
@@ -70,14 +36,14 @@
                     <h1 class="letter-title">
                         <span>Community</span>
                     </h1>
-                    <span>Talk to our team about<br/> your enterprise needs.</span>
+                    <span>Talk to our team about<br /> your enterprise needs.</span>
                 </div>
                 <div class="row-wrapper">
                     <div class="radius-box community">
                         <div class="top-content-area">
-                            <h6>Community<br/>support</h6>   
+                            <h6>Community<br />support</h6>
                             <span>
-                                Talk to our team about<br/> your enterprise needs.
+                                Talk to our team about<br /> your enterprise needs.
                             </span>
                         </div>
                         <div class="social-link-list">
@@ -90,12 +56,12 @@
                                 <a href="#">
                                     <img src="assets/images/youtube.png" alt="">
                                 </a>
-                                </div>
+                            </div>
                             <div class="link-box">
                                 <a href="#">
                                     <img src="assets/images/twitterX.png" alt="">
                                 </a>
-                                </div>
+                            </div>
                             <div class="link-box">
                                 <a href="#">
                                     <img src="assets/images/telegram.png" alt="">
@@ -105,9 +71,9 @@
                     </div>
                     <div class="radius-box community">
                         <div class="top-content-area">
-                            <h6>Listing<br/> support</h6>   
+                            <h6>Listing<br /> support</h6>
                             <span>
-                                Get help with your project<br/>from the Community
+                                Get help with your project<br />from the Community
                             </span>
                         </div>
                         <button class="normal-button">
@@ -118,31 +84,38 @@
                 </div>
             </div>
         </main>
-    <!-- footer start -->
-    <footer class="footer-container">
-        <div class="footer-wrapper">
-            <div class="footer-logo">
-                <span>Let’s share the IP, It’s IP time</span>
-                <img src="assets/images/logo.svg" alt="logo" />
+        <!-- footer start -->
+        <footer class="footer-container">
+            <div class="footer-wrapper">
+                <div class="footer-logo">
+                    <span>Let’s share the IP, It’s IP time</span>
+                    <img src="assets/images/logo.svg" alt="logo" />
+                </div>
+                <div class="company-name">주식회사 아이피미디어그룹</div>
+                <div class="company-info-grid">
+                    <span>대표: 이성용</span>
+                    <span>주소: 서울시 강남구 테헤란로151 1116호</span>
+                    <span>연락처: 02-2238-4345</span>
+                    <span>이메일: support@stipvelation.com</span>
+                    <span>사업자등록번호: 644-86-01439</span>
+                    <!-- <span>사업자등록번호: 123-45-67890</span> -->
+                </div>
             </div>
-            <div class="company-name">주식회사 아이피미디어그룹</div>
-            <div class="company-info-grid">
-                <span>대표: 이성용</span>
-                <span>주소: 서울시 강남구 테헤란로151 1116호</span>
-                <span>연락처: 02-2238-4345</span>
-                <span>이메일: support@stipvelation.com</span>
-                <span>사업자등록번호: 644-86-01439</span>
-                <!-- <span>사업자등록번호: 123-45-67890</span> -->
-            </div>
-        </div>
 
-    </footer>
-    <!-- footer end -->
+        </footer>
+        <!-- footer end -->
     </div>
     <script>
-        document.querySelector('.dropdown-menu').addEventListener('click', (e) => {
-            document.querySelector('.btn-secondary').innerHTML = e.target.textContent;
-        });
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+        })
     </script>
+    <script src="components/header.js" defer></script>
+
 </body>
-</html>  
+
+</html>
