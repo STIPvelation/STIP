@@ -79,20 +79,20 @@ time,
 mark,
 audio,
 video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 .root {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
-	font-family: 'SUIT', sans-serif !important;
+  font-family: "SUIT", sans-serif !important;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -107,73 +107,72 @@ hgroup,
 menu,
 nav,
 section {
-	display: block;
+  display: block;
 }
 
 body {
-	line-height: 1;
+  line-height: 1 !important;
+  overflow-x: hidden;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
-	content: none;
+  content: "";
+  content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .bg-image {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	z-index: -1;
-	left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  left: 0;
 
-	@media screen and (max-width: 768px) {
-		display: none;
-
-	}
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .bg-mobile-image {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	z-index: -1;
-	left: 0;
-	display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  left: 0;
+  display: none;
 
-	@media screen and (max-width: 768px) {
-		display: block;
-
-	}
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 }
 
 .bg-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bg-mobile-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
