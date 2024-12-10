@@ -153,26 +153,40 @@
         </div>
         <div class="row-area">
           <div class="radius-box column">
-            <div class="input-box">
-              <label class="required">Name</label>
-              <input type="text" placeholder="이름을 입력해주세요." />
-            </div>
-            <div class="input-box">
-              <label class="required">Email</label>
-              <input type="text" placeholder="메일을 입력해주세요." />
-            </div>
-            <div class="input-box">
-              <label class="required">Mobile</label>
-              <input type="text" placeholder="연락처를 입력해주세요." />
-            </div>
-            <div class="input-box button">
-              <label class="required">Submit the SMART5 patent evaluation report</label>
-              <button class="normal-button">Submit</button>
-            </div>
-            <div class="input-box button">
-              <label class="required">Payment</label>
-              <button class="normal-button">Connect</button>
-            </div>
+            <form id="contactForm">
+              <div class="input-box">
+                <label for="name" class="required">Name</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." />
+              </div>
+              <div class="input-box">
+                <label for="email" class="required">Email</label>
+                <input type="text" id="email" name="email" placeholder="메일을 입력해주세요." />
+              </div>
+              <div class="input-box">
+                <label for="mobile" class="required">Mobile</label>
+                <input type="text" id="mobile" name="mobile" placeholder="연락처를 입력해주세요." />
+              </div>
+              <div class="input-box button">
+                <label for="submit" class="required">Submit the SMART5 patent evaluation report</label>
+                <button id="submit" name="submit" class="normal-button">Submit</button>
+              </div>
+            </form>
+            <style>
+              #contactForm {
+                width: 100%;
+              }
+              #contactForm .input-box {
+                margin: 5px 0;
+              }
+              #contactForm .input-box label,
+              #contactForm .input-box input {
+                padding: 5px 0;
+              }              
+            </style>
+            <div class="input-box button" style="display: none;">
+              <label for="pay" class="required">Payment</label>
+              <button id="pay" name="pay" class="normal-button">Connect</button>
+            </div>            
           </div>
           <div class="radius-box frame">
             <div class="radius-box swiper-container" id="swiperContainer">
@@ -280,13 +294,13 @@
     <!-- footer end -->
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("components/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header-placeholder").innerHTML = data;
-        });
-    });
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   fetch("components/header.html")
+    //     .then((response) => response.text())
+    //     .then((data) => {
+    //       document.getElementById("header-placeholder").innerHTML = data;
+    //     });
+    // });
     const swiperContainer = document.getElementById("swiperContainer");
 
     const swiperWrapper = document.getElementById("swiperWrapper");

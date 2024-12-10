@@ -173,12 +173,10 @@
                             <p>Share your wisdom with the world</p>
                             <p>The seeds of progress begin with you</p>
                         </div>
-                        <div class="buttons">
-                            <a href="listing.html">
-                                <button class="normal-button" style="width: 180px;">
-                                    Listing
-                                </button>
-                            </a>
+                        <div class="buttons">                            
+                            <button class="normal-button" style="width: 180px;">
+                                <a href="listing.html">Listing</a>
+                            </button>                            
                             <div class="watch-video-area">
                                 <img src="assets/images/play-circle.svg" alt="" />
                                 <span>Watch video</span>
@@ -187,7 +185,62 @@
                     </div>
                 </div>
             </div>
+<style>
+    main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button a{
+        text-decoration: none;
+        color: #fcfcfc;
+    }
+    main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button,
+    main.content-container .content-section .content-wrapper .content-bottom .buttons .watch-video-area {
+        z-index: 9999;
+    }
+    main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button:hover,
+    main.content-container .content-section .content-wrapper .content-bottom .buttons .watch-video-area:hover {
+        cursor: pointer;
+    }
+    /* watch-video-area 스타일 */
+    .watch-video-area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
 
+    .watch-video-area span {
+        color: var(--white-color);
+        font-size: 16px;
+        font-weight: 500;
+        position: relative;
+        /* 밑줄을 추가하기 위해 position 설정 */
+
+        @media screen and (max-width: 768px) {
+            font-size: 14px;
+        }
+    }
+
+    /* 마우스 호버 시 밑줄 효과 */
+    .watch-video-area span::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        /* 글씨 아래 간격 */
+        left: 0;
+        width: 0;
+        /* 기본 상태에서 너비 0 */
+        height: 2px;
+        /* 밑줄 두께 */
+        background-color: var(--orange-color);
+        /* 밑줄 색상 */
+        transition: width 0.3s ease;
+        /* 밑줄 애니메이션 */
+    }
+
+    .watch-video-area:hover span::after {
+        width: 100%;
+        /* 마우스 호버 시 밑줄 전체 너비 */
+    }
+</style>
             <div class="logo-slider-section">
                 <div class="bottom-gradient"></div>
                 <div class="slider-container">
