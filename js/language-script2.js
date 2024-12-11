@@ -103,8 +103,8 @@ function setLanguage(lang) {
         }
     });
 
-    // const activeLang = document.querySelector(`.side-bar-item.${lang}`);
-    // if (activeLang) activeLang.classList.add('active');
+    const activeLang = document.querySelector(`.side-bar-item.${lang}`);
+    if (activeLang) activeLang.classList.add('active');
 
     // Store language preference
     localStorage.setItem('preferredLanguage', lang);
