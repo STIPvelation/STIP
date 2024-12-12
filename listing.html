@@ -15,6 +15,7 @@
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
   <style>
     body {
       font-family: "SUIT", sans-serif;
@@ -175,6 +176,35 @@
             </div>
           </div>
           <div class="radius-box frame">
+            <div class="dropdown">
+              <button class="listing-btn  btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Patent
+              </button>
+              <ul class="dropdown-menu listing-select-box" aria-labelledby="dropdownMenuButton2">
+                <li>
+                  <div class="dropdown-item">Patent</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Movie Drama Comics</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Music</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Dance</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Franchise</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Trademark</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Character</div>
+                </li>
+              </ul>
+            </div>
             <div class="radius-box swiper-container" id="swiperContainer">
               <div class="swiper grid-swiper" id="swiperWrapper">
                 <div class="swiper-wrapper">
@@ -351,6 +381,13 @@
         document.querySelector(".btn-secondary").innerHTML =
           e.target.textContent;
       });
+
+    document  
+      .querySelector(".listing-select-box")
+      .addEventListener("click", (e) => {
+        document.querySelector(".listing-btn").innerHTML = 
+          e.target.textContent;
+    });
   </script>
   <script src="components/header.js" defer></script>
 </body>
