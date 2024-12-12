@@ -1,0 +1,241 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  perspective: 6000px;
+  background: #000;
+  overflow: hidden;
+  #wrap {
+    zoom: 0.9;
+    width: 350px;
+    height: 350px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: updown 5s ease-in-out infinite alternate;
+    transform-origin: 50% 100%;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 400%;
+      height: 400%;
+      left: -150%;
+      top: -150%;
+      background: radial-gradient(ellipse at center, #000 0%, transparent 90%);
+      backface-visibility: hidden;
+      animation: fade 5s ease-in-out infinite alternate;
+      animation-delay: 0s;
+      border-radius: 100%;
+      @keyframes fade {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        75% {
+          transform: scale(0.25);
+          opacity: 1;
+        }
+        97.5% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+    @keyframes updown {
+      0% {
+        transform: scale(0.75) translateY(-15%) rotateX(60deg) scaleY(1.75);
+        transform-origin: 50% 75%;
+      }
+      10% {
+        transform: scale(0.75) translateY(-15%) rotateX(60deg) scaleY(1.75);
+        transform-origin: 50% 75%;
+      }
+      90% {
+        transform: scale(0.75) rotateX(0deg) translateY(12.5%);
+        transform-origin: 50% 0%;
+      }
+      100% {
+        transform: scale(0.75) rotateX(0deg) translateY(12.5%);
+        transform-origin: 50% 0%;
+      }
+    }
+    .cube {
+      position: absolute;
+      width: 100%;
+      height: 33.3333%;
+      left: 0;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg) rotateY(315deg);
+      animation: spinback 5s ease-in-out infinite;
+      @for $i from 1 through 3 {
+        &:nth-of-type(even) {
+          animation-direction: reverse;
+          * {
+            animation-direction: reverse;
+            &:before {
+              animation-direction: reverse !important;
+            }
+          }
+        }
+        &:nth-of-type(#{$i}) {
+          top: #{($i - 1) * 30%};
+        }
+      }
+      @keyframes spinback {
+        10% {
+          transform: rotateX(0deg) rotateY(315deg);
+        }
+        90% {
+          transform: rotateX(0deg) rotateY(-45deg);
+        }
+        100% {
+          transform: rotateX(0deg) rotateY(-45deg);
+        }
+      }
+      @keyframes spinback2 {
+        10% {
+          transform: rotateX(0deg) rotateY(-315deg);
+        }
+        90% {
+          transform: rotateX(0deg) rotateY(45deg);
+        }
+        100% {
+          transform: rotateX(0deg) rotateY(45deg);
+        }
+      }
+      div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform-style: preserve-3d;
+        &.back {
+          &:before {
+            transform: translateZ(-50px);
+          }
+        }
+        * {
+          transform-style: preserve-3d;
+        }
+        h1 {
+          width: calc(100% - 10px);
+          left: 5px;
+          position: relative;
+          margin: 0;
+          font-size: 60px;
+          font-weight: 900;
+          font-family: Futura, sans-serif;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          margin: 0;
+          .word {
+            position: relative;
+            width: 100%;
+            .char {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              width: 25%;
+              height: 100%;
+              color: transparent;
+              &:before {
+                content: attr(data-char);
+                color: #fff;
+                font-weight: 900;
+                -webkit-text-stroke: 5px #000;
+                position: absolute;
+                transform: rotateX(0deg) rotateY(-315deg);
+                animation: spinback2 5s ease-in-out infinite;
+                text-shadow: 0 0 40px #000;
+              }
+              @for $i from 1 through 4 {
+                &:nth-of-type(#{$i}) {
+                  left: calc((#{$i - 1}) * 25%);
+                }
+              }
+            }
+          }
+        }
+        &.front {
+          transform: translateZ(175px);
+          h1 {
+            .word {
+              .char {
+                &:nth-of-type(-n + 2) {
+                  &:before {
+                    color: #000;
+                    -webkit-text-stroke: 3px #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.back {
+          transform: translateZ(-175px) rotateY(0deg) rotateX(0deg);
+          h1 {
+            .word {
+              .char {
+                transform: rotateY(360deg);
+                &:nth-of-type(n + 3) {
+                  &:before {
+                    color: #000;
+                    -webkit-text-stroke: 3px #fff;
+                  }
+                }
+                &:before {
+                  animation: spinback3 5s ease-in-out infinite;
+                  transform: rotateX(0deg) rotateY(-315deg);
+                  @keyframes spinback3 {
+                    10% {
+                      transform: rotateX(0deg) rotateY(-315deg);
+                    }
+                    90% {
+                      transform: rotateX(0deg) rotateY(45deg);
+                    }
+                    100% {
+                      transform: rotateX(0deg) rotateY(45deg);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.left {
+          transform-origin: left;
+          left: 100%;
+          transform: translateZ(175px) rotateY(90deg);
+          h1 {
+            .word {
+              .char {
+                transform: rotateY(-90deg);
+              }
+            }
+          }
+        }
+        &.right {
+          transform-origin: right;
+          left: -100%;
+          transform: translateZ(175px) rotateY(-90deg);
+          h1 {
+            .word {
+              .char {
+                transform: rotateY(90deg);
+                &:before {
+                  animation: spinback2 5s ease-in-out infinite;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

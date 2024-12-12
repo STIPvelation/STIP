@@ -85,7 +85,7 @@
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    gap: 32px;
+    gap: 79px;
   }
 }
 
@@ -146,21 +146,38 @@
 
 .content-container .content-wrapper .row-area .radius-box.frame .dropdown {
   position: absolute;
-  top: -35px;
+  top: -47.97px;
   right: 0;
   z-index: 999;
   width: 227px;
+  @media screen and (max-width: 768px) {
+    left: 0;
+  }
 }
-.content-container .content-wrapper .row-area .radius-box.frame .dropdown .show{
-  color: #2997E1;
-
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.frame
+  .dropdown
+  .show {
+  color: #2997e1;
 }
-.content-container .content-wrapper .row-area .radius-box.frame .dropdown .show::after {
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.frame
+  .dropdown
+  .show::after {
   transform: rotate(180deg);
-  color: #2997E1;
+  color: #2997e1;
 }
 
-.content-container .content-wrapper .row-area .radius-box.frame .dropdown button {
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.frame
+  .dropdown
+  button {
   width: 100%;
   background: rgba(0, 0, 0, 0.72);
   border: none;
@@ -168,24 +185,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px 0 16px;
+  padding: 12px 16px;
 }
 
-.content-container .content-wrapper .row-area .radius-box.frame .dropdown .dropdown-menu {
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.frame
+  .dropdown
+  .dropdown-menu {
   width: 100%;
   background: rgba(0, 0, 0, 0.72);
   padding: 0;
 }
 
-.content-container .content-wrapper .row-area .radius-box.frame .dropdown .dropdown-menu .dropdown-item {
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.frame
+  .dropdown
+  .dropdown-menu
+  .dropdown-item {
   color: #ffffff;
   font-size: 16px;
   font-weight: 500;
   padding: 12px 16px;
 }
-.content-container .content-wrapper .row-area .radius-box.frame .dropdown .dropdown-menu .dropdown-item:hover {
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.frame
+  .dropdown
+  .dropdown-menu
+  .dropdown-item:hover {
   background: unset;
-  color: #2997E1;
+  color: #2997e1;
 }
 /* dropdown end */
 

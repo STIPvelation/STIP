@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Grid</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      .grid {
+        background: #eee;
+        max-width: 1200px;
+      }
+
+      .grid:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      .grid-item {
+        width: 100px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        padding: 2px;
+      }
+
+      .grid-item img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="categorySelect">
+      <option value="Character">Character</option>
+      <option value="Dance">Dance</option>
+      <option value="Franchise">Franchise</option>
+      <option value="Movie Drama Comics">Movie Drama Comics</option>
+      <option value="Music">Music</option>
+      <option value="Trademark">Trademark</option>
+    </select>
+
+    <div class="grid"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let logos = [
+          {
+            key: "Character",
+            images: [
+              "/assets/images/partner/Character/kipo.png",
+              "/assets/images/partner/Character/tusco.png",
+              "/assets/images/partner/Character/uspato.png",
+              "/assets/images/partner/Character/kcc.png",
+              "/assets/images/partner/Character/ipo.png",
+              "/assets/images/partner/Character/ipos.png",
+              "/assets/images/partner/Character/cric.png",
+              "/assets/images/partner/Character/jpo.png",
+              "/assets/images/partner/Character/cnipa.png",
+              "/assets/images/partner/Character/eff.png",
+            ],
+          },
+          {
+            key: "Dance",
+            images: [
+              "/assets/images/partner/Dance/1.png",
+              "/assets/images/partner/Dance/2-2.png",
+              "/assets/images/partner/Dance/2.png",
+              "/assets/images/partner/Dance/3.png",
+              "/assets/images/partner/Dance/4.png",
+              "/assets/images/partner/Dance/5.png",
+              "/assets/images/partner/Dance/8.png",
+            ],
+          },
+          {
+            key: "Franchise",
+            images: [
+              "/assets/images/partner/Dance/1.png",
+              "/assets/images/partner/Dance/2.png",
+              "/assets/images/partner/Dance/3.png",
+              "/assets/images/partner/Dance/4.png",
+              "/assets/images/partner/Dance/5.png",
+              "/assets/images/partner/Dance/6.png",
+              "/assets/images/partner/Dance/7.png",
+              "/assets/images/partner/Dance/8.png",
+              "/assets/images/partner/Dance/9.png",
+            ],
+          },
+          {
+            key: "Movie Drama Comics",
+            images: [
+              "/assets/images/partner/MovieDramaComics/1.png",
+              "/assets/images/partner/MovieDramaComics/2.png",
+              "/assets/images/partner/MovieDramaComics/3.png",
+              "/assets/images/partner/MovieDramaComics/4.png",
+              "/assets/images/partner/MovieDramaComics/5.png",
+              "/assets/images/partner/MovieDramaComics/6.png",
+            ],
+          },
+          {
+            key: "Music",
+            images: [
+              "/assets/images/partner/Music/1.png",
+              "/assets/images/partner/Music/2.png",
+              "/assets/images/partner/Music/3.png",
+              "/assets/images/partner/Music/4.png",
+              "/assets/images/partner/Music/5.png",
+              "/assets/images/partner/Music/6.png",
+              "/assets/images/partner/Music/7.png",
+              "/assets/images/partner/Music/8.png",
+              "/assets/images/partner/Music/9.png",
+              "/assets/images/partner/Music/10.png",
+            ],
+          },
+          {
+            key: "Trademark",
+            images: [
+              "/assets/images/partner/Trademark/1.png",
+              "/assets/images/partner/Trademark/2.png",
+              "/assets/images/partner/Trademark/3.png",
+              "/assets/images/partner/Trademark/4.png",
+              "/assets/images/partner/Trademark/5.png",
+              "/assets/images/partner/Trademark/6.png",
+              "/assets/images/partner/Trademark/7.png",
+            ],
+          },
+        ];
+
+        let grid = document.querySelector(".grid");
+
+        function updateGrid(selectedKey) {
+          let selectedCategory = logos.find(
+            (category) => category.key === selectedKey
+          );
+          if (selectedCategory) {
+            grid.innerHTML = ""; // 기존 항목 제거
+            selectedCategory.images.forEach((imageSrc) => {
+              let gridItem = document.createElement("div");
+              gridItem.className = "grid-item";
+              let img = document.createElement("img");
+              img.src = imageSrc;
+              gridItem.appendChild(img);
+              grid.appendChild(gridItem);
+            });
+
+            // Masonry 재적용
+            new Masonry(grid, {
+              itemSelector: ".grid-item",
+              columnWidth: 110,
+            });
+          }
+        }
+
+        // 초기 로드
+        updateGrid("Character");
+
+        // 셀렉트 박스 이벤트 핸들러
+        document
+          .getElementById("categorySelect")
+          .addEventListener("change", function (event) {
+            updateGrid(event.target.value);
+          });
+      });
+    </script>
+  </body>
+</html>
