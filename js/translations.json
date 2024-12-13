@@ -24,6 +24,30 @@
                 "watch_video": "비디오 보기"
             }
         },
+        "listing": {
+            "letter_titles": [
+                "상 장",
+                "당신의 지혜를 세상과 나누세요.",
+                "진보의 씨앗은 당신에게서 시작됩니다."
+            ],
+            "inputbox_label": [
+                "성 명",
+                "메 일",
+                "연락처",
+                "Submit the SMART5 patent evaluation report"
+            ],
+            "inputbox_input": [
+                "이름을 입력해주세요.",
+                "메일을 입력해주세요..",
+                "연락처를 입력해주세요."
+            ],
+            "inputbox_button": [
+                "제 출"
+            ]
+        },
+        "about": {},
+        "product": {},
+        "contact": {},        
         "footer": {
             "slogan": "IP를 공유하자, IP의 시간이다",
             "company_name": "주식회사 아이피미디어그룹",
@@ -61,6 +85,30 @@
                 "watch_video": "Watch video"
             }
         },
+        "listing": {
+            "letter_titles": [
+                "Listing",
+                "hare your wisdom with the world",
+                "he seeds of progress begin with you"
+            ],
+            "inputbox_label": [
+                "Name",                
+                "Email",                
+                "Mobile",                
+                "Submit the SMART5 patent evaluation report"                
+            ],
+            "inputbox_input": [
+                "Please enter your name.",
+                "Please enter your email.",
+                "Please enter your contact phone number."                
+            ],
+            "inputbox_button": [
+                "Submit"
+            ]
+        },
+        "about": {},
+        "product": {},
+        "contact": {},
         "footer": {
             "slogan": "Let's share the IP, It's IP time",
             "company_name": "IP Media Group Inc.",
@@ -98,6 +146,30 @@
                 "watch_video": "ビデオを見る"
             }
         },
+        "listing": {
+            "letter_titles": [
+                "上場",
+                "世界と知恵を分かち合いましょう",
+                "進歩の種はあなたから始まります"
+            ],
+            "inputbox_label": [
+                "名前",
+                "メール",
+                "モバイル",
+                "SMART5特許評価レポートを提出"
+            ],
+            "inputbox_input": [
+                "名前を入力してください。",
+                "メールを入力してください。",
+                "連絡先を入力してください。"
+            ],
+            "inputbox_button": [
+                "提出"
+            ]
+        },
+        "about": {},
+        "product": {},
+        "contact": {},
         "footer": {
             "slogan": "IPを共有しよう、IPの時代だ",
             "company_name": "株式会社IPメディアグループ",
@@ -135,6 +207,30 @@
                 "watch_video": "观看视频"
             }
         },
+        "listing": {
+            "letter_titles": [
+                "上市",
+                "与世界分享你的智慧",
+                "进步的种子始于你"
+            ],
+            "inputbox_label": [
+                "姓名",
+                "邮箱",
+                "手机",
+                "提交SMART5专利评估报告"
+            ],
+            "inputbox_input": [
+                "请输入您的姓名。",
+                "请输入您的邮箱。",
+                "请输入您的联系方式。"
+            ],
+            "inputbox_button": [
+                "提交"
+            ]
+        },
+        "about": {},
+        "product": {},
+        "contact": {},
         "footer": {
             "slogan": "让我们共享IP，这是IP的时代",
             "company_name": "IP媒体集团股份有限公司",

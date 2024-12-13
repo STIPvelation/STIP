@@ -18,6 +18,23 @@ async function loadTranslations() {
     setLanguage(defaultLang);
 }
 
+// Function to close sidebar
+function closeSideBar() {
+    const sideBarContainer = document.querySelector('.side-bar-container');
+    const burgerMenu = document.querySelector('.burger-menu');
+
+    if (sideBarContainer) {
+        // sideBarContainer.classList.remove('active');
+        sideBarContainer.classList.remove("open");
+        sideBarContainer.classList.add("close");
+    }
+
+    // Reset burger menu icon if needed
+    if (burgerMenu) {
+        burgerMenu.setAttribute('onclick', 'handleBurgerMenu()');
+    }
+}
+
 // Set language
 function setLanguage(lang) {
     // Update navigation
@@ -30,13 +47,13 @@ function setLanguage(lang) {
 
     // Update dropdown button text
     const dropdownButton = document.getElementById('dropdownMenuButton1');
-    const langMap = {
-        'ko': '한국어',
-        'en': 'English',
-        'ja': '日本語',
-        'zh': '中文'
-    };
-    dropdownButton.textContent = langMap[lang];
+    // const langMap = {
+    //     'ko': '한국어',
+    //     'en': 'English',
+    //     'ja': '日本語',
+    //     'zh': '中文'
+    // };
+    dropdownButton.textContent = langLabel[lang];
 
     // Update main content
     const contentWrapper = document.querySelector('.content-wrapper');
@@ -90,7 +107,7 @@ function setLanguage(lang) {
     });
 
     // Manually find and mark active language
-    const languageItems = document.querySelectorAll('.side-bar-item.lang span, .dropdown-item');
+    const languageItems = document.querySelectorAll('.side-bar-item span, .dropdown-item');
     languageItems.forEach(el => {
         const langTexts = {
             'ko': '한국어',
@@ -103,11 +120,14 @@ function setLanguage(lang) {
         }
     });
 
-    const activeLang = document.querySelector(`.side-bar-item.${lang}`);
-    if (activeLang) activeLang.classList.add('active');
+    // const activeLang = document.querySelector(`.side-bar-item.${lang}`);
+    // if (activeLang) activeLang.classList.add('active');
 
     // Store language preference
     localStorage.setItem('preferredLanguage', lang);
+
+    // Close sidebar after language selection
+    closeSideBar();
 }
 
 // Handle burger menu open
