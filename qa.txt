@@ -6,3 +6,32 @@
 그리고 언어에 해당하는 json 파일을 기준으로
 index.html, listing.html,product.html,contact.html
 페이지별 언어별로 자바스크립트와 json 코드를 수정해 주세요.
+contact-contact.html
+<script>
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   fetch("components/header.html")
+    //     .then((response) => response.text())
+    //     .then((data) => {
+    //       document.getElementById("header-placeholder").innerHTML = data;
+    //     });
+    // });
+    // const selectBox = document.querySelector(".select-box");
+    // const boxArea = selectBox.querySelector(".box-area");
+    // const selectedBox = boxArea.querySelector(".selected-item");
+    // const dropdown = selectBox.querySelector("ul");
+    // const dropdownItems = dropdown.querySelectorAll(".select-item");
+
+    // boxArea.addEventListener("click", () => {
+    //   dropdown.classList.toggle("active");
+    //   selectBox.classList.toggle("active");
+    // });
+
+    // dropdown.addEventListener("click", (e) => {
+    //   const item = e.target.closest(".select-item");
+    //   if (!item) return;
+    //   boxArea.classList.remove("empty");
+    //   selectedBox.innerHTML = item.innerHTML;
+    //   dropdown.classList.remove("active");
+    //   selectBox.classList.remove("active");
+    // });    
+  </script>
