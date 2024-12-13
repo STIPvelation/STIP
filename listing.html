@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stipvelation</title>
   <link rel="stylesheet" type="" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/listing.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
@@ -25,6 +26,11 @@
 <body>
   <div class="root">
     <!-- header start -->
+    <!-- header.html -->
+    <!-- <!DOCTYPE html> -->
+    <!-- <html> -->
+    <!-- <head> -->
+
     <header class="header-container">
       <div class="header-wrapper">
         <div class="header-logo">
@@ -34,46 +40,46 @@
         </div>
         <nav class="header-nav">
           <div class="burger-menu-wrapper">
-            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
-              onclick="handleBurgerMenu()" />
+            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
             <div class="side-bar-container">
               <div class="sidebar-background">
                 <div class="close-btn">
-                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()" />
+                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
                 </div>
               </div>
               <div class="side-bar-wrapper">
                 <nav class="side-bar-section">
                   <div class="side-bar-list">
-                    <a class="side-bar-item navigate" href="index.html">Main</a>
-                    <a class="side-bar-item navigate" href="listing.html">Listing</a>
-                    <a class="side-bar-item navigate" href="about.html">About us</a>
-                    <a class="side-bar-item navigate" href="product.html">Product</a>
-                    <a class="side-bar-item navigate" href="contact.html">Contact</a>
+                    <a class="side-bar-item navigate" href="index.html" data-page="main"
+                      onclick="handlePageSelection('main')">main</a>
+                    <a class="side-bar-item navigate" href="listing.html" data-page="listing"
+                      onclick="handlePageSelection('listing')">Listing</a>
+                    <a class="side-bar-item navigate" href="about.html" data-page="about"
+                      onclick="handlePageSelection('about')">About us</a>
+                    <a class="side-bar-item navigate" href="product.html" data-page="product"
+                      onclick="handlePageSelection('product')">Product</a>
+                    <a class="side-bar-item navigate" href="contact.html" data-page="contact"
+                      onclick="handlePageSelection('contact')">Contact</a>
                   </div>
                   <div class="side-bar-list lang">
-                    <span class="side-bar-item ko" onclick="handleLangChange('ko',true)">한국어</span>
-                    <span class="side-bar-item en" onclick="handleLangChange('en',true)">English</span>
-                    <span class="side-bar-item ja" onclick="handleLangChange('ja',true)">日本語</span>
-                    <span class="side-bar-item zh" onclick="handleLangChange('zh',true)">中文</span>
+                    <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
+                    <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
+                    <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
+                    <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
                   </div>
                 </nav>
               </div>
             </div>
           </div>
           <ul>
-            <li>
-              <a class="nav-item navigate" href="listing.html">Listing</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="about.html">About us</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="product.html">Product</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="contact.html">Contact</a>
-            </li>
+            <li><a class="nav-item navigate" href="listing.html" data-page="listing"
+                onclick="handlePageSelection('listing')">Listing</a></li>
+            <li><a class="nav-item navigate" href="about.html" data-page="about"
+                onclick="handlePageSelection('about')">About us</a></li>
+            <li><a class="nav-item navigate" href="product.html" data-page="product"
+                onclick="handlePageSelection('product')">Product</a></li>
+            <li><a class="nav-item navigate" href="contact.html" data-page="contact"
+                onclick="handlePageSelection('contact')">Contact</a></li>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,24 +87,16 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ko')">
-                    한국어
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('en')">
-                    English
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ja')">
-                    日本語
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('zh')">
-                    中文
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
                 </li>
               </ul>
             </div>
@@ -131,10 +129,10 @@
 
         }
         console.log(`${divValue}`);
-
       })
 
     </script>
+    <!-- </html> -->
     <!-- header end -->
     <div class="bg-image">
       <img src="assets/images/bg-image.jpg" alt="bg-image" />
@@ -156,15 +154,15 @@
             <form id="contactForm">
               <div class="input-box">
                 <label for="name" class="required">Name</label>
-                <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." />
+                <input type="text" id="name" name="name" placeholder="Please enter your name." />
               </div>
               <div class="input-box">
                 <label for="email" class="required">Email</label>
-                <input type="text" id="email" name="email" placeholder="메일을 입력해주세요." />
+                <input type="text" id="email" name="email" placeholder="Please enter your email." />
               </div>
               <div class="input-box">
                 <label for="mobile" class="required">Mobile</label>
-                <input type="text" id="mobile" name="mobile" placeholder="연락처를 입력해주세요." />
+                <input type="text" id="mobile" name="mobile" placeholder="Please enter your contact information." />
               </div>
               <div class="input-box button">
                 <label for="submit" class="required">Submit the SMART5 patent evaluation report</label>
@@ -175,18 +173,20 @@
               #contactForm {
                 width: 100%;
               }
+
               #contactForm .input-box {
                 margin: 5px 0;
               }
+
               #contactForm .input-box label,
               #contactForm .input-box input {
                 padding: 5px 0;
-              }              
+              }
             </style>
             <div class="input-box button" style="display: none;">
               <label for="pay" class="required">Payment</label>
               <button id="pay" name="pay" class="normal-button">Connect</button>
-            </div>            
+            </div>
           </div>
           <div class="radius-box frame">
             <div class="radius-box swiper-container" id="swiperContainer">
@@ -359,14 +359,15 @@
     });
   </script>
   <script>
-    document
-      .querySelector(".dropdown-menu")
-      .addEventListener("click", (e) => {
-        document.querySelector(".btn-secondary").innerHTML =
-          e.target.textContent;
-      });
+    // document
+    //   .querySelector(".dropdown-menu")
+    //   .addEventListener("click", (e) => {
+    //     document.querySelector(".btn-secondary").innerHTML =
+    //       e.target.textContent;
+    //   });
   </script>
   <!-- <script src="components/header.js" defer></script> -->
+  <script src="js/updated-language-script.js"></script>
 </body>
 
 </html>

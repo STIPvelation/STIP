@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stipvelation</title>
     <link rel="stylesheet" href="assets/style/pages/main.css">
     <link rel="stylesheet" type="" href="assets/style/components/header.css">
     <link rel="stylesheet" href="assets/style/reset.css">
@@ -19,7 +19,8 @@
 
     <!-- <script src="components/header.js" defer></script> -->
 
-    <script src="js/app2.js" defer></script>
+    <!-- <script src="js/app2.js" defer></script> -->
+    <!-- <script src="js/header.js" defer></script>  -->
 
     <style>
         body {
@@ -48,23 +49,26 @@
                 </div>
                 <nav class="header-nav">
                     <div class="burger-menu-wrapper">
-                        <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
-                            onclick="handleBurgerMenu()">
+                        <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
                         <div class="side-bar-container">
                             <div class="sidebar-background">
                                 <div class="close-btn">
-                                    <img src="assets/images/mobile/close.svg" alt="close"
-                                        onclick="handleBurgerMenuClose()">
+                                    <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
                                 </div>
                             </div>
                             <div class="side-bar-wrapper">
                                 <nav class="side-bar-section">
                                     <div class="side-bar-list">
-                                        <a class="side-bar-item navigate" href="index.html" data-page="main" onclick="handlePageSelection('main')">main</a>
-                                        <a class="side-bar-item navigate" href="listing.html" data-page="listing" onclick="handlePageSelection('listing')">Listing</a>
-                                        <a class="side-bar-item navigate" href="about.html" data-page="about" onclick="handlePageSelection('about')">About us</a>
-                                        <a class="side-bar-item navigate" href="product.html" data-page="product" onclick="handlePageSelection('product')">Product</a>
-                                        <a class="side-bar-item navigate" href="contact.html" data-page="contact" onclick="handlePageSelection('contact')">Contact</a>
+                                        <a class="side-bar-item navigate" href="index.html" data-page="main"
+                                            onclick="handlePageSelection('main')">main</a>
+                                        <a class="side-bar-item navigate" href="listing.html" data-page="listing"
+                                            onclick="handlePageSelection('listing')">Listing</a>
+                                        <a class="side-bar-item navigate" href="about.html" data-page="about"
+                                            onclick="handlePageSelection('about')">About us</a>
+                                        <a class="side-bar-item navigate" href="product.html" data-page="product"
+                                            onclick="handlePageSelection('product')">Product</a>
+                                        <a class="side-bar-item navigate" href="contact.html" data-page="contact"
+                                            onclick="handlePageSelection('contact')">Contact</a>
                                     </div>
                                     <div class="side-bar-list lang">
                                         <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
@@ -77,10 +81,14 @@
                         </div>
                     </div>
                     <ul>
-                        <li><a class="nav-item navigate" href="listing.html" data-page="listing" onclick="handlePageSelection('listing')">Listing</a></li>
-                        <li><a class="nav-item navigate" href="about.html" data-page="about" onclick="handlePageSelection('about')">About us</a></li>
-                        <li><a class="nav-item navigate" href="product.html" data-page="product" onclick="handlePageSelection('product')">Product</a></li>
-                        <li><a class="nav-item navigate" href="contact.html" data-page="contact" onclick="handlePageSelection('contact')">Contact</a></li>
+                        <li><a class="nav-item navigate" href="listing.html" data-page="listing"
+                                onclick="handlePageSelection('listing')">Listing</a></li>
+                        <li><a class="nav-item navigate" href="about.html" data-page="about"
+                                onclick="handlePageSelection('about')">About us</a></li>
+                        <li><a class="nav-item navigate" href="product.html" data-page="product"
+                                onclick="handlePageSelection('product')">Product</a></li>
+                        <li><a class="nav-item navigate" href="contact.html" data-page="contact"
+                                onclick="handlePageSelection('contact')">Contact</a></li>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -129,8 +137,7 @@
                     }
 
                 }
-                console.log(`${divValue}`);
-                
+                console.log(`${divValue}`);                
             })
 
         </script>
@@ -328,13 +335,13 @@
     </div>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('components/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                });
-        })
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     fetch('components/header.html')
+        //         .then(response => response.text())
+        //         .then(data => {
+        //             document.getElementById('header-placeholder').innerHTML = data;
+        //         });
+        // })
         const swiper = new Swiper('.swiper', {
             autoplay: {
                 delay: 0, //add
@@ -367,6 +374,9 @@
         })
     </script>
     <!-- <script src="components/header.js" defer></script> -->
+    <!-- <script src="js/header.js"></script> -->
+    <script src="js/updated-language-script.js"></script>
+ 
 </body>
 
 </html>

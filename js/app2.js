@@ -28,6 +28,7 @@ async function loadTranslations() {
   } catch (error) {
     console.error("번역 데이터를 로드하는 데 실패했습니다.", error);
   }
+  handlePageSelection(index);
 }
 
 // 페이지 선택 시 호출되는 함수

@@ -3,9 +3,9 @@
         "nav": {
             "main": "메인",
             "listing": "상장",
-            "about": "소개",
+            "about": "STIP소개",
             "product": "제품",
-            "contact": "연락처"
+            "contact": "문의하기"
         },
         "main": {
             "logo_text": "<span>STIP</span> 만나보세요",
@@ -25,29 +25,123 @@
             }
         },
         "listing": {
-            "letter_titles": [
-                "상 장",
+            "letter_title": [
+                "상 장"
+            ],
+            "letter_title_p": [    
                 "당신의 지혜를 세상과 나누세요.",
                 "진보의 씨앗은 당신에게서 시작됩니다."
             ],
-            "inputbox_label": [
+            "inputbox_labels": [
                 "성 명",
                 "메 일",
                 "연락처",
-                "Submit the SMART5 patent evaluation report"
+                "SMART5 특허 평가 보고서를 제출하세요."
             ],
-            "inputbox_input": [
+            "inputbox_inputs": [
                 "이름을 입력해주세요.",
-                "메일을 입력해주세요..",
+                "메일을 입력해주세요.",
                 "연락처를 입력해주세요."
             ],
             "inputbox_button": [
                 "제 출"
             ]
         },
-        "about": {},
-        "product": {},
-        "contact": {},        
+        "about": {
+            "title_area_h6": "지 적 재 산 권",
+            "title_area_h1": "Meet STIP",
+            "content_area": [
+                "<span>STIP</span>은 특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등<br/>을 포함한 디지털 IP의 거래를 지원하는 교환 플랫폼입니다.",
+                "기업, 연구 기관, 창작자, 발명가에게<br/>IP 소유권을 양도하지 않고도 자금을 조달할 수 있는 기회를 제공합니다."
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>IP를 공유하자<br />IP 시대입니다.</span>"
+        },
+        "contact": {
+            "title_h1": "문의하기",
+            "intro_text": "세상과 지혜를 나누세요<br />진보의 씨앗은 당신으로부터 시작됩니다.",
+            "radius_boxes": [
+                {
+                    "title": "연락하기",
+                    "description": "팀과 상의하여<br />귀사의 요구사항을 논의하세요.",
+                    "button_text": "연결하기",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "커뮤니티",
+                    "description": "커뮤니티에서<br />프로젝트에 도움을 받으세요.",
+                    "button_text": "연결하기",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Contact",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "이름",
+                        "placeholder": "이름을 입력해주세요."
+                    },
+                    "last": {
+                        "label": "성",
+                        "placeholder": "성을 입력해주세요."
+                    }
+                },
+                "company": {
+                    "label": "회사",
+                    "placeholder": "회사를 입력해주세요."
+                },
+                "job_title": {
+                    "label": "직함",
+                    "placeholder": "직함을 입력해주세요."
+                },
+                "mobile": {
+                    "label": "연락처",
+                    "placeholder": "연락처를 입력해주세요."
+                },
+                "country": {
+                    "label": "국가",
+                    "placeholder": "국가를 입력해주세요."
+                },
+                "email": {
+                    "label": "이메일",
+                    "placeholder": "메일을 입력해주세요."
+                },
+                "subject": {
+                    "label": "주제",
+                    "placeholder": "주제 선택",
+                    "options": {
+                        "listing": "상장",
+                        "media_press": "언론 보도",
+                        "collaboration": "협업"
+                    }
+                },
+                "message": {
+                    "label": "문의 내용",
+                    "placeholder": "귀하의 비즈니스에 필요한 것에 대해 입력해주세요."
+                },
+                "submit": "문의하기"
+            }
+        },
+        "contact_community": {
+            "main_title": "커뮤니티",
+            "main_description": "우리 팀과 함께\n귀사의 요구사항에 대해 상담하세요.",
+            "community_support": {
+                "title": "커뮤니티지원",
+                "description": "우리 팀과 함께\n귀사의 요구사항에 대해 상담하세요."
+            },
+            "listing_support": {
+                "title": "상장지원",
+                "description": "커뮤니티로부터\n프로젝트에 대한 도움을 받으세요",
+                "button": "채팅 시작"
+            }
+        },        
         "footer": {
             "slogan": "IP를 공유하자, IP의 시간이다",
             "company_name": "주식회사 아이피미디어그룹",
@@ -86,29 +180,123 @@
             }
         },
         "listing": {
-            "letter_titles": [
-                "Listing",
+            "letter_title": [
+                "Listing"
+            ],
+            "letter_title_p": [
                 "hare your wisdom with the world",
                 "he seeds of progress begin with you"
             ],
-            "inputbox_label": [
+            "inputbox_labels": [
                 "Name",                
                 "Email",                
                 "Mobile",                
                 "Submit the SMART5 patent evaluation report"                
             ],
-            "inputbox_input": [
+            "inputbox_inputs": [
                 "Please enter your name.",
                 "Please enter your email.",
-                "Please enter your contact phone number."                
+                "Please enter your contact information."                
             ],
             "inputbox_button": [
                 "Submit"
             ]
         },
-        "about": {},
-        "product": {},
-        "contact": {},
+        "about": {
+            "title_area_h6": "Intellectual Property",
+            "title_area_h1": "Meet STIP",
+            "content_area": [
+                "<span>STIP</span> is an exchange platform supporting the trade of digital IPs,<br/>including patent, trademark, drama, movie, comics, franchise, music,<br/>dance, etc.",
+                "It provides companies, research institutions, creators, and inventors with<br/>opportunities to raise funds without transferring IP ownership."
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>Let’s share the IP,<br />It’s IP time</span>"
+        },
+        "contact": {
+            "title_h1": "Contact",
+            "intro_text": "Share your wisdom with the world <br/>The seeds of progress begin with you",
+            "radius_boxes": [
+                {
+                    "title": "Contact",
+                    "description": "Talk to our team about<br />your enterprise needs.",
+                    "button_text": "Connection",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "Community",
+                    "description": "Get help with your project<br />from the community.",
+                    "button_text": "Connection",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Contact",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "First Name",
+                        "placeholder": "Enter your first name"
+                    },
+                    "last": {
+                        "label": "Last Name",
+                        "placeholder": "Enter your last name"
+                    }
+                },
+                "company": {
+                    "label": "Company",
+                    "placeholder": "Enter your company name"
+                },
+                "job_title": {
+                    "label": "Job Title",
+                    "placeholder": "Enter your job title"
+                },
+                "mobile": {
+                    "label": "Mobile",
+                    "placeholder": "Enter your mobile number"
+                },
+                "country": {
+                    "label": "Country",
+                    "placeholder": "Enter your country"
+                },
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "subject": {
+                    "label": "Subject",
+                    "placeholder": "Select Subject",
+                    "options": {
+                        "listing": "Listing",
+                        "media_press": "Media Press",
+                        "collaboration": "Collaboration"
+                    }
+                },
+                "message": {
+                    "label": "How can we help?",
+                    "placeholder": "Please describe what you need for your business"
+                },
+                "submit": "Contact"
+            }
+        },    
+        "contact_community": {
+            "main_title": "Community",
+            "main_description": "Talk to our team about\nyour enterprise needs.",
+            "community_support": {
+                "title": "Community\nsupport",
+                "description": "Talk to our team about\nyour enterprise needs."
+            },
+            "listing_support": {
+                "title": "Listing\nsupport",
+                "description": "Get help with your project\nfrom the Community",
+                "button": "Start chat"
+            }
+        },
         "footer": {
             "slogan": "Let's share the IP, It's IP time",
             "company_name": "IP Media Group Inc.",
@@ -147,18 +335,20 @@
             }
         },
         "listing": {
-            "letter_titles": [
-                "上場",
+            "letter_title": [
+                "上場"
+            ],
+            "letter_title_p": [
                 "世界と知恵を分かち合いましょう",
                 "進歩の種はあなたから始まります"
             ],
-            "inputbox_label": [
+            "inputbox_labels": [
                 "名前",
                 "メール",
                 "モバイル",
                 "SMART5特許評価レポートを提出"
             ],
-            "inputbox_input": [
+            "inputbox_inputs": [
                 "名前を入力してください。",
                 "メールを入力してください。",
                 "連絡先を入力してください。"
@@ -167,9 +357,101 @@
                 "提出"
             ]
         },
-        "about": {},
-        "product": {},
-        "contact": {},
+        "about": {
+            "title_area_h6": "知 的 財 産",
+            "title_area_h1": "Meet STIP",
+            "content_area": [
+                "<span>STIP</span> は、特許、商標、ドラマ、映画、コミック、フランチャイズ、音楽、<br/>ダンスなどを含むデジタル IP の取引をサポートする交換プラットフォームです。",
+                "企業、研究機関、クリエイター、発明者に<br/>知的財産の所有権を譲渡せずに資金を調達する機会を提供します。"
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>IPを共有しよう、<br/>IPの時代だ</span>"
+        },
+        "contact": {
+            "title_h1": "接触",
+            "intro_text": "あなたの知恵を世界と共有しましょう<br/>進歩の種はあなたから始まります。",
+            "radius_boxes": [
+                {
+                    "title": "接触",
+                    "description": "企業のニーズについて<br/>当社のチームにご相談ください。",
+                    "button_text": "繋がり",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "コミュニティ",
+                    "description": "コミュニティから<br/>プロジェクトへの協力を得てください。",
+                    "button_text": "繋がり",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Contact",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "ファーストネーム",
+                        "placeholder": "あなたの名前を入力してください。"
+                    },
+                    "last": {
+                        "label": "苗字",
+                        "placeholder": "あなたの姓を入力してください。"
+                    }
+                },
+                "company": {
+                    "label": "会社",
+                    "placeholder": "会社名を入力してください。"
+                },
+                "job_title": {
+                    "label": "役職",
+                    "placeholder": "役職を入力してください"
+                },
+                "mobile": {
+                    "label": "携帯",
+                    "placeholder": "携帯電話番号を入力してください"
+                },
+                "country": {
+                    "label": "国家",
+                    "placeholder": "あなたの国を入力してください"
+                },
+                "email": {
+                    "label": "メール",
+                    "placeholder": "メールアドレスを入力してください"
+                },
+                "subject": {
+                    "label": "主題",
+                    "placeholder": "件名を選択してください",
+                    "options": {
+                        "listing": "上場",
+                        "media_press": "メディアプレス",
+                        "collaboration": "コラボレーション"
+                    }
+                },
+                "message": {
+                    "label": "どうすれば助けられるでしょうか?",
+                    "placeholder": "あなたのビジネスに必要なものについて説明してください"
+                },
+                "submit": "お問い合わせ"
+            }
+        },
+        "contact_community": {
+            "main_title": "コミュニティ",
+            "main_description": "私たちのチームと\nご相談ください",
+            "community_support": {
+                "title": "コミュニティ\nサポート",
+                "description": "私たちのチームと\nご相談ください"
+            },
+            "listing_support": {
+                "title": "上場\nサポート",
+                "description": "コミュニティから\nプロジェクトのサポートを受けましょう",
+                "button": "チャットを始める"
+            }
+        },
         "footer": {
             "slogan": "IPを共有しよう、IPの時代だ",
             "company_name": "株式会社IPメディアグループ",
@@ -188,7 +470,7 @@
             "listing": "上市",
             "about": "关于我们",
             "product": "产品",
-            "contact": "联系"
+            "contact": "联系我们"
         },
         "main": {
             "logo_text": "遇见 <span>STIP</span>",
@@ -208,18 +490,20 @@
             }
         },
         "listing": {
-            "letter_titles": [
-                "上市",
+            "letter_title": [
+                "上市"
+            ],
+            "letter_title_p": [
                 "与世界分享你的智慧",
                 "进步的种子始于你"
             ],
-            "inputbox_label": [
+            "inputbox_labels": [
                 "姓名",
                 "邮箱",
                 "手机",
                 "提交SMART5专利评估报告"
             ],
-            "inputbox_input": [
+            "inputbox_inputs": [
                 "请输入您的姓名。",
                 "请输入您的邮箱。",
                 "请输入您的联系方式。"
@@ -228,9 +512,101 @@
                 "提交"
             ]
         },
-        "about": {},
-        "product": {},
-        "contact": {},
+        "about": {
+            "title_area_h6": "知 识 产 权",            
+            "title_area_h1": "Meet STIP",
+            "content_area": [
+                "<span>STIP</span>是一个支持数字IP交易的交易平台，<br/>包括专利、商标、戏剧、电影、漫画、特许经营、音乐、舞蹈等。",
+                "它为公司、研究机构、创作者和发明者提供了<br/>在不转让知识产权所有权的情况下筹集资金的机会。"
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>让我们共享 IP，<br/>现在是 IP 时间</span>"
+        },
+        "contact": {
+            "title_h1": "接触",
+            "intro_text": "与世界分享你的智慧<br/>进步的种子从你开始。",
+            "radius_boxes": [
+                {
+                    "title": "接触",
+                    "description": "与我们的团队讨论<br/>您的企业需求。",
+                    "button_text": "联系",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "社区",
+                    "description": "从社区<br/>获取有关您的项目的帮助。",
+                    "button_text": "联系",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Contact",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "姓名",
+                        "placeholder": "输入你的名字"
+                    },
+                    "last": {
+                        "label": "姓氏",
+                        "placeholder": "请输入您的姓氏"
+                    }
+                },
+                "company": {
+                    "label": "公司",
+                    "placeholder": "输入您的公司名称"
+                },
+                "job_title": {
+                    "label": "职位名称",
+                    "placeholder": "输入您的公司名称"
+                },
+                "mobile": {
+                    "label": "移动",
+                    "placeholder": "输入您的手机号码"
+                },
+                "country": {
+                    "label": "国家",
+                    "placeholder": "输入您的国家"
+                },
+                "email": {
+                    "label": "电子邮件",
+                    "placeholder": "输入您的电子邮件"
+                },
+                "subject": {
+                    "label": "主题",
+                    "placeholder": "选择主题",
+                    "options": {
+                        "listing": "上市",
+                        "media_press": "媒体新闻",
+                        "collaboration": "合作"
+                    }
+                },
+                "message": {
+                    "label": "我们能帮上什么忙?",
+                    "placeholder": "请描述您的业务需求"
+                },
+                "submit": "联系我们"
+            }
+        },
+        "contact_community": {
+            "main_title": "社区",
+            "main_description": "与我们的团队讨论 您的企业需求",
+            "community_support": {
+                "title": "社区支持",
+                "description": "与我们的团队讨论 您的企业需求"
+            },
+            "listing_support": {
+                "title": "上市支持",
+                "description": "从社区获得 项目帮助",
+                "button": "开始聊天"
+            }
+        },
         "footer": {
             "slogan": "让我们共享IP，这是IP的时代",
             "company_name": "IP媒体集团股份有限公司",
