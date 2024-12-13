@@ -1,5 +1,5 @@
-이 플랫폼은 기업, 연구기관, 창작자, 발명가에게
-                지적재산권(IP) 소유권을 이전하지 않고 자금을 조달할 수 있는
+STIP IP 거래소 는 기업, 연구기관, 창작자 및 발명가들에게
+                지적재산권(IP) 소유권을 이전하지 않고도 자금을 조달할 수 있는
                 기회를 제공합니다.
 
 It provides companies, research institutions, creators, and inventors with<br/>opportunities to raise funds without transferring IP ownership.
@@ -14,25 +14,25 @@ It provides companies, research institutions, creators, and inventors with<br/>o
 
 <span>STIP</span>是一个支持数字IP交易的交易平台，<br/>包括专利、商标、戏剧、电影、漫画、特许经营、音乐、<br/>舞蹈等。
 
-它为公司、研究机构、创作者和发明者提供了在不转让知识产权所有权的情况下筹集资金的机会。
+它为公司、研究机构、创作者和发明者提供了无需转让知识产权所有权即可筹集资金的机会。
 “它为公司、研究机构、创作者和发明者提供了<br/>在不转让知识产权所有权的情况下筹集资金的机会。”
 
-<span>STIP</span>은 특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등<br/>을 포함한<br/>디지털 IP의 거래를 지원하는 교환 플랫폼입니다.
+<span>STIP</span>은 특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등<br/>을 포함한<br/>디지털 IP의 거래를 지원하는 거래 플랫폼입니다.
 
-"기업, 연구 기관, 창작자, 발명가에게<br/>IP 소유권을 양도하지 않고도 자금을 조달할 수 있는 기회를 제공합니다."
+"기업, 연구 기관, 창작자, 발명가에게<br/>IP 소유권을 이전하지 않고도 자금을 조달할 수 있는 기회를 제공합니다."
 
-<span>STIP</span> は、特許、商標、ドラマ、映画、コミック、フランチャイズ、音楽、<br/>ダンスなどを含むデジタル IP の取引をサポートする交換プラットフォームです。
+<span>STIP</span> は、特許、商標、ドラマ、映画、漫画、フランチャイズ、音楽、<br/>ダンスなどを含むデジタル IP の取引をサポートするプラットフォームです。
 
 企業、研究機関、クリエイター、発明者に<br/>知的財産の所有権を譲渡せずに資金を調達する機会を提供します。
 
 "<span>Let’s share the IP,<br />It’s IP time.</span>"
-"<span>IP를 공유하자<br />IP 시대입니다.</span>"
-"<span>IPを共有しよう、<br/>IPの時代だ</span>"
+"<span>IP를 공유해요<br />IP 시대입니다.</span>"
+"<span>IPを共有しよう、<br/>IPの時代です</span>"
 "<span>让我们共享 IP，<br/>现在是 IP 时间</span>"
 
 Contact
-接触
-接触
+コンタクト
+联系
 
 Share your wisdom with the world <br/>The seeds of progress begin with you.
 
@@ -46,14 +46,14 @@ Talk to our team about<br/>your enterprise needs.
 与我们的团队讨论<br/>您的企业需求。
 
 Connection
-繋がり
-联系
+進む
+连接
 
 Get help with your project<br/>from the community.
 
-コミュニティから<br/>プロジェクトへの協力を得てください。
+コミュニティから<br/>プロジェクトのサポートを受けましょう。
 
-从社区<br/>获取有关您的项目的帮助。
+从社区<br/>获取项目的帮助吧。
 
 Community
 コミュニティ
@@ -61,13 +61,13 @@ Community
 
 
 "First Name"
-"ファーストネーム"
+"名"
 姓名
 "Enter your first name."
 "あなたの名前を入力してください。"
 
 "Last Name"
-"苗字"
+"姓"
 姓氏
 "Enter your last name."
 "あなたの姓を入力してください。"
@@ -93,15 +93,15 @@ Community
 移动
 
 "Enter your mobile number"
-携帯電話番号を入力してください
+電話番号を入力してください
 输入您的手机号码
 
 
 "Country"
-国家
+国
 
 "Enter your country"
-あなたの国を入力してください
+国を入力してください
 输入您的国家
 
 "Email"
@@ -112,12 +112,12 @@ Community
 输入您的电子邮件
 
 "Subject"
-主題
-主题
+項目
+项目
 
 "Select Subject"
-件名を選択してください
-选择主题
+項目を選択してください
+请选择一个项目
 
 
 "Listing"
@@ -131,13 +131,13 @@ Community
 合作
 
 "How can we help?"
-どうすれば助けられるでしょうか？
-我们能帮上什么忙？
+問い合わせ
+咨询
 
 "Please describe what you need for your business"
 あなたのビジネスに必要なものについて説明してください
 请描述您的业务需求
 Contact us
 문의하기
-联系我们
+問い合わせ
 联系我们
