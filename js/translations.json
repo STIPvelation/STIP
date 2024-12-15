@@ -21,11 +21,11 @@
             ],
             "buttons": {
                 "listing": "상장",
-                "watch_video": "비디오 보기"
+                "watch_video": "영상"
             }
         },
         "footer": {
-            "slogan": "IP를 공유하자, IP의 시간이다",
+            "slogan": "IP를 공유하자, IP의 시대",
             "company_name": "주식회사 아이피미디어그룹",
             "company_info": {
                 "ceo": "대표: 이성용",
@@ -58,7 +58,7 @@
             ],
             "buttons": {
                 "listing": "Listing",
-                "watch_video": "Watch video"
+                "watch_video": "Video"
             }
         },
         "footer": {
@@ -77,9 +77,9 @@
         "nav": {
             "main": "メイン",
             "listing": "上場",
-            "about": "会社概要",
+            "about": "概要",
             "product": "製品",
-            "contact": "お問い合わせ"
+            "contact": "問い合わせ"
         },
         "main": {
             "logo_text": "<span>STIP</span>と出会う",
@@ -95,7 +95,7 @@
             ],
             "buttons": {
                 "listing": "上場",
-                "watch_video": "ビデオを見る"
+                "watch_video": "動画"
             }
         },
         "footer": {
@@ -114,7 +114,7 @@
         "nav": {
             "main": "主页",
             "listing": "上市",
-            "about": "关于我们",
+            "about": "介绍",
             "product": "产品",
             "contact": "联系"
         },
@@ -132,7 +132,7 @@
             ],
             "buttons": {
                 "listing": "上市",
-                "watch_video": "观看视频"
+                "watch_video": "视频"
             }
         },
         "footer": {
