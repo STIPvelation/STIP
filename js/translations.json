@@ -7,8 +7,9 @@
             "product": "제품",
             "contact": "연락처"
         },
-        "main": {Intellectual Property
-            "logo_text": "<span>Meets</span> STIP",
+        "main": {
+            "logo_text": "Intellectual Property
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "당신의 지혜를 세상과 공유하세요",
                 "진보의 씨앗은 당신으로부터 시작됩니다",
@@ -44,8 +45,9 @@
             "product": "Product",
             "contact": "Contact"
         },
-        "main": {Intellectual Property
-            "logo_text": "Meets <span>STIP</span>",
+        "main": {
+            "logo_text": "Intellectual Property 
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "Share your wisdom with the world",
                 "The seeds of progress begin with you",
@@ -82,7 +84,8 @@
             "contact": "問い合わせ"
         },
         "main": {Intellectual Property
-            "logo_text": "<span>Meets</span>STIP",
+            "logo_text": "Intellectual Property
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "あなたの知恵を世界と共有しましょう",
                 "進歩の種はあなたから始まります",
@@ -118,8 +121,9 @@
             "product": "产品",
             "contact": "联系"
         },
-        "main": {Intellectual Property
-            "logo_text": "Meets <span>STIP</span>",
+        "main": {
+            "logo_text": "Intellectual Property
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "与世界分享你的智慧",
                 "进步的种子从你开始",
