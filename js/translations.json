@@ -323,7 +323,7 @@
         },
         "main": {
             "logo_text": "Intellectual Property
-                          Meets<span>STIP</span>",
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "あなたの知恵を世界と共有しましょう",
                 "進歩の種はあなたから始まります",
@@ -479,8 +479,9 @@
             "product": "产品",
             "contact": "联系我们"
         },
-        "main": {Intellectual Property
-            "logo_text": "Meets <span>STIP</span>",
+        "main": {
+            "logo_text": "Intellectual Property 
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "与世界分享你的智慧",
                 "进步的种子从你开始",
