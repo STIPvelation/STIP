@@ -583,7 +583,7 @@
                     "placeholder": "选择主题",
                     "options": {
                         "listing": "上市",
-                        "media_press": "媒体新闻",
+                        "media_press": "媒体",
                         "collaboration": "合作"
                     }
                 },
