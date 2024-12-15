@@ -44,8 +44,8 @@
             "product": "Product",
             "contact": "Contact"
         },
-        "main": {Intellectual Property
-            "logo": "Meets<span>STIP</span>",
+        "main": {
+            "logo": "Intellectual Property<br> Meets <span>STIP</span>",
             "stip": {
                 "s": "Share your wisdom with the world",
                 "t": "The seeds of progress begin with you",
