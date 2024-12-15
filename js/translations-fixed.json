@@ -7,8 +7,8 @@
             "product": "제품",
             "contact": "연락처"
         },
-        "main": {
-            "logo": "Meet <span>STIP</span>",
+        "main": {Intellectual Property
+            "logo": "Meets <span>STIP</span>",
             "stip": {
                 "s": "당신의 지혜를 세상과 공유하세요",
                 "t": "진보의 씨앗은 당신으로부터 시작됩니다",
@@ -21,11 +21,11 @@
             },
             "buttons": {
                 "listing": "상장",
-                "watch_video": "비디오 보기"
+                "watch_video": "영상"
             }
         },
         "footer": {
-            "slogan": "IP를 공유하자, IP의 시간이다",
+            "slogan": "IP를 공유하자, 지금은 IP의 시대",
             "company_name": "주식회사 아이피미디어그룹",
             "info": {
                 "ceo": "대표: 이성용",
@@ -44,8 +44,8 @@
             "product": "Product",
             "contact": "Contact"
         },
-        "main": {
-            "logo": "Meet <span>STIP</span>",
+        "main": {Intellectual Property
+            "logo": "Meets <span>STIP</span>",
             "stip": {
                 "s": "Share your wisdom with the world",
                 "t": "The seeds of progress begin with you",
@@ -58,7 +58,7 @@
             },
             "buttons": {
                 "listing": "Listing",
-                "watch_video": "Watch video"
+                "watch_video": "Video"
             }
         },
         "footer": {
