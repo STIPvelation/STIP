@@ -165,8 +165,9 @@
             "product": "Product",
             "contact": "Contact"
         },
-        "main": {Intellectual Property
-            "logo_text": "Meets <span>STIP</span>",
+        "main": {
+            "logo_text": "Intellectual Property
+                          Meets <span>STIP</span>",
             "letter_titles": [
                 "Share your wisdom with the world",
                 "The seeds of progress begin with you",
@@ -320,8 +321,9 @@
             "product": "製品",
             "contact": "問い合わせ"
         },
-        "main": {Intellectual
-            "logo_text": "Meets <span>STIP</span>",
+        "main": {
+            "logo_text": "Intellectual Property
+                          Meets<span>STIP</span>",
             "letter_titles": [
                 "あなたの知恵を世界と共有しましょう",
                 "進歩の種はあなたから始まります",
