@@ -64,17 +64,17 @@
         },
         "contact": {
             "title_h1": "문의",
-            "intro_text": "세상과 지혜를 나누세요<br />진보의 씨앗은 당신으로부터 시작됩니다.",
+            "intro_text": "필요한 내용을 저희 팀과 상담하세요",
             "radius_boxes": [
                 {
-                    "title": "연락",
-                    "description": "문의 사항.",
+                    "title": "SNS",
+                    "description": "",
                     "button_text": "연결",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "커뮤니티",
-                    "description": "도움이 필요하세요.",
+                    "title": "상장 지원",
+                    "description": "",
                     "button_text": "연결",
                     "link": "contact-community.html"
                 }
@@ -441,14 +441,14 @@
         },
         "contact_community": {
             "main_title": "コミュニティ",
-            "main_description": "STIPと\nご相談ください",
+            "main_description": "必要な内容をSTIPにご相談ください",
             "community_support": {
-                "title": "コミュニティ",
-                "description": "STIPと\nご相談ください"
+                "title": "SNS",
+                "description": ""
             },
             "listing_support": {
-                "title": "サポート",
-                "description": "プロジェクトのサポート",
+                "title": "上場支援",
+                "description": "",
                 "button": "チャット"
             }
         },
@@ -528,18 +528,18 @@
             "letter_title": "<span>让我们共享 IP，<br/>现在是 IP 时间</span>"
         },
         "contact": {
-            "title_h1": "接触",
-            "intro_text": "与世界分享你的智慧<br/>进步的种子从你开始。",
+            "title_h1": "咨询",
+            "intro_text": "请与我们的团队洽谈您的需求",
             "radius_boxes": [
                 {
-                    "title": "接触",
-                    "description": "与我们的团队讨论<br/>您的企业需求。",
+                    "title": "SNS",
+                    "description": "",
                     "button_text": "联系",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "社区",
-                    "description": "从社区<br/>获取有关您的项目的帮助。",
+                    "title": "上市支持",
+                    "description": "",
                     "button_text": "联系",
                     "link": "contact-community.html"
                 }
@@ -595,8 +595,8 @@
             }
         },
         "contact_community": {
-            "main_title": "社区",
-            "main_description": "与我们的团队讨论 您的企业需求",
+            "main_title": "咨询",
+            "main_description": "请与我们的团队洽谈您的需求",
             "community_support": {
                 "title": "SNS",
                 "description": ""
