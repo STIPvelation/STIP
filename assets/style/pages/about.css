@@ -13,8 +13,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 104px);
+  min-height: calc(100vh - 104px);
   @media screen and (max-width: 900px) {
+    min-height: calc(100vh - 310px);
     height: unset;
     padding: 24px;
   }
