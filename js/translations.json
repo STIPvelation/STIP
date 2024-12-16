@@ -81,7 +81,7 @@
             ]
         },
         "contact_contact": {
-            "letter_title": "Contact",
+            "letter_title": "문의하기",
             "form": {
                 "name": {
                     "first": {
@@ -123,15 +123,15 @@
                     }
                 },
                 "message": {
-                    "label": "문의하기",
+                    "label": "문의내용",
                     "placeholder": "귀하의 비즈니스에 필요한 것에 대해 입력해주세요."
                 },
                 "submit": "문의"
             }
         },
         "contact_community": {
-            "main_title": "문의",
-            "main_description": "필요한 내용을 저희 팀과 상담하세요",
+            "main_title": "도움이 필요하세요",
+            "main_description": "",
             "community_support": {
                 "title": "SNS",
                 "description": ""
@@ -236,7 +236,7 @@
             ]
         },
         "contact_contact": {
-            "letter_title": "Contact",
+            "letter_title": "Inquiry",
             "form": {
                 "name": {
                     "first": {
@@ -433,8 +433,8 @@
                     }
                 },
                 "message": {
-                    "label": "助けが必要ですか？",
-                    "placeholder": "必要なのを説明して下さい"
+                    "label": "どのようにサポートすれば宜しいですか？",
+                    "placeholder": "あなたのビジネスのために必要なものを説明してください"
                 },
                 "submit": "問い合わせ"
             }
@@ -588,7 +588,7 @@
                     }
                 },
                 "message": {
-                    "label": "我们能帮上什么忙?",
+                    "label": "我们能如何帮助您？",
                     "placeholder": "请描述您的业务需求"
                 },
                 "submit": "联系我们"
