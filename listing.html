@@ -15,6 +15,7 @@
     crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <style>
     body {
@@ -52,7 +53,7 @@
                   <div class="side-bar-list">
                     <a class="side-bar-item navigate" href="index.html" data-page="main"
                       onclick="handlePageSelection('main')">main</a>
-                    <a class="side-bar-item navigate" href="listing.html" data-page="listing"
+                    <a class="side-bar-item navigate active" href="listing.html" data-page="listing"
                       onclick="handlePageSelection('listing')">Listing</a>
                     <a class="side-bar-item navigate" href="about.html" data-page="about"
                       onclick="handlePageSelection('about')">About us</a>
@@ -72,7 +73,7 @@
             </div>
           </div>
           <ul>
-            <li><a class="nav-item navigate" href="listing.html" data-page="listing"
+            <li><a class="nav-item navigate active" href="listing.html" data-page="listing"
                 onclick="handlePageSelection('listing')">Listing</a></li>
             <li><a class="nav-item navigate" href="about.html" data-page="about"
                 onclick="handlePageSelection('about')">About us</a></li>
@@ -128,7 +129,6 @@
           }
 
         }
-        console.log(`${divValue}`);
       })
 
     </script>
@@ -189,7 +189,39 @@
             </div>
           </div>
           <div class="radius-box frame">
+            <div class="dropdown-select">
+              <button class="listing-btn  btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Patent
+              </button>
+              <ul class="dropdown-menu listing-select-box" aria-labelledby="dropdownMenuButton2">
+                <li>
+                  <div class="dropdown-item">Patent</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Movie Drama Comics</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Music</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Dance</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Franchise</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Trademark</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Character</div>
+                </li>
+              </ul>
+            </div>
             <div class="radius-box swiper-container" id="swiperContainer">
+              <div class="circle-wrapper">
+                <span class="Sphere"></span>
+              </div>
               <div class="swiper grid-swiper" id="swiperWrapper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide swiper-grid-box">
@@ -359,12 +391,129 @@
     });
   </script>
   <script>
-    // document
-    //   .querySelector(".dropdown-menu")
-    //   .addEventListener("click", (e) => {
-    //     document.querySelector(".btn-secondary").innerHTML =
-    //       e.target.textContent;
-    //   });
+    const Texts = {
+      "Movie Drama Comics": [
+        "KCC", // Korea Copyright Commission
+        "USCO", // United States Copyright Office
+        "CRIC", // Copyright Research & Information Center
+        "NCAC", // National Copyright Administration of China
+        "SACD", // Société des Auteurs et Compositeurs Dramatiques
+        "UKCS", // UK Copyright Service
+      ],
+      "Music": [
+        "KOMCA", // Korea Music Copyright Association
+        "BMI", // Broadcast Music, Inc.
+        "ASCAP", // American Society of Composers, Authors and Publishers
+        "JASRAC", // Japanese Society for Rights of Authors, Composers and Publishers
+        "PRS for Music", //Performing Right Society for Music
+        "GEMA", // Gesellschaft für musikalische Aufführungs- und mechanische Vervielfältigungsrechte
+        "SACEM", //Société des Auteurs, Compositeurs et Éditeurs de Musique
+        "SIAE", // Società Italiana degli Autori ed Editori
+        "MCSC", // Music Copyright Society of China
+      ],
+      "Dance": [
+        "KCC", // Korea Copyright Commission
+        "USCO", // United States Copyright Office
+        "CRIC", // Copyright Research & Information Center
+        "NCAC", // National Copyright Administration of China
+        "SACEM", // Société des Auteurs, Compositeurs et Éditeurs de Musique
+        "UKCS", // UK Copyright Service
+        "EUIPO", // European Union Intellectual Property Office
+        "CIPO", // Canadian Intellectual Property Office
+        "ACC", // Australian Copyright Council
+      ],
+      "Franchise": [
+        "FTC", // Fair Trade Commission
+        "FTC", // Federal Trade Commission
+        "BFA", // British Franchise Association
+        "ACCC", // Australian Competition and Consumer Commission
+        "CBC", // Competition Bureau Canada
+        "JFTC", // Japan Fair Trade Commission
+        "EFF", // European Franchise Federation 
+        "ES", // Enterprise Singapore
+        "SAMR", // State Administration for Market Regulation 
+      ],
+      "Trademark": [
+        "KIPO", // Korean Intellectual Property Office
+        "CNIPA", // China National Intellectual Property Administration
+        "USPTO", // United States Patent and Trademark Office
+        "EUIPO", // European Union Intellectual Property Office
+        "IPSO", // Intellectual Property Office of Singapore
+        "CIPO", // Canadian Intellectual Property Office
+        "IPO", // Intellectual Property Office
+        "JPO", // Japan Patent Office
+      ],
+      "Character": [
+        "KIPO", // Korean Intellectual Property Office
+        "KCC", // Korea Copyright Commission
+        "CNIPA", // China National Intellectual Property Administration
+        "USPTO", // United States Patent and Trademark Office
+        "USCO", // United States Copyright Office
+        "EUIPO", // European Union Intellectual Property Office
+        "IPOS", // Intellectual Property Office of Singapore
+        "CIPO", // Canadian Intellectual Property Office
+        "IPO", // Intellectual Property Office
+        "JPO", // Japan Patent Office
+        "JCO", // Japan Copyright Office
+      ],
+    }
+
+    let tagCloud = null
+
+    const cloudContainer = document.querySelector(".Sphere");
+    const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
+    const dropdownSelect = document.querySelector('.dropdown-select');
+    const circleWrapper = document.querySelector('.circle-wrapper');
+    const radius = Math.max(
+      170,
+      Math.min(280, window.innerWidth - window.innerWidth * 0.95)
+    );
+
+
+    dropdownSelect.addEventListener('click', (event) => {
+      const liElement = event.target.closest('li');
+      if (liElement) {
+        const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+        if (divElement) {
+          divValue = divElement.textContent.trim(); // div 값 가져오기
+        }
+      }
+      const listingBtn = document.querySelector('.listing-btn');
+
+      if (listingBtn && divValue) {
+        const frameBox = document.querySelector('.frame');
+        const squareBox = document.querySelector('.Sphere');
+        if (divValue === "Patent") {
+          swiperWrapper.style.display = "block";
+          circleWrapper.style.display = "none";
+          if(tagCloud) tagCloud.pause();
+          if(window.innerWidth < 768) {
+            frameBox.style.height = "204px";
+          }
+        } else {
+     
+          if (!tagCloud) {
+            tagCloud = TagCloud(".Sphere", Texts['Movie Drama Comics'], {
+              radius,
+              maxSpeed: "normal",
+              initSpeed: "normal",
+              direction: 205,
+              keep: true,
+            });
+          }
+
+          swiperWrapper.style.display = "none";
+          circleWrapper.style.display = "flex";
+          if( window.innerWidth < 768) {
+            frameBox.style.height = squareBox.clientHeight + "px";
+          } 
+          tagCloud.resume();
+          tagCloud.update(Texts[divValue]);
+        }
+        listingBtn.textContent = divValue;
+      }
+    });
+
   </script>
   <!-- <script src="components/header.js" defer></script> -->
   <script src="js/updated-language-script.js"></script>
