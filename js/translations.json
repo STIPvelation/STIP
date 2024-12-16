@@ -68,13 +68,13 @@
             "radius_boxes": [
                 {
                     "title": "연락",
-                    "description": "문의<br />사항.",
+                    "description": "문의 사항.",
                     "button_text": "연결",
                     "link": "contact-contact.html"
                 },
                 {
                     "title": "커뮤니티",
-                    "description": "커뮤니티<br />도움이 필요하세요.",
+                    "description": "도움이 필요하세요.",
                     "button_text": "연결",
                     "link": "contact-community.html"
                 }
@@ -131,14 +131,14 @@
         },
         "contact_community": {
             "main_title": "커뮤니티",
-            "main_description": "STIP과 \\ 상담하세요.",
+            "main_description": "",
             "community_support": {
-                "title": "커뮤니티지원",
-                "description": "STIP과 함께\n상담하세요."
+                "title": "SNS 서포트",
+                "description": ""
             },
             "listing_support": {
-                "title": "상장지원",
-                "description": "프로젝트에 대한 도움을 받으세요",
+                "title": " 상장 지원 ",
+                "description": "",
                 "button": "채팅"
             }
         },        
@@ -327,7 +327,7 @@
             ],
             "bottom_text": [
                 "STIPはIPにおけるアルファでありオメガであり",
-                "最初であり最後、そして始まりであり終わりです。"
+                "最初であり最後、そして始まりであり終わりである。"
             ],
             "buttons": {
                 "listing": "上場",
