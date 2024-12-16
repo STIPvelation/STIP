@@ -190,7 +190,7 @@
                             </button>                            
                             <div class="watch-video-area">
                                 <img src="assets/images/play-circle.svg" alt="" />
-                                <span>Watch video</span>
+                                <a href="https://youtu.be/QuKFlp8I25Y?si=W7FY_TuQRsWwrmSk" class="link-text" target="_blank" rel="noopener noreferrer" aria-label="STIP youtube link"><span>Watch video</span></a>
                             </div>
                         </div>
                     </div>
@@ -216,6 +216,10 @@
         align-items: center;
         gap: 8px;
         cursor: pointer;
+    }
+
+    .watch-video-area .link-text {
+        color: transparent;
     }
 
     .watch-video-area span {
@@ -335,13 +339,7 @@
     </div>
     
     <script>
-        // document.addEventListener("DOMContentLoaded", function () {
-        //     fetch('components/header.html')
-        //         .then(response => response.text())
-        //         .then(data => {
-        //             document.getElementById('header-placeholder').innerHTML = data;
-        //         });
-        // })
+
         const swiper = new Swiper('.swiper', {
             autoplay: {
                 delay: 0, //add

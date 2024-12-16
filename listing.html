@@ -151,21 +151,39 @@
         </div>
         <div class="row-area">
           <div class="radius-box column">
-            <form id="contactForm">
+            <form id="contactForm" aria-labelledby="formTitle">
               <div class="input-box">
-                <label for="name" class="required">Name</label>
-                <input type="text" id="name" name="name" placeholder="Please enter your name." />
+                <label for="name" class="required" aria-required="true">
+                  Name
+                  <span class="sr-only">(Required)</span>
+                </label>
+                <input type="text" id="name" name="name" placeholder="Please enter your name." required
+                  autocomplete="name" />
               </div>
               <div class="input-box">
-                <label for="email" class="required">Email</label>
-                <input type="text" id="email" name="email" placeholder="Please enter your email." />
+                <label for="email" class="required" aria-required="true">
+                  Email
+                  <span class="sr-only">(Required)</span>
+                </label>
+                <input type="text" id="email" name="email" placeholder="Please enter your email." required
+                  autocomplete="email" />
               </div>
               <div class="input-box">
-                <label for="mobile" class="required">Mobile</label>
-                <input type="text" id="mobile" name="mobile" placeholder="Please enter your contact information." />
+                <label for="mobile" class="required" aria-required="true">
+                  Mobile
+                  <span class="sr-only">(Required)</span>
+                </label>
+                <input type="text" id="mobile" name="mobile" placeholder="Please enter your contact information."
+                  required autocomplete="mobile" />
               </div>
               <div class="input-box button">
-                <label for="submit" class="required">Submit the SMART5 patent evaluation report</label>
+                <label for="submit" class="required">
+                  <a href="https://smart.kipa.org" class="link-text" target="_blank" rel="noopener noreferrer"
+                    aria-label="SMART5 특허 평가 보고서 제출 페이지로 이동">
+                    SMART5
+                  </a>
+                  특허 평가 보고서를 제출하세요
+                </label>
                 <button id="submit" name="submit" class="normal-button">Submit</button>
               </div>
             </form>
@@ -178,16 +196,267 @@
                 margin: 5px 0;
               }
 
-              #contactForm .input-box label,
-              #contactForm .input-box input {
-                padding: 5px 0;
+              /* 링크 스타일 개선 */
+              #contactForm .link-text {
+                text-decoration: none;
+                position: relative;
+                color: inherit;
+                /* 부모 요소의 색상 상속 */
+                transition: color 0.3s ease;
+                /* 색상 변화에 대한 트랜지션 추가 */
+              }
+
+              #contactForm .link-text:hover {
+                cursor: pointer;
+              }
+
+              /* 밑줄 애니메이션 효과 */
+              #contactForm .link-text::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--orange-color);
+                transition: width 0.3s ease;
+                transform-origin: left;
+                /* 왼쪽에서 시작하는 애니메이션 */
+              }
+
+              #contactForm .link-text:hover::after {
+                width: 100%;
+              }
+
+              /* 접근성을 위한 포커스 스타일 */
+              #contactForm .link-text:focus {
+                outline: none;
+              }
+
+              #contactForm .link-text:focus::after {
+                width: 100%;
+              }
+
+              .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                border: 0;
               }
             </style>
             <div class="input-box button" style="display: none;">
-              <label for="pay" class="required">Payment</label>
-              <button id="pay" name="pay" class="normal-button">Connect</button>
+              <label for="pay" class="required" aria-required="true">
+                Payment
+                <span class="sr-only">(Required)</span>
+              </label>
+              <button id="pay" name="pay" class="normal-button" style="display: none;">Payment</button>
             </div>
+            <!-- 결제 모달 -->
+            <!-- <div id="paymentModal" class="modal" style="display: none;"> -->
+            <!-- <div class="modal-content"> -->
+            <!-- <span class="close">&times;</span> -->
+            <form id="paymentForm" class="payment-form" style="display: none;">
+              <!-- 카드 결제 폼 -->
+              <div class="input-box">
+                <label for="cardNumber" class="required">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456"
+                  pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}" required maxlength="19" />
+              </div>
+
+              <div class="row-area">
+                <div class="input-box">
+                  <label for="expiryDate" class="required">Expiry Date</label>
+                  <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY"
+                    pattern="(0[1-9]|1[0-2])\/([0-9]{2})" required maxlength="5" />
+                </div>
+                <div class="input-box">
+                  <label for="cvv" class="required">CVV</label>
+                  <input type="password" id="cvv" name="cvv" placeholder="123" pattern="\d{3,4}" required
+                    maxlength="4" />
+                </div>
+              </div>
+
+              <div class="input-box">
+                <label for="cardholderName" class="required">Cardholder Name</label>
+                <input type="text" id="cardholderName" name="cardholderName" placeholder="Name on card" required />
+              </div>
+
+              <div class="input-box amount">
+                <label for="amount" class="required" data-translate="payment.amount"></label>
+                <div class="amount-wrapper">
+                  <input type="text" id="amount" name="amount" data-value="payment.amount_value" readonly />
+                  <span class="currency" data-translate="payment.currency"></span>
+                </div>
+              </div>
+
+              <div class="input-box button">
+                <button type="submit" id="processPayment" class="normal-button">
+                  Process Payment
+                </button>
+              </div>
+            </form>
+            <!-- </div> -->
+            <!-- </div> -->
           </div>
+<style>
+  .payment-form {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .payment-form .input-box {
+    margin-bottom: 20px;
+  }
+
+  .payment-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+
+  .payment-form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .payment-form .amount-wrapper {
+    position: relative;
+  }
+
+  .payment-form .amount-wrapper input {
+    text-align: right;
+    padding-right: 50px;
+  }
+
+  .payment-form .amount-wrapper .currency {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fcfcfc;
+  }
+
+  /* RTL 지원 */
+  html[dir="rtl"] .amount-wrapper .currency {
+    right: auto;
+    left: 12px;
+  }
+</style>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const contactForm = document.getElementById('contactForm');
+              const paymentForm = document.getElementById('paymentForm');
+              const userName = document.getElementById('name');
+              const cardholderName = document.getElementById('cardholderName');
+
+              // Contact Form 제출 처리
+              contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                try {
+                  const formData = new FormData(this);
+
+                  // API 호출
+                  const response = await fetch('contactForm_save.php', {
+                    method: 'POST',
+                    body: formData
+                  });
+
+                  const result = await response.json();
+
+                  if (result.success) {
+                    // 기존 폼 숨기기
+                    contactForm.style.display = 'none';
+
+                    // 카드 소유자 이름 자동 입력
+                    cardholderName.value = userName.value;
+
+                    // 결제 폼 보이기
+                    paymentForm.style.display = 'block';
+
+                    // amount와 currency 설정
+                    document.getElementById('amount').value = '50,000';
+                    document.querySelector('.currency').textContent = 'KRW';
+                  } else {
+                    alert('정보 저장에 실패했습니다. 다시 시도해 주세요.');
+                    window.location.href = 'listing.html';
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  alert('처리 중 오류가 발생했습니다.');
+                  window.location.href = 'listing.html';
+                }
+              });
+
+              // Payment Form 제출 처리
+              paymentForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // 이름 일치 확인
+                if (userName.value !== cardholderName.value) {
+                  alert('카드 소유자 이름이 입력하신 이름과 일치하지 않습니다.');
+                  cardholderName.focus();
+                  return;
+                }
+
+                try {
+                  const formData = new FormData(this);
+
+                  // 결제 처리 API 호출
+                  const response = await fetch('process_payment.php', {
+                    method: 'POST',
+                    body: formData
+                  });
+
+                  const result = await response.json();
+
+                  if (result.success) {
+                    alert('결제가 완료되었습니다.');
+                    window.location.href = 'listing.html';
+                  } else {
+                    alert(result.message || '결제 처리에 실패했습니다.');
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  alert('결제 처리 중 오류가 발생했습니다.');
+                }
+              });
+
+              // 카드 번호 포맷팅
+              document.getElementById('cardNumber').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue.substring(0, 19);
+              });
+
+              // 만료일 포맷팅
+              document.getElementById('expiryDate').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                  value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                e.target.value = value.substring(0, 5);
+              });
+
+              // 이름 실시간 확인
+              cardholderName.addEventListener('input', function () {
+                if (this.value !== userName.value) {
+                  this.style.borderColor = 'red';
+                  this.setCustomValidity('입력하신 이름과 일치하지 않습니다.');
+                } else {
+                  this.style.borderColor = 'green';
+                  this.setCustomValidity('');
+                }
+              });
+            });
+          </script>
           <div class="radius-box frame">
             <div class="radius-box swiper-container" id="swiperContainer">
               <div class="swiper grid-swiper" id="swiperWrapper">
@@ -294,13 +563,32 @@
     <!-- footer end -->
   </div>
   <script>
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   fetch("components/header.html")
-    //     .then((response) => response.text())
-    //     .then((data) => {
-    //       document.getElementById("header-placeholder").innerHTML = data;
-    //     });
-    // });
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // 폼 데이터 수집
+      const formData = new FormData(this);
+
+      try {
+        // 데이터 저장 요청
+        const response = await fetch('contactForm_save.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          // 저장 성공 시 결제 폼 표시
+          document.querySelector('.input-box.button[style="display: none;"]').style.display = 'block';
+          this.style.display = 'none'; // 기존 폼 숨기기
+        } else {
+          throw new Error('저장 실패');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('저장에 실패했습니다. 다시 시도해주세요.');
+      }
+    });
+
     const swiperContainer = document.getElementById("swiperContainer");
 
     const swiperWrapper = document.getElementById("swiperWrapper");
@@ -358,15 +646,10 @@
       slidesPerView: 3,
     });
   </script>
-  <script>
-    // document
-    //   .querySelector(".dropdown-menu")
-    //   .addEventListener("click", (e) => {
-    //     document.querySelector(".btn-secondary").innerHTML =
-    //       e.target.textContent;
-    //   });
-  </script>
+
   <!-- <script src="components/header.js" defer></script> -->
+  <!-- 환율 API 키 -->
+  <script src="config.js"></script>
   <script src="js/updated-language-script.js"></script>
 </body>
 
