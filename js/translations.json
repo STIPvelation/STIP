@@ -134,11 +134,11 @@
             "main_description": "STIP과 \\ 상담하세요.",
             "community_support": {
                 "title": "커뮤니티지원",
-                "description": "STIP과 함께\n귀사의 요구사항에 대해 상담하세요."
+                "description": "STIP과 함께\n상담하세요."
             },
             "listing_support": {
                 "title": "상장지원",
-                "description": "커뮤니티로부터\n프로젝트에 대한 도움을 받으세요",
+                "description": "프로젝트에 대한 도움을 받으세요",
                 "button": "채팅"
             }
         },        
