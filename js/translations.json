@@ -67,13 +67,13 @@
             "intro_text": "필요한 내용을 저희 팀과 상담하세요",
             "radius_boxes": [
                 {
-                    "title": "문의 하기",
+                    "title": "문의하기",
                     "description": "",
                     "button_text": "연결",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "서포트",
+                    "title": "도움이 필요하세요",
                     "description": "",
                     "button_text": "연결",
                     "link": "contact-community.html"
@@ -123,15 +123,15 @@
                     }
                 },
                 "message": {
-                    "label": "문의 내용",
+                    "label": "문의하기",
                     "placeholder": "귀하의 비즈니스에 필요한 것에 대해 입력해주세요."
                 },
                 "submit": "문의"
             }
         },
         "contact_community": {
-            "main_title": "SNS",
-            "main_description": "",
+            "main_title": "문의",
+            "main_description": "필요한 내용을 저희 팀과 상담하세요",
             "community_support": {
                 "title": "SNS",
                 "description": ""
