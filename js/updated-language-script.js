@@ -201,57 +201,101 @@ function updateHomePage(lang) {
 }
 
 function updateListingPage(lang) {
-  // ... 기존 리스팅 페이지 업데이트 코드 ...
-  const contentWrapper = document.querySelector(".content-wrapper");
-  const title_area = document.querySelectorAll(".title-area");
-  const letterTitle = contentWrapper.querySelector(".letter-title h1");
-  const letterTitlep = contentWrapper.querySelectorAll(".letter-title p");
-  const inputBox_labels = document.querySelectorAll(".input-box label");
-  const inputBox_inputs = document.querySelectorAll(".input-box input");
-  const inputBox_button = document.querySelector(".input-box button");
+  const formData = translations[lang]?.listing?.form;
+  if (!formData) return;
 
-  if (contentWrapper) {
-    // const letterTitle = contentWrapper.querySelector(".letter-title h1");
-    // const letterTitlep = contentWrapper.querySelectorAll(".letter-title p");
-    const inputBox_labels = document.querySelectorAll(".input-box label");
-    const inputBox_inputs = document.querySelectorAll(".input-box input");
-    // h1 태그의 span 안 텍스트 변경
-    const h1Span = document.querySelector(".letter-title span");
-    if (h1Span) {
-      h1Span.textContent = translations[lang]?.listing?.letter_title || ""; // 새로운 텍스트 설정
+  // 라벨 업데이트
+  const nameLabel = document.querySelector('label[for="name"]');
+  const emailLabel = document.querySelector('label[for="email"]');
+  const mobileLabel = document.querySelector('label[for="mobile"]');
+  const smart5Label = document.querySelector('label[for="submit"]');
+
+  if (nameLabel) nameLabel.textContent = formData.labels.name;
+  if (emailLabel) emailLabel.textContent = formData.labels.email;
+  if (mobileLabel) mobileLabel.textContent = formData.labels.mobile;
+
+  // SMART5 라벨 특별 처리
+  if (smart5Label) {
+    const linkText = smart5Label.querySelector('.link-text');
+    if (linkText) {
+      linkText.textContent = formData.labels.smart5.link;
     }
+    // 기존 텍스트 노드 업데이트
+    const textNodes = Array.from(smart5Label.childNodes)
+      .filter(node => node.nodeType === 3); // 텍스트 노드만 선택
+    if (textNodes.length > 0) {
+      textNodes[textNodes.length - 1].textContent = formData.labels.smart5.text;
+    }
+  }
 
-    const paragraphs = document.querySelectorAll(".title-area p");
+  // placeholder 업데이트
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const mobileInput = document.getElementById('mobile');
 
-    paragraphs.forEach((p, index) => {
-        // 기존 텍스트에서 span 안의 텍스트 제거 후 변경
-      p.textContent = translations[lang]?.listing?.letter_title_p[index] || "";
-    });
+  if (nameInput) nameInput.placeholder = formData.placeholders.name;
+  if (emailInput) emailInput.placeholder = formData.placeholders.email;
+  if (mobileInput) mobileInput.placeholder = formData.placeholders.mobile;
 
-    inputBox_labels.forEach((lbl, index) => {
-      lbl.textContent = translations[lang]?.listing?.inputbox_labels[index] || '';
-    });
+  // 제출 버튼 업데이트
+  const submitButton = document.querySelector('#submit');
+  if (submitButton) {
+    submitButton.textContent = formData.button;
+  }
+}
 
-    inputBox_inputs.forEach((input, index) => {
-      input.placeholder = translations[lang]?.listing?.inputbox_inputs[index] || '';
-    });
+// function updateListingPage(lang) {
+//   // ... 기존 리스팅 페이지 업데이트 코드 ...
+//   const contentWrapper = document.querySelector(".content-wrapper");
+//   const title_area = document.querySelectorAll(".title-area");
+//   const letterTitle = contentWrapper.querySelector(".letter-title h1");
+//   const letterTitlep = contentWrapper.querySelectorAll(".letter-title p");
+//   const inputBox_labels = document.querySelectorAll(".input-box label");
+//   const inputBox_inputs = document.querySelectorAll(".input-box input");
+//   const inputBox_button = document.querySelector(".input-box button");
+
+//   if (contentWrapper) {
+//     // const letterTitle = contentWrapper.querySelector(".letter-title h1");
+//     // const letterTitlep = contentWrapper.querySelectorAll(".letter-title p");
+//     const inputBox_labels = document.querySelectorAll(".input-box label");
+//     const inputBox_inputs = document.querySelectorAll(".input-box input");
+//     // h1 태그의 span 안 텍스트 변경
+//     const h1Span = document.querySelector(".letter-title span");
+//     if (h1Span) {
+//       h1Span.textContent = translations[lang]?.listing?.letter_title || ""; // 새로운 텍스트 설정
+//     }
+
+//     const paragraphs = document.querySelectorAll(".title-area p");
+
+//     paragraphs.forEach((p, index) => {
+//         // 기존 텍스트에서 span 안의 텍스트 제거 후 변경
+//       p.textContent = translations[lang]?.listing?.letter_title_p[index] || "";
+//     });
+
+//     inputBox_labels.forEach((lbl, index) => {
+//       lbl.textContent = translations[lang]?.listing?.inputbox_labels[index] || '';
+//     });
+
+//     inputBox_inputs.forEach((input, index) => {
+//       input.placeholder = translations[lang]?.listing?.inputbox_inputs[index] || '';
+//     });
     
 
 
-    // letterTitle.textContent = translations[lang]?.listing?.letter_title || "";
+//     // letterTitle.textContent = translations[lang]?.listing?.letter_title || "";
 
-    // letterTitlep.forEach((el, index) => {
-    //   el.textContent = translations[lang]?.listing?.letter_titles_p[index] || "";
-    // });
-    // inputBox_labels.forEach((el, index) => {
-    //   el.textContent = translations[lang]?.listing?.inputbox_labels[index] || '';
-    // });
-    // inputBox_inputs.forEach((el, index) => {
-    //   el.placeholder.textContent = translations[lang]?.listing?.inputbox_inputs[index] || '';
-    // });
-    inputBox_button.textContent = translations[lang]?.listing?.inputbox_button || '';
-  }
-}
+//     // letterTitlep.forEach((el, index) => {
+//     //   el.textContent = translations[lang]?.listing?.letter_titles_p[index] || "";
+//     // });
+//     // inputBox_labels.forEach((el, index) => {
+//     //   el.textContent = translations[lang]?.listing?.inputbox_labels[index] || '';
+//     // });
+//     // inputBox_inputs.forEach((el, index) => {
+//     //   el.placeholder.textContent = translations[lang]?.listing?.inputbox_inputs[index] || '';
+//     // });
+//     inputBox_button.textContent = translations[lang]?.listing?.inputbox_button || '';
+//   }
+// }
 
 function updateAboutPage(lang) {
   // ... 기존 어바웃 페이지 업데이트 코드 ...
@@ -464,6 +508,50 @@ function updateContactComPage(lang) {
     if (listTitle) listTitle.innerHTML = pageData.listing_support.title.replace('\n', '<br/>');
     if (listDesc) listDesc.innerHTML = pageData.listing_support.description.replace('\n', '<br/>');
     if (listButton) listButton.textContent = pageData.listing_support.button;
+  }
+}
+
+// 결제 폼 언어 업데이트 함수
+function updatePaymentForm(lang) {
+  const paymentData = translations[lang].payment;
+  if (!paymentData) return;
+
+  // 금액 관련 요소 업데이트
+  const amountLabel = document.querySelector('.amount label');
+  const amountInput = document.querySelector('.amount input');
+  const currencySpan = document.querySelector('.amount .currency');
+
+  if (amountLabel) {
+    amountLabel.textContent = paymentData.amount;
+  }
+
+  if (amountInput) {
+    amountInput.value = paymentData.amount_value;
+  }
+
+  if (currencySpan) {
+    currencySpan.textContent = paymentData.currency;
+  }
+
+  // 기타 결제 폼 요소들 업데이트
+  document.querySelector('#paymentForm button[type="submit"]').textContent =
+    paymentData.process_payment;
+}
+
+// 통화 형식 지원
+const currencyFormats = {
+  ko: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
+  en: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
+  ja: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
+  zh: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }
+};
+
+function formatCurrency(amount, lang) {
+  try {
+    return new Intl.NumberFormat(lang, currencyFormats[lang]).format(amount);
+  } catch (e) {
+    console.error('Currency formatting error:', e);
+    return amount.toLocaleString() + ' ' + translations[lang].payment.currency;
   }
 }
 

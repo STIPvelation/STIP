@@ -141,3 +141,10 @@ Contact us
 문의하기
 联系我们
 联系我们
+
+
+link 주소
+contact-community.html
+<a href="https://www.linkedin.com/company/sharethip/" target="_blank"  rel="noopener noreferrer" aria-label="Sharethip의 LinkedIn 페이지로 이동">
+                  <img src="assets/images/linkedIn.png" alt="Sharethip의 LinkedIn 로고" />
+                </a>

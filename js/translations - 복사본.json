@@ -32,34 +32,20 @@
                 "당신의 지혜를 세상과 나누세요.",
                 "진보의 씨앗은 당신에게서 시작됩니다."
             ],
-            "form": {
-                "labels": {
-                    "name": "성명",
-                    "email": "이메일",
-                    "mobile": "연락처",
-                    "smart5": {
-                        "link": "SMART5",
-                        "text": "특허 평가 보고서를 제출하세요"
-                    }
-                },
-                "placeholders": {
-                    "name": "이름을 입력해주세요.",
-                    "email": "메일을 입력해주세요.",
-                    "mobile": "연락처를 입력해주세요."
-                },
-                "button": "제출"
-            },
-            "payment": {
-                "title": "결제",
-                "card_number": "카드 번호",
-                "expiry_date": "만료일",
-                "cvv": "보안 코드",
-                "cardholder_name": "카드 소유자 이름",
-                "amount": "결제 금액",
-                "currency": "원",
-                "amount_value": "50,000",
-                "process_payment": "결제하기"
-            }
+            "inputbox_labels": [
+                "성 명",
+                "메 일",
+                "연락처",
+                "SMART5 특허 평가 보고서를 제출하세요."
+            ],
+            "inputbox_inputs": [
+                "이름을 입력해주세요.",
+                "메일을 입력해주세요.",
+                "연락처를 입력해주세요."
+            ],
+            "inputbox_button": [
+                "제 출"
+            ]
         },
         "about": {
             "title_area_h6": "지 적 재 산 권",
@@ -201,34 +187,20 @@
                 "hare your wisdom with the world",
                 "he seeds of progress begin with you"
             ],
-            "form": {
-                "labels": {
-                    "name": "Name",
-                    "email": "Email",
-                    "mobile": "Mobile",
-                    "smart5": {
-                        "link": "SMART5",
-                        "text": " Submit the patent evaluation report"
-                    }
-                },
-                "placeholders": {
-                    "name": "Please enter your name.",
-                    "email": "Please enter your email.",
-                    "mobile": "Please enter your contact information."
-                },
-                "button": "Submit"
-            },
-            "payment": {
-                "title": "Payment",
-                "card_number": "Card Number",
-                "expiry_date": "Expiry Date",
-                "cvv": "CVV",
-                "cardholder_name": "Cardholder Name",
-                "amount": "Amount",
-                "currency": "KRW",
-                "amount_value": "50,000",
-                "process_payment": "Process Payment"
-            }
+            "inputbox_labels": [
+                "Name",                
+                "Email",                
+                "Mobile",                
+                "Submit the SMART5 patent evaluation report"                
+            ],
+            "inputbox_inputs": [
+                "Please enter your name.",
+                "Please enter your email.",
+                "Please enter your contact information."                
+            ],
+            "inputbox_button": [
+                "Submit"
+            ]
         },
         "about": {
             "title_area_h6": "Intellectual Property",
@@ -370,34 +342,20 @@
                 "世界と知恵を分かち合いましょう",
                 "進歩の種はあなたから始まります"
             ],
-            "form": {
-                "labels": {
-                    "name": "名前",
-                    "email": "メール",
-                    "mobile": "携帯電話",
-                    "smart5": {
-                        "link": "SMART5",
-                        "text": "特許評価レポートを提出してください"
-                    }
-                },
-                "placeholders": {
-                    "name": "名前を入力してください。",
-                    "email": "メールアドレスを入力してください。",
-                    "mobile": "連絡先を入力してください。"
-                },
-                "button": "提出"
-            },
-            "payment": {
-                "title": "お支払い",
-                "card_number": "カード番号",
-                "expiry_date": "有効期限",
-                "cvv": "セキュリティコード",
-                "cardholder_name": "カード名義人",
-                "amount": "お支払い金額",
-                "currency": "₩",
-                "amount_value": "50,000",
-                "process_payment": "決済する"
-            }
+            "inputbox_labels": [
+                "名前",
+                "メール",
+                "モバイル",
+                "SMART5特許評価レポートを提出"
+            ],
+            "inputbox_inputs": [
+                "名前を入力してください。",
+                "メールを入力してください。",
+                "連絡先を入力してください。"
+            ],
+            "inputbox_button": [
+                "提出"
+            ]
         },
         "about": {
             "title_area_h6": "知 的 財 産",
@@ -539,34 +497,20 @@
                 "与世界分享你的智慧",
                 "进步的种子始于你"
             ],
-            "form": {
-                "labels": {
-                    "name": "姓名",
-                    "email": "电子邮箱",
-                    "mobile": "手机号码",
-                    "smart5": {
-                        "link": "SMART5",
-                        "text": "请提交专利评估报告"
-                    }
-                },
-                "placeholders": {
-                    "name": "请输入您的姓名。",
-                    "email": "请输入您的电子邮箱。",
-                    "mobile": "请输入您的联系方式。"
-                },
-                "button": "提交"
-            },
-            "payment": {
-                "title": "支付",
-                "card_number": "卡号",
-                "expiry_date": "有效期",
-                "cvv": "安全码",
-                "cardholder_name": "持卡人姓名",
-                "amount": "支付金额",
-                "currency": "韩元",
-                "amount_value": "50,000",
-                "process_payment": "确认支付"
-            }
+            "inputbox_labels": [
+                "姓名",
+                "邮箱",
+                "手机",
+                "提交SMART5专利评估报告"
+            ],
+            "inputbox_inputs": [
+                "请输入您的姓名。",
+                "请输入您的邮箱。",
+                "请输入您的联系方式。"
+            ],
+            "inputbox_button": [
+                "提交"
+            ]
         },
         "about": {
             "title_area_h6": "知 识 产 权",            
