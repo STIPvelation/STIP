@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>stipvelation</title>
   <link rel="stylesheet" type="" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/about.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
@@ -24,118 +24,115 @@
 
 <body>
   <div class="root">
-    <!-- header start -->
-    <header class="header-container">
-      <div class="header-wrapper">
-        <div class="header-logo">
-          <a href="index.html">
-            <img src="assets/images/logo.svg" alt="logo" />
-          </a>
-        </div>
-        <nav class="header-nav">
-          <div class="burger-menu-wrapper">
-            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
-              onclick="handleBurgerMenu()" />
-            <div class="side-bar-container">
-              <div class="sidebar-background">
-                <div class="close-btn">
-                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()" />
+        <!-- header start -->
+        <!-- header.html -->
+        <!-- <!DOCTYPE html> -->
+        <!-- <html> -->
+        <!-- <head> -->
+        
+        <header class="header-container">
+          <div class="header-wrapper">
+            <div class="header-logo">
+              <a href="index.html">
+                <img src="assets/images/logo.svg" alt="logo" />
+              </a>
+            </div>
+            <nav class="header-nav">
+              <div class="burger-menu-wrapper">
+                <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
+                <div class="side-bar-container">
+                  <div class="sidebar-background">
+                    <div class="close-btn">
+                      <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
+                    </div>
+                  </div>
+                  <div class="side-bar-wrapper">
+                    <nav class="side-bar-section">
+                      <div class="side-bar-list">
+                        <a class="side-bar-item navigate" href="index.html" data-page="main"
+                          onclick="handlePageSelection('main')">main</a>
+                        <a class="side-bar-item navigate" href="listing.html" data-page="listing"
+                          onclick="handlePageSelection('listing')">Listing</a>
+                        <a class="side-bar-item navigate" href="about.html" data-page="about"
+                          onclick="handlePageSelection('about')">About us</a>
+                        <a class="side-bar-item navigate" href="product.html" data-page="product"
+                          onclick="handlePageSelection('product')">Product</a>
+                        <a class="side-bar-item navigate" href="contact.html" data-page="contact"
+                          onclick="handlePageSelection('contact')">Contact</a>
+                      </div>
+                      <div class="side-bar-list lang">
+                        <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
+                        <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
+                        <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
+                        <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
+                      </div>
+                    </nav>
+                  </div>
                 </div>
               </div>
-              <div class="side-bar-wrapper">
-                <nav class="side-bar-section">
-                  <div class="side-bar-list">
-                    <a class="side-bar-item navigate" href="index.html">Main</a>
-                    <a class="side-bar-item navigate" href="listing.html">Listing</a>
-                    <a class="side-bar-item navigate" href="about.html">About us</a>
-                    <a class="side-bar-item navigate" href="product.html">Product</a>
-                    <a class="side-bar-item navigate" href="contact.html">Contact</a>
-                  </div>
-                  <div class="side-bar-list lang">
-                    <span class="side-bar-item ko" onclick="handleLangChange('ko',true)">한국어</span>
-                    <span class="side-bar-item en" onclick="handleLangChange('en',true)">English</span>
-                    <span class="side-bar-item ja" onclick="handleLangChange('ja',true)">日本語</span>
-                    <span class="side-bar-item zh" onclick="handleLangChange('zh',true)">中文</span>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <ul>
-            <li>
-              <a class="nav-item navigate" href="listing.html">Listing</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="about.html">About us</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="product.html">Product</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="contact.html">Contact</a>
-            </li>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                한국어
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ko')">
+              <ul>
+                <li><a class="nav-item navigate" href="listing.html" data-page="listing"
+                    onclick="handlePageSelection('listing')">Listing</a></li>
+                <li><a class="nav-item navigate" href="about.html" data-page="about"
+                    onclick="handlePageSelection('about')">About us</a></li>
+                <li><a class="nav-item navigate" href="product.html" data-page="product"
+                    onclick="handlePageSelection('product')">Product</a></li>
+                <li><a class="nav-item navigate" href="contact.html" data-page="contact"
+                    onclick="handlePageSelection('contact')">Contact</a></li>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     한국어
-                  </div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('en')">
-                    English
-                  </div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ja')">
-                    日本語
-                  </div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('zh')">
-                    中文
-                  </div>
-                </li>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                      <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
+                    </li>
+                  </ul>
+                </div>
               </ul>
-            </div>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <!-- header end -->
-    <script>
-      const dropdown = document.querySelector('.dropdown');
-      const dropdown_menu = document.querySelector('.dropdown-menu');
-      // let lang = [];
-      // const clickedDivValues = [];
-      let divValue = '';
+            </nav>
+          </div>
+        </header>
+        <script>
+          const dropdown = document.querySelector('.dropdown');
+          const dropdown_menu = document.querySelector('.dropdown-menu');
+          // let lang = [];
+          // const clickedDivValues = [];
+          let divValue = '';
 
-      dropdown_menu.addEventListener('click', (event) => {
-        const liElement = event.target.closest('li');
-        if (liElement) {
-          const divElement = liElement.querySelector('div'); // li 안의 div 찾기
-          if (divElement) {
-            divValue = divElement.textContent.trim(); // div 값 가져오기
+          dropdown_menu.addEventListener('click', (event) => {
+            const liElement = event.target.closest('li');
+            if (liElement) {
+              const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+              if (divElement) {
+                divValue = divElement.textContent.trim(); // div 값 가져오기
 
-            // div 값 기록
-            // if (!clickedDivValues.includes(divValue)) {
-            // clickedDivValues.push(divValue);
-            // }
+                // div 값 기록
+                // if (!clickedDivValues.includes(divValue)) {
+                // clickedDivValues.push(divValue);
+                // }
 
-            // 결과를 화면에 표시
-            // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
-          }
+                // 결과를 화면에 표시
+                // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+              }
 
-        }
-        console.log(`${divValue}`);
+            }
+            console.log(`${divValue}`);
+          })
 
-      })
-
-    </script> 
+        </script>
+        <!-- </html> -->
+        <!-- header end --> 
 
     <div class="bg-image">
       <img src="assets/images/bg-image.jpg" alt="bg-image" />
@@ -164,6 +161,8 @@
               It provides companies, research institutions, creators, and
               inventors with<br />
               opportunities to raise funds without transferring IP ownership.
+              Hyundo Jeong
+              Founder
             </p>
           </div>
           <div class="bottom-area">
@@ -196,36 +195,14 @@
     <!-- footer end -->
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("components/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header-placeholder").innerHTML = data;
-        });
-    });
-    const Texts = [
-      "STIP",
-      "Intellectual",
-      "Property",
-      "Trade",
-      "Platform",
-      "Digital",
-      "Patent",
-      "Trademark",
-      "Drama",
-      "Movie",
-      "Comics",
-      "Franchise",
-      "Music",
-      "Dance",
-      "Companies",
-      "Research",
-      "Creators",
-      "Inventors",
-      "Funding",
-      "Ownership",
-      "Innovation",
-    ];
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   fetch("components/header.html")
+    //     .then((response) => response.text())
+    //     .then((data) => {
+    //       document.getElementById("header-placeholder").innerHTML = data;
+    //     });
+    // });
+
     const radius = Math.max(
       150,
       Math.min(280, window.innerWidth - window.innerWidth * 0.95)
@@ -258,7 +235,8 @@
     var color = "#FF5733 ";
     document.querySelector(".Sphere").style.color = color;
   </script>
-  <script src="components/header.js" defer></script>
+  <!-- <script src="components/header.js" defer></script> -->
+  <script src="js/updated-language-script.js"></script>
 </body>
 
 </html>
