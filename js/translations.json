@@ -133,7 +133,7 @@
             "main_title": "커뮤니티",
             "main_description": "",
             "community_support": {
-                "title": "SNS 서포트",
+                "title": "SNS",
                 "description": ""
             },
             "listing_support": {
@@ -219,17 +219,17 @@
         },
         "contact": {
             "title_h1": "Contact",
-            "intro_text": "Share your wisdom with the world <br/>The seeds of progress begin with you",
+            "intro_text": "Talk to our team<br /> about your enterprise needs"
             "radius_boxes": [
                 {
-                    "title": "Contact",
-                    "description": "Talk to our team about<br />your enterprise needs.",
+                    "title": "SNS"
+                    "description": ""
                     "button_text": "Connection",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "Community",
-                    "description": "Get help<br /> with your project from<br /> the community.",
+                    "title": "Listing Support",
+                    "description": ""
                     "button_text": "Connection",
                     "link": "contact-community.html"
                 }
@@ -288,13 +288,13 @@
             "main_title": "Community",
             "main_description": "Talk to our team about\nyour enterprise needs.",
             "community_support": {
-                "title": "Community\nsupport",
-                "description": "Talk to our team about\nyour enterprise needs."
+                "title": "SNS",
+                "description": ""
             },
             "listing_support": {
-                "title": "Listing\nsupport",
-                "description": "Get help with your project\nfrom the Community",
-                "button": "Start chat"
+                "title": "Listing support",
+                "description": "",
+                "button": "Chat"
             }
         },
         "footer": {
@@ -374,17 +374,17 @@
         },
         "contact": {
             "title_h1": "問い合わせ",
-            "intro_text": "あなたの知恵を世界と共有しましょう<br/>進歩の種はあなたから始まります。",
+            "intro_text": "企業のニーズについて<br /> STIPチームにご相談ください"
             "radius_boxes": [
                 {
-                    "title": "問い合わせ",
-                    "description": "ご相談が必要ですか？。",
+                    "title": "SNS"
+                    "description": ""
                     "button_text": "相談",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "コミュニティ",
-                    "description": "ご協力が必要ですか？。",
+                    "title": "上場支援"
+                    "description": "ご協力が必要ですか？",
                     "button_text": "繋ぐ",
                     "link": "contact-community.html"
                 }
@@ -598,12 +598,12 @@
             "main_title": "社区",
             "main_description": "与我们的团队讨论 您的企业需求",
             "community_support": {
-                "title": "社区支持",
-                "description": "与我们的团队讨论 您的企业需求"
+                "title": "SNS",
+                "description": ""
             },
             "listing_support": {
                 "title": "上市支持",
-                "description": "从社区获得 项目帮助",
+                "description": "",
                 "button": "开始聊天"
             }
         },
