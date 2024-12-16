@@ -1,0 +1,64 @@
+            <div class="header-wrapper">
+                <div class="header-logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo.svg" alt="logo" />
+                    </a>
+                </div>
+                <nav class="header-nav">
+                    <div class="burger-menu-wrapper">
+                        <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
+                            onclick="handleBurgerMenu()">
+                        <div class="side-bar-container">
+                            <div class="sidebar-background">
+                                <div class="close-btn">
+                                    <img src="assets/images/mobile/close.svg" alt="close"
+                                        onclick="handleBurgerMenuClose()">
+                                </div>
+                            </div>
+                            <div class="side-bar-wrapper">
+                                <nav class="side-bar-section">
+                                    <div class="side-bar-list">
+                                        <a class="side-bar-item navigate" href="index.html" data-page="main" onclick="handlePageSelection('main')">main</a>
+                                        <a class="side-bar-item navigate" href="listing.html" data-page="listing" onclick="handlePageSelection('listing')">Listing</a>
+                                        <a class="side-bar-item navigate" href="about.html" data-page="about" onclick="handlePageSelection('about')">About us</a>
+                                        <a class="side-bar-item navigate" href="product.html" data-page="product" onclick="handlePageSelection('product')">Product</a>
+                                        <a class="side-bar-item navigate" href="contact.html" data-page="contact" onclick="handlePageSelection('contact')">Contact</a>
+                                    </div>
+                                    <div class="side-bar-list lang">
+                                        <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
+                                        <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
+                                        <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
+                                        <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><a class="nav-item navigate" href="listing.html" data-page="listing" onclick="handlePageSelection('listing')">Listing</a></li>
+                        <li><a class="nav-item navigate" href="about.html" data-page="about" onclick="handlePageSelection('about')">About us</a></li>
+                        <li><a class="nav-item navigate" href="product.html" data-page="product" onclick="handlePageSelection('product')">Product</a></li>
+                        <li><a class="nav-item navigate" href="contact.html" data-page="contact" onclick="handlePageSelection('contact')">Contact</a></li>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                한국어
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
+                                </li>
+                                <li>
+                                    <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
+                                </li>
+                                <li>
+                                    <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
+                                </li>
+                                <li>
+                                    <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </nav>
+            </div>

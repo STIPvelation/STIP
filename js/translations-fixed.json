@@ -1,0 +1,76 @@
+{
+    "ko": {
+        "nav": {
+            "main": "메인",
+            "listing": "상장",
+            "about": "소개",
+            "product": "제품",
+            "contact": "연락처"
+        },
+        "main": {
+            "logo": "Meet <span>STIP</span>",
+            "stip": {
+                "s": "당신의 지혜를 세상과 공유하세요",
+                "t": "진보의 씨앗은 당신으로부터 시작됩니다",
+                "i": "지적 보물은 불꽃을 일으킵니다",
+                "p": "공유된 재산은 혁신을 흐르게 합니다"
+            },
+            "bottom": {
+                "text1": "STIP은 IP에 있어서 알파와 오메가이며",
+                "text2": "처음과 마지막이고 시작과 끝 입니다"
+            },
+            "buttons": {
+                "listing": "상장",
+                "watch_video": "영상"
+            }
+        },
+        "footer": {
+            "slogan": "IP를 공유하자, 지금은 IP시대",
+            "company_name": "주식회사 아이피미디어그룹",
+            "info": {
+                "ceo": "대표: 이성용",
+                "address": "주소: 서울시 강남구 테헤란로151 1116호",
+                "phone": "연락처: 02-2238-4345",
+                "email": "이메일: support@stipvelation.com",
+                "business_number": "사업자등록번호: 644-86-01439"
+            }
+        }
+    },
+    "en": {
+        "nav": {
+            "main": "Main",
+            "listing": "Listing",
+            "about": "About us",
+            "product": "Product",
+            "contact": "Contact"
+        },
+        "main": {
+            "logo": "Meet <span>STIP</span>",
+            "stip": {
+                "s": "Share your wisdom with the world",
+                "t": "The seeds of progress begin with you",
+                "i": "Intellectual treasures spark the flame",
+                "p": "Property shared lets innovation flow"
+            },
+            "bottom": {
+                "text1": "STIP is the Alpha and the Omega in IP",
+                "text2": "the First and the Last, the Beginning and the End"
+            },
+            "buttons": {
+                "listing": "Listing",
+                "watch_video": "Watch video"
+            }
+        },
+        "footer": {
+            "slogan": "Let's share the IP, It's IP time",
+            "company_name": "IP Media Group Inc.",
+            "info": {
+                "ceo": "CEO: Lee Sung Yong",
+                "address": "Address: 1116, 151 Teheran-ro, Gangnam-gu, Seoul, Korea",
+                "phone": "Contact: +82-2-2238-4345",
+                "email": "Email: support@stipvelation.com",
+                "business_number": "Business Registration No.: 644-86-01439"
+            }
+        }
+    }
+}
