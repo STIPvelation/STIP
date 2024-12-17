@@ -336,59 +336,89 @@
     const swiperContainer = document.getElementById("swiperContainer");
 
     const swiperWrapper = document.getElementById("swiperWrapper");
+    let gridSwiperInstance = null;
+    let singleSwiperInstance = null;
+    const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+    
+    if (isMobile) {
+      singleSwiperInstance = new Swiper(".single-swiper", {
+        slidesPerView: 3,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          700: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+        },
+        spaceBetween: 10,
+        speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+      });
+    } else {
+      gridSwiperInstance = new Swiper(".grid-swiper", {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
 
-    const swiper = new Swiper(".grid-swiper", {
-      slidesPerView: "auto",
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
-      slidesPerView: 1,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        }
+      });
+    }
 
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      on: {
-        //   beforeResize: function () {
-        //     const vw = window.innerWidth;
-        //     if (vw < 1000) {
-        //       this.params.spaceBetween = 20;
-        //       return;
-        //     }
-        //     if (vw < 1380) {
-        //       this.params.spaceBetween = 10;
-        //       return;
-        //     }
-        //     this.params.spaceBetween =
-        //       swiperContainer.offsetWidth - 32 - swiperWrapper.offsetWidth;
-        //   },
-      },
-    });
 
-    const singleSwiper = new Swiper(".single-swiper", {
-      slidesPerView: "auto",
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        768: {
+    window.addEventListener("resize", () => {
+      const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+      if (isMobile && !singleSwiperInstance) {
+        singleSwiperInstance = new Swiper(".single-swiper", {
+          slidesPerView: 3,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            700: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+          },
+          spaceBetween: 10,
+          speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+        });
+      } else if (!gridSwiperInstance) {
+        gridSwiperInstance = new Swiper(".grid-swiper", {
           slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        700: {
-          slidesPerView: 4,
-          spaceBetween: 10,
-        },
-      },
-      spaceBetween: 10,
-      speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
-      slidesPerView: 3,
-    });
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          }
+        });
+      }
+    })
   </script>
   <script>
     const Texts = {
