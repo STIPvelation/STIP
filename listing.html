@@ -15,8 +15,9 @@
     crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.5.0/dist/TagCloud.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     body {
       font-family: "SUIT", sans-serif;
@@ -336,6 +337,7 @@
     const swiperContainer = document.getElementById("swiperContainer");
 
     const swiperWrapper = document.getElementById("swiperWrapper");
+    const singleSwiperWrapper = document.getElementById("singleSwiperWrapper");
     let gridSwiperInstance = null;
     let singleSwiperInstance = null;
     const isMobile = window.matchMedia("(max-width: 1000px)").matches;
@@ -421,71 +423,69 @@
     })
   </script>
   <script>
-    const Texts = {
+    const tagCloudImages = {
       "Movie Drama Comics": [
-        "KCC", // Korea Copyright Commission
-        "USCO", // United States Copyright Office
-        "CRIC", // Copyright Research & Information Center
-        "NCAC", // National Copyright Administration of China
-        "SACD", // Société des Auteurs et Compositeurs Dramatiques
-        "UKCS", // UK Copyright Service
+          wrappingImgElement("Movie/Group 5005.png"),
+          wrappingImgElement("Movie/Group.png"),
+          wrappingImgElement("Movie/Group-1.png"),
+          wrappingImgElement("Movie/Group-2.png"),
+          wrappingImgElement("Movie/Group-3.png"),
+          wrappingImgElement("Movie/Group-4.png"),
       ],
       "Music": [
-        "KOMCA", // Korea Music Copyright Association
-        "BMI", // Broadcast Music, Inc.
-        "ASCAP", // American Society of Composers, Authors and Publishers
-        "JASRAC", // Japanese Society for Rights of Authors, Composers and Publishers
-        "PRS for Music", //Performing Right Society for Music
-        "GEMA", // Gesellschaft für musikalische Aufführungs- und mechanische Vervielfältigungsrechte
-        "SACEM", //Société des Auteurs, Compositeurs et Éditeurs de Musique
-        "SIAE", // Società Italiana degli Autori ed Editori
-        "MCSC", // Music Copyright Society of China
+          wrappingImgElement("Music/Clip path group.png"),
+          wrappingImgElement("Music/Group.png"),
+          wrappingImgElement("Music/Group-1.png"),
+          wrappingImgElement("Music/Group-2.png"),
+          wrappingImgElement("Music/Group-3.png"),
+          wrappingImgElement("Music/Group-4.png"),
+          wrappingImgElement("Music/Group-5.png"),
+          wrappingImgElement("Music/Group-6.png"),
+          wrappingImgElement("Music/Group-7.png"),
+          wrappingImgElement("Music/Group-8.png"),
       ],
-      "Dance": [
-        "KCC", // Korea Copyright Commission
-        "USCO", // United States Copyright Office
-        "CRIC", // Copyright Research & Information Center
-        "NCAC", // National Copyright Administration of China
-        "SACEM", // Société des Auteurs, Compositeurs et Éditeurs de Musique
-        "UKCS", // UK Copyright Service
-        "EUIPO", // European Union Intellectual Property Office
-        "CIPO", // Canadian Intellectual Property Office
-        "ACC", // Australian Copyright Council
+      "Dance":[
+          wrappingImgElement("Dance/Group 5006.png"),
+          wrappingImgElement("Dance/Group 5012.png"),
+          wrappingImgElement("Dance/Group-1.png"),
+          wrappingImgElement("Dance/Group-2.png"),
+          wrappingImgElement("Dance/Group-3.png"),
+          wrappingImgElement("Dance/Group-4.png"),
+          wrappingImgElement("Dance/Group-5.png"),
+          wrappingImgElement("Dance/Group-6.png"),
       ],
-      "Franchise": [
-        "FTC", // Fair Trade Commission
-        "FTC", // Federal Trade Commission
-        "BFA", // British Franchise Association
-        "ACCC", // Australian Competition and Consumer Commission
-        "CBC", // Competition Bureau Canada
-        "JFTC", // Japan Fair Trade Commission
-        "EFF", // European Franchise Federation 
-        "ES", // Enterprise Singapore
-        "SAMR", // State Administration for Market Regulation 
+      "Franchise":[
+          wrappingImgElement("Franchise/Group.png"),
+          wrappingImgElement("Franchise/Group-1.png"),
+          wrappingImgElement("Franchise/Group-2.png"),
+          wrappingImgElement("Franchise/Group-3.png"),
+          wrappingImgElement("Franchise/Group-4.png"),
+          wrappingImgElement("Franchise/Group-5.png"),
+          wrappingImgElement("Franchise/Group-6.png"),
+          wrappingImgElement("Franchise/Group-7.png"),
       ],
-      "Trademark": [
-        "KIPO", // Korean Intellectual Property Office
-        "CNIPA", // China National Intellectual Property Administration
-        "USPTO", // United States Patent and Trademark Office
-        "EUIPO", // European Union Intellectual Property Office
-        "IPSO", // Intellectual Property Office of Singapore
-        "CIPO", // Canadian Intellectual Property Office
-        "IPO", // Intellectual Property Office
-        "JPO", // Japan Patent Office
+      "Trademark":[
+        wrappingImgElement("Trademark/Group 5007.png"),
+        wrappingImgElement("Trademark/Group.png"),
+        wrappingImgElement("Trademark/Group-1.png"),
+        wrappingImgElement("Trademark/Group-2.png"),
+        wrappingImgElement("Trademark/Group-3.png"),
       ],
-      "Character": [
-        "KIPO", // Korean Intellectual Property Office
-        "KCC", // Korea Copyright Commission
-        "CNIPA", // China National Intellectual Property Administration
-        "USPTO", // United States Patent and Trademark Office
-        "USCO", // United States Copyright Office
-        "EUIPO", // European Union Intellectual Property Office
-        "IPOS", // Intellectual Property Office of Singapore
-        "CIPO", // Canadian Intellectual Property Office
-        "IPO", // Intellectual Property Office
-        "JPO", // Japan Patent Office
-        "JCO", // Japan Copyright Office
+      "Character":[
+        wrappingImgElement("Character/Group 5008.png"),
+        wrappingImgElement("Character/Group 5009.png"),
+        wrappingImgElement("Character/Group.png"),
+        wrappingImgElement("Character/Group-1.png"),
+        wrappingImgElement("Character/Group-2.png"),
+        wrappingImgElement("Character/Group-3.png"),
+        wrappingImgElement("Character/Group-4.png"),
+        wrappingImgElement("Character/Group-5.png"),
+        wrappingImgElement("Character/Group-6.png"),
       ],
+
+    }
+    function wrappingImgElement(src) {
+      return `<img width='120px' src='assets/images/logo/${src}' alt='' />`
     }
 
     let tagCloud = null
@@ -515,6 +515,7 @@
         const squareBox = document.querySelector('.Sphere');
         if (divValue === "Patent") {
           swiperWrapper.style.display = "block";
+          singleSwiperWrapper.style.display = "block";
           circleWrapper.style.display = "none";
           if(tagCloud) tagCloud.pause();
           if(window.innerWidth < 768) {
@@ -523,22 +524,24 @@
         } else {
      
           if (!tagCloud) {
-            tagCloud = TagCloud(".Sphere", Texts['Movie Drama Comics'], {
+            tagCloud = TagCloud(".Sphere", tagCloudImages['Movie Drama Comics'], {
               radius,
               maxSpeed: "normal",
               initSpeed: "normal",
               direction: 205,
               keep: true,
+              useHTML: true,
             });
           }
-
+          singleSwiperWrapper.style.display = "none";
           swiperWrapper.style.display = "none";
           circleWrapper.style.display = "flex";
           if( window.innerWidth < 768) {
-            frameBox.style.height = squareBox.clientHeight + "px";
+            const padding = 64;
+            frameBox.style.height = squareBox.clientHeight + padding + "px";
           } 
           tagCloud.resume();
-          tagCloud.update(Texts[divValue]);
+          tagCloud.update(tagCloudImages[divValue]);
         }
         listingBtn.textContent = divValue;
       }
