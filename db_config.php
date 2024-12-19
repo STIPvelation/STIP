@@ -6,9 +6,12 @@ function getDbConfig()
 {
   return [
     'host' => getenv('DB_HOST') ?: 'localhost',
-    'username' => getenv('DB_USER') ?: 'your_db_user',
-    'password' => getenv('DB_PASSWORD') ?: 'your_db_password',
-    'database' => getenv('DB_NAME') ?: 'your_db_name',
+    // 'username' => getenv('DB_USER') ?: 'sharetheipp',
+    // 'password' => getenv('DB_PASSWORD') ?: 'Leon0202!@',
+    // 'database' => getenv('DB_NAME') ?: 'sharetheipp',
+    'username' => getenv('DB_USER') ?: 'root',
+    'password' => getenv('DB_PASSWORD') ?: '1234',
+    'database' => getenv('DB_NAME') ?: 'stipvelation',
     'charset' => 'utf8mb4',
     'port' => getenv('DB_PORT') ?: 3306
   ];

@@ -1,0 +1,4 @@
+다음 html 코드를 참조해서 HTML5 표준과 웹 접근성을 적용해 주시고
+입력 자료 중에서 First Name, Last Name, Mobile, Email 은 필수로 지정해 주시고
+Contury 는 셀렉트 박스로 나라 영문약자,나라명 사용자가 선택할 수 있게 코드를 작성해 주세요.
+그리고 테이블명 contact_contact 로 입력한 모든 값을 저장하는 코드를 작성해 주세요. 
