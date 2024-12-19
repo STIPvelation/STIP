@@ -15,6 +15,9 @@ class Database
         $config['root'],
         $config['1234'],
         $config['stipvelation']
+        // $config['sharetheipp'],
+        // $config['Leon0202!@'],
+        // $config['sharetheipp']
       );
 
       if ($this->conn->connect_error) {

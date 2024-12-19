@@ -9,7 +9,7 @@ const WARNING = 'WARNING';
 const INFO = 'INFO';
 
 public function __construct($logFile = null) {
-$this->logFile = $logFile ?: __DIR__ . '/logs/app.log';
+$this->logFile = $logFile ?: __DIR__ . 'logs/app.log';
 if (!file_exists(dirname($this->logFile))) {
 mkdir(dirname($this->logFile), 0755, true);
 }

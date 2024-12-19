@@ -5,6 +5,11 @@ $db_user = 'root';
 $db_pass = '1234';
 $db_name = 'stipvelation';
 
+// $db_user = 'sharetheipp';
+// $db_pass = 'Leon0202!@';
+// $db_name = 'sharetheipp';
+
+
 // 에러 메시지 설정
 $response = array(
   'success' => false,

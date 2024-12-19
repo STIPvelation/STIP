@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISO Country Selector</title>
+  <script>
+    // 국가 정보를 가져와 select 박스에 추가하는 함수
+    function loadCountries() {
+      const selectElement = document.getElementById("country");
+
+      fetch("load_countries.php")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("국가 데이터를 불러오는 중 오류가 발생했습니다.");
+          }
+          return response.json();
+        })
+        .then(countries => {
+          countries.forEach(country => {
+            const option = document.createElement("option");
+            option.value = country.code;
+            option.textContent = `${country.name} (${country.code})`;
+            selectElement.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          alert("국가 정보를 불러오는 데 실패했습니다.");
+        });
+    }
+
+    // 페이지 로드 시 국가 정보를 불러오기
+    window.onload = loadCountries;
+  </script>
+</head>
+
+<body>
+  <h1>ISO 3166-1 Country Selector</h1>
+  <form>
+    <label for="country">Select a country:</label>
+    <select id="country" name="country">
+      <option value="" disabled selected>Loading countries...</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+
+</html>

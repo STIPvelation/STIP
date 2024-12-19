@@ -116,9 +116,12 @@
         <script>
             const dropdown = document.querySelector('.dropdown');
             const dropdown_menu = document.querySelector('.dropdown-menu');
+            let divValue = '';
             // let lang = [];
             // const clickedDivValues = [];
-            let divValue = '';
+            
+
+            let pageLang = localStorage.getItem('preferredLanguage') || 'ko';
 
             dropdown_menu.addEventListener('click', (event) => {
                 const liElement = event.target.closest('li');

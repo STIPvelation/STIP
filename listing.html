@@ -16,6 +16,11 @@
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- 결제 관련 스크립트 -->
+  <script src="js/config.js"></script>
+  <!-- <script src="js/currency-converter2.js"></script> -->
+  <!-- <script src="js/payment-handler3.js"></script> -->
   <style>
     body {
       font-family: "SUIT", sans-serif;
@@ -110,6 +115,9 @@
       // let lang = [];
       // const clickedDivValues = [];
       let divValue = '';
+      let pageLang = '';
+
+      // pageLang = localStorage.getItem('preferredLanguage') || 'ko';
 
       dropdown_menu.addEventListener('click', (event) => {
         const liElement = event.target.closest('li');
@@ -117,8 +125,24 @@
           const divElement = liElement.querySelector('div'); // li 안의 div 찾기
           if (divElement) {
             divValue = divElement.textContent.trim(); // div 값 가져오기
+            // 선택한 언어를 로컬 저장소에 저장
+            // localStorage.setItem("preferredLanguage", divValue);
+            if (divValue === '한국어') {
+              pageLang = 'ko';
+            }
+            if (divValue === 'English') {
+              pageLang = 'en';
+            }
+            if (divValue === '日本語') {
+              pageLang = 'ja';
+            }
+            if (divValue === '中文') {
+              pageLang = 'jz';
+            }
+            
+            // pageLang = divValue;
 
-            // div 값 기록
+            // div 값 기록0
             // if (!clickedDivValues.includes(divValue)) {
             // clickedDivValues.push(divValue);
             // }
@@ -128,7 +152,7 @@
           }
 
         }
-        console.log(`${divValue}`);
+        console.log('divValue ->'+`${divValue}`, 'pageLang ->'+`${pageLang}`);
       })
 
     </script>
@@ -350,15 +374,66 @@
   }
 </style>
           <script>
+            // imsi.src.txt
             document.addEventListener('DOMContentLoaded', function () {
               const contactForm = document.getElementById('contactForm');
               const paymentForm = document.getElementById('paymentForm');
               const userName = document.getElementById('name');
               const cardholderName = document.getElementById('cardholderName');
+              const emailInput = document.getElementById('email');
+              const mobileInput = document.getElementById('mobile');
+              let currentLang = localStorage.getItem('preferredLanguage') || 'ko';
+
+              // currentLang = pageLang;
+
+              console.log('currentLang -> '+currentLang);
+
+              // 이메일 유효성 검사
+              function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+              }
+              // 이메일 실시간 검증
+              // emailInput.addEventListener('input', function () {
+              //   const isValid = isValidEmail(this.value);
+              //   this.style.borderColor = isValid ? 'green' : 'red';
+              //   this.setCustomValidity(isValid ? '' : translations[currentLang].validation.email);
+              // });
+              // 국가 코드 설정 및 전화번호 포맷팅
+              // function formatPhoneNumber(input) {
+              //   const countryCode = translations[currentLang].country_code;
+              //   let value = input.value.replace(/\D/g, '');
+
+              //   // 국가 코드가 없는 경우에만 추가
+              //   if (!value.startsWith(countryCode.replace('+', ''))) {
+              //     value = countryCode + value;
+              //   }
+
+              //   // 전화번호 포맷팅 (나라별로 다른 포맷 적용 가능)
+              //   if (currentLang === 'ko') {
+              //     value = value.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+              //   } else {
+              //     value = value.replace(/(\d+)(\d{4})(\d{4})/, '$1-$2-$3');
+              //   }
+
+              //   return value;
+              // }
+              // 전화번호 입력 처리
+              // mobileInput.addEventListener('input', function () {
+              //   const formattedNumber = formatPhoneNumber(this);
+              //   this.value = formattedNumber;
+              // });
 
               // Contact Form 제출 처리
               contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
+
+                // 이메일 유효성 검사
+                // if (!isValidEmail(emailInput.value)) {
+                //   alert(translations[currentLang].validation.email);
+                //   emailInput.focus();
+                //   return;
+                // }
 
                 try {
                   const formData = new FormData(this);
@@ -381,9 +456,13 @@
                     // 결제 폼 보이기
                     paymentForm.style.display = 'block';
 
+                    // language setting..
+                    // handleLanguageChange(currentLang);
+
+
                     // amount와 currency 설정
-                    document.getElementById('amount').value = '50,000';
-                    document.querySelector('.currency').textContent = 'KRW';
+                    // document.getElementById('amount').value = '99,000';
+                    // document.querySelector('.currency').textContent = 'KRW';
                   } else {
                     alert('정보 저장에 실패했습니다. 다시 시도해 주세요.');
                     window.location.href = 'listing.html';
@@ -394,6 +473,37 @@
                   window.location.href = 'listing.html';
                 }
               });
+
+              // 카드 번호 포맷팅
+              document.getElementById('cardNumber').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue.substring(0, 19);
+              });
+
+              // 만료일 포맷팅
+              document.getElementById('expiryDate').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                  value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                e.target.value = value.substring(0, 5);
+              });
+
+              // 이름 실시간 확인
+              cardholderName.addEventListener('input', function () {
+                if (this.value !== userName.value) {
+                  this.style.borderColor = 'red';
+                  this.setCustomValidity('입력하신 이름과 일치하지 않습니다.');
+                } else {
+                  this.style.borderColor = 'green';
+                  this.setCustomValidity('');
+                }
+              });
+
+              // amount와 currency 설정
+              document.getElementById('amount').value = '99,000';
+              document.querySelector('.currency').textContent = 'KRW';
 
               // Payment Form 제출 처리
               paymentForm.addEventListener('submit', async function (e) {
@@ -429,32 +539,6 @@
                 }
               });
 
-              // 카드 번호 포맷팅
-              document.getElementById('cardNumber').addEventListener('input', function (e) {
-                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-                e.target.value = formattedValue.substring(0, 19);
-              });
-
-              // 만료일 포맷팅
-              document.getElementById('expiryDate').addEventListener('input', function (e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length >= 2) {
-                  value = value.substring(0, 2) + '/' + value.substring(2);
-                }
-                e.target.value = value.substring(0, 5);
-              });
-
-              // 이름 실시간 확인
-              cardholderName.addEventListener('input', function () {
-                if (this.value !== userName.value) {
-                  this.style.borderColor = 'red';
-                  this.setCustomValidity('입력하신 이름과 일치하지 않습니다.');
-                } else {
-                  this.style.borderColor = 'green';
-                  this.setCustomValidity('');
-                }
-              });
             });
           </script>
           <div class="radius-box frame">
@@ -562,35 +646,8 @@
     </footer>
     <!-- footer end -->
   </div>
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      // 폼 데이터 수집
-      const formData = new FormData(this);
-
-      try {
-        // 데이터 저장 요청
-        const response = await fetch('contactForm_save.php', {
-          method: 'POST',
-          body: formData
-        });
-
-        if (response.ok) {
-          // 저장 성공 시 결제 폼 표시
-          document.querySelector('.input-box.button[style="display: none;"]').style.display = 'block';
-          this.style.display = 'none'; // 기존 폼 숨기기
-        } else {
-          throw new Error('저장 실패');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('저장에 실패했습니다. 다시 시도해주세요.');
-      }
-    });
-
+  <script>    
     const swiperContainer = document.getElementById("swiperContainer");
-
     const swiperWrapper = document.getElementById("swiperWrapper");
 
     const swiper = new Swiper(".grid-swiper", {
@@ -649,8 +706,10 @@
 
   <!-- <script src="components/header.js" defer></script> -->
   <!-- 환율 API 키 -->
-  <script src="config.js"></script>
+
   <script src="js/updated-language-script.js"></script>
+  <script src="js/currency-converter2.js"></script>
+  <!-- <script src="js/payment-handler3.js"></script> -->
 </body>
 
 </html>
