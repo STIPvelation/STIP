@@ -15,6 +15,7 @@
     crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.5.0/dist/TagCloud.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <!-- 결제 관련 스크립트 -->
@@ -57,7 +58,7 @@
                   <div class="side-bar-list">
                     <a class="side-bar-item navigate" href="index.html" data-page="main"
                       onclick="handlePageSelection('main')">main</a>
-                    <a class="side-bar-item navigate" href="listing.html" data-page="listing"
+                    <a class="side-bar-item navigate active" href="listing.html" data-page="listing"
                       onclick="handlePageSelection('listing')">Listing</a>
                     <a class="side-bar-item navigate" href="about.html" data-page="about"
                       onclick="handlePageSelection('about')">About us</a>
@@ -77,7 +78,7 @@
             </div>
           </div>
           <ul>
-            <li><a class="nav-item navigate" href="listing.html" data-page="listing"
+            <li><a class="nav-item navigate active" href="listing.html" data-page="listing"
                 onclick="handlePageSelection('listing')">Listing</a></li>
             <li><a class="nav-item navigate" href="about.html" data-page="about"
                 onclick="handlePageSelection('about')">About us</a></li>
@@ -542,7 +543,39 @@
             });
           </script>
           <div class="radius-box frame">
+            <div class="dropdown-select">
+              <button class="listing-btn  btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Patent
+              </button>
+              <ul class="dropdown-menu listing-select-box" aria-labelledby="dropdownMenuButton2">
+                <li>
+                  <div class="dropdown-item">Patent</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Movie Drama Comics</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Music</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Dance</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Franchise</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Trademark</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Character</div>
+                </li>
+              </ul>
+            </div>
             <div class="radius-box swiper-container" id="swiperContainer">
+              <div class="circle-wrapper">
+                <span class="Sphere"></span>
+              </div>
               <div class="swiper grid-swiper" id="swiperWrapper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide swiper-grid-box">
@@ -649,61 +682,217 @@
   <script>    
     const swiperContainer = document.getElementById("swiperContainer");
     const swiperWrapper = document.getElementById("swiperWrapper");
+    const singleSwiperWrapper = document.getElementById("singleSwiperWrapper");
+    let gridSwiperInstance = null;
+    let singleSwiperInstance = null;
+    const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+    
+    if (isMobile) {
+      singleSwiperInstance = new Swiper(".single-swiper", {
+        slidesPerView: 3,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          700: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+        },
+        spaceBetween: 10,
+        speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+      });
+    } else {
+      gridSwiperInstance = new Swiper(".grid-swiper", {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
 
-    const swiper = new Swiper(".grid-swiper", {
-      slidesPerView: "auto",
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
-      slidesPerView: 1,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        }
+      });
+    }
 
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      on: {
-        //   beforeResize: function () {
-        //     const vw = window.innerWidth;
-        //     if (vw < 1000) {
-        //       this.params.spaceBetween = 20;
-        //       return;
-        //     }
-        //     if (vw < 1380) {
-        //       this.params.spaceBetween = 10;
-        //       return;
-        //     }
-        //     this.params.spaceBetween =
-        //       swiperContainer.offsetWidth - 32 - swiperWrapper.offsetWidth;
-        //   },
-      },
-    });
 
-    const singleSwiper = new Swiper(".single-swiper", {
-      slidesPerView: "auto",
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        768: {
+    window.addEventListener("resize", () => {
+      const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+      if (isMobile && !singleSwiperInstance) {
+        singleSwiperInstance = new Swiper(".single-swiper", {
+          slidesPerView: 3,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            700: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+          },
+          spaceBetween: 10,
+          speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+        });
+      } else if (!gridSwiperInstance) {
+        gridSwiperInstance = new Swiper(".grid-swiper", {
           slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        700: {
-          slidesPerView: 4,
-          spaceBetween: 10,
-        },
-      },
-      spaceBetween: 10,
-      speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
-      slidesPerView: 3,
-    });
-  </script>
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
 
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          }
+        });
+      }
+    })
+  </script>
+  <script>
+    const tagCloudImages = {
+      "Movie Drama Comics": [
+          wrappingImgElement("Movie/Group 5005.png"),
+          wrappingImgElement("Movie/Group.png"),
+          wrappingImgElement("Movie/Group-1.png"),
+          wrappingImgElement("Movie/Group-2.png"),
+          wrappingImgElement("Movie/Group-3.png"),
+          wrappingImgElement("Movie/Group-4.png"),
+      ],
+      "Music": [
+          wrappingImgElement("Music/Clip path group.png"),
+          wrappingImgElement("Music/Group.png"),
+          wrappingImgElement("Music/Group-1.png"),
+          wrappingImgElement("Music/Group-2.png"),
+          wrappingImgElement("Music/Group-3.png"),
+          wrappingImgElement("Music/Group-4.png"),
+          wrappingImgElement("Music/Group-5.png"),
+          wrappingImgElement("Music/Group-6.png"),
+          wrappingImgElement("Music/Group-7.png"),
+          wrappingImgElement("Music/Group-8.png"),
+      ],
+      "Dance":[
+          wrappingImgElement("Dance/Group 5006.png"),
+          wrappingImgElement("Dance/Group 5012.png"),
+          wrappingImgElement("Dance/Group-1.png"),
+          wrappingImgElement("Dance/Group-2.png"),
+          wrappingImgElement("Dance/Group-3.png"),
+          wrappingImgElement("Dance/Group-4.png"),
+          wrappingImgElement("Dance/Group-5.png"),
+          wrappingImgElement("Dance/Group-6.png"),
+      ],
+      "Franchise":[
+          wrappingImgElement("Franchise/Group.png"),
+          wrappingImgElement("Franchise/Group-1.png"),
+          wrappingImgElement("Franchise/Group-2.png"),
+          wrappingImgElement("Franchise/Group-3.png"),
+          wrappingImgElement("Franchise/Group-4.png"),
+          wrappingImgElement("Franchise/Group-5.png"),
+          wrappingImgElement("Franchise/Group-6.png"),
+          wrappingImgElement("Franchise/Group-7.png"),
+      ],
+      "Trademark":[
+        wrappingImgElement("Trademark/Group 5007.png"),
+        wrappingImgElement("Trademark/Group.png"),
+        wrappingImgElement("Trademark/Group-1.png"),
+        wrappingImgElement("Trademark/Group-2.png"),
+        wrappingImgElement("Trademark/Group-3.png"),
+      ],
+      "Character":[
+        wrappingImgElement("Character/Group 5008.png"),
+        wrappingImgElement("Character/Group 5009.png"),
+        wrappingImgElement("Character/Group.png"),
+        wrappingImgElement("Character/Group-1.png"),
+        wrappingImgElement("Character/Group-2.png"),
+        wrappingImgElement("Character/Group-3.png"),
+        wrappingImgElement("Character/Group-4.png"),
+        wrappingImgElement("Character/Group-5.png"),
+        wrappingImgElement("Character/Group-6.png"),
+      ],
+
+    }
+    function wrappingImgElement(src) {
+      return `<img width='120px' src='assets/images/logo/${src}' alt='' />`
+    }
+
+    let tagCloud = null
+
+    const cloudContainer = document.querySelector(".Sphere");
+    const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
+    const dropdownSelect = document.querySelector('.dropdown-select');
+    const circleWrapper = document.querySelector('.circle-wrapper');
+    const radius = Math.max(
+      170,
+      Math.min(280, window.innerWidth - window.innerWidth * 0.95)
+    );
+
+
+    dropdownSelect.addEventListener('click', (event) => {
+      const liElement = event.target.closest('li');
+      if (liElement) {
+        const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+        if (divElement) {
+          divValue = divElement.textContent.trim(); // div 값 가져오기
+        }
+      }
+      const listingBtn = document.querySelector('.listing-btn');
+
+      if (listingBtn && divValue) {
+        const frameBox = document.querySelector('.frame');
+        const squareBox = document.querySelector('.Sphere');
+        if (divValue === "Patent") {
+          swiperWrapper.style.display = "block";
+          singleSwiperWrapper.style.display = "block";
+          circleWrapper.style.display = "none";
+          if(tagCloud) tagCloud.pause();
+          if(window.innerWidth < 768) {
+            frameBox.style.height = "204px";
+          }
+        } else {
+     
+          if (!tagCloud) {
+            tagCloud = TagCloud(".Sphere", tagCloudImages['Movie Drama Comics'], {
+              radius,
+              maxSpeed: "normal",
+              initSpeed: "normal",
+              direction: 205,
+              keep: true,
+              useHTML: true,
+            });
+          }
+          singleSwiperWrapper.style.display = "none";
+          swiperWrapper.style.display = "none";
+          circleWrapper.style.display = "flex";
+          if( window.innerWidth < 768) {
+            const padding = 64;
+            frameBox.style.height = squareBox.clientHeight + padding + "px";
+          } 
+          tagCloud.resume();
+          tagCloud.update(tagCloudImages[divValue]);
+        }
+        listingBtn.textContent = divValue;
+      }
+    });
+
+  </script>
   <!-- <script src="components/header.js" defer></script> -->
   <!-- 환율 API 키 -->
 
