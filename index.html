@@ -3,8 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stipvelation</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>STIP HomePage stipvelation</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
+    <link rel="manifest" href="favicon.ico2/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">    
+
     <link rel="stylesheet" href="assets/style/pages/main.css">
     <link rel="stylesheet" type="" href="assets/style/components/header.css">
     <link rel="stylesheet" href="assets/style/reset.css">
@@ -16,6 +36,7 @@
     <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 
     <!-- <script src="components/header.js" defer></script> -->
 
@@ -143,6 +164,20 @@
                 console.log(`${divValue}`);                
             })
 
+            function isMobileDevice() {
+                const userAgentCheck = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const screenSizeCheck = window.matchMedia("(max-width: 768px)").matches;
+
+                return userAgentCheck || screenSizeCheck;
+            }
+
+            if (isMobileDevice()) {
+                console.log("모바일 기기 또는 작은 화면에서 접속 중입니다.");
+            } else {
+                console.log("데스크톱 기기에서 접속 중입니다.");
+            }
+
+
         </script>
         <!-- </html> -->
         <!-- header end -->
@@ -188,12 +223,25 @@
                             <p>The seeds of progress begin with you</p>
                         </div>
                         <div class="buttons">                            
-                            <button class="normal-button" style="width: 180px;">
+                            <!-- <button class="normal-button" style="width: 180px;">
                                 <a href="listing.html">Listing</a>
                             </button>                            
                             <div class="watch-video-area">
                                 <img src="assets/images/play-circle.svg" alt="" />
                                 <a href="https://youtu.be/QuKFlp8I25Y?si=W7FY_TuQRsWwrmSk" class="link-text" target="_blank" rel="noopener noreferrer" aria-label="STIP youtube link"><span>Watch video</span></a>
+                            </div> -->
+
+                            <!-- Listing 버튼 -->
+                            <button class="normal-button" style="width: 180px;" onclick="location.href='listing.html'"
+                                aria-label="Go to Listing page">
+                                Listing
+                            </button>
+                            
+                            <!-- Watch Video 영역 -->
+                            <div class="watch-video-area" role="button" tabindex="0" aria-label="Watch STIP video"
+                                onclick="window.open('https://youtu.be/QuKFlp8I25Y?si=W7FY_TuQRsWwrmSk', '_blank', 'noopener,noreferrer')">
+                                <img src="assets/images/play-circle.svg" alt="Play Icon" />
+                                <span>Watch Video</span>
                             </div>
                         </div>
                     </div>
