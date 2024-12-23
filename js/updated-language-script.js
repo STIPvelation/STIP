@@ -200,6 +200,7 @@ function updateHomePage(lang) {
   }
 }
 
+
 function updateListingPage(lang) {
   const formData = translations[lang]?.listing?.form;
   if (!formData) return;
@@ -208,15 +209,33 @@ function updateListingPage(lang) {
   const nameLabel = document.querySelector('label[for="name"]');
   const emailLabel = document.querySelector('label[for="email"]');
   const mobileLabel = document.querySelector('label[for="mobile"]');
+  const uploadfileLabel = document.querySelector('label[for="uploadfile"]');
+  const file_upload_text = document.querySelector('.file-upload-text');
+  const file_delete_text = document.querySelector('.remove-file');
   const smart5Label = document.querySelector('label[for="submit"]');
+  // const file_aria_label = document.querySelectorAll('[aria-label]');
+
+  // const input_file = document.querySelector('input[type="file"]');
+  const fileInput = document.getElementById('file'); // input 요소 가져오기
+  const remove_file = document.querySelector('.remove-file')
 
   if (nameLabel) nameLabel.textContent = formData.labels.name;
   if (emailLabel) emailLabel.textContent = formData.labels.email;
   if (mobileLabel) mobileLabel.textContent = formData.labels.mobile;
+  if (uploadfileLabel) uploadfileLabel.textContent = formData.labels.uploadfile;
+  if (file_upload_text) file_upload_text.textContent = formData.labels.fileUploadTxt;
+  if (file_delete_text) file_delete_text.textContent = formData.labels.fileDeleteTxt;
+
+  fileInput.setAttribute('aria-label', formData.labels.fileSelectAria);
+  remove_file.setAttribute('aria-label', formData.labels.fileDeleteAria);
+
+  
+ 
 
   // SMART5 라벨 특별 처리
   if (smart5Label) {
     const linkText = smart5Label.querySelector('.link-text');
+    linkText.setAttribute('aria-label', formData.labels.ariaLabel.smart5Aria);
     if (linkText) {
       linkText.textContent = formData.labels.smart5.link;
     }

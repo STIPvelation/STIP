@@ -37,9 +37,19 @@
                     "name": "성명",
                     "email": "이메일",
                     "mobile": "연락처",
+                    "uploadfile": "파일 업로드",
+                    "fileUploadTxt": "파일을 드래그하여 놓거나 클릭하여 선택하세요",
+                    "fileDeleteTxt": "삭제",
+                    "fileSelectAria": "파일 선택",
+                    "fileDeleteAria": "파일 제거",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria":"Delete File",
+                        "smart5Aria": "SMART5 특허 평가 보고서 제출 페이지로 이동"
+                    },
                     "smart5": {
                         "link": "SMART5",
-                        "text": "특허 평가 보고서를 제출하세요"
+                        "text": " 특허 평가 보고서를 제출하세요"
                     }
                 },
                 "placeholders": {
@@ -70,8 +80,8 @@
             "title_area_h6": "Intellectual Property ",
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span>은 특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 다양한 디지털 IP를 거래할 수 있는 혁신적인 플랫폼입니다.",
-                "기업, 연구기관, 창작자, 발명가들이 통상실시권 시스템을 활용하여 IP 소유권을 이전하지 않고도 자금을 조달할 수 있는 기회를 제공합니다.<strong><br><br>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span> 는<br>특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등 다양한 디지털 IP를<br> 거래할 수 있는 혁신적인 플랫폼입니다.",
+                "기업, 연구기관, 창작자, 발명가들이 통상실시권 시스템을 활용하여<br>IP 소유권을 이전하지 않고도 자금을 조달할 수 있는 기회를 제공합니다.<br><br><strong>Founder</strong><br>Hyundo Jeong"
             ],
             "bottom_area": [
                 "",
@@ -184,10 +194,10 @@
         "main": {
             "logo_text": "Meet <span>STIP</span>",
             "letter_titles": [
-                "Share your wisdom with the world",
-                "The seeds of progress begin with you",
-                "Intellectual treasures spark the flame",
-                "Property shared lets innovation flow"
+                "hare your wisdom with the world",
+                "he seeds of progress begin with you",
+                "ntellectual treasures spark the flame",
+                "roperty shared lets innovation flow"
             ],
             "bottom_text": [
                 "STIP is the Alpha and the Omega in IP",
@@ -211,6 +221,16 @@
                     "name": "Name",
                     "email": "Email",
                     "mobile": "Mobile",
+                    "uploadfile": "Upload File",
+                    "fileUploadTxt": "Drag and drop files or click to select them.",
+                    "fileDeleteTxt": "Delete",
+                    "fileSelectAria": "Select File",
+                    "fileDeleteAria": "Delete File",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria": "Delete File",
+                        "smart5Aria": "SMART5 Go to the patent evaluation report submission page"
+                    },
                     "smart5": {
                         "link": "SMART5",
                         "text": " Submit the patent evaluation report"
@@ -244,8 +264,8 @@
             "title_area_h6": "Intellectual Property",
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span> is an innovative platform for trading a wide range of digital IP, including patents, trademarks, dramas, films, comics, franchises, music, and dance.",
-                "It provides companies, research institutions, creators, and inventors with a new opportunity to secure funding by utilizing a non-exclusive licensing system, without transferring IP ownership.<strong><br><br>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span><br>is an innovative platform for trading a wide range of digital IP,<br>including patents, trademarks,dramas, films, comics, franchises,<br>music and dance.",
+                "It provides companies, research institutions, creators and inventors<br>with a new opportunity to secure funding by utilizing a non-exclusive<br> licensing system without transferring IP ownership.<br><br><strong>Founder</strong><br>Hyundo Jeong"
             ],
             "bottom_area": [
                 "",
@@ -257,17 +277,17 @@
         },
         "contact": {
             "title_h1": "Contact",
-            "intro_text": "Talk to our team about<br /> your enterprise needs"
+            "intro_text": "Talk to our team about<br /> your enterprise needs",
             "radius_boxes": [
                 {
-                    "title": "Inquiry"
-                    "description": ""
+                    "title": "Inquiry",
+                    "description": "",
                     "button_text": "Connection",
                     "link": "contact-contact.html"
                 },
                 {
                     "title": "Need Help",
-                    "description": ""
+                    "description": "",
                     "button_text": "Connection",
                     "link": "contact-community.html"
                 }
@@ -385,9 +405,17 @@
                     "name": "名前",
                     "email": "メール",
                     "mobile": "携帯電話",
+                    "uploadfile": "Upload File",
+                    "fileUploadTxt": "Drag and drop files or click to select them.",
+                    "fileDeleteTxt": "Delete",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria": "Delete File",
+                        "smart5Aria": "SMART5 特許評価レポートを提出してください"
+                    },
                     "smart5": {
                         "link": "SMART5",
-                        "text": "特許評価レポートを提出してください"
+                        "text": " 特許評価レポートを提出してください"
                     }
                 },
                 "placeholders": {
@@ -418,8 +446,8 @@
             "title_area_h6": "Intellectual Property",
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span>は特許、商標、ドラマ、映画、漫画、フランチャイズ、音楽、ダンスなど、さまざまなデジタルIPを取引できる革新的なプラットフォームです",
-                "企業、研究機関、クリエイター、発明家が通常実施権のシステムを活用し、IPの所有権を移転することなく資金を調達できる新しい機会を提供します<strong><br><br>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span><br>は特許、商標、ドラマ、映画、漫画、フランチャイズ、音楽、ダンスなど<br>さまざまなデジタルIPを取引できる革新的なプラットフォームです",
+                "企業、研究機関、クリエイター、発明家が通常実施権のシステムを活用し、<br>IPの所有権を移転することなく資金を調達できる新しい機会を提供します<br><br><strong>Founder</strong><br>Hyundo Jeong"
             ],
             "bottom_area": [
                 "",
@@ -431,16 +459,16 @@
         },
         "contact": {
             "title_h1": "問い合わせ",
-            "intro_text": "企業のニーズについて<br /> STIPチームにご相談ください"
+            "intro_text": "企業のニーズについて<br /> STIPチームにご相談ください",
             "radius_boxes": [
                 {
-                    "title": "問い合わせ"
-                    "description": ""
+                    "title": "問い合わせ",
+                    "description": "",
                     "button_text": "相談",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "お困りですか"
+                    "title": "お困りですか",
                     "description": "",
                     "button_text": "繋ぐ",
                     "link": "contact-community.html"
@@ -559,9 +587,17 @@
                     "name": "姓名",
                     "email": "电子邮箱",
                     "mobile": "手机号码",
+                    "uploadfile": "Upload File",
+                    "fileUploadTxt": "Drag and drop files or click to select them.",
+                    "fileDeleteTxt": "Delete",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria": "Delete File",
+                        "smart5Aria": "SMART5 请提交专利评估报告"
+                    },
                     "smart5": {
                         "link": "SMART5",
-                        "text": "请提交专利评估报告"
+                        "text": " 请提交专利评估报告"
                     }
                 },
                 "placeholders": {
@@ -592,8 +628,8 @@
             "title_area_h6": "Intellectual Property",            
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span>是一个创新的平台，可用于交易专利、商标、电视剧、电影、漫画、特许经营、音乐、舞蹈等各种数字知识产权（IP）",
-                "该平台为企业、研究机构、创作者和发明者提供了一种新的机会，通过利用普通许可权系统，在不转让知识产权所有权的情况下获得资金。<strong><br><br>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span><br>是一个创新的平台，可用于交易专利、商标、电视剧、电影、漫画、特许经营、音乐<br>舞蹈等各种数字知识产权（IP）",
+                "该平台为企业、研究机构、创作者和发明者提供了一种新的机会<br>通过利用普通许可权系统，在不转让知识产权所有权的情况下获得资金。<br><br><strong>Founder</strong><br>Hyundo Jeong"
             ],
             "bottom_area": [
                 "",

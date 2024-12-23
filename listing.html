@@ -4,7 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>stipvelation</title>
+  <title>STIP HomePage stipvelation</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
+  <link rel="manifest" href="favicon.ico2/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" type="" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/listing.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
@@ -18,7 +36,7 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <!-- 결제 관련 스크립트 -->
-  <script src="js/config.js"></script>
+  <!-- <script src="js/config.js"></script> -->
   <!-- <script src="js/currency-converter2.js"></script> -->
   <!-- <script src="js/payment-handler3.js"></script> -->
   <style>
@@ -155,6 +173,19 @@
         console.log('divValue ->'+`${divValue}`, 'pageLang ->'+`${pageLang}`);
       })
 
+      function isMobileDevice() {
+        const userAgentCheck = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const screenSizeCheck = window.matchMedia("(max-width: 768px)").matches;
+
+        return userAgentCheck || screenSizeCheck;
+      }
+
+      if (isMobileDevice()) {
+        console.log("모바일 기기 또는 작은 화면에서 접속 중입니다.");
+      } else {
+        console.log("데스크톱 기기에서 접속 중입니다.");
+      }
+
     </script>
     <!-- </html> -->
     <!-- header end -->
@@ -199,6 +230,27 @@
                 </label>
                 <input type="text" id="mobile" name="mobile" placeholder="Please enter your contact information."
                   required autocomplete="mobile" />
+              </div>
+              <div class="input-box">
+                <label id="fileUploadLabel" for="uploadfile" class="required" aria-required="true">파일 업로드</label>
+                <div class="file-upload-area" role="region" aria-labelledby="fileUploadLabel" id="dropZone">
+                  <span class="file-upload-text" id="uploadText">
+                    파일을 드래그하여 놓거나 클릭하여 선택하세요
+                  </span>
+                  <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" aria-describedby="fileHelpText" aria-label="Select File">
+                  <div id="fileHelpText" class="sr-only">
+                    허용된 파일 형식: PDF, DOC, DOCX. 최대 파일 크기: 5MB
+                  </div>
+                </div>
+                <div id="filePreview" class="file-preview">
+                  <div class="file-info">
+                    <span id="fileName"></span>
+                    <button type="button" class="remove-file" id="removeFile" aria-label="Delete File">
+                      삭제
+                    </button>
+                  </div>
+                </div>
+                <div id="errorMessage" class="error-message" role="alert" aria-live="polite"></div>
               </div>
               <div class="input-box button">
                 <label for="submit" class="required">
