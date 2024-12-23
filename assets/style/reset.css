@@ -92,6 +92,7 @@ video {
 }
 
 body {
+  background-color: #000 !important;
   font-family: "SUIT", sans-serif !important;
 }
 
