@@ -45,6 +45,12 @@ function jsonRespDump($resp)
   }
 }
 
+// decryptDump
+function decryptDump ($value, $merchantKey)
+{
+  
+}
+
 //Post api call
 function reqPost(array $data, $url)
 {

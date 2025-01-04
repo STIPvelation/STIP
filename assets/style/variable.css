@@ -3,6 +3,13 @@
     --gray-color: #949698;
     --black-color: #000000;
     --white-color: #ffffff;
-    --orange-color: #F26B0F;
-
+    --orange-color: #F26B0F;	
+	--overlay-color: #03a9f4;
+	--accent-100:#71c4ef;
+	--accent-200:#00668c;
+	--text-100:#1d1c1c;
+	--text-200:#313d44;
+	--bg-100:#fffefb;
+	--bg-200:#f5f4f1;
+	--bg-300:#cccbc8;
 }

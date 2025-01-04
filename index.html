@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="발명특허 트레이딩 공식 홈페이지입니다. 특허 거래와 발명특허 관련 전문 서비스를 제공합니다.">
+    <meta name="keywords" content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권">
+    <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지">
+    <meta property="og:description" content="발명특허 트레이딩 전문 서비스를 제공하는 공식 홈페이지입니다.">
+    <meta name="robots" content="index, follow">
 
     <title>STIP HomePage stipvelation</title>
     <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
@@ -23,10 +27,10 @@
     <link rel="manifest" href="favicon.ico2/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">    
+    <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="assets/style/pages/main.css">
-    <link rel="stylesheet" type="" href="assets/style/components/header.css">
+    <link rel="stylesheet" href="assets/style/pages/main2.css" />
+    <link rel="stylesheet" href="assets/style/components/header.css" />
     <link rel="stylesheet" href="assets/style/reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -37,30 +41,29 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-
-    <!-- <script src="components/header.js" defer></script> -->
-
-    <!-- <script src="js/app2.js" defer></script> -->
-    <!-- <script src="js/header.js" defer></script>  -->
+    
+	<script src="js/services/device-service.js"></script>
 
     <style>
         body {
             font-family: 'SUIT', sans-serif;
         }
-    </style>
-
-    <!-- </html> -->
-
+		.overlay {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  /* background: #03a9f4; */
+		  background: var(--overlay-color);
+		  mix-blend-mode: overlay;
+		  background: rgba(0, 0, 0, 0.5);
+		}
+    </style>    
 </head>
 
 <body>
     <div class="root">
-        <!-- header start -->
-        <!-- header.html -->
-        <!-- <!DOCTYPE html> -->
-        <!-- <html> -->
-        <!-- <head> -->
-
         <header class="header-container">
             <div class="header-wrapper">
                 <div class="header-logo">
@@ -138,11 +141,39 @@
             const dropdown = document.querySelector('.dropdown');
             const dropdown_menu = document.querySelector('.dropdown-menu');
             let divValue = '';
-            // let lang = [];
-            // const clickedDivValues = [];
-            
 
-            let pageLang = localStorage.getItem('preferredLanguage') || 'ko';
+
+            // 여기에 아래 코드 추가
+            document.addEventListener('DOMContentLoaded', function () {
+                // 현재 저장된 언어 가져오기
+                const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
+                const selectedLang = localStorage.getItem('preferredLanguage') || 'ko'; // 기본값은 'ko'
+
+                console.log(`savedLang ->  ${savedLang}`);
+
+                // 선택된 언어를 콘솔에 출력
+                console.log(`선택된 언어: ${selectedLang}`);
+
+                // 드롭다운 버튼 텍스트 업데이트
+                const dropdownButton = document.getElementById('dropdownMenuButton1');
+                if (dropdownButton) {
+                    dropdownButton.textContent = langLabel[savedLang];
+                }
+
+                // 사이드바 언어 active 상태 업데이트
+                document.querySelectorAll('.side-bar-item.lang span').forEach(el => {
+                    el.classList.remove('active');
+                    if (el.textContent === langLabel[savedLang]) {
+                        el.classList.add('active');
+                    }
+                });
+
+                // contactForm 표시 설정 - style="display: none" 제거
+                const contactForm = document.getElementById('contactForm');
+                if (contactForm) {
+                    contactForm.style.display = 'block';
+                }
+            });
 
             dropdown_menu.addEventListener('click', (event) => {
                 const liElement = event.target.closest('li');
@@ -151,36 +182,14 @@
                     if (divElement) {
                         divValue = divElement.textContent.trim(); // div 값 가져오기
 
-                        // div 값 기록
-                        // if (!clickedDivValues.includes(divValue)) {
-                            // clickedDivValues.push(divValue);
-                        // }
-
-                        // 결과를 화면에 표시
-                        // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
                     }
 
                 }
-                console.log(`${divValue}`);                
+                console.log(`${divValue}`);
             })
-
-            function isMobileDevice() {
-                const userAgentCheck = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                const screenSizeCheck = window.matchMedia("(max-width: 768px)").matches;
-
-                return userAgentCheck || screenSizeCheck;
-            }
-
-            if (isMobileDevice()) {
-                console.log("모바일 기기 또는 작은 화면에서 접속 중입니다.");
-            } else {
-                console.log("데스크톱 기기에서 접속 중입니다.");
-            }
 
 
         </script>
-        <!-- </html> -->
-        <!-- header end -->
 
         <div class="bg-video">
             <div class="bg-color"></div>
@@ -189,6 +198,7 @@
                 <source src="assets/main-background-video.mp4" type="video/mp4" />
                 Your browser is not supported!
             </video>
+			<div class="overlay"></div>
         </div>
 
         <!-- main section start -->
@@ -222,21 +232,19 @@
                             <p>Share your wisdom with the world</p>
                             <p>The seeds of progress begin with you</p>
                         </div>
-                        <div class="buttons">                            
-                            <!-- <button class="normal-button" style="width: 180px;">
-                                <a href="listing.html">Listing</a>
-                            </button>                            
-                            <div class="watch-video-area">
-                                <img src="assets/images/play-circle.svg" alt="" />
-                                <a href="https://youtu.be/QuKFlp8I25Y?si=W7FY_TuQRsWwrmSk" class="link-text" target="_blank" rel="noopener noreferrer" aria-label="STIP youtube link"><span>Watch video</span></a>
-                            </div> -->
-
+                        <div class="buttons">
                             <!-- Listing 버튼 -->
                             <button class="normal-button" style="width: 180px;" onclick="location.href='listing.html'"
                                 aria-label="Go to Listing page">
-                                Listing
+                                <span>Listing</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34" width="34">
+                                    <circle stroke-width="3" stroke="white" r="35.5" cy="37" cx="37"></circle>
+                                    <path fill="white"
+                                        d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z">
+                                    </path>
+                                </svg>
                             </button>
-                            
+
                             <!-- Watch Video 영역 -->
                             <div class="watch-video-area" role="button" tabindex="0" aria-label="Watch STIP video"
                                 onclick="window.open('https://youtu.be/QuKFlp8I25Y?si=W7FY_TuQRsWwrmSk', '_blank', 'noopener,noreferrer')">
@@ -247,66 +255,6 @@
                     </div>
                 </div>
             </div>
-<style>
-    main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button a{
-        text-decoration: none;
-        color: #fcfcfc;
-    }
-    main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button,
-    main.content-container .content-section .content-wrapper .content-bottom .buttons .watch-video-area {
-        z-index: 9999;
-    }
-    main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button:hover,
-    main.content-container .content-section .content-wrapper .content-bottom .buttons .watch-video-area:hover {
-        cursor: pointer;
-    }
-    /* watch-video-area 스타일 */
-    .watch-video-area {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-    }
-
-    .watch-video-area .link-text {
-        color: transparent;
-    }
-
-    .watch-video-area span {
-        color: var(--white-color);
-        font-size: 16px;
-        font-weight: 500;
-        position: relative;
-        /* 밑줄을 추가하기 위해 position 설정 */
-
-        @media screen and (max-width: 768px) {
-            font-size: 14px;
-        }
-    }
-
-    /* 마우스 호버 시 밑줄 효과 */
-    .watch-video-area span::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        /* 글씨 아래 간격 */
-        left: 0;
-        width: 0;
-        /* 기본 상태에서 너비 0 */
-        height: 2px;
-        /* 밑줄 두께 */
-        background-color: var(--orange-color);
-        /* 밑줄 색상 */
-        transition: width 0.3s ease;
-        /* 밑줄 애니메이션 */
-    }
-
-    .watch-video-area:hover span::after {
-        width: 100%;
-        /* 마우스 호버 시 밑줄 전체 너비 */
-    }
-</style>
             <div class="logo-slider-section">
                 <div class="bottom-gradient"></div>
                 <div class="slider-container">
@@ -315,52 +263,55 @@
                     <div class="gradient-overlay gradient-right"></div>
 
                     <!-- 슬라이더 -->
-                    <div class="swiper" dir="ltr">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 1" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 2" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 3" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 4" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 5" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/images/logo.svg" alt="STIP Logo 6" class="company-logo">
+                    
+                    <!-- 새로운 코드 시작 -->
+                    <div class="swiper-container">
+                        <div class="swiper" dir="ltr">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/aippii_1000x337-Photoroom.png" alt="aippii" class="company-logo">
+                                </div>                                
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kaips_1000x337-Photoroom.png" alt="한국지식재산서비스협회" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kiip_1000x337-Photoroom.png" alt="한국지식재산연구원" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kipa_1000x337-Photoroom.png" alt="한국발명진흥회" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kipi_1000x337-Photoroom.png" alt="한국특허정보원" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kipo_1000x337-Photoroom.png" alt="특허심판원" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kipro_1000X337-Photoroom.png" alt="한국특허기술진흥원" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kista_1000x337-Photoroom.png" alt="한국특허전략개발원" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/almk_1000x337-Photoroom.png" alt="알막툼" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kaips_1000x337-Photoroom.png" alt="한국지식재산서비스협회" class="company-logo">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kipo_logo.png" alt="특허청" class="company-logo">
+                                </div>                                
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/siae_1000x337-Photoroom.png" alt="STIP Logo 6" class="company-logo">
+                                </div>                                
+                                <div class="swiper-slide">
+                                    <img src="assets/images/index/kpaa_1000x337-Photoroom.png" alt="대한변리사" class="company-logo">
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- 새로운 코드 끝 -->
+                    
                 </div>
             </div>
 
@@ -388,14 +339,21 @@
         </footer>
         <!-- footer end -->
     </div>
-    
-    <script>
 
+    <script>
         const swiper = new Swiper('.swiper', {
             autoplay: {
-                delay: 0, //add
+                delay: 3000,
                 disableOnInteraction: false,
             },
+            speed: 800, // 전체 슬라이드 애니메이션 속도
+            loop: true,
+            loopAdditionalSlides: 1,
+            slidesPerView: 3,
+            spaceBetween: 10,
+            allowTouchMove: false, // 드래그 방지
+            cssMode: false, // 부드러운 스크롤을 위해 비활성화
+            loopAdditionalSlides: 3, // 더 많은 슬라이드 복제
             breakpoints: {
                 900: {
                     slidesPerView: 4,
@@ -410,22 +368,21 @@
                     spaceBetween: 10,
                 },
             },
-            responsive: [{
-                breakpoint: 900,
-                slidesPerView: 3,
-                spaceBetween: 10,
-            },],
-            speed: 10000,
-            loop: true,
-            loopAdditionalSlides: 1,
-            slidesPerView: 3,
-            spaceBetween: 10,
-        })
+        });
+
+        // 마우스 호버 시 일시정지/재생
+        const swiperContainer = document.querySelector('.swiper-container');
+        swiperContainer.addEventListener('mouseenter', () => {
+            swiper.autoplay.stop();
+        });
+        swiperContainer.addEventListener('mouseleave', () => {
+            swiper.autoplay.start();
+        });
     </script>
     <!-- <script src="components/header.js" defer></script> -->
     <!-- <script src="js/header.js"></script> -->
     <script src="js/updated-language-script.js"></script>
- 
+
 </body>
 
 </html>

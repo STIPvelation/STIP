@@ -1,0 +1,272 @@
+<!-- test-product-preview.html -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Preview Form Test</title>
+
+  <link rel="shortcut icon" href="#">
+  
+  <link rel="stylesheet" href="assets/style/reset.css">
+  <link rel="stylesheet" href="assets/style/pages/listing.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.7.0/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="test-styles.css">
+  <style>
+    /* Product Preview Form Styles */
+
+    .test-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: #fcfcfc;
+    }
+
+    .test-container h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      color: #fcfcfc;
+    }
+
+    .product-preview-form {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .product-info-section {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .product-image {
+      flex: 0 0 240px;
+      height: 240px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .input-group label {
+      font-size: 16px;
+      color: #fcfcfc;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      display: block;
+    }
+
+    .normal-button {
+      width: 100%;
+      padding: 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .normal-button:hover {
+      background: #388E3C;
+    }
+
+    .normal-button:active {
+      transform: translateY(1px);
+    }
+
+    .test-results {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .test-results h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #fcfcfc;
+    }
+
+    .test-results pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 6px;
+      color: #fcfcfc;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1200px) {
+      .test-container {
+        margin: 30px 20px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .product-info-section {
+        gap: 20px;
+      }
+
+      .product-image {
+        flex: 0 0 200px;
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .test-container {
+        padding: 20px;
+      }
+
+      .product-preview-form {
+        padding: 20px;
+      }
+
+      .product-info-section {
+        flex-direction: column;
+      }
+
+      .product-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .test-container h1 {
+        font-size: 20px;
+      }
+
+      .product-preview-form {
+        padding: 15px;
+      }
+
+      .input-group label {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .normal-button {
+        padding: 12px;
+        font-size: 14px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .test-container {
+        box-shadow: none;
+        background: white;
+        color: black;
+      }
+
+      .product-preview-form {
+        background: none;
+        border: 1px solid #ddd;
+      }
+
+      .input-group label {
+        background: none;
+        border: 1px solid #ddd;
+        color: black;
+      }
+
+      .normal-button {
+        display: none;
+      }
+
+      .test-results {
+        background: none;
+        border: 1px solid #ddd;
+      }
+
+      .test-results pre {
+        background: none;
+        border: 1px solid #ddd;
+        color: black;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test-container">
+    <h1>Product Preview Form Test</h1>
+
+    <!-- Product Preview Form -->
+    <form id="productPreviewForm" class="product-preview-form">
+      <input type="hidden" id="previewProductCode" name="productCode" value="0001">
+      <input type="hidden" id="previewProductName" name="productName" value="특허뉴스PDF">
+      <input type="hidden" id="previewQuantity" name="quantity" value="1">
+      <input type="hidden" id="previewPrice" name="price" value="₩99,000">
+
+      <div class="product-info-section">
+        <div class="product-image">
+          <img src="assets/images/p001.jpg" alt="특허뉴스PDF">
+        </div>
+        <div class="product-details">
+          <div class="input-group">
+            <label>상품코드: 0001</label>
+            <label>상품명: 특허뉴스PDF</label>
+            <label>가격: ₩99,000</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="normal-button">확인</button>
+    </form>
+
+    <!-- Test Results Display -->
+    <div id="testResults" class="test-results">
+      <h2>Test Results</h2>
+      <pre id="testOutput"></pre>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.7.0/dist/js/bootstrap.min.js"></script>
+
+  <script src="test-product-preview.js"></script>
+</body>
+
+</html>

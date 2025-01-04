@@ -45,7 +45,21 @@
             ],
             "inputbox_button": [
                 "제 출"
-            ]
+            ],
+            "product_preview": {
+                "title": "상품 정보",
+                "product_code": "상품코드",
+                "product_name": "상품명",
+                "quantity": "수량",
+                "price": "가격",
+                "confirm_button": "확인",
+                "currency": {
+                    "krw": "원",
+                    "usd": "달러",
+                    "jpy": "엔",
+                    "cny": "위안"
+                }
+            }
         },
         "about": {
             "title_area_h6": "지 적 재 산 권",
@@ -200,7 +214,21 @@
             ],
             "inputbox_button": [
                 "Submit"
-            ]
+            ],
+            "product_preview": {
+                "title": "Product Information",
+                "product_code": "Product Code",
+                "product_name": "Product Name",
+                "quantity": "Quantity",
+                "price": "Price",
+                "confirm_button": "Confirm",
+                "currency": {
+                    "krw": "KRW",
+                    "usd": "USD",
+                    "jpy": "JPY",
+                    "cny": "CNY"
+                }
+            }
         },
         "about": {
             "title_area_h6": "Intellectual Property",
@@ -355,7 +383,21 @@
             ],
             "inputbox_button": [
                 "提出"
-            ]
+            ],
+            "product_preview": {
+                "title": "商品情報",
+                "product_code": "商品コード",
+                "product_name": "商品名",
+                "quantity": "数量",
+                "price": "価格",
+                "confirm_button": "確認",
+                "currency": {
+                    "krw": "KRW",
+                    "usd": "USD",
+                    "jpy": "JPY",
+                    "cny": "CNY"
+                }                
+            }
         },
         "about": {
             "title_area_h6": "知 的 財 産",
@@ -510,7 +552,21 @@
             ],
             "inputbox_button": [
                 "提交"
-            ]
+            ],
+            "product_preview": {
+                "title": "产品信息",
+                "product_code": "产品代码",
+                "product_name": "产品名称",
+                "quantity": "数量",
+                "price": "价格",
+                "confirm_button": "确认",
+                "currency": {
+                    "krw": "KRW",
+                    "usd": "USD",
+                    "jpy": "JPY",
+                    "cny": "CNY"
+                }                
+            }
         },
         "about": {
             "title_area_h6": "知 识 产 权",            

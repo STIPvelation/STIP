@@ -1,0 +1,298 @@
+/* 기본 레이아웃 */
+.root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 비디오 배경 */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.bg-video .bg-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 메인 컨텐츠 */
+.content-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: calc(100% - 104px);
+  display: flex;
+  flex-direction: column;
+}
+
+.content-section {
+  position: absolute;
+  left: 15.625%;
+  top: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .content-section {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* 로고 슬라이더 */
+.logo-slider-section {
+  position: relative;
+  width: 100%;
+  padding-top: 440px;
+  background-color: #000;
+  z-index: 1;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+/* 그라데이션 오버레이 */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgb(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+  .company-logo {
+    width: 150px !important;
+    height: 50px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .company-logo {
+    width: 120px !important;
+    height: 40px !important;
+  }
+}
+
+main.content-container {
+  z-index: 1;
+}
+
+main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button a {
+  text-decoration: none;
+  color: #fcfcfc;
+}
+
+main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button,
+main.content-container .content-section .content-wrapper .content-bottom .buttons .watch-video-area {
+  z-index: 9;
+}
+
+main.content-container .content-section .content-wrapper .content-bottom .buttons button.normal-button:hover,
+main.content-container .content-section .content-wrapper .content-bottom .buttons .watch-video-area:hover {
+  cursor: pointer;
+}
+
+/* watch-video-area 스타일 */
+.watch-video-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.watch-video-area .link-text {
+  color: transparent;
+}
+
+.watch-video-area span {
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  /* 밑줄을 추가하기 위해 position 설정 */
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+/* 마우스 호버 시 밑줄 효과 */
+.watch-video-area span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  /* 글씨 아래 간격 */
+  left: 0;
+  width: 0;
+  /* 기본 상태에서 너비 0 */
+  height: 2px;
+  /* 밑줄 두께 */
+  background-color: var(--orange-color);
+  /* 밑줄 색상 */
+  transition: width 0.3s ease;
+  /* 밑줄 애니메이션 */
+}
+
+.watch-video-area:hover span::after {
+  width: 100%;
+  /* 마우스 호버 시 밑줄 전체 너비 */
+}
+
+/* Swiper 컨테이너 스타일 수정 */
+.logo-slider-section {
+  position: relative;
+  width: 100%;
+  padding-top: 440px;
+  background-color: #000;
+  z-index: -1;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+
+/* 그라데이션 오버레이 스타일 */
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gradient-left {
+  left: 0;
+  background: linear-gradient(to right, rgb(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.gradient-right {
+  right: 0;
+  background: linear-gradient(to left, rgb(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgb(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto !important;
+  height: 60px !important;
+  /* 로고 높이 고정 */
+  background-color: #ffffff;
+  /* 흰색 배경 추가 */
+  border-radius: 4px;
+  /* 선택사항: 모서리를 약간 둥글게 */
+  padding: 5px;
+  /* 이미지 주변 여백 */
+}
+
+.company-logo {
+  width: 180px !important;
+  /* 로고 너비 고정 */
+  height: 60px !important;
+  /* 로고 높이 고정 */
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: #ffffff;
+  /* 이미지 자체에도 흰색 배경 추가 */
+}
+
+/* 반응형에서도 배경색 유지 */
+@media screen and (max-width: 768px) {
+  .swiper-slide {
+    width: 150px !important;
+    height: 50px !important;
+    background-color: #ffffff;
+  }
+
+  .company-logo {
+    width: 150px !important;
+    height: 50px !important;
+    background-color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .swiper-slide {
+    width: 120px !important;
+    height: 40px !important;
+    background-color: #ffffff;
+  }
+
+  .company-logo {
+    width: 120px !important;
+    height: 40px !important;
+    background-color: #ffffff;
+  }
+}

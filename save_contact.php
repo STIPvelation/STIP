@@ -1,4 +1,6 @@
 <?php
+require_once 'config.php';
+
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_log("에러 메시지");
@@ -11,7 +13,8 @@ $username = "your_username";
 $password = "your_password";
 
 // MySQL 연결
-$conn = new mysqli($host, $username, $password, $dbname);
+// $conn = new mysqli($host, $username, $password, $dbname);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // 연결 오류 확인
 if ($conn->connect_error) {

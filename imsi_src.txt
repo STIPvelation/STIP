@@ -228,3 +228,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
               
             });
+
+<textarea readonly class="privacy-text" data-lang-ko="1. 개인정보의 수집 및 이용목적 - 서비스 제공 및 계약의 이행 - 상품 배송 및 대금 결제 2. 수집하는 개인정보 항목 - 이름, 연락처, 이메일 주소 3. 개인정보의 보유 및 이용기간 - 법령에 따른 보존기간까지" data-lang-en="1. Purpose of collecting and using personal information - Providing services and fulfilling contracts - Product delivery and payment processing 2. Types of personal information collected - Name, Contact number, Email address 3. Retention and usage period of personal information - Until the preservation period required by law" data-lang-ja="1. 個人情報の収集及び利用目的 - サービス提供及び契約の履行 - 商品配送及び代金決済 2. 収集する個人情報項目 - 氏名、連絡先、メールアドレス 3. 個人情報の保有及び利用期間 - 法令に基づく保存期間まで" data-lang-zh="1. 个人信息收集及使用目的 - 提供服务及履行合同 - 商品配送及支付处理 2. 收集的个人信息项目 - 姓名、联系方式、电子邮箱 3. 个人信息的保留及使用期限 - 按照法律规定的保存期限" rows="5" cols="30"></textarea>            

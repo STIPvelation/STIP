@@ -74,7 +74,51 @@
                     "email": "올바른 이메일 주소를 입력해주세요",
                     "name_mismatch": "카드 소유자 이름이 일치하지 않습니다"
                 }
-            }
+            },
+            "product_preview": {
+                "title": "상품 정보",
+                "product_code": "상품코드",
+                "product_name": "상품명",
+                "quantity": "수량",
+                "price": "가격",
+                "confirm_button": "확인",
+                "currency": {
+                    "krw": "원",
+                    "usd": "달러",
+                    "jpy": "엔",
+                    "cny": "위안"
+                }
+            },
+            "prevacy_text": "1. 개인정보의 수집 및 이용목적<br>- 서비스 제공 및 계약의 이행<br>- 상품 배송 및 대금 결제<br><br>2. 수집하는 개인정보 항목<br>- 이름, 연락처, 이메일 주소<br><br>3. 개인정보의 보유 및 이용기간<br>- 법령에 따른 보존기간까지",
+            "previewProductEx": [
+                "특허뉴스 PDF 판매 서비스 안내",
+                "________________________________________",
+                "서비스 설명",
+                "특허뉴스 PDF는 특허와 관련된 최신 산업 동향, 기술 혁신 사례, 특허 분쟁 및 법적 판례, 시장 분석 등 폭넓은 정보를 PDF 형식으로 제공하는 디지털 콘텐츠입니다.",
+                "특허 전문가, 연구개발자, 기술 창업가, 투자자 등이 필요로 하는 정보를 쉽고 빠르게 제공합니다.",
+                "________________________________________",
+                "서비스 제공 방법",
+                "1.구매 후 즉시 제공",
+                "o결제가 완료되면 구매하신 PDF 파일을 즉시 다운로드할 수 있는 링크가 제공됩니다.",
+                "o다운로드 링크는 구매 시 등록한 이메일로도 발송됩니다.",
+                "2.맞춤형 서비스 제공",
+                "o필요에 따라 특정 주제나 카테고리에 맞춘 PDF 리포트를 별도로 요청 가능합니다.",
+                "o맞춤형 리포트 제작 요청은 별도의 상담을 통해 진행됩니다.",
+                "________________________________________",
+                "취소 및 환불 규정",
+                "1.취소 규정",
+                "oPDF 파일 특성상, 다운로드가 완료된 후에는 환불이 불가능합니다.",
+                "o단, 구매 후 24시간 이내에 다운로드를 하지 않은 경우에 한해 취소 요청이 가능합니다.",
+                "2.환불 규정",
+                "o제공된 파일에 기술적 문제가 있거나 구매한 콘텐츠와 다른 경우, 이를 증명할 수 있는 자료를 제출하면 검토 후 환불 처리됩니다.",
+                "3.맞춤형 서비스 환불",
+                "o맞춤형 콘텐츠는 제작이 시작된 이후에는 취소 및 환불이 불가능합니다.",
+                "o단, 요청 내용과 상이한 경우 문제 확인 후 수정 또는 환불 진행 가능합니다.",
+                "________________________________________",
+                "고객지원 안내",
+                "문의 이메일: support@[사이트명].com",
+                "운영 시간: 평일 09:00~18:00 (주말 및 공휴일 휴무)"
+            ]
         },
         "about": {
             "title_area_h6": "Intellectual Property ",
@@ -258,7 +302,47 @@
                     "email": "Please enter a valid email address",
                     "name_mismatch": "Cardholder name does not match"
                 }
-            }
+            },
+            "product_preview": {
+                "title": "Product Information",
+                "product_code": "Product Code",
+                "product_name": "Product Name",
+                "quantity": "Quantity",
+                "price": "Price",
+                "confirm_button": "Confirm",
+                "currency": {
+                    "krw": "KRW",
+                    "usd": "USD",
+                    "jpy": "JPY",
+                    "cny": "CNY"
+                }
+            },
+            "prevacy_text": "1. 개인정보의 수집 및 이용목적<br>- 서비스 제공 및 계약의 이행<br>- 상품 배송 및 대금 결제<br><br>2. 수집하는 개인정보 항목<br>- 이름, 연락처, 이메일 주소<br><br>3. 개인정보의 보유 및 이용기간<br>- 법령에 따른 보존기간까지",
+            "previewProductEx": [ 
+                "Patent News PDF Sales Service Guide",
+                "Service Description",
+                "The Patent News PDF is a digital content product that provides a wide range of information in PDF format, including the latest industry trends related to patents, technological innovation cases, patent disputes, legal precedents, and market analysis.",
+                "It is an essential resource for patent professionals, researchers, tech entrepreneurs, and investors who need quick and accurate information.",
+                "Service Delivery Method",
+                "Immediate Access After Purchase",
+                "Upon completing the payment, a download link for the purchased PDF file will be provided immediately.", 
+                "The download link will also be sent to the email address registered during the purchase.",
+                "Customized Service Available",
+                "Customized PDF reports on specific topics or categories can be requested.",
+                "Custom report production requests will be processed through a separate consultation.", 
+                "Cancellation and Refund Policy",
+                "Cancellation Policy",
+                "Due to the nature of PDF files, refunds are not available once the download is completed.",
+                "However, cancellation requests can be made within 24 hours of purchase if the file has not been downloaded.",
+                "Refund Policy",
+                "If the provided file has technical issues or differs from the purchased content, a refund will be issued upon submission of evidence.",
+                "Customized Service Refund",
+                "Refunds for customized content are not possible once production has started.",
+                "owever, if the delivered content differs from the request, modifications or refunds will be processed after review.",
+                "Customer Support",
+                "Inquiry Email: support@[site].com",
+                "Operating Hours: Weekdays 09:00–18:00 (Closed on weekends and public holidays)"
+            ]
         },
         "about": {
             "title_area_h6": "Intellectual Property",
@@ -440,7 +524,47 @@
                     "email": "有効なメールアドレスを入力してください",
                     "name_mismatch": "カード名義人の名前が一致しません"
                 }
-            }
+            },
+            "product_preview": {
+                "title": "商品情報",
+                "product_code": "商品コード",
+                "product_name": "商品名",
+                "quantity": "数量",
+                "price": "価格",
+                "confirm_button": "確認",
+                "currency": {
+                    "krw": "KRW",
+                    "usd": "USD",
+                    "jpy": "JPY",
+                    "cny": "CNY"
+                }
+            },
+            "prevacy_text": "1. 개인정보의 수집 및 이용목적<br>- 서비스 제공 및 계약의 이행<br>- 상품 배송 및 대금 결제<br><br>2. 수집하는 개인정보 항목<br>- 이름, 연락처, 이메일 주소<br><br>3. 개인정보의 보유 및 이용기간<br>- 법령에 따른 보존기간까지",
+            "previewProductEx": [
+                "特許ニュースPDF販売サービス案内",
+                "サービス説明",
+                "特許ニュースPDFは、特許に関連する最新の産業動向、技術革新事例、特許紛争、法的判例、市場分析などの幅広い情報をPDF形式で提供するデジタルコンテンツです。",
+                "特許専門家、研究開発者、技術起業家、投資家が迅速かつ正確な情報を得るための必須リソースです。",
+                "サービス提供方法",
+                "•  購入後即時提供",
+                "支払い完了後、購入したPDFファイルのダウンロードリンクが即時提供されます.",
+                "また、購入時に登録したメールアドレスにもリンクが送信されます.",
+                "•  カスタマイズサービスの提供",
+                "特定のトピックやカディコリに関するカスタマイズPDFレポートのリクエストが可能です.",
+                "カスタムレポートの制作リクエストは、別途相談を通じて進められます。",
+                "キャンセル・返金ポリシー",
+                "•  キャンセルポリシー",
+                "PDFファイルの特性上、ダウンロード完了後の返金はできません。",
+                "ただし、購入後24時間以内にダウンロードが行われていない場合に限り、キャンセルリクエストが可能です。",
+                "•  返金ポリシー",
+                "提供されたファイルに技術的な問題がある場合や、購入したコンテンツと異なる場合は、証拠の提出後に返金が行われます。",
+                "•  カスタマイズサービスの返金",
+                "カスタマイズされたコンテンツは、制作開始後のキャンセル・返金はできません。",
+                "ただし、リクエスト内容と異なる場合、確認後に修正または返金を進めます。",
+                "顧客サポート",
+                "•  お問い合わせメール: support@[site].com",
+                "•  営業時間: 平日09:00～18:00（週末・祝日休業）"
+            ]
         },
         "about": {
             "title_area_h6": "Intellectual Property",
@@ -622,7 +746,48 @@
                     "email": "请输入有效的电子邮箱地址",
                     "name_mismatch": "持卡人姓名不匹配"
                 }
-            }
+            },
+            "product_preview": {
+                "title": "产品信息",
+                "product_code": "产品代码",
+                "product_name": "产品名称",
+                "quantity": "数量",
+                "price": "价格",
+                "confirm_button": "确认",
+                "currency": {
+                    "krw": "KRW",
+                    "usd": "USD",
+                    "jpy": "JPY",
+                    "cny": "CNY"
+                }
+            },
+            "prevacy_text": "1. 개인정보의 수집 및 이용목적<br>- 서비스 제공 및 계약의 이행<br>- 상품 배송 및 대금 결제<br><br>2. 수집하는 개인정보 항목<br>- 이름, 연락처, 이메일 주소<br><br>3. 개인정보의 보유 및 이용기간<br>- 법령에 따른 보존기간까지",
+            "previewProductEx": [
+                "专利新闻PDF销售服务指南",
+                "服务说明",
+                "专利新闻PDF 是一种数字内容产品，以PDF格式提供与专利相关的最新行业趋势、技术创新案例、专利纠纷、法律判例和市场分析等广泛信息。",
+                "对于需要快速准确信息的专利专业人士、研究人员、科技创业者和投资者来说，这是必不可少的资源。",
+                "服务提供方式",
+                "•  购买后立即提供",
+                "完成付款后，将立即提供所购PDF文件的下载链接。",
+                "下载链接还会发送至购买时登记的电子邮件地址。",
+                "•  提供定制化服务",
+                "可以根据需求提供特定主题或类别的定制PDF报告。",
+                "定制报告的制作请求需通过单独的咨询进行处理。",
+                "取消与退款政策",
+                "•  取消政策",
+                "由于PDF文件的特性，下载完成后无法退款。",
+                "然而，在购买后24小时内，如果文件尚未下载，可以提出取消请求。",
+                "•  退款政策",
+                "如果提供的文件存在技术问题或与购买的内容不符，提交证据后将进行退款处理。",
+                "•  定制化服务退款",
+                "一旦开始制作定制内容，将无法取消或退款。",
+                "但是，如果交付的内容与请求不符，将在审核后进行修改或退款。",
+                "客户支持",
+                "•  咨询邮箱: support@[site].com",
+                "•  营业时间: 工作日09:00–18:00（周末及公共假期休息）"
+
+            ]
         },
         "about": {
             "title_area_h6": "Intellectual Property",            

@@ -1,0 +1,169 @@
+@import url("../components/header.css");
+@import url("../components/button.css");
+@import url("../components/footer.css");
+@import url("../components/letter-title.css");
+@import url("../variable.css");
+
+/* 메인 레이아웃 */
+.root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+/* 비디오 배경 */
+.bg-video {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+/* 내비게이션 */
+.header-nav {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 메인 컨텐츠 */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding-top: 120px;
+  padding-left: 15%;
+}
+
+.letter-title {
+  font-size: 24px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.strong {
+  color: #00d9ff;
+  font-weight: bold;
+}
+
+/* 버튼 스타일 */
+.normal-button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 30px;
+}
+
+/* .watch-video-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+} */
+
+/* 슬라이더 */
+.logo-slider-section {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+/* .company-logo {
+  height: 60px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+} */
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+/* 버튼과 비디오 영역 */
+.content-bottom .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+.normal-button {
+  width: 180px;
+  height: 48px;
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.watch-video-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* 슬라이더 이미지 */
+.swiper-slide {
+  width: 180px !important;
+  height: 60px !important;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-logo {
+  width: 180px !important;
+  height: 60px !important;
+  object-fit: contain;
+}
+
+/* Footer */
+.footer-container {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.company-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}

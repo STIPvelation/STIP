@@ -56,6 +56,26 @@ async function loadTranslations() {
   }
 }
 
+// 국가 목록을 가져오는 함수
+
+
+// 현재 언어 설정을 가져오는 함수
+function getCurrentLanguage() {
+  // 로컬 스토리지에서 저장된 언어 설정을 가져옴
+  let currentLang = localStorage.getItem('preferredLanguage');
+
+  // 저장된 설정이 없으면 기본값으로 'ko' 사용
+  if (!currentLang) {
+    // 브라우저의 언어 설정 확인
+    const browserLang = navigator.language.slice(0, 2);
+    // 지원하는 언어인지 확인
+    currentLang = ['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'ko';
+    // 설정을 로컬 스토리지에 저장
+    localStorage.setItem('preferredLanguage', currentLang);
+  }
+
+  return currentLang;
+}
 
 // language-control.js 파일에 추가
 function handlePageNavigation(filename) {
@@ -90,10 +110,129 @@ function handlePageSelection(page) {
 }
 
 // 언어 변경 핸들러
-function handleLangChange(lang, fromSidebar = false) {
-  setLanguage(lang);
-  if (fromSidebar) {
-    handleBurgerMenuClose(); // 사이드바에서 언어 변경 시 사이드바 닫기
+async function handleLangChange(lang, fromSidebar = false) {
+  // currentLang = lang;
+  // localStorage.setItem('preferredLanguage', lang);
+  // updateCurrencyDisplay(lang);
+
+  // // 환율 업데이트
+  // currencyService.updatePriceDisplay(lang);
+  
+  // // 페이지의 다국어 요소 업데이트
+  // document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
+  //   element.textContent = element.getAttribute('data-lang-' + lang);
+
+  //   if (element.hasAttribute('data-placeholder-' + lang)) {
+  //     element.placeholder = element.getAttribute('data-placeholder-' + lang);
+  //   }
+  // });
+  // // 국가 목록 다시 로드
+  // // fetchCountries(lang);
+
+  // setLanguage(lang);
+  // if (fromSidebar) {
+  //   handleBurgerMenuClose(); // 사이드바에서 언어 변경 시 사이드바 닫기
+  // }
+  // 24-12-27 update by lee d.h
+  
+  try {
+    // 기존 코드 유지
+    document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
+      element.textContent = element.getAttribute('data-lang-' + lang);
+      if (element.hasAttribute('data-placeholder-' + lang)) {
+        element.placeholder = element.getAttribute('data-placeholder-' + lang);
+      }
+    });
+
+
+    // 가격 표시 업데이트 추가
+    const priceDisplay = document.getElementById('previewPrice');
+    if (priceDisplay && window.currencyService) {
+      const formattedPrice = await window.currencyService.updatePriceDisplay(lang);
+      priceDisplay.value = formattedPrice;
+    }    
+
+    // 페이지 언어 업데이트 추가
+    updatePageLanguage(lang);
+
+    setLanguage(lang);
+    if (fromSidebar) {
+      handleBurgerMenuClose();
+    }
+  } catch (error) {
+    console.error('Error updating language and currency:', error);
+  }
+}
+
+// 폼 언어 업데이트 함수
+function updateFormLanguage(form, lang) {
+  // 일반 텍스트 요소 업데이트
+  form.querySelectorAll(`[data-lang-${lang}]`).forEach(element => {
+    element.textContent = element.getAttribute(`data-lang-${lang}`);
+  });
+
+  // placeholder 업데이트
+  form.querySelectorAll(`[data-lang-${lang}-placeholder]`).forEach(element => {
+    element.placeholder = element.getAttribute(`data-lang-${lang}-placeholder`);
+  });
+
+  // 금액 표시 업데이트
+  const amountElements = form.querySelectorAll('[data-amount]');
+  amountElements.forEach(element => {
+    const amount = parseInt(element.getAttribute('data-amount'));
+    const formattedAmount = formatCurrencyByLang(amount, lang);
+    element.textContent = formattedAmount;
+  });  
+
+}
+
+// 언어별 통화 포맷 함수
+function formatCurrencyByLang(amount, lang) {
+  const currencyFormats = {
+    ko: { currency: 'KRW', locale: 'ko-KR' },
+    en: { currency: 'USD', rate: 0.00075 },
+    ja: { currency: 'JPY', rate: 0.11 },
+    zh: { currency: 'CNY', rate: 0.0049 }
+  };
+
+  const format = currencyFormats[lang];
+  const convertedAmount = format.rate ? amount * format.rate : amount;
+
+  return new Intl.NumberFormat(format.locale || lang, {
+    style: 'currency',
+    currency: format.currency
+  }).format(convertedAmount);
+}
+
+// updatePageLanguage 함수 정의
+function updatePageLanguage(lang) {
+  // 페이지의 모든 다국어 요소 업데이트
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(element => {
+    element.textContent = element.getAttribute(`data-lang-${lang}`);
+  });
+
+
+  // productPreviewForm이 있는 경우에만 처리
+  const productPreviewForm = document.getElementById('productPreviewForm');
+  if (productPreviewForm) {
+    // 상품 미리보기 폼 텍스트 업데이트
+    const formTitle = productPreviewForm.querySelector('.form-title');
+    const labels = productPreviewForm.querySelectorAll('.label-text');
+    const submitButton = productPreviewForm.querySelector('button[type="submit"]');
+
+    // 가격 업데이트
+    const priceInput = document.getElementById('previewPrice');
+    if (priceInput && window.currencyService) {
+      window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
+        priceInput.value = formattedPrice;
+      });
+    }
+  }
+
+  // orderForm 업데이트
+  const orderForm = document.getElementById('orderForm');
+  if (orderForm && orderForm.style.display !== 'none') {
+    updateFormLanguage(orderForm, lang);
   }
 }
 
@@ -175,7 +314,8 @@ function updateCommonElements(lang) {
 
 // 기존의 페이지별 업데이트 함수들 유지
 function updateHomePage(lang) {
-  const contentWrapper = document.querySelector(".content-wrapper");
+  const contentWrapper = document.querySelector(".content-wrapper");  
+
   if (contentWrapper && translations[lang].main) {
     // ... 기존 홈페이지 업데이트 코드 ...
     const logoWrapper = contentWrapper.querySelector(".logo-wrapper p");
@@ -198,36 +338,63 @@ function updateHomePage(lang) {
     if (watchVideoSpan) watchVideoSpan.textContent = translations[lang]?.main?.buttons?.watch_video;
   
   }
+  
+}
+
+// br 태그를 줄바꿈으로 변환하는 private 메서드 추가
+function convertBrToNewline(text) {
+  // 다양한 형태의 br 태그 처리
+  return text
+      .replace(/<br\s*\/?>/gi, '\n')  // <br>, <br/>, <br /> 등 모든 형태의 br 태그 처리
+      .replace(/\\n/g, '\n')          // \n 문자열을 실제 줄바꿈으로 변환
+      .replace(/\n\s*\n/g, '\n\n')    // 연속된 줄바꿈 정리
+      .replace(/^\s+|\s+$/g, '');    // 앞뒤 공백 제거
+}
+
+function adjustTextareaHeight() {
+  textarea.style.height = 'auto';
+  textarea.style.height = `${textarea.scrollHeight+2}px`;
 }
 
 
 function updateListingPage(lang) {
+  const previewProductEx = document.getElementById('previewProductEx');
   const formData = translations[lang]?.listing?.form;
   if (!formData) return;
+
+  if (previewProductEx) {
+    const contentArray = translations[lang].listing.previewProductEx;
+    let formattedContent = contentArray.join(', ');
+        
+    // this.#textarea.value = formattedContent;
+    previewProductEx.value = formattedContent;
+  }
+  
+  
 
   // 라벨 업데이트
   const nameLabel = document.querySelector('label[for="name"]');
   const emailLabel = document.querySelector('label[for="email"]');
   const mobileLabel = document.querySelector('label[for="mobile"]');
-  const uploadfileLabel = document.querySelector('label[for="uploadfile"]');
-  const file_upload_text = document.querySelector('.file-upload-text');
-  const file_delete_text = document.querySelector('.remove-file');
+  // const uploadfileLabel = document.querySelector('label[for="uploadfile"]');
+  // const file_upload_text = document.querySelector('.file-upload-text');
+  // const file_delete_text = document.querySelector('.remove-file');
   const smart5Label = document.querySelector('label[for="submit"]');
   // const file_aria_label = document.querySelectorAll('[aria-label]');
 
   // const input_file = document.querySelector('input[type="file"]');
-  const fileInput = document.getElementById('file'); // input 요소 가져오기
-  const remove_file = document.querySelector('.remove-file')
+  // const fileInput = document.getElementById('file'); // input 요소 가져오기
+  // const remove_file = document.querySelector('.remove-file')
 
   if (nameLabel) nameLabel.textContent = formData.labels.name;
   if (emailLabel) emailLabel.textContent = formData.labels.email;
   if (mobileLabel) mobileLabel.textContent = formData.labels.mobile;
-  if (uploadfileLabel) uploadfileLabel.textContent = formData.labels.uploadfile;
-  if (file_upload_text) file_upload_text.textContent = formData.labels.fileUploadTxt;
-  if (file_delete_text) file_delete_text.textContent = formData.labels.fileDeleteTxt;
+  // if (uploadfileLabel) uploadfileLabel.textContent = formData.labels.uploadfile;
+  // if (file_upload_text) file_upload_text.textContent = formData.labels.fileUploadTxt;
+  // if (file_delete_text) file_delete_text.textContent = formData.labels.fileDeleteTxt;
 
-  fileInput.setAttribute('aria-label', formData.labels.fileSelectAria);
-  remove_file.setAttribute('aria-label', formData.labels.fileDeleteAria);
+  // fileInput.setAttribute('aria-label', formData.labels.fileSelectAria);
+  // remove_file.setAttribute('aria-label', formData.labels.fileDeleteAria);
 
   
  
@@ -616,11 +783,22 @@ function closeSideBar() {
 // DOM 로드 후 초기화
 document.addEventListener("DOMContentLoaded", () => {
   loadTranslations();
+  
+  const currentLang = getCurrentLanguage();
+
+  // fetchCountries(currentLang);
 
   // 배경 클릭 시 사이드바 닫기
   // const sidebarBackground = document.querySelector('.sidebar-background');
   // if (sidebarBackground) {
   //   sidebarBackground.addEventListener('click', handleBurgerMenuClose);
   // }
+
+  updateListingPage(currentLang);
+  // updateContactSubPage(currentLang);
+  // updateContactComPage(currentLang);
+  // updatePaymentForm(currentLang);
+  
   document.querySelector('.sidebar-background').addEventListener('click', handleBurgerMenuClose);
+  
 });

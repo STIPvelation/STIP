@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"> -->
   <title>STIP HomePage stipvelation</title>
   <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
@@ -23,7 +24,7 @@
   <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" type="" href="assets/style/components/header.css" />
+  <link rel="stylesheet" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/about.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -33,6 +34,15 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+
+  <!-- Swiper CSS를 먼저 로드 -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  
+  <!-- Swiper JS를 type="module" 없이 로드 -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  <script src="js/services/swiper-service.js" defer></script>
+  <script src="js/services/device-service.js" defer></script>
 
   <style>
     body {
@@ -123,43 +133,47 @@
           </div>
         </header>
         <script>
-          const dropdown = document.querySelector('.dropdown');
-          const dropdown_menu = document.querySelector('.dropdown-menu');
-          // let lang = [];
-          // const clickedDivValues = [];
-          let divValue = '';
+          document.addEventListener('DOMContentLoaded', async function () {
+              console.log('Form handling script loaded');
+              const dropdown = document.querySelector('.dropdown');
+              const dropdown_menu = document.querySelector('.dropdown-menu');
+              // const Swiper = new SwiperService();
+              // let lang = [];
+              // const clickedDivValues = [];
+              let divValue = '';
 
-          dropdown_menu.addEventListener('click', (event) => {
-            const liElement = event.target.closest('li');
-            if (liElement) {
-              const divElement = liElement.querySelector('div'); // li 안의 div 찾기
-              if (divElement) {
-                divValue = divElement.textContent.trim(); // div 값 가져오기
+              dropdown_menu.addEventListener('click', (event) => {
+                const liElement = event.target.closest('li');
+                if (liElement) {
+                  const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+                  if (divElement) {
+                    divValue = divElement.textContent.trim(); // div 값 가져오기
 
-                // div 값 기록
-                // if (!clickedDivValues.includes(divValue)) {
-                // clickedDivValues.push(divValue);
-                // }
+                    // div 값 기록
+                    // if (!clickedDivValues.includes(divValue)) {
+                    // clickedDivValues.push(divValue);
+                    // }
 
-                // 결과를 화면에 표시
-                // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+                    // 결과를 화면에 표시
+                    // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+                  }
+
+                }
+                console.log(`${divValue}`);
+              })
+              function isMobileDevice() {
+                const userAgentCheck = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const screenSizeCheck = window.matchMedia("(max-width: 768px)").matches;
+
+                return userAgentCheck || screenSizeCheck;
               }
 
-            }
-            console.log(`${divValue}`);
-          })
-          function isMobileDevice() {
-            const userAgentCheck = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const screenSizeCheck = window.matchMedia("(max-width: 768px)").matches;
-
-            return userAgentCheck || screenSizeCheck;
-          }
-
-          if (isMobileDevice()) {
-            console.log("모바일 기기 또는 작은 화면에서 접속 중입니다.");
-          } else {
-            console.log("데스크톱 기기에서 접속 중입니다.");
-          }
+              if (isMobileDevice()) {
+                console.log("모바일 기기 또는 작은 화면에서 접속 중입니다.");
+              } else {
+                console.log("데스크톱 기기에서 접속 중입니다.");
+              }
+            });
 
         </script>
         <!-- </html> -->

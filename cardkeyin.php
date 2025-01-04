@@ -67,8 +67,13 @@ $postURL = "https://webapi.nicepay.co.kr/webapi/card_keyin.jsp";
 * 아래 파라미터에 요청할 값을 알맞게 입력합니다. 
 ****************************************************************************************
 */
+// 644-86-01439
+// mid = stipv0202m
+// 주식회사 아이피미디어그룹
+// 8onviTUoPLpmoUPGZIcAnj0YUrC9LmvKRjDRrQ7EUHVVL4SrtRMO8o6pNjN25pXoSQrWJMXbxuVSCL+dZ+4Jug==
+
 $tid       = "";          // 거래번호
-$mid       = "";          // 가맹점 아이디
+$mid       = "stipv0202m";          // 가맹점 아이디
 $moid       = "";          // 가맹점 주문번호
 $amt       = "";          // 금액
 $goodsName     = "특허뉴스PDF";          // 상품명
@@ -92,8 +97,9 @@ $response = "";
 * SHA-256 해쉬 암호화는 거래 위변조를 막기 위한 방법입니다. 
 ****************************************************************************************
 */
+// 8onviTUoPLpmoUPGZIcAnj0YUrC9LmvKRjDRrQ7EUHVVL4SrtRMO8o6pNjN25pXoSQrWJMXbxuVSCL+dZ+4Jug==
 $ediDate = date("YmdHis");                                          // API 요청 전문 생성일시
-$merchantKey = "b+zhZ4yOZ7FsH8pm5lhDfHZEb79tIwnjsdA0FBXh86yLc6BJeFVrZFXhAoJ3gEWgrWwN+lJMV0W4hvDdbe4Sjw==";   // 가맹점 키
+$merchantKey = "8onviTUoPLpmoUPGZIcAnj0YUrC9LmvKRjDRrQ7EUHVVL4SrtRMO8o6pNjN25pXoSQrWJMXbxuVSCL+dZ+4Jug==";   // 가맹점 키
 $encData = bin2hex(aesEncryptSSL($plainText, substr($merchantKey, 0, 16)));                  // 카드정보 암호화																										
 $signData = bin2hex(hash('sha256', $mid . $amt . $ediDate . $moid . $merchantKey, true));          // 위변조 데이터 검증 값 암호화 
 
