@@ -256,6 +256,124 @@
                     </div>
                 </div>
             </div>
+<style>
+/* 메인 컨텐츠 */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding-top: 120px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.letter-title {
+  font-size: clamp(18px, 4vw, 24px);
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.letter-title .strong {
+  color: #00d9ff;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .letter-title {
+    font-size: clamp(20px, 4vw, 36px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .letter-title {
+    font-size: clamp(18px, 3.5vw, 28px);
+  }
+}
+
+@media (max-width: 480px) {
+  .letter-title {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .letter-title .strong {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .content-bottom .text p {
+    font-size: 1rem;
+  }
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding-top: 120px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 400px) {
+  .content-wrapper {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 60px;
+  }
+
+  .content-section {
+    margin-bottom: 20px;
+  }
+
+  .letter-title {
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .letter-title .strong {
+    font-size: 1.1em;
+  }
+
+  .content-bottom {
+    margin-top: 30px;
+  }
+
+  .content-bottom .text p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .normal-button {
+    width: 100%;
+    max-width: 200px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .watch-video-area span {
+    font-size: 14px;
+  }
+}
+
+
+</style>
             <div class="logo-slider-section">
                 <div class="bottom-gradient"></div>
                 <div class="slider-container">
@@ -344,7 +462,7 @@
     <script>
         const swiper = new Swiper('.swiper', {
             autoplay: {
-                delay: 3000,
+                delay: 0,
                 disableOnInteraction: false,
             },
             speed: 800, // 전체 슬라이드 애니메이션 속도
@@ -354,18 +472,18 @@
             spaceBetween: 10,
             allowTouchMove: false, // 드래그 방지
             cssMode: false, // 부드러운 스크롤을 위해 비활성화
-            loopAdditionalSlides: 3, // 더 많은 슬라이드 복제
+            loopAdditionalSlides: 4, // 더 많은 슬라이드 복제
             breakpoints: {
                 900: {
-                    slidesPerView: 4,
-                    spaceBetween: 10,
-                },
-                1100: {
                     slidesPerView: 5,
                     spaceBetween: 10,
                 },
-                1200: {
+                1100: {
                     slidesPerView: 6,
+                    spaceBetween: 10,
+                },
+                1200: {
+                    slidesPerView: 7,
                     spaceBetween: 10,
                 },
             },

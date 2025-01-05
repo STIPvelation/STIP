@@ -515,10 +515,15 @@ function updateAboutPage(lang) {
 
 function updateProductPage(lang) {
   // ... 기존 프로덕트 페이지 업데이트 코드 ...
+  const home_visual = document.querySelector('.home-visual .container');
   const productContentArea = document.querySelector(".product-content-area");
   if (productContentArea) {
     const letter_title = document.querySelector(".letter-title");
     letter_title.innerHTML = translations[lang]?.product?.letter_title || "";
+  }
+  if (home_visual) {
+    const text_content = document.querySelector('.text-content h2.main-title');
+    text_content.innerHTML = translations[lang]?.product?.letter_title || "";
   }
 }
 
