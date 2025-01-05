@@ -138,13 +138,13 @@
             </div>
         </header>
         <script>
-            const dropdown = document.querySelector('.dropdown');
-            const dropdown_menu = document.querySelector('.dropdown-menu');
-            let divValue = '';
-
-
             // 여기에 아래 코드 추가
             document.addEventListener('DOMContentLoaded', function () {
+                const dropdown = document.querySelector('.dropdown');
+                const dropdown_menu = document.querySelector('.dropdown-menu');
+                let divValue = '';
+
+
                 // 현재 저장된 언어 가져오기
                 const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
                 const selectedLang = localStorage.getItem('preferredLanguage') || 'ko'; // 기본값은 'ko'
@@ -169,24 +169,25 @@
                 });
 
                 // contactForm 표시 설정 - style="display: none" 제거
-                const contactForm = document.getElementById('contactForm');
-                if (contactForm) {
-                    contactForm.style.display = 'block';
-                }
+                // const contactForm = document.getElementById('contactForm');
+                // if (contactForm) {
+                //     contactForm.style.display = 'block';
+                // }
+                
+                dropdown_menu.addEventListener('click', (event) => {
+                    const liElement = event.target.closest('li');
+                    if (liElement) {
+                        const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+                        if (divElement) {
+                            divValue = divElement.textContent.trim(); // div 값 가져오기
+    
+                        }
+    
+                    }
+                    console.log(`${divValue}`);
+                })
             });
 
-            dropdown_menu.addEventListener('click', (event) => {
-                const liElement = event.target.closest('li');
-                if (liElement) {
-                    const divElement = liElement.querySelector('div'); // li 안의 div 찾기
-                    if (divElement) {
-                        divValue = divElement.textContent.trim(); // div 값 가져오기
-
-                    }
-
-                }
-                console.log(`${divValue}`);
-            })
 
 
         </script>

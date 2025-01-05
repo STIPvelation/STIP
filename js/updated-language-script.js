@@ -544,27 +544,38 @@ function updateContactPage(lang) {
       h1Span.textContent = translations[lang]?.contact?.title_h1 || "";
     }
 
+    // const title_wrapper_h1_span = document.querySelector(".title-wrapper h1 span");
+
     // title-wrapper의 span 텍스트 변경 (소개 텍스트)
     const introText = document.querySelector(".title-wrapper span:nth-of-type(2)");
     if (introText) {
       introText.innerHTML = translations[lang]?.contact?.intro_text || "";
     }
 
+    // 모든 텍스트 요소 선택
+    const contactTitleSpan = document.querySelector('.row-wrapper .radius-box:first-child .title-wrapper h1 span');
+    const communityTitleSpan = document.querySelector('.row-wrapper .radius-box:last-child .title-wrapper h1 span');
+    const contactSpan = document.querySelector('.row-wrapper .radius-box:first-child .title-wrapper > span:not(h1 span)');
+    const communitySpan = document.querySelector('.row-wrapper .radius-box:last-child .title-wrapper > span:not(h1 span)');
+
+    contactTitleSpan.textContent = translations[lang]?.contact?.contact_title || "";
+    communityTitleSpan.textContent = translations[lang]?.contact?.community_title || "";
+
+    contactSpan.innerHTML = translations[lang]?.contact?.contact_description || "";
+    communitySpan.innerHTML = translations[lang]?.contact?.community_description || "";
+
+
     // row-wrapper 내 radius-box 요소 텍스트 변경
     const radiusBoxes = document.querySelectorAll(".row-wrapper .radius-box");
-    const boxData = translations[lang]?.contact?.radius_boxes || [];
+    const boxData = translations[lang]?.contact?.radius_boxes || [];   
+    
 
     radiusBoxes.forEach((box, index) => {
-      const h1Span = box.querySelector(".title-wrapper h1 span");
-      const boxText = box.querySelector(".title-wrapper span");
+      // const title_wrapper_h1 = box.querySelector(".title-wrapper h1");
+      // const title_wrpper_span = box.querySelector(".title-wrapper h1 span span");
+
       const button = box.querySelector(".normal-button a");
 
-      if (h1Span) {
-        h1Span.textContent = boxData[index]?.title || "";
-      }
-      if (boxText) {
-        boxText.innerHTML = boxData[index]?.description || "";
-      }
       if (button) {
         button.textContent = boxData[index]?.button_text || "";
         button.href = boxData[index]?.link || "#";

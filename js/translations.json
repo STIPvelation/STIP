@@ -133,21 +133,25 @@
             ]
         },
         "product": {
-            "letter_title": "<span>IP를 공유하자<br />지금은 IP시대.</span>"
+            "letter_title": "<span>I&nbsp;&nbsp;P&nbsp;를 공&nbsp;유&nbsp;하&nbsp;자<br/>지&nbsp;금&nbsp;은 &nbsp;&nbsp;I&nbsp;&nbsp;P&nbsp;시&nbsp;대.</span>"
         },
         "contact": {
             "title_h1": "문의",
             "intro_text": "필요한 내용을 저희 팀과 상담하세요",
+            "contact_title": "Inquiry",
+            "contact_description": "당신의 지혜를 세상과 나누세요<br/>진보의 씨앗은 당신으로부터 시작됩니다.",
+            "community_title": "Need Help",
+            "community_description": "귀하의 비즈니스 요구 사항에 대해<br/>저희 팀과 상의하세요.",
             "radius_boxes": [
                 {
                     "title": "문의하기",
-                    "description": "",
+                    "description": "Share your wisdom with the world <br/>The seeds of progress begin with you.",
                     "button_text": "연결",
                     "link": "contact-contact.html"
                 },
                 {
                     "title": "도움이 필요하세요",
-                    "description": "",
+                    "description": "Talk to our team about<br/>your enterprise needs.",
                     "button_text": "연결",
                     "link": "contact-community.html"
                 }
@@ -362,20 +366,24 @@
         "contact": {
             "title_h1": "Contact",
             "intro_text": "Talk to our team about<br /> your enterprise needs",
+            "contact_title": "Inquiry",
+            "contact_description": "Share your wisdom with the world <br/>The seeds of progress begin with you.",
+            "community_title": "Need Help",
+            "community_description": "Talk to our team about<br/>your enterprise needs.",
             "radius_boxes": [
                 {
                     "title": "Inquiry",
-                    "description": "",
+                    "description": "Share your wisdom with the world <br/>The seeds of progress begin with you.",
                     "button_text": "Connection",
                     "link": "contact-contact.html"
                 },
-                {
+               {
                     "title": "Need Help",
-                    "description": "",
+                    "description": "Talk to our team about<br/>your enterprise needs.",
                     "button_text": "Connection",
                     "link": "contact-community.html"
-                }
-            ]
+               }
+            ]           
         },
         "contact_contact": {
             "letter_title": "Inquiry",
@@ -584,6 +592,10 @@
         "contact": {
             "title_h1": "問い合わせ",
             "intro_text": "企業のニーズについて<br /> STIPチームにご相談ください",
+            "contact_title": "Inquiry",
+            "contact_description": "あなたの知恵を世界と共有しましょう<br/>進歩の種はあなたから始まります。",
+            "community_title": "Need Help",
+            "community_description": "あなたのビジネスニーズについて<br/>私たちのチームと話しましょう",
             "radius_boxes": [
                 {
                     "title": "問い合わせ",
@@ -807,6 +819,10 @@
         "contact": {
             "title_h1": "咨询",
             "intro_text": "请与我们的团队洽谈您的需求",
+            "contact_title": "Inquiry",
+            "contact_description": "将您的智慧分享给世界<br/>进步的种子从您开始。",
+            "community_title": "Need Help",
+            "community_description": "与我们的团队交流<br/>您的企业需求",
             "radius_boxes": [
                 {
                     "title": "询问",
