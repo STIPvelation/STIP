@@ -1,0 +1,10 @@
+acces_log.php
+/api/**
+/config/**
+/database/**
+/gnuboard5/**
+/html/**
+/logs/**
+/uploads/**
+/favicon.icon/**
+/favicon.icon2/**
