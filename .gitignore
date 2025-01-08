@@ -4,6 +4,11 @@ acces_log.php
 config.php
 currency*.js
 *.zip
+DKIM
+*.txt
+*.docx
+*.log
+*.key
 /api/**
 /cafe24/**
 /config/**
@@ -14,3 +19,4 @@ currency*.js
 /uploads/**
 /favicon.icon/**
 /favicon.icon2/**
+
