@@ -1,5 +1,5 @@
 <?php
-// db_config.php
+// db_config.php mysqli 데이터베이스 클래스
 
 // 데이터베이스 접속 정보를 환경 변수에서 로드
 function getDbConfig()

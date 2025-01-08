@@ -642,30 +642,39 @@ function updateContactSubPage(lang) {
   // Subject 부분 수정
   // Subject 라벨
   const subjectLabel = document.querySelector('label[for="subject"]');
+  const subjectInput = document.getElementById('subject');
   if (subjectLabel) {
     subjectLabel.textContent = formData.subject.label;
   }
 
-  // Subject 선택 박스
-  const selectBox = document.querySelector('.select-box');
-  if (selectBox) {
-    // placeholder (기본 선택 텍스트)
-    const placeholder = selectBox.querySelector('.selected-item');
-    if (placeholder) {
-      placeholder.textContent = formData.subject.placeholder;
-    }
-
-    // 옵션 목록
-    const optionsList = selectBox.querySelectorAll('.select-item');
-    if (optionsList.length > 0) {
-      optionsList.forEach(option => {
-        const optionType = option.getAttribute('aria-label')?.toLowerCase().replace(' ', '_');
-        if (optionType && formData.subject.options[optionType]) {
-          option.textContent = formData.subject.options[optionType];
-        }
-      });
-    }
+  if (subjectInput) {
+    subjectInput.placeholder = formData.subject.selectoption;
   }
+
+  // subjectInput.textContent = formData.subject.placeholder;
+
+  // Subject 선택 박스
+  // const selectBox = document.querySelector('.select-box');
+  
+  
+  // if (selectBox) {
+  //   // placeholder (기본 선택 텍스트)
+  //   // const placeholder = selectBox.querySelector('.selected-item');
+  //   // if (placeholder) {
+  //   //   placeholder.textContent = formData.subject.placeholder;
+  //   // }
+
+  //   // 옵션 목록
+  //   // const optionsList = selectBox.querySelectorAll('.select-item');
+  //   // if (optionsList.length > 0) {
+  //   //   optionsList.forEach(option => {
+  //   //     const optionType = option.getAttribute('aria-label')?.toLowerCase().replace(' ', '_');
+  //   //     if (optionType && formData.subject.options[optionType]) {
+  //   //       option.textContent = formData.subject.options[optionType];
+  //   //     }
+  //   //   });
+  //   // }
+  // }
 
   // Message
   const messageLabel = document.querySelector('label[for="message"]');

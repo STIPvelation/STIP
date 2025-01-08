@@ -1,5 +1,11 @@
+*.env
+*.env.local
 acces_log.php
+config.php
+currency*.js
+*.zip
 /api/**
+/cafe24/**
 /config/**
 /database/**
 /gnuboard5/**

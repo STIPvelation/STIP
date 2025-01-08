@@ -1,3 +1,5 @@
+
+// listing.html contact_form 파일업로드 핸들러
 class FileUploader {
   constructor() {
     this.dropZone = document.getElementById('dropZone');

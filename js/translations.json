@@ -193,7 +193,9 @@
                 "subject": {
                     "label": "주제",
                     "placeholder": "주제 선택",
+                    "selectoption": "주제를 선택해주세요",
                     "options": {
+                        "selectoption": "주제를 선택해주세요",
                         "listing": "상장",
                         "media_press": "언론",
                         "collaboration": "협업"
@@ -421,7 +423,9 @@
                 "subject": {
                     "label": "Subject",
                     "placeholder": "Select Subject",
+                    "selectoption": "Please select a topic",
                     "options": {
+                        "selectoption": "Please select a topic",
                         "listing": "Listing",
                         "media_press": "Media Press",
                         "collaboration": "Collaboration"
@@ -637,7 +641,7 @@
                     "placeholder": "携帯電話番号を入力してください"
                 },
                 "country": {
-                    "label": "国",
+                    "label": "国家",
                     "placeholder": "あなたの国を入力してください"
                 },
                 "email": {
@@ -647,6 +651,7 @@
                 "subject": {
                     "label": "主題",
                     "placeholder": "件名を選択してください",
+                    "selectoption": "トピックを選択してください",
                     "options": {
                         "listing": "上場",
                         "media_press": "メディア",
@@ -874,6 +879,7 @@
                 "subject": {
                     "label": "主题",
                     "placeholder": "选择主题",
+                    "selectoption": "请选择一个主题",
                     "options": {
                         "listing": "上市",
                         "media_press": "媒体",

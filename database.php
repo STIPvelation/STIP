@@ -1,5 +1,5 @@
 <?php
-// Database.php
+// Database.php mysqli class
 class Database
 {
   private $conn;

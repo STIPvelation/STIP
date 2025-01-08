@@ -1,4 +1,7 @@
 // 폼 제출 처리를 위한 메인 함수
+// listing.html Form handler
+// creat by lee d.h 25-01-07
+
 async function handleFormSubmit(formData) {
   try {
     // 1. 파일 업로드 처리

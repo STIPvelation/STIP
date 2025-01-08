@@ -1,3 +1,4 @@
+// listing.html Form Handler
 class FormHandler {
   constructor() {
     this.contactForm = document.getElementById('contactForm');

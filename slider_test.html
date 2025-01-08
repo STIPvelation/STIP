@@ -1,0 +1,54 @@
+<!-- Splide.js CSS 및 JS 추가 -->
+
+<head>
+  ...
+  <!-- Splide.js 스타일시트 추가 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+  <!-- Splide.js 스크립트 추가 -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  ...
+</head>
+
+<body>
+  ...
+  <!-- Splide 슬라이더 섹션 -->
+  <div class="splide" id="logo-slider" style="background: rgba(0,0,0,0.4)">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <!-- 슬라이드 아이템 -->
+        <li class="splide__slide">
+          <img src="assets/images/logo.png" alt="Logo 1" />
+        </li>
+        <li class="splide__slide">
+          <img src="assets/images/logo.png" alt="Logo 2" />
+        </li>
+        <li class="splide__slide">
+          <img src="assets/images/logo.png" alt="Logo 3" />
+        </li>
+        <li class="splide__slide">
+          <img src="assets/images/logo.png" alt="Logo 4" />
+        </li>
+      </ul>
+    </div>
+  </div>
+  ...
+
+  <!-- Splide 초기화 스크립트 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Splide("#logo-slider", {
+        type: "loop", // 무한 반복
+        direction: "rtl", // 오른쪽에서 왼쪽으로 흐름
+        perPage: 3, // 한 번에 보이는 슬라이드 개수
+        perMove: 1, // 한 번 이동 시 넘기는 슬라이드 개수
+        autoplay: true, // 자동 재생 활성화
+        interval: 3000, // 자동 재생 간격 (밀리초)
+        speed: 1000, // 슬라이드 전환 속도
+        pauseOnHover: true, // 마우스 호버 시 일시 정지
+        pagination: false, // 하단 페이지네이션 비활성화
+        arrows: false, // 좌우 화살표 비활성화
+        spaceBetween: 10,
+      }).mount();
+    });
+  </script>
+</body>

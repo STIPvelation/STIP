@@ -18,7 +18,7 @@
     <meta name="distribution" content="Global">
     <meta name="rating" content="General">
     <meta name="revisit-after" content="7 days">
-
+    
     <!-- Open Graph 추가 태그 -->
     <meta property="og:type" content="business.business">
     <meta property="og:url" content="https://stipvelation.com">
@@ -26,24 +26,22 @@
     <meta property="og:site_name" content="STIP - 글로벌 특허거래 플랫폼">
     <meta property="business:contact_data:street_address" content="서울시 강남구 테헤란로151 1116호">
     <meta property="business:contact_data:country_name" content="Korea">
-
+    
     <!-- 소셜 미디어 최적화를 위한 추가 태그 -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="STIP - 글로벌 특허거래 플랫폼">
     <meta name="twitter:description" content="글로벌 특허 거래 및 기술이전 전문 플랫폼">
     <meta name="twitter:image" content="https://stipvelation.com/assets/images/twitter-image.jpg">
-
+    
     <!-- 추가 검색엔진 최적화 태그 -->
     <link rel="canonical" href="https://stipvelation.com">
-    <meta name="google-site-verification"
-        content="google-site-verification=GOZJABKmCzKGcPRTvfWr85NEmZ0f0jmJooxEk6PhvGM">
+    <meta name="google-site-verification" content="google-site-verification=GOZJABKmCzKGcPRTvfWr85NEmZ0f0jmJooxEk6PhvGM">
     <meta name="naver-site-verification" content="3d9f84392f2f8c5adb989466c29ed24f43b23232"">
     
     <!-- 메타 태그 추가 끝 -->
-    <meta name=" robots" content="index, follow">
+    <meta name="robots" content="index, follow">
 
-    <!-- <title>STIP HomePage stipvelation</title> -->
-    <title>발명특허 트레이딩 - STIP HomePage</title> <!-- 주석: SEO를 위해 의미있는 타이틀로 변경 -->
+    <title>STIP HomePage stipvelation</title>
     <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
@@ -53,7 +51,6 @@
     <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="144x144" href="favicon.ico2/android-icon-144x144.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
@@ -63,7 +60,7 @@
     <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="assets/style/pages/main2.css" />
+    <link rel="stylesheet" href="assets/style/pages/main.css" />
     <link rel="stylesheet" href="assets/style/components/header.css" />
     <link rel="stylesheet" href="assets/style/reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -80,26 +77,25 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-
-    <script src="js/services/device-service.js"></script>
+    
+	<script src="js/services/device-service.js"></script>
 
     <style>
         body {
             font-family: 'SUIT', sans-serif;
         }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* background: #03a9f4; */
-            background: var(--overlay-color);
-            mix-blend-mode: overlay;
-            background: rgba(0, 0, 0, 0.5);
-        }
-    </style>
+		.overlay {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  /* background: #03a9f4; */
+		  background: var(--overlay-color);
+		  mix-blend-mode: overlay;
+		  background: rgba(0, 0, 0, 0.5);
+		}
+    </style>    
 </head>
 
 <body>
@@ -113,13 +109,11 @@
                 </div>
                 <nav class="header-nav">
                     <div class="burger-menu-wrapper">
-                        <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
-                            onclick="handleBurgerMenu()">
+                        <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
                         <div class="side-bar-container">
                             <div class="sidebar-background">
                                 <div class="close-btn">
-                                    <img src="assets/images/mobile/close.svg" alt="close"
-                                        onclick="handleBurgerMenuClose()">
+                                    <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
                                 </div>
                             </div>
                             <div class="side-bar-wrapper">
@@ -138,8 +132,7 @@
                                     </div>
                                     <div class="side-bar-list lang">
                                         <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
-                                        <span class="side-bar-item"
-                                            onclick="handleLangChange('en', true)">English</span>
+                                        <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
                                         <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
                                         <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
                                     </div>
@@ -216,23 +209,20 @@
                 // if (contactForm) {
                 //     contactForm.style.display = 'block';
                 // }
-
+                
                 dropdown_menu.addEventListener('click', (event) => {
                     const liElement = event.target.closest('li');
                     if (liElement) {
                         const divElement = liElement.querySelector('div'); // li 안의 div 찾기
                         if (divElement) {
                             divValue = divElement.textContent.trim(); // div 값 가져오기
-
+    
                         }
-
+    
                     }
                     console.log(`${divValue}`);
                 })
             });
-
-
-
         </script>
 
         <div class="bg-video">
@@ -242,7 +232,7 @@
                 <source src="assets/main-background-video.mp4" type="video/mp4" />
                 Your browser is not supported!
             </video>
-            <div class="overlay"></div>
+			<div class="overlay"></div>
         </div>
 
         <!-- main section start -->
@@ -281,8 +271,7 @@
                             <button class="normal-button" style="width: 180px;" onclick="location.href='listing.html'"
                                 aria-label="Go to Listing page">
                                 <span>Listing</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34"
-                                    width="34">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34" width="34">
                                     <circle stroke-width="3" stroke="white" r="35.5" cy="37" cx="37"></circle>
                                     <path fill="white"
                                         d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z">
@@ -299,237 +288,104 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <style>
-                /* 메인 컨텐츠 */
-                .content-wrapper {
-                    position: relative;
-                    z-index: 1;
-                    color: #fff;
-                    padding-top: 120px;
-                    padding-left: 15%;
-                    padding-right: 15%;
-                }
-
-                .letter-title {
-                    font-size: clamp(18px, 4vw, 24px);
-                    line-height: 1.5;
-                    opacity: 0.8;
-                }
-
-                .letter-title .strong {
-                    color: #00d9ff;
-                    font-weight: bold;
-                }
-
-                @media screen and (max-width: 768px) {
-                    .letter-title {
-                        font-size: clamp(20px, 4vw, 36px);
-                    }
-                }
-
-                @media screen and (max-width: 480px) {
-                    .letter-title {
-                        font-size: clamp(18px, 3.5vw, 28px);
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .letter-title {
-                        flex-direction: column;
-                        align-items: center;
-                    }
-
-                    .letter-title .strong {
-                        margin-right: 0;
-                        margin-bottom: 0.25rem;
-                    }
-
-                    .content-bottom .text p {
-                        font-size: 1rem;
-                    }
-                }
-
-                .content-wrapper {
-                    position: relative;
-                    z-index: 1;
-                    color: #fff;
-                    padding-top: 120px;
-                    padding-left: 15%;
-                    padding-right: 15%;
-                }
-
-                @media (max-width: 768px) {
-                    .content-wrapper {
-                        padding-left: 5%;
-                        padding-right: 5%;
-                        padding-top: 80px;
-                    }
-                }
-
-                @media (max-width: 400px) {
-                    .content-wrapper {
-                        padding-left: 3%;
-                        padding-right: 3%;
-                        padding-top: 60px;
-                    }
-
-                    .content-section {
-                        margin-bottom: 20px;
-                    }
-
-                    .letter-title {
-                        font-size: clamp(16px, 4vw, 20px);
-                        line-height: 1.3;
-                        margin-bottom: 10px;
-                    }
-
-                    .letter-title .strong {
-                        font-size: 1.1em;
-                    }
-
-                    .content-bottom {
-                        margin-top: 30px;
-                    }
-
-                    .content-bottom .text p {
-                        font-size: 14px;
-                        line-height: 1.4;
-                        margin-bottom: 8px;
-                    }
-
-                    .buttons {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 16px;
-                    }
-
-                    .normal-button {
-                        width: 100%;
-                        max-width: 200px;
-                        font-size: 14px;
-                        padding: 8px 16px;
-                    }
-
-                    .watch-video-area span {
-                        font-size: 14px;
-                    }
-                }
-            </style>
-            <div class="logo-slider-section">
-                <div class="bottom-gradient"></div>
-                <div class="slider-container">
-                    <!-- 그라데이션 오버레이 -->
-                    <div class="gradient-overlay gradient-left"></div>
-                    <div class="gradient-overlay gradient-right"></div>
-
-                    <!-- 슬라이더 -->
-
-                    <!-- 새로운 코드 시작 -->
-                    <div class="swiper-container">
-                        <div class="swiper" dir="ltr">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/aippii_1000x337-Photoroom.png" alt="aippii"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kaips_1000x337-Photoroom.png" alt="한국지식재산서비스협회"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kiip_1000x337-Photoroom.png" alt="한국지식재산연구원"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kipa_1000x337-Photoroom.png" alt="한국발명진흥회"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kipi_1000x337-Photoroom.png" alt="한국특허정보원"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kipo_1000x337-Photoroom.png" alt="특허심판원"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kipro_1000X337-Photoroom.png" alt="한국특허기술진흥원"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kista_1000x337-Photoroom.png" alt="한국특허전략개발원"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/almk_1000x337-Photoroom.png" alt="알막툼"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kaips_1000x337-Photoroom.png" alt="한국지식재산서비스협회"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kipo_logo.png" alt="특허청" class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/siae_1000x337-Photoroom.png" alt="STIP Logo 6"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kpaa_1000x337-Photoroom.png" alt="대한변리사"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kaips_1000x337-Photoroom.png" alt="한국지식재산서비스협회"
-                                        class="company-logo">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="assets/images/index/kipo_logo.png" alt="특허청" class="company-logo">
+                <div class="logo-slider-section">
+                    <div class="bottom-gradient"></div>
+                    <div class="slider-container">
+                        <!-- 그라데이션 오버레이 -->
+                        <div class="gradient-overlay gradient-left"></div>
+                        <div class="gradient-overlay gradient-right"></div>
+    
+                        <!-- 슬라이더 -->
+    
+                        <!-- 새로운 코드 시작 -->
+                        <div class="swiper-container">
+                            <div class="swiper" dir="ltr">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-01.png" alt="aippii" class="company-logo">
+                                    </div>                                
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-02.png" alt="한국지식재산서비스협회" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-03.png" alt="한국지식재산연구원" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-04.png" alt="한국발명진흥회" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-05.png" alt="한국특허정보원" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-06.png" alt="특허심판원" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-07.png" alt="한국특허기술진흥원" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-08.png" alt="한국특허전략개발원" class="company-logo">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-09.png" alt="알막툼" class="company-logo">
+                                    </div>     
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-11.png" alt="특허청" class="company-logo">
+                                    </div>                 
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-12.png" alt="STIP Logo 6" class="company-logo">
+                                    </div>                                
+                                    <div class="swiper-slide">
+                                        <img src="assets/images/logo/Main/logo-13.png" alt="대한변리사" class="company-logo">
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        <!-- 새로운 코드 끝 -->
                     </div>
-                    <!-- 새로운 코드 끝 -->
                 </div>
             </div>
+
+
         </main>
         <!-- main section end -->
-        <style>
-            /* .slider-container {
+<style>
+/* .slider-container {
   display: flex;
   overflow: hidden;
-  width: 100%;
+  margin:0 auto;
+  position:relative;
 } */
 
-            .slider-container {
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-                margin: 0 auto;
-            }
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
 
-            .swiper-wrapper {
-                display: flex;
-                transition: transform 0.3s ease;
-            }
+.swiper-wrapper {
+  display: flex;
+  transition: transform 0.3s ease;
+}
 
-            .swiper-slide {
-                flex: 0 0 auto;
-                width: 180px;
-                height: 60px;
-                margin-right: 20px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+.swiper-slide {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 60px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-            .company-logo {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-            }
-        </style>
+.company-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+</style>         
         <!-- footer start -->
         <footer class="footer-container">
             <div class="footer-wrapper">
@@ -552,20 +408,10 @@
         <!-- footer end -->
     </div>
 
-    <script>
-        // 마우스 호버 시 일시정지/재생
-        // const swiperContainer = document.querySelector('.swiper-container');
-        // swiperContainer.addEventListener('mouseenter', () => {
-        //     swiper.autoplay.stop();
-        // });
-        // swiperContainer.addEventListener('mouseleave', () => {
-        //     swiper.autoplay.start();
-        // });
-
-        // new type slider loop 25-01-07
+    <script>        
         const swiper = new Swiper('.swiper', {
             autoplay: {
-                delay: 800,
+                delay: 3000,
                 disableOnInteraction: false,
             },
             speed: 2000,
@@ -594,11 +440,19 @@
                 },
             },
         });
-
+        // 마우스 호버 시 일시정지/재생
+        // const swiperContainer = document.querySelector('.swiper-container');
+        // swiperContainer.addEventListener('mouseenter', () => {
+        //     swiper.autoplay.stop();
+        // });
+        // swiperContainer.addEventListener('mouseleave', () => {
+        //     swiper.autoplay.start();
+        // });
+        
     </script>
     <!-- <script src="components/header.js" defer></script> -->
     <!-- <script src="js/header.js"></script> -->
-
+ 
     <script src="js/updated-language-script.js"></script>
 
 </body>
