@@ -4,7 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>STIP HomePage stipvelation</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
+  <link rel="manifest" href="favicon.ico2/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" type="" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/contact.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
@@ -24,6 +42,11 @@
 <body>
   <div class="root">
     <!-- header start -->
+    <!-- header.html -->
+    <!-- <!DOCTYPE html> -->
+    <!-- <html> -->
+    <!-- <head> -->
+
     <header class="header-container">
       <div class="header-wrapper">
         <div class="header-logo">
@@ -33,46 +56,46 @@
         </div>
         <nav class="header-nav">
           <div class="burger-menu-wrapper">
-            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
-              onclick="handleBurgerMenu()" />
+            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
             <div class="side-bar-container">
               <div class="sidebar-background">
                 <div class="close-btn">
-                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()" />
+                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
                 </div>
               </div>
               <div class="side-bar-wrapper">
                 <nav class="side-bar-section">
                   <div class="side-bar-list">
-                    <a class="side-bar-item navigate" href="index.html">Main</a>
-                    <a class="side-bar-item navigate" href="listing.html">Listing</a>
-                    <a class="side-bar-item navigate" href="about.html">About us</a>
-                    <a class="side-bar-item navigate" href="product.html">Product</a>
-                    <a class="side-bar-item navigate" href="contact.html">Contact</a>
+                    <a class="side-bar-item navigate" href="index.html" data-page="main"
+                      onclick="handlePageSelection('main')">main</a>
+                    <a class="side-bar-item navigate" href="listing.html" data-page="listing"
+                      onclick="handlePageSelection('listing')">Listing</a>
+                    <a class="side-bar-item navigate" href="about.html" data-page="about"
+                      onclick="handlePageSelection('about')">About us</a>
+                    <a class="side-bar-item navigate" href="product.html" data-page="product"
+                      onclick="handlePageSelection('product')">Product</a>
+                    <a class="side-bar-item navigate active" href="contact.html" data-page="contact"
+                      onclick="handlePageSelection('contact')">Contact</a>
                   </div>
                   <div class="side-bar-list lang">
-                    <span class="side-bar-item ko" onclick="handleLangChange('ko',true)">한국어</span>
-                    <span class="side-bar-item en" onclick="handleLangChange('en',true)">English</span>
-                    <span class="side-bar-item ja" onclick="handleLangChange('ja',true)">日本語</span>
-                    <span class="side-bar-item zh" onclick="handleLangChange('zh',true)">中文</span>
+                    <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
+                    <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
+                    <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
+                    <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
                   </div>
                 </nav>
               </div>
             </div>
           </div>
           <ul>
-            <li>
-              <a class="nav-item navigate" href="listing.html">Listing</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="about.html">About us</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="product.html">Product</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="contact.html">Contact</a>
-            </li>
+            <li><a class="nav-item navigate" href="listing.html" data-page="listing"
+                onclick="handlePageSelection('listing')">Listing</a></li>
+            <li><a class="nav-item navigate" href="about.html" data-page="about"
+                onclick="handlePageSelection('about')">About us</a></li>
+            <li><a class="nav-item navigate" href="product.html" data-page="product"
+                onclick="handlePageSelection('product')">Product</a></li>
+            <li><a class="nav-item navigate active" href="contact.html" data-page="contact"
+                onclick="handlePageSelection('contact')">Contact</a></li>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,24 +103,16 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ko')">
-                    한국어
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('en')">
-                    English
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ja')">
-                    日本語
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('zh')">
-                    中文
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
                 </li>
               </ul>
             </div>
@@ -106,6 +121,35 @@
       </div>
     </header>
     <!-- header end -->
+    <script>
+      const dropdown = document.querySelector('.dropdown');
+      const dropdown_menu = document.querySelector('.dropdown-menu');
+      // let lang = [];
+      // const clickedDivValues = [];
+      let divValue = '';
+
+      dropdown_menu.addEventListener('click', (event) => {
+        const liElement = event.target.closest('li');
+        if (liElement) {
+          const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+          if (divElement) {
+            divValue = divElement.textContent.trim(); // div 값 가져오기
+
+            // div 값 기록
+            // if (!clickedDivValues.includes(divValue)) {
+            // clickedDivValues.push(divValue);
+            // }
+
+            // 결과를 화면에 표시
+            // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+          }
+
+        }
+        console.log(`${divValue}`);
+
+      })
+
+    </script>
     <div class="bg-image">
       <img src="assets/images/bg-image.jpg" alt="bg-image" />
     </div>
@@ -118,8 +162,7 @@
           <h1 class="letter-title">
             <span>Contact</span>
           </h1>
-          <span>Share your wisdom with the world <br />The seeds of progress
-            begin with you</span>
+          <span>Share your wisdom with the world <br />The seeds of progress begin with you.</span>
         </div>
         <div class="row-wrapper">
           <div class="radius-box">
@@ -127,20 +170,19 @@
               <h1>
                 <span>Contact</span>
               </h1>
-              <span>Talk to our team about<br />
-                your enterprise needs.</span>
+              <span>Talk to our team about<br />your enterprise needs.</span>
             </div>
             <button class="normal-button">
               <a href="contact-contact.html">Connection</a>
             </button>
           </div>
+
           <div class="radius-box">
             <div class="title-wrapper">
               <h1>
                 <span>Community</span>
               </h1>
-              <span>Get help with your project<br />
-                from the community</span>
+              <span>Get help with your project<br />from the community.</span>
             </div>
             <button class="normal-button">
               <a href="contact-community.html">Connection</a>
@@ -169,15 +211,34 @@
     <!-- footer end -->
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("components/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header-placeholder").innerHTML = data;
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.normal-button');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', function (e) {
+          const link = this.querySelector('a');
+          if (link) {
+            // 기본 클릭 이벤트 방지
+            e.preventDefault();
+
+            const filename = link.getAttribute('href');
+
+            console.log(filename);
+
+            // language-control.js의 함수 호출
+            handlePageNavigation(filename);
+
+            // 페이지 이동
+            setTimeout(() => {
+              window.location.href = filename;
+            }, 100);
+          }
         });
+      });
     });
   </script>
-  <script src="components/header.js" defer></script>
+  <!-- <script src="components/header.js" defer></script> -->
+  <script src="js/updated-language-script.js"></script>
 </body>
 
 </html>

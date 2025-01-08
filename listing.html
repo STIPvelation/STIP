@@ -4,6 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STIP HomePage stipvelation</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
+  <link rel="manifest" href="favicon.ico2/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" type="" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/listing.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
@@ -14,7 +33,13 @@
     crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.5.0/dist/TagCloud.min.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- 결제 관련 스크립트 -->
+  <!-- <script src="js/config.js"></script> -->
+  <!-- <script src="js/currency-converter2.js"></script> -->
+  <!-- <script src="js/payment-handler3.js"></script> -->
   <style>
     body {
       font-family: "SUIT", sans-serif;
@@ -25,6 +50,11 @@
 <body>
   <div class="root">
     <!-- header start -->
+    <!-- header.html -->
+    <!-- <!DOCTYPE html> -->
+    <!-- <html> -->
+    <!-- <head> -->
+
     <header class="header-container">
       <div class="header-wrapper">
         <div class="header-logo">
@@ -34,46 +64,46 @@
         </div>
         <nav class="header-nav">
           <div class="burger-menu-wrapper">
-            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
-              onclick="handleBurgerMenu()" />
+            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
             <div class="side-bar-container">
               <div class="sidebar-background">
                 <div class="close-btn">
-                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()" />
+                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
                 </div>
               </div>
               <div class="side-bar-wrapper">
                 <nav class="side-bar-section">
                   <div class="side-bar-list">
-                    <a class="side-bar-item navigate" href="index.html">Main</a>
-                    <a class="side-bar-item navigate" href="listing.html">Listing</a>
-                    <a class="side-bar-item navigate" href="about.html">About us</a>
-                    <a class="side-bar-item navigate" href="product.html">Product</a>
-                    <a class="side-bar-item navigate" href="contact.html">Contact</a>
+                    <a class="side-bar-item navigate" href="index.html" data-page="main"
+                      onclick="handlePageSelection('main')">main</a>
+                    <a class="side-bar-item navigate active" href="listing.html" data-page="listing"
+                      onclick="handlePageSelection('listing')">Listing</a>
+                    <a class="side-bar-item navigate" href="about.html" data-page="about"
+                      onclick="handlePageSelection('about')">About us</a>
+                    <a class="side-bar-item navigate" href="product.html" data-page="product"
+                      onclick="handlePageSelection('product')">Product</a>
+                    <a class="side-bar-item navigate" href="contact.html" data-page="contact"
+                      onclick="handlePageSelection('contact')">Contact</a>
                   </div>
                   <div class="side-bar-list lang">
-                    <span class="side-bar-item ko" onclick="handleLangChange('ko',true)">한국어</span>
-                    <span class="side-bar-item en" onclick="handleLangChange('en',true)">English</span>
-                    <span class="side-bar-item ja" onclick="handleLangChange('ja',true)">日本語</span>
-                    <span class="side-bar-item zh" onclick="handleLangChange('zh',true)">中文</span>
+                    <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
+                    <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
+                    <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
+                    <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
                   </div>
                 </nav>
               </div>
             </div>
           </div>
           <ul>
-            <li>
-              <a class="nav-item navigate" href="listing.html">Listing</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="about.html">About us</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="product.html">Product</a>
-            </li>
-            <li>
-              <a class="nav-item navigate" href="contact.html">Contact</a>
-            </li>
+            <li><a class="nav-item navigate active" href="listing.html" data-page="listing"
+                onclick="handlePageSelection('listing')">Listing</a></li>
+            <li><a class="nav-item navigate" href="about.html" data-page="about"
+                onclick="handlePageSelection('about')">About us</a></li>
+            <li><a class="nav-item navigate" href="product.html" data-page="product"
+                onclick="handlePageSelection('product')">Product</a></li>
+            <li><a class="nav-item navigate" href="contact.html" data-page="contact"
+                onclick="handlePageSelection('contact')">Contact</a></li>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,24 +111,16 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ko')">
-                    한국어
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('en')">
-                    English
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ja')">
-                    日本語
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
                 </li>
                 <li>
-                  <div class="dropdown-item" onclick="handleLangChange('zh')">
-                    中文
-                  </div>
+                  <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
                 </li>
               </ul>
             </div>
@@ -106,6 +128,35 @@
         </nav>
       </div>
     </header>
+    <script>
+      const dropdown = document.querySelector('.dropdown');
+      const dropdown_menu = document.querySelector('.dropdown-menu');
+      // let lang = [];
+      // const clickedDivValues = [];
+      let divValue = '';
+
+      dropdown_menu.addEventListener('click', (event) => {
+        const liElement = event.target.closest('li');
+        if (liElement) {
+          const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+          if (divElement) {
+            divValue = divElement.textContent.trim(); // div 값 가져오기
+
+            // div 값 기록
+            // if (!clickedDivValues.includes(divValue)) {
+            // clickedDivValues.push(divValue);
+            // }
+
+            // 결과를 화면에 표시
+            // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+          }
+
+        }
+        console.log(`${divValue}`);
+
+      })
+
+    </script>
     <!-- header end -->
     <div class="bg-image">
       <img src="assets/images/bg-image.jpg" alt="bg-image" />
@@ -124,29 +175,292 @@
         </div>
         <div class="row-area">
           <div class="radius-box column">
-            <div class="input-box">
-              <label class="required">Name</label>
-              <input type="text" placeholder="이름을 입력해주세요." />
-            </div>
-            <div class="input-box">
-              <label class="required">Email</label>
-              <input type="text" placeholder="메일을 입력해주세요." />
-            </div>
-            <div class="input-box">
-              <label class="required">Mobile</label>
-              <input type="text" placeholder="연락처를 입력해주세요." />
-            </div>
-            <div class="input-box button">
-              <label class="required">Submit the SMART5 patent evaluation report</label>
-              <button class="normal-button">Submit</button>
-            </div>
-            <div class="input-box button">
-              <label class="required">Payment</label>
-              <button class="normal-button">Connect</button>
+            <form id="contactForm">
+              <div class="input-box">
+                <label for="name" class="required">Name</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." />
+              </div>
+              <div class="input-box">
+                <label for="email" class="required">Email</label>
+                <input type="text" id="email" name="email" placeholder="메일을 입력해주세요." />
+              </div>
+              <div class="input-box">
+                <label for="mobile" class="required">Mobile</label>
+                <input type="text" id="mobile" name="mobile" placeholder="연락처를 입력해주세요." />
+              </div>
+              <div class="input-box button">
+                <label for="submit" class="required">Submit the SMART5 patent evaluation report</label>
+                <button id="submit" name="submit" class="normal-button">Submit</button>
+              </div>
+            </form>
+            <style>
+              #contactForm {
+                width: 100%;
+              }
+
+              #contactForm .input-box {
+                margin: 5px 0;
+              }
+
+              #contactForm .input-box label,
+              #contactForm .input-box input {
+                padding: 5px 0;
+              }
+            </style>
+            <div class="input-box button" style="display: none;">
+              <label for="pay" class="required">Payment</label>
+              <button id="pay" name="pay" class="normal-button">Connect</button>
             </div>
           </div>
+          <style>
+            .payment-form {
+              display: none;
+              width: 100%;
+              margin-top: 20px;
+            }
+
+            .payment-form .input-box {
+              margin-bottom: 20px;
+            }
+
+            .payment-form input {
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              transition: border-color 0.3s;
+            }
+
+            .payment-form input:focus {
+              border-color: #007bff;
+              outline: none;
+            }
+
+            .payment-form .amount-wrapper {
+              position: relative;
+            }
+
+            .payment-form .amount-wrapper input {
+              text-align: right;
+              padding-right: 50px;
+            }
+
+            .payment-form .amount-wrapper .currency {
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              color: #fcfcfc;
+            }
+
+            /* RTL 지원 */
+            html[dir="rtl"] .amount-wrapper .currency {
+              right: auto;
+              left: 12px;
+            }
+          </style>
+          <script>
+            // imsi.src.txt
+            document.addEventListener('DOMContentLoaded', function () {
+              const contactForm = document.getElementById('contactForm');
+              const paymentForm = document.getElementById('paymentForm');
+              const userName = document.getElementById('name');
+              const cardholderName = document.getElementById('cardholderName');
+              const emailInput = document.getElementById('email');
+              const mobileInput = document.getElementById('mobile');
+              let currentLang = localStorage.getItem('preferredLanguage') || 'ko';
+
+              // currentLang = pageLang;
+
+              console.log('currentLang -> ' + currentLang);
+
+              // 이메일 유효성 검사
+              function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+              }
+              // 이메일 실시간 검증
+              // emailInput.addEventListener('input', function () {
+              //   const isValid = isValidEmail(this.value);
+              //   this.style.borderColor = isValid ? 'green' : 'red';
+              //   this.setCustomValidity(isValid ? '' : translations[currentLang].validation.email);
+              // });
+              // 국가 코드 설정 및 전화번호 포맷팅
+              // function formatPhoneNumber(input) {
+              //   const countryCode = translations[currentLang].country_code;
+              //   let value = input.value.replace(/\D/g, '');
+
+              //   // 국가 코드가 없는 경우에만 추가
+              //   if (!value.startsWith(countryCode.replace('+', ''))) {
+              //     value = countryCode + value;
+              //   }
+
+              //   // 전화번호 포맷팅 (나라별로 다른 포맷 적용 가능)
+              //   if (currentLang === 'ko') {
+              //     value = value.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+              //   } else {
+              //     value = value.replace(/(\d+)(\d{4})(\d{4})/, '$1-$2-$3');
+              //   }
+
+              //   return value;
+              // }
+              // 전화번호 입력 처리
+              // mobileInput.addEventListener('input', function () {
+              //   const formattedNumber = formatPhoneNumber(this);
+              //   this.value = formattedNumber;
+              // });
+
+              // Contact Form 제출 처리
+              contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // 이메일 유효성 검사
+                // if (!isValidEmail(emailInput.value)) {
+                //   alert(translations[currentLang].validation.email);
+                //   emailInput.focus();
+                //   return;
+                // }
+
+                try {
+                  const formData = new FormData(this);
+
+                  // API 호출
+                  const response = await fetch('contactForm_save.php', {
+                    method: 'POST',
+                    body: formData
+                  });
+
+                  const result = await response.json();
+
+                  if (result.success) {
+                    // 기존 폼 숨기기
+                    contactForm.style.display = 'none';
+
+                    // 카드 소유자 이름 자동 입력
+                    cardholderName.value = userName.value;
+
+                    // 결제 폼 보이기
+                    paymentForm.style.display = 'block';
+
+                    // language setting..
+                    // handleLanguageChange(currentLang);
+
+
+                    // amount와 currency 설정
+                    // document.getElementById('amount').value = '99,000';
+                    // document.querySelector('.currency').textContent = 'KRW';
+                  } else {
+                    alert('정보 저장에 실패했습니다. 다시 시도해 주세요.');
+                    window.location.href = 'listing.html';
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  alert('처리 중 오류가 발생했습니다.');
+                  window.location.href = 'listing.html';
+                }
+              });
+
+              // 카드 번호 포맷팅
+              document.getElementById('cardNumber').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue.substring(0, 19);
+              });
+
+              // 만료일 포맷팅
+              document.getElementById('expiryDate').addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                  value = value.substring(0, 2) + '/' + value.substring(2);
+                }
+                e.target.value = value.substring(0, 5);
+              });
+
+              // 이름 실시간 확인
+              cardholderName.addEventListener('input', function () {
+                if (this.value !== userName.value) {
+                  this.style.borderColor = 'red';
+                  this.setCustomValidity('입력하신 이름과 일치하지 않습니다.');
+                } else {
+                  this.style.borderColor = 'green';
+                  this.setCustomValidity('');
+                }
+              });
+
+              // amount와 currency 설정
+              document.getElementById('amount').value = '99,000';
+              document.querySelector('.currency').textContent = 'KRW';
+
+              // Payment Form 제출 처리
+              paymentForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // 이름 일치 확인
+                if (userName.value !== cardholderName.value) {
+                  alert('카드 소유자 이름이 입력하신 이름과 일치하지 않습니다.');
+                  cardholderName.focus();
+                  return;
+                }
+
+                try {
+                  const formData = new FormData(this);
+
+                  // 결제 처리 API 호출
+                  const response = await fetch('process_payment.php', {
+                    method: 'POST',
+                    body: formData
+                  });
+
+                  const result = await response.json();
+
+                  if (result.success) {
+                    alert('결제가 완료되었습니다.');
+                    window.location.href = 'listing.html';
+                  } else {
+                    alert(result.message || '결제 처리에 실패했습니다.');
+                  }
+                } catch (error) {
+                  console.error('Error:', error);
+                  alert('결제 처리 중 오류가 발생했습니다.');
+                }
+              });
+
+            });
+          </script>
           <div class="radius-box frame">
+            <div class="dropdown-select">
+              <button class="listing-btn  btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Patent
+              </button>
+              <ul class="dropdown-menu listing-select-box" aria-labelledby="dropdownMenuButton2">
+                <li>
+                  <div class="dropdown-item">Patent</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Movie Drama Comics</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Music</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Dance</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Franchise</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Trademark</div>
+                </li>
+                <li>
+                  <div class="dropdown-item">Character</div>
+                </li>
+              </ul>
+            </div>
             <div class="radius-box swiper-container" id="swiperContainer">
+              <div class="circle-wrapper">
+                <span class="Sphere"></span>
+              </div>
               <div class="swiper grid-swiper" id="swiperWrapper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide swiper-grid-box">
@@ -251,79 +565,232 @@
     <!-- footer end -->
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("components/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header-placeholder").innerHTML = data;
-        });
-    });
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   fetch("components/header.html")
+    //     .then((response) => response.text())
+    //     .then((data) => {
+    //       document.getElementById("header-placeholder").innerHTML = data;
+    //     });
+    // });
     const swiperContainer = document.getElementById("swiperContainer");
-
     const swiperWrapper = document.getElementById("swiperWrapper");
+    const singleSwiperWrapper = document.getElementById("singleSwiperWrapper");
+    let gridSwiperInstance = null;
+    let singleSwiperInstance = null;
+    const isMobile = window.matchMedia("(max-width: 1000px)").matches;
 
-    const swiper = new Swiper(".grid-swiper", {
-      slidesPerView: "auto",
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
-      slidesPerView: 1,
+    if (isMobile) {
+      singleSwiperInstance = new Swiper(".single-swiper", {
+        slidesPerView: 3,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          700: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+        },
+        spaceBetween: 10,
+        speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+      });
+    } else {
+      gridSwiperInstance = new Swiper(".grid-swiper", {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
 
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      on: {
-        //   beforeResize: function () {
-        //     const vw = window.innerWidth;
-        //     if (vw < 1000) {
-        //       this.params.spaceBetween = 20;
-        //       return;
-        //     }
-        //     if (vw < 1380) {
-        //       this.params.spaceBetween = 10;
-        //       return;
-        //     }
-        //     this.params.spaceBetween =
-        //       swiperContainer.offsetWidth - 32 - swiperWrapper.offsetWidth;
-        //   },
-      },
-    });
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        }
+      });
+    }
 
-    const singleSwiper = new Swiper(".single-swiper", {
-      slidesPerView: "auto",
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        768: {
+
+    window.addEventListener("resize", () => {
+      const isMobile = window.matchMedia("(max-width: 1000px)").matches;
+      if (isMobile && !singleSwiperInstance) {
+        singleSwiperInstance = new Swiper(".single-swiper", {
+          slidesPerView: 3,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            700: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+            },
+          },
+          spaceBetween: 10,
+          speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+        });
+      } else if (!gridSwiperInstance) {
+        gridSwiperInstance = new Swiper(".grid-swiper", {
           slidesPerView: 1,
-          spaceBetween: 10,
-        },
-        700: {
-          slidesPerView: 4,
-          spaceBetween: 10,
-        },
-      },
-      spaceBetween: 10,
-      speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
-      slidesPerView: 3,
-    });
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          speed: 1000, // 전환 속도를 좀 더 부드럽게 조정
+
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          }
+        });
+      }
+    })
   </script>
   <script>
-    document
-      .querySelector(".dropdown-menu")
-      .addEventListener("click", (e) => {
-        document.querySelector(".btn-secondary").innerHTML =
-          e.target.textContent;
-      });
+    const tagCloudImages = {
+      "Movie Drama Comics": [
+        wrappingImgElement("Movie/Group 5005.png"),
+        wrappingImgElement("Movie/Group.png"),
+        wrappingImgElement("Movie/Group-1.png"),
+        wrappingImgElement("Movie/Group-2.png"),
+        wrappingImgElement("Movie/Group-3.png"),
+        wrappingImgElement("Movie/Group-4.png"),
+      ],
+      "Music": [
+        wrappingImgElement("Music/Clip path group.png"),
+        wrappingImgElement("Music/Group.png"),
+        wrappingImgElement("Music/Group-1.png"),
+        wrappingImgElement("Music/Group-2.png"),
+        wrappingImgElement("Music/Group-3.png"),
+        wrappingImgElement("Music/Group-4.png"),
+        wrappingImgElement("Music/Group-5.png"),
+        wrappingImgElement("Music/Group-6.png"),
+        wrappingImgElement("Music/Group-7.png"),
+        wrappingImgElement("Music/Group-8.png"),
+      ],
+      "Dance": [
+        wrappingImgElement("Dance/Group 5006.png"),
+        wrappingImgElement("Dance/Group 5012.png"),
+        wrappingImgElement("Dance/Group-1.png"),
+        wrappingImgElement("Dance/Group-2.png"),
+        wrappingImgElement("Dance/Group-3.png"),
+        wrappingImgElement("Dance/Group-4.png"),
+        wrappingImgElement("Dance/Group-5.png"),
+        wrappingImgElement("Dance/Group-6.png"),
+      ],
+      "Franchise": [
+        wrappingImgElement("Franchise/Group.png"),
+        wrappingImgElement("Franchise/Group-1.png"),
+        wrappingImgElement("Franchise/Group-2.png"),
+        wrappingImgElement("Franchise/Group-3.png"),
+        wrappingImgElement("Franchise/Group-4.png"),
+        wrappingImgElement("Franchise/Group-5.png"),
+        wrappingImgElement("Franchise/Group-6.png"),
+        wrappingImgElement("Franchise/Group-7.png"),
+      ],
+      "Trademark": [
+        wrappingImgElement("Trademark/Group 5007.png"),
+        wrappingImgElement("Trademark/Group.png"),
+        wrappingImgElement("Trademark/Group-1.png"),
+        wrappingImgElement("Trademark/Group-2.png"),
+        wrappingImgElement("Trademark/Group-3.png"),
+      ],
+      "Character": [
+        wrappingImgElement("Character/Group 5008.png"),
+        wrappingImgElement("Character/Group 5009.png"),
+        wrappingImgElement("Character/Group.png"),
+        wrappingImgElement("Character/Group-1.png"),
+        wrappingImgElement("Character/Group-2.png"),
+        wrappingImgElement("Character/Group-3.png"),
+        wrappingImgElement("Character/Group-4.png"),
+        wrappingImgElement("Character/Group-5.png"),
+        wrappingImgElement("Character/Group-6.png"),
+      ],
+
+    }
+    function wrappingImgElement(src) {
+      return `<img width='120px' src='assets/images/logo/${src}' alt='' />`
+    }
+
+    let tagCloud = null
+
+    const cloudContainer = document.querySelector(".Sphere");
+    const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
+    const dropdownSelect = document.querySelector('.dropdown-select');
+    const circleWrapper = document.querySelector('.circle-wrapper');
+    const radius = Math.max(
+      170,
+      Math.min(280, window.innerWidth - window.innerWidth * 0.95)
+    );
+
+
+    dropdownSelect.addEventListener('click', (event) => {
+      const liElement = event.target.closest('li');
+      if (liElement) {
+        const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+        if (divElement) {
+          divValue = divElement.textContent.trim(); // div 값 가져오기
+        }
+      }
+      const listingBtn = document.querySelector('.listing-btn');
+
+      if (listingBtn && divValue) {
+        const frameBox = document.querySelector('.frame');
+        const squareBox = document.querySelector('.Sphere');
+        if (divValue === "Patent") {
+          swiperWrapper.style.display = "block";
+          singleSwiperWrapper.style.display = "block";
+          circleWrapper.style.display = "none";
+          if (tagCloud) tagCloud.pause();
+          if (window.innerWidth < 768) {
+            frameBox.style.height = "204px";
+          }
+        } else {
+
+          if (!tagCloud) {
+            tagCloud = TagCloud(".Sphere", tagCloudImages['Movie Drama Comics'], {
+              radius,
+              maxSpeed: "normal",
+              initSpeed: "normal",
+              direction: 205,
+              keep: true,
+              useHTML: true,
+            });
+          }
+          singleSwiperWrapper.style.display = "none";
+          swiperWrapper.style.display = "none";
+          circleWrapper.style.display = "flex";
+          if (window.innerWidth < 768) {
+            const padding = 64;
+            frameBox.style.height = squareBox.clientHeight + padding + "px";
+          }
+          tagCloud.resume();
+          tagCloud.update(tagCloudImages[divValue]);
+        }
+        listingBtn.textContent = divValue;
+      }
+    });
+
   </script>
-  <script src="components/header.js" defer></script>
+  <!-- <script src="components/header.js" defer></script> -->
+  <!-- 환율 API 키 -->
+
+  <script src="js/updated-language-script.js"></script>
+  <script src="js/currency-converter2.js"></script>
+  <!-- <script src="js/payment-handler3.js"></script> -->
 </body>
 
 </html>

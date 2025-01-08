@@ -4,7 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>STIP HomePage stipvelation</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
+  <link rel="manifest" href="favicon.ico2/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" type="" href="assets/style/components/header.css" />
   <link rel="stylesheet" href="assets/style/pages/about.css" />
   <link rel="stylesheet" href="assets/style/reset.css" />
@@ -15,6 +33,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+
   <style>
     body {
       font-family: "SUIT", sans-serif;
@@ -107,6 +126,35 @@
       </div>
     </header>
     <!-- header end -->
+    <script>
+      const dropdown = document.querySelector('.dropdown');
+      const dropdown_menu = document.querySelector('.dropdown-menu');
+      // let lang = [];
+      // const clickedDivValues = [];
+      let divValue = '';
+
+      dropdown_menu.addEventListener('click', (event) => {
+        const liElement = event.target.closest('li');
+        if (liElement) {
+          const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+          if (divElement) {
+            divValue = divElement.textContent.trim(); // div 값 가져오기
+
+            // div 값 기록
+            // if (!clickedDivValues.includes(divValue)) {
+            // clickedDivValues.push(divValue);
+            // }
+
+            // 결과를 화면에 표시
+            // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+          }
+
+        }
+        console.log(`${divValue}`);
+
+      })
+
+    </script>
 
     <div class="bg-image">
       <img src="assets/images/bg-image.jpg" alt="bg-image" />
@@ -125,16 +173,12 @@
           </div>
           <div class="content-area">
             <p>
-              <span>STIP</span> is an exchange platform supporting the trade
-              of digital IPs,<br />
-              including patent, trademark, drama, movie, comics, franchise,
-              music,<br />
-              dance, etc.
+              <span>STIP</span> is an exchange platform supporting the trade of digital IPs,<br /> including patent,
+              trademark, drama, movie, comics, franchise, music,<br />dance, etc.
             </p>
             <p>
-              It provides companies, research institutions, creators, and
-              inventors with<br />
-              opportunities to raise funds without transferring IP ownership.
+              It provides companies, research institutions, creators, and inventors with<br /> opportunities to raise
+              funds without transferring IP ownership. Hyundo Jeong Founder
             </p>
           </div>
           <div class="bottom-area">
@@ -167,36 +211,18 @@
     <!-- footer end -->
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("components/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header-placeholder").innerHTML = data;
-        });
-    });
+    // 텍스트 배열 정의
+    /**const Texts = [
+      "HTML", "CSS", "JavaScript", "React", "Node.js",
+      "Angular", "Vue", "Python", "Django", "Flask",
+      "Java", "Spring", "Kotlin", "Swift", "C++"
+    ];**/
     const Texts = [
-      "STIP",
-      "Intellectual",
-      "Property",
-      "Trade",
-      "Platform",
-      "Digital",
-      "Patent",
-      "Trademark",
-      "Drama",
-      "Movie",
-      "Comics",
-      "Franchise",
-      "Music",
-      "Dance",
-      "Companies",
-      "Research",
-      "Creators",
-      "Inventors",
-      "Funding",
-      "Ownership",
-      "Innovation",
+      "Patent", "Invention", "Application", "Intellectual Property", "IP",
+      "Technology Protection", "Registration Number", "Patent Office", "Claims", "Prior Art",
+      "Inventor", "License", "Scope of Rights", "Trademark", "Copyright"
     ];
+
     const radius = Math.max(
       150,
       Math.min(280, window.innerWidth - window.innerWidth * 0.95)
@@ -220,7 +246,7 @@
     const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
     if (tagElements) {
       for (let i = 0; i < tagElements.length; i++) {
-        if (tagElements[i].textContent === "STIP") {
+        if (tagElements[i].textContent === "Patent") {
           tagElements[i].style.color = "#2997E1";
           break;
         }
@@ -229,7 +255,8 @@
     var color = "#FF5733 ";
     document.querySelector(".Sphere").style.color = color;
   </script>
-  <script src="components/header.js" defer></script>
+  <!-- <script src="components/header.js" defer></script> -->
+  <script src="js/updated-language-script.js"></script>
 </body>
 
 </html>
