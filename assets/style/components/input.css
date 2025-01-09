@@ -1,0 +1,48 @@
+@import url("../variable.css");
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-box.button {
+    gap: 16px;
+}
+
+.input-box label {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.input-box label.required::after {
+    content: "*";
+    color: #FF0000;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.input-box input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--gray-color);
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 8px;
+    line-height: 16px;
+    padding-left: 0;
+}
+
+.input-box input:focus {
+    outline: none;
+}
+
+.input-box input::placeholder {
+    color: var(--gray-color);
+    font-size: 16px;
+    font-weight: 500;
+}

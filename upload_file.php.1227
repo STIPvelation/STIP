@@ -1,0 +1,66 @@
+<?php
+header('Content-Type: application/json');
+
+// 업로드 디렉토리 설정
+$uploadDir = 'uploads/';
+if (!file_exists($uploadDir)) {
+  mkdir($uploadDir, 0777, true);
+}
+
+$response = array(
+  'success' => false,
+  'message' => '',
+  'files' => array()
+);
+
+try {
+  if (isset($_FILES['files'])) {
+    $files = $_FILES['files'];
+    $allowedTypes = array('pdf', 'doc', 'docx');
+    $maxSize = 5 * 1024 * 1024; // 5MB
+
+    // 각 파일 처리
+    foreach ($files['name'] as $key => $name) {
+      $tmpName = $files['tmp_name'][$key];
+      $size = $files['size'][$key];
+      $type = $files['type'][$key];
+      $error = $files['error'][$key];
+
+      // 파일 확장자 확인
+      $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+      if (!in_array($extension, $allowedTypes)) {
+        throw new Exception("Invalid file type: {$name}");
+      }
+
+      // 파일 크기 확인
+      if ($size > $maxSize) {
+        throw new Exception("File size exceeds limit: {$name}");
+      }
+
+      // 새 파일명 생성 (고유한 이름으로)
+      $newFileName = uniqid() . '_' . $name;
+      $targetPath = $uploadDir . $newFileName;
+
+      // 파일 업로드
+      if (!move_uploaded_file($tmpName, $targetPath)) {
+        throw new Exception("Failed to upload file: {$name}");
+      }
+
+      // 성공적으로 업로드된 파일 정보 저장
+      $response['files'][] = array(
+        'original_name' => $name,
+        'saved_name' => $newFileName,
+        'path' => $targetPath,
+        'size' => $size,
+        'type' => $type
+      );
+    }
+
+    $response['success'] = true;
+    $response['message'] = 'Files uploaded successfully';
+  }
+} catch (Exception $e) {
+  $response['message'] = $e->getMessage();
+}
+
+echo json_encode($response);

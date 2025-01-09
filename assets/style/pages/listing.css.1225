@@ -1,0 +1,239 @@
+@import url("../components/header.css");
+@import url("../components/button.css");
+@import url("../components/footer.css");
+@import url("../components/radius-box.css");
+@import url("../components/input.css");
+@import url("../components/letter-title.css");
+@import url("../variable.css");
+
+.root {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 104px 0;
+  @media screen and (max-width: 768px) {
+    padding: 24px 0;
+  }
+}
+
+.content-container .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-container .content-wrapper .title-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 24px;
+  }
+}
+
+.content-container .content-wrapper .title-area h1 {
+  margin-bottom: 16px;
+}
+
+.content-container .content-wrapper .title-area h1 span {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--white-color);
+
+  @media screen and (max-width: 480px) {
+    font-size: 32px;
+  }
+}
+
+.content-container .content-wrapper .title-area p {
+  color: var(--gray-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  margin-bottom: 0px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
+    line-height: 19.5px;
+  }
+}
+
+.content-container .content-wrapper .title-area span {
+  color: var(--white-color);
+}
+
+.content-container .content-wrapper .row-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.content-container .content-wrapper .row-area .radius-box {
+  width: 33.75%;
+  height: 623px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media screen and (max-width: 768px) {
+    width: 100% !important;
+    height: auto;
+    border-radius: unset;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 40%;
+  }
+}
+
+.content-container .content-wrapper .row-area .radius-box.column {
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+.content-container .content-wrapper .row-area .radius-box.swiper-container {
+  width: 100%;
+  padding: 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+}
+
+.content-container .content-wrapper .row-area .radius-box.frame {
+  background-color: transparent;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 204px;
+  }
+}
+
+.content-container
+  .content-wrapper
+  .row-area
+  .radius-box.swiper-container
+  .swiper {
+  width: 100%;
+  height: 100%;
+  max-width: 740px;
+  margin-left: 0;
+  overflow: hidden;
+
+  @media screen and (max-width: 1450px) {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+/* .swiper {
+    overflow: hidden;
+} */
+
+.swiper-wrapper {
+  height: 100%;
+}
+
+.swiper-slide img {
+  height: 259px;
+}
+
+.grid-swiper {
+  @media screen and (max-width: 1000px) {
+    display: none !important;
+  }
+}
+
+.swiper-grid-box {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  height: 100%;
+  width: 100%;
+
+  @media screen and (max-width: 1000px) {
+    display: none !important;
+  }
+}
+
+.single-swiper {
+  display: none !important;
+  @media screen and (max-width: 1000px) {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+  }
+}
+.single-view img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.swiper-grid-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.swiper-pagination {
+  display: none;
+  position: relative !important;
+  /* display: flex;
+  justify-content: center;
+  gap: 24px; */
+
+  @media screen and (max-width: 1000px) {
+    display: none !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  background: #424242 !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--primary-color) !important;
+}

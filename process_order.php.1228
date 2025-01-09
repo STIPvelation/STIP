@@ -1,0 +1,182 @@
+<?php
+header('Content-Type: application/json; charset=UTF-8');
+
+// 데이터베이스 연결 설정
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '1234';
+$db_name = 'stipvelation';
+
+// 다국어 에러 메시지 정의
+$error_messages = [
+  'ko' => [
+    'db_connection_failed' => '데이터베이스 연결에 실패했습니다: ',
+    'required_fields' => '필수 입력 항목이 누락되었습니다.',
+    'invalid_email' => '올바른 이메일 형식이 아닙니다.',
+    'privacy_consent_required' => '개인정보 수집 동의가 필요합니다.',
+    'save_failed' => '주문 정보 저장에 실패했습니다: ',
+    'success' => '주문이 성공적으로 처리되었습니다.'
+  ],
+  'en' => [
+    'db_connection_failed' => 'Database connection failed: ',
+    'required_fields' => 'Required fields are missing.',
+    'invalid_email' => 'Invalid email format.',
+    'privacy_consent_required' => 'Privacy policy agreement is required.',
+    'save_failed' => 'Failed to save order information: ',
+    'success' => 'Order has been processed successfully.'
+  ],
+  'ja' => [
+    'db_connection_failed' => 'データベース接続に失敗しました: ',
+    'required_fields' => '必須項目が入力されていません。',
+    'invalid_email' => 'メールアドレスの形式が正しくありません。',
+    'privacy_consent_required' => '個人情報収集の同意が必要です。',
+    'save_failed' => '注文情報の保存に失敗しました: ',
+    'success' => '注文が正常に処理されました。'
+  ],
+  'zh' => [
+    'db_connection_failed' => '数据库连接失败: ',
+    'required_fields' => '缺少必填项。',
+    'invalid_email' => '邮箱格式不正确。',
+    'privacy_consent_required' => '需要同意个人信息收集。',
+    'save_failed' => '订单信息保存失败: ',
+    'success' => '订单处理成功。'
+  ]
+];
+
+// 언어 설정 가져오기 (기본값: ko)
+$lang = isset($_POST['lang']) ? $_POST['lang'] : 'ko';
+if (!array_key_exists($lang, $error_messages)) {
+  $lang = 'ko';
+}
+
+// 응답 초기화
+$response = [
+  'success' => false,
+  'message' => '',
+  'data' => null,
+  'debug' => []
+];
+
+try {
+  // 데이터베이스 연결
+  $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+  if ($conn->connect_error) {
+    throw new Exception($error_messages[$lang]['db_connection_failed'] . $conn->connect_error);
+  }
+
+  // UTF-8 설정
+  $conn->set_charset("utf8mb4");
+
+  // POST 데이터 검증 및 정제
+  $required_fields = ['orderName', 'orderEmail', 'orderPhone', 'contact_form_id', 'privacyConsent'];
+  foreach ($required_fields as $field) {
+    if (!isset($_POST[$field]) || empty($_POST[$field])) {
+      throw new Exception($error_messages[$lang]['required_fields']);
+    }
+  }
+
+  // 이메일 유효성 검사
+  if (!filter_var($_POST['orderEmail'], FILTER_VALIDATE_EMAIL)) {
+    throw new Exception($error_messages[$lang]['invalid_email']);
+  }
+
+  // 개인정보 수집 동의 확인
+  if (!isset($_POST['privacyConsent']) || $_POST['privacyConsent'] !== 'on') {
+    throw new Exception($error_messages[$lang]['privacy_consent_required']);
+  }
+
+  // 데이터 준비
+  $orderData = [
+    'contact_form_id' => $conn->real_escape_string($_POST['contact_form_id']),
+    'order_name' => $conn->real_escape_string($_POST['orderName']),
+    'order_email' => $conn->real_escape_string($_POST['orderEmail']),
+    'order_phone' => $conn->real_escape_string($_POST['orderPhone']),
+    'order_memo' => isset($_POST['orderMemo']) ? $conn->real_escape_string($_POST['orderMemo']) : '',
+    'product_code' => '0001',
+    'product_name' => '특허뉴스PDF',
+    'quantity' => 1,
+    'price' => 99000.00,
+    'payment_method' => 'creditCard',
+    'privacy_consent' => 1,
+    'order_status' => 'pending'
+  ];
+
+  // SQL 쿼리 준비
+  $sql = "INSERT INTO order_form (
+        contact_form_id, order_name, order_email, order_phone, order_memo,
+        product_code, product_name, quantity, price, payment_method,
+        privacy_consent, order_status
+    ) VALUES (
+        ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?,
+        ?, ?
+    )";
+
+  // Prepared statement 생성
+  $stmt = $conn->prepare($sql);
+  if (!$stmt) {
+    throw new Exception($error_messages[$lang]['save_failed'] . $conn->error);
+  }
+
+  // 파라미터 바인딩
+  $stmt->bind_param(
+    'issssssiisss',
+    $orderData['contact_form_id'],
+    $orderData['order_name'],
+    $orderData['order_email'],
+    $orderData['order_phone'],
+    $orderData['order_memo'],
+    $orderData['product_code'],
+    $orderData['product_name'],
+    $orderData['quantity'],
+    $orderData['price'],
+    $orderData['payment_method'],
+    $orderData['privacy_consent'],
+    $orderData['order_status']
+  );
+
+  // 쿼리 실행
+  if (!$stmt->execute()) {
+    throw new Exception($error_messages[$lang]['save_failed'] . $stmt->error);
+  }
+
+  // 성공 응답 준비
+  $response['success'] = true;
+  $response['message'] = $error_messages[$lang]['success'];
+  $response['data'] = [
+    'order_id' => $conn->insert_id,
+    'order_status' => 'pending'
+  ];
+
+  // Statement 종료
+  $stmt->close();
+} catch (Exception $e) {
+  $response['success'] = false;
+  $response['message'] = $e->getMessage();
+  $response['error'] = [
+    'type' => 'order_processing_error',
+    'details' => $e->getMessage(),
+    'file' => $e->getFile(),
+    'line' => $e->getLine()
+  ];
+
+  error_log("Error in process_order.php: " . $e->getMessage());
+} finally {
+  // 데이터베이스 연결 종료
+  if (isset($conn) && $conn instanceof mysqli) {
+    $conn->close();
+  }
+
+  // 에러 발생 시에만 디버그 정보 포함
+  if (!$response['success']) {
+    $response['debug'] = [
+      'server_time' => date('Y-m-d H:i:s'),
+      'request_id' => uniqid('order_'),
+      'error_trace' => error_get_last()
+    ];
+  }
+
+  // JSON 응답 전송
+  echo json_encode($response);
+}

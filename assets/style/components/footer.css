@@ -1,0 +1,74 @@
+@import url("../variable.css");
+
+.footer-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #02060b;
+  /* border-top: 1px solid var(--white-color); */
+}
+
+.footer-container .footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 48px 0 48px 15.625%;
+  @media screen and (max-width: 768px) {
+    padding: 48px 24px;
+  }
+}
+
+.footer-container .footer-wrapper .footer-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+  @media screen and (max-width: 768px) {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+.footer-container .footer-wrapper .footer-logo img {
+  width: 175px;
+  height: 40px;
+  @media screen and (max-width: 768px) {
+    width: 105px;
+    height: 24px;
+  }
+}
+
+.footer-container .footer-wrapper .footer-logo span {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--white-color);
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.footer-container .footer-wrapper .company-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #999999;
+  margin-bottom: 32px;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    margin-bottom: 16px;
+  }
+}
+
+.footer-container .footer-wrapper .company-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+
+.footer-container .footer-wrapper .company-info-grid span {
+  font-size: 12px;
+  font-weight: 300;
+  color: #999999;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Mobile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+    body {
+      background: linear-gradient(45deg, #001429, #003366);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+  
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+  
+    .phone-wrapper {
+      justify-self: end;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+  
+    .phone-area {
+      position: relative;
+      width: 100%;
+    }
+  
+    .phone-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .phone-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  
+    .phone-screen {
+      position: absolute;
+      top: 1.5%;
+      left: 4%;
+      width: 92%;
+      height: 97%;
+      overflow: hidden;
+      border-radius: 32px;
+    }
+  
+    .phone-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  
+    .text-content {
+      justify-self: start;
+      text-align: center;
+      color: white;
+      min-width: 300px;
+      max-width: 600px;
+      padding: 20px;
+    }
+  
+    .text-content h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      white-space: pre-line;
+      text-align: center;
+    }
+  
+    @media (max-width: 992px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+  
+      .phone-wrapper {
+        justify-self: center;
+        width: 90%;
+        max-width: 400px;
+      }
+  
+      .text-content {
+        justify-self: center;
+        text-align: center;
+        min-width: 280px;
+        max-width: 500px;
+      }
+  
+      .phone-screen {
+        border-radius: 24px;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+  
+      .phone-wrapper {
+        padding: 10px;
+      }
+  
+      .text-content {
+        min-width: 250px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="phone-wrapper">
+    <!-- <img src="/api/placeholder/400/800" alt="Phone Interface" class="phone-image"> -->
+    <div class="phone-area">
+      <!-- <img src="assets/images/phone.png" alt="phone" /> -->
+      <div class="phone-frame">
+        <img src="assets/images/phone.png" alt="phone frame" class="phone-image" />
+        <div class="phone-screen">
+          <video autoplay muted loop playsinline class="phone-video">
+            <source src="assets/main-background-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-content">
+    <h1>Let's share the IP,<br>It's IP time</h1>
+  </div>
+</div>
+</body>
+</html>

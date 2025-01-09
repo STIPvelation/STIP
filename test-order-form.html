@@ -1,0 +1,67 @@
+<!-- test-order-form.html -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form Test</title>
+
+  <link rel="shortcut icon" href="#">
+  
+  <link rel="stylesheet" href="assets/style/reset.css">
+  <link rel="stylesheet" href="assets/style/pages/listing.css">
+  <link rel="stylesheet" href="test-styles.css">
+
+  <script src="https://pg-web.nicepay.co.kr/v3/common/js/nicepay-pgweb.js"></script>
+</head>
+
+<body>
+  <div class="test-container">
+    <h1>Order Form Test</h1>
+
+    <!-- Order Form -->
+    <form id="orderForm" class="order-form">
+      <input type="hidden" id="hidden_productCode" name="productCode" value="0001">
+      <input type="hidden" id="hidden_productName" name="productName" value="특허뉴스PDF">
+      <input type="hidden" id="hidden_price" name="price" value="99000">
+
+      <div class="order-detail-section">
+        <h3 class="form-subtitle">주문자 정보</h3>
+        <div class="input-box">
+          <label for="orderName" class="required">이름</label>
+          <input type="text" id="orderName" name="orderName" required>
+        </div>
+        <div class="input-box">
+          <label for="orderEmail" class="required">이메일</label>
+          <input type="email" id="orderEmail" name="orderEmail" required>
+        </div>
+        <div class="input-box">
+          <label for="orderPhone" class="required">연락처</label>
+          <input type="tel" id="orderPhone" name="orderPhone" required>
+        </div>
+        <div class="input-box">
+          <label for="orderMemo">메모</label>
+          <textarea id="orderMemo" name="orderMemo" rows="3"></textarea>
+        </div>
+
+        <div class="privacy-consent">
+          <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+          <label for="privacyConsent">개인정보 수집 및 이용에 동의합니다 (필수)</label>
+        </div>
+
+        <button type="submit" class="normal-button">결제하기</button>
+      </div>
+    </form>
+
+    <!-- Test Results Display -->
+    <div id="testResults" class="test-results">
+      <h2>Test Results</h2>
+      <pre id="testOutput"></pre>
+    </div>
+  </div>
+
+  <script src="test-order-form.js"></script>
+</body>
+
+</html>

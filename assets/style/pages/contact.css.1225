@@ -1,0 +1,458 @@
+@import url("../components/header.css");
+@import url("../components/footer.css");
+@import url("../components/radius-box.css");
+@import url("../components/button.css");
+@import url("../components/input.css");
+@import url("../components/letter-title.css");
+@import url("../variable.css");
+
+.root {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.bg-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  left: 0;
+}
+
+.bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 104px 0;
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+.content-container .contact-wrapper {
+  width: 1320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.content-container .contact-wrapper.contact {
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.content-container .contact-wrapper.contact .title-wrapper {
+  @media screen and (max-width: 768px) {
+    padding-left: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+.content-container .contact-wrapper .title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.content-container .contact-wrapper > .title-wrapper {
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 39px;
+  }
+}
+
+.title-wrapper h1 {
+  margin-bottom: 16px;
+}
+
+.title-wrapper h1 span {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--white-color);
+  line-height: 56px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+.title-wrapper span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gray-color);
+  line-height: 24px;
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
+    line-height: 19.5px;
+  }
+}
+
+.title-wrapper span br {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.row-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.row-wrapper .radius-box {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 623px;
+  justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    padding: 48px 24px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 24px 16px;
+  }
+}
+
+.row-wrapper .radius-box .title-wrapper {
+  margin-bottom: 0;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 24px;
+  }
+}
+
+.row-wrapper .radius-box .title-wrapper > span {
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.row-wrapper .radius-box .title-wrapper h1 span {
+  @media screen and (max-width: 480px) {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+.row-wrapper .radius-box button {
+  width: 180px;
+  height: 40px;
+  margin-top: 24px;
+}
+
+.row-wrapper .radius-box button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.row-wrapper .radius-box.community {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 112px;
+
+  @media screen and (max-width: 1000px) {
+    padding: 56px;
+  }
+
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 24px;
+  }
+}
+
+.row-wrapper .radius-box.community .top-content-area {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+}
+
+.row-wrapper .radius-box.community .top-content-area h6 {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--white-color);
+  line-height: 56px;
+  margin-bottom: 16px;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+}
+
+.row-wrapper .radius-box.community .top-content-area span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white-color);
+  line-height: 24px;
+
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
+    line-height: 19.5px;
+    color: var(--gray-color);
+  }
+}
+
+.row-wrapper .radius-box.community .social-link-list {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.row-wrapper .radius-box.community .social-link-list .link-box {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.72);
+  border-radius: 12px;
+
+  @media screen and (max-width: 1200px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+}
+
+.row-wrapper .radius-box.community .social-link-list .link-box a {
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+
+  @media screen and (max-width: 480px) {
+    padding: 6px;
+  }
+}
+
+.row-wrapper .radius-box.community .social-link-list .link-box img {
+  width: 100%;
+  height: 100%;
+}
+
+.row-wrapper .radius-box.community .normal-button {
+  width: 100%;
+  height: 40px;
+  margin-top: auto;
+
+  @media screen and (max-width: 480px) {
+    width: 180px;
+  }
+}
+
+.contact-wrapper .radius-box.form {
+  width: 100%;
+  padding: 48px 112px;
+
+  @media screen and (max-width: 768px) {
+    padding: 24px;
+    border-radius: 0;
+  }
+}
+
+.contact-wrapper .radius-box.form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-wrapper .radius-box.form form .row-area {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.contact-wrapper .radius-box.form form .row-area .input-box {
+  width: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box {
+  width: 100%;
+  position: relative;
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .row-area
+  .input-box
+  .select-box.active
+  .box-area
+  img {
+  transform: rotate(180deg);
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .row-area
+  .input-box
+  .select-box
+  .box-list {
+  display: none;
+  position: absolute;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #222;
+  z-index: 1;
+  top: 37px;
+  padding-left: 0;
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .row-area
+  .input-box
+  .select-box
+  .box-list.active {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 4px 8px 0px rgba(41, 151, 225, 0.1);
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .row-area
+  .input-box
+  .select-box
+  .box-list
+  .select-item {
+  width: 100%;
+  padding: 12px 16px;
+  cursor: pointer;
+  color: var(--gray-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .row-area
+  .input-box
+  .select-box
+  .box-area {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-color);
+  padding-bottom: 8px;
+  cursor: pointer;
+  color: var(--white-color);
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .row-area
+  .input-box
+  .select-box
+  .box-area.empty {
+  color: var(--gray-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.contact-wrapper .radius-box.form form .input-box.textarea textarea {
+  width: 100%;
+  height: 119px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-color);
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white-color);
+}
+
+.contact-wrapper .radius-box.form form .input-box.textarea textarea:focus {
+  outline: none;
+}
+
+.contact-wrapper
+  .radius-box.form
+  form
+  .input-box.textarea
+  textarea::placeholder {
+  color: var(--gray-color);
+
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
+    line-height: 13px;
+  }
+}

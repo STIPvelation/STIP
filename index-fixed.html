@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STIP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STIP - Share your wisdom with the world">
+    
+    <!-- 스타일시트 -->
+    <link rel="stylesheet" href="assets/style/reset.css">
+    <link rel="stylesheet" href="assets/style/components/header.css">
+    <link rel="stylesheet" href="assets/style/pages/main.css">
+    
+    <!-- 외부 라이브러리 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <style>
+        body {
+            font-family: 'SUIT', sans-serif;
+        }
+    </style>
+</head>
+
+<body data-page="main">
+    <div class="root">
+        <!-- 헤더 시작 -->
+        <header class="header-container">
+            <div class="header-wrapper">
+                <div class="header-logo">
+                    <a href="index.html" data-page="main">
+                        <img src="assets/images/logo.svg" alt="STIP Logo">
+                    </a>
+                </div>
+                <nav class="header-nav">
+                    <!-- 모바일 메뉴 -->
+                    <div class="burger-menu-wrapper">
+                        <img src="assets/images/mobile/menu.svg" 
+                             class="burger-menu" 
+                             alt="메뉴 열기"
+                             onclick="handleBurgerMenu()"
+                             role="button"
+                             tabindex="0">
+                        <div class="side-bar-container" role="navigation">
+                            <div class="sidebar-background">
+                                <div class="close-btn">
+                                    <img src="assets/images/mobile/close.svg" 
+                                         alt="메뉴 닫기"
+                                         onclick="handleBurgerMenuClose()"
+                                         role="button"
+                                         tabindex="0">
+                                </div>
+                            </div>
+                            <div class="side-bar-wrapper">
+                                <nav class="side-bar-section">
+                                    <!-- 모바일 네비게이션 -->
+                                    <div class="side-bar-list">
+                                        <a class="side-bar-item navigate" 
+                                           href="index.html" 
+                                           data-page="main" 
+                                           onclick="handlePageSelection('main')">Main</a>
+                                        <a class="side-bar-item navigate" 
+                                           href="listing.html" 
+                                           data-page="listing" 
+                                           onclick="handlePageSelection('listing')">Listing</a>
+                                        <a class="side-bar-item navigate" 
+                                           href="about.html" 
+                                           data-page="about" 
+                                           onclick="handlePageSelection('about')">About us</a>
+                                        <a class="side-bar-item navigate" 
+                                           href="product.html" 
+                                           data-page="product" 
+                                           onclick="handlePageSelection('product')">Product</a>
+                                        <a class="side-bar-item navigate" 
+                                           href="contact.html" 
+                                           data-page="contact" 
+                                           onclick="handlePageSelection('contact')">Contact</a>
+                                    </div>
+                                    <!-- 모바일 언어 선택 -->
+                                    <div class="side-bar-list lang">
+                                        <span class="side-bar-item" 
+                                              onclick="handleLangChange('ko', true)" 
+                                              role="button" 
+                                              tabindex="0">한국어</span>
+                                        <span class="side-bar-item" 
+                                              onclick="handleLangChange('en', true)" 
+                                              role="button" 
+                                              tabindex="0">English</span>
+                                        <span class="side-bar-item" 
+                                              onclick="handleLangChange('ja', true)" 
+                                              role="button" 
+                                              tabindex="0">日本語</span>
+                                        <span class="side-bar-item" 
+                                              onclick="handleLangChange('zh', true)" 
+                                              role="button" 
+                                              tabindex="0">中文</span>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 데스크톱 메뉴 -->
+                    <ul>
+                        <li><a class="nav-item navigate" 
+                              href="listing.html" 
+                              data-page="listing" 
+                              onclick="handlePageSelection('listing')">Listing</a></li>
+                        <li><a class="nav-item navigate" 
+                              href="about.html" 
+                              data-page="about" 
+                              onclick="handlePageSelection('about')">About us</a></li>
+                        <li><a class="nav-item navigate" 
+                              href="product.html" 
+                              data-page="product" 
+                              onclick="handlePageSelection('product')">Product</a></li>
+                        <li><a class="nav-item navigate" 
+                              href="contact.html" 
+                              data-page="contact" 
+                              onclick="handlePageSelection('contact')">Contact</a></li>
+                        <!-- 언어 선택 드롭다운 -->
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" 
+                                    type="button" 
+                                    id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" 
+                                    aria-expanded="false">
+                                한국어
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div></li>
+                                <li><div class="dropdown-item" onclick="handleLangChange('en')">English</div></li>
+                                <li><div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div></li>
+                                <li><div class="dropdown-item" onclick="handleLangChange('zh')">中文</div></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- 배경 비디오 -->
+        <div class="bg-video">
+            <div class="bg-color"></div>
+            <video class="bg-video-content" autoplay muted loop playsinline>
+                <source src="assets/main-background-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="content-container">
+            <div class="content-section">
+                <div class="content-wrapper">
+                    <!-- 로고 영역 -->
+                    <div class="logo-wrapper">
+                        <img src="assets/images/small-logo.svg" alt="STIP Logo">
+                        <p data-translate="main.logo">Meet <span>STIP</span></p>
+                    </div>
+                    <!-- STIP 설명 -->
+                    <div class="content-text">
+                        <p class="letter-title" data-letter="s">
+                            <span class="strong">S</span>
+                            <span>hare your wisdom with the world</span>
+                        </p>
+                        <p class="letter-title" data-letter="t">
+                            <span class="strong">T</span>
+                            <span>he seeds of progress begin with you</span>
+                        </p>
+                        <p class="letter-title" data-letter="i">
+                            <span class="strong">I</span>
+                            <span>ntellectual treasures spark the flame</span>
+                        </p>
+                        <p class="letter-title" data-letter="p">
+                            <span class="strong">P</span>
+                            <span>roperty shared lets innovation flow</span>
+                        </p>
+                    </div>
+                    <!-- 하단 콘텐츠 -->
+                    <div class="content-bottom">
+                        <div class="text">
+                            <p data-translate="main.bottom.text1">Share your wisdom with the world</p>
+                            <p data-translate="main.bottom.text2">The seeds of progress begin with you</p>
+                        </div>
+                        <div class="buttons">
+                            <button class="normal-button" style="width: 180px;">
+                                <a href="listing.html" data-translate="main.buttons.listing">Listing</a>
+                            </button>
+                            <div class="watch-video-area">
+                                <img src="assets/images/play-circle.svg" alt="Play video">
+                                <span data-translate="main.buttons.watch_video">Watch video</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 로고 슬라이더 -->
+            <div class="logo-slider-section">
+                <!-- 기존 슬라이더 코드 유지 -->
+            </div>
+        </main>
+
+        <!-- 푸터 -->
+        <footer class="footer-container">
+            <div class="footer-wrapper">
+                <div class="footer-logo">
+                    <span data-translate="footer.slogan">Let's share the IP, It's IP time</span>
+                    <img src="assets/images/logo.svg" alt="STIP Logo">
+                </div>
+                <div class="company-name" data-translate="footer.company_name">
+                    주식회사 아이피미디어그룹
+                </div>
+                <div class="company-info-grid">
+                    <span data-translate="footer.info.ceo">대표: 이성용</span>
+                    <span data-translate="footer.info.address">주소: 서울시 강남구 테헤란로151 1116호</span>
+                    <span data-translate="footer.info.phone">연락처: 02-2238-4345</span>
+                    <span data-translate="footer.info.email">이메일: support@stipvelation.com</span>
+                    <span data-translate="footer.info.business_number">사업자등록번호: 644-86-01439</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- 언어 관련 스크립트 -->
+    <script src="js/translations.json" type="application/json"></script>
+    <script src="js/language-control-fixed2.js"></script>
+
+    <script>
+        // 스와이퍼 초기화
+        const swiper = new Swiper('.swiper', {
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                900: { slidesPerView: 4, spaceBetween: 10 },
+                1100: { slidesPerView: 5, spaceBetween: 10 },
+                1200: { slidesPerView: 6, spaceBetween: 10 },
+            },
+            speed: 10000,
+            loop: true,
+            loopAdditionalSlides: 1,
+            slidesPerView: 3,
+            spaceBetween: 10,
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+{
+    "ko": {
+        "nav": {
+            "main": "메인",
+            "listing": "상장",
+            "about": "소개",
+            "product": "제품",
+            "contact": "문의"
+        },
+        "main": {
+            "logo_text": "Meet <span>STIP</span>",
+            "letter_titles": [
+                "당신의 지혜를 세상과 공유하세요",
+                "진보의 씨앗은 당신으로부터 시작됩니다",
+                "지적 보물은 불꽃을 일으킵니다",
+                "공유된 재산은 혁신을 흐르게 합니다"
+            ],
+            "bottom_text": [
+                "STIP은 IP에 있어서 알파와 오메가이며",
+                "처음과 마지막이고 시작과 끝 입니다"
+            ],
+            "buttons": {
+                "listing": "상장",
+                "watch_video": "영상"
+            }
+        },
+        "listing": {
+            "letter_title": [
+                "상 장"
+            ],
+            "letter_title_p": [    
+                "당신의 지혜를 세상과 나누세요.",
+                "진보의 씨앗은 당신에게서 시작됩니다."
+            ],
+            "form": {
+                "labels": {
+                    "name": "성명",
+                    "email": "이메일",
+                    "mobile": "연락처",
+                    "uploadfile": "파일 업로드",
+                    "fileUploadTxt": "파일을 드래그하여 놓거나 클릭하여 선택하세요",
+                    "fileDeleteTxt": "삭제",
+                    "fileSelectAria": "파일 선택",
+                    "fileDeleteAria": "파일 제거",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria":"Delete File",
+                        "smart5Aria": "SMART5 특허 평가 보고서 제출 페이지로 이동"
+                    },
+                    "smart5": {
+                        "link": "SMART5",
+                        "text": " 특허 평가 보고서를 제출하세요"
+                    }
+                },
+                "placeholders": {
+                    "name": "이름을 입력해주세요(결제 카드의 이름).",
+                    "email": "메일을 입력해주세요.",
+                    "mobile": "연락처를 입력해주세요."
+                },
+                "button": "제출"
+            },
+            "payment": {
+                "title": "결제",
+                "card_number": "카드 번호",
+                "expiry_date": "만료일",
+                "cvv": "CVV",
+                "cardholder_name": "카드 소유자 명",
+                "amount": "결제 금액",
+                "currency": "KRW",
+                "amount_value": "99,000",
+                "process_payment": "결제하기",
+                "country_code": "+82",
+                "validation": {
+                    "email": "올바른 이메일 주소를 입력해주세요",
+                    "name_mismatch": "카드 소유자 이름이 일치하지 않습니다"
+                }
+            }
+        },
+        "about": {
+            "title_area_h6": "Intellectual Property ",
+            "title_area_h1": "Meets STIP",
+            "content_area": [
+                "<span>STIP(Share The Intellectual Property)</span> 은<br>특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등 다양한 디지털 IP를<br> 거래할 수 있는 혁신적인 플랫폼입니다.",
+                "기업, 연구기관, 창작자, 발명가들이 통상실시권 시스템을 활용하여<br>IP 소유권을 이전하지 않고도 자금을 조달할 수 있는 기회를 제공합니다.<br><br><strong>Founder</strong><br>Hyundo Jeong"
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>IP를 공유하자<br />지금은 IP시대.</span>"
+        },
+        "contact": {
+            "title_h1": "문의",
+            "intro_text": "필요한 내용을 저희 팀과 상담하세요",
+            "radius_boxes": [
+                {
+                    "title": "무엇을 도와드릴까요",
+                    "description": "",
+                    "button_text": "연결",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "커뮤니티",
+                    "description": "",
+                    "button_text": "연결",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "문의하기",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "이름",
+                        "placeholder": "이름을 입력해주세요."
+                    },
+                    "last": {
+                        "label": "성",
+                        "placeholder": "성을 입력해주세요."
+                    }
+                },
+                "company": {
+                    "label": "회사",
+                    "placeholder": "회사를 입력해주세요."
+                },
+                "job_title": {
+                    "label": "직함",
+                    "placeholder": "직함을 입력해주세요."
+                },
+                "mobile": {
+                    "label": "연락처",
+                    "placeholder": "연락처를 입력해주세요."
+                },
+                "country": {
+                    "label": "국가",
+                    "placeholder": "국가를 입력해주세요."
+                },
+                "email": {
+                    "label": "이메일",
+                    "placeholder": "메일을 입력해주세요."
+                },
+                "subject": {
+                    "label": "주제",
+                    "placeholder": "주제 선택",
+                    "options": {
+                        "listing": "상장",
+                        "media_press": "언론",
+                        "collaboration": "협업"
+                    }
+                },
+                "message": {
+                    "label": "문의내용",
+                    "placeholder": "귀하의 비즈니스에 필요한 것에 대해 입력해주세요."
+                },
+                "submit": "문의"
+            }
+        },
+        "contact_community": {
+            "main_title": "커뮤니티",
+            "main_description": "",
+            "community_support": {
+                "title": "SNS",
+                "description": ""
+            },
+            "listing_support": {
+                "title": " 상장 지원 ",
+                "description": "",
+                "button": "채팅"
+            }
+        },        
+        "footer": {
+            "slogan": "IP를 공유하자, 지금은 IP시대",
+            "company_name": "주식회사 아이피미디어그룹",
+            "company_info": {
+                "ceo": "대표: 이성용",
+                "address": "주소: 서울시 강남구 테헤란로151 1116호",
+                "phone": "연락처: 02-2238-4345",
+                "email": "이메일: support@stipvelation.com",
+                "business_number": "사업자등록번호: 644-86-01439"
+            }
+        }
+    },
+    "en": {
+        "nav": {
+            "main": "Main",
+            "listing": "Listing",
+            "about": "About us",
+            "product": "Product",
+            "contact": "Contact"
+        },
+        "main": {
+            "logo_text": "Meet <span>STIP</span>",
+            "letter_titles": [
+                "hare your wisdom with the world",
+                "he seeds of progress begin with you",
+                "ntellectual treasures spark the flame",
+                "roperty shared lets innovation flow"
+            ],
+            "bottom_text": [
+                "STIP is the Alpha and the Omega in IP",
+                "the First and the Last, the Beginning and the End."
+            ],
+            "buttons": {
+                "listing": "Listing",
+                "watch_video": "Watch video"
+            }
+        },
+        "listing": {
+            "letter_title": [
+                "Listing"
+            ],
+            "letter_title_p": [
+                "hare your wisdom with the world",
+                "he seeds of progress begin with you"
+            ],
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "email": "Email",
+                    "mobile": "Mobile",
+                    "uploadfile": "Upload File",
+                    "fileUploadTxt": "Drag and drop files or click to select them.",
+                    "fileDeleteTxt": "Delete",
+                    "fileSelectAria": "Select File",
+                    "fileDeleteAria": "Delete File",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria": "Delete File",
+                        "smart5Aria": "SMART5 Go to the patent evaluation report submission page"
+                    },
+                    "smart5": {
+                        "link": "SMART5",
+                        "text": " Submit the patent evaluation report"
+                    }
+                },
+                "placeholders": {
+                    "name": "Please enter your name(Enter the cardholder's name).",
+                    "email": "Please enter your email.",
+                    "mobile": "Please enter your contact information."
+                },
+                "button": "Submit"
+            },
+            "payment": {
+                "title": "Payment",
+                "card_number": "Card Number",
+                "expiry_date": "Expiry Date",
+                "cvv": "CVV",
+                "cardholder_name": "Cardholder Name",
+                "amount": "Amount",
+                "currency": "USD",
+                "amount_value": "99,000",
+                "process_payment": "Process Payment",
+                "country_code": "+1",
+                "validation": {
+                    "email": "Please enter a valid email address",
+                    "name_mismatch": "Cardholder name does not match"
+                }
+            }
+        },
+        "about": {
+            "title_area_h6": "Intellectual Property",
+            "title_area_h1": "Meets STIP",
+            "content_area": [
+                "<span>STIP(Share The Intellectual Property)</span> is<br> an innovative platform for trading a wide range of digital IP,<br>including patents, trademarks,dramas, films, comics, franchises,<br>music and dance.",
+                "It provides companies, research institutions, creators and inventors<br>with a new opportunity to secure funding by utilizing a non-exclusive<br> licensing system without transferring IP ownership.<br><br><strong>Founder</strong><br>Hyundo Jeong"
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>Let’s share the IP,<br />It’s IP time</span>"
+        },
+        "contact": {
+            "title_h1": "Contact",
+            "intro_text": "Talk to our team about<br /> your enterprise needs",
+            "radius_boxes": [
+                {
+                    "title": "Inquiry",
+                    "description": "",
+                    "button_text": "Connection",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "Need Help",
+                    "description": "",
+                    "button_text": "Connection",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Inquiry",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "First Name",
+                        "placeholder": "Enter your first name"
+                    },
+                    "last": {
+                        "label": "Last Name",
+                        "placeholder": "Enter your last name"
+                    }
+                },
+                "company": {
+                    "label": "Company",
+                    "placeholder": "Enter your company name"
+                },
+                "job_title": {
+                    "label": "Job Title",
+                    "placeholder": "Enter your job title"
+                },
+                "mobile": {
+                    "label": "Mobile",
+                    "placeholder": "Enter your mobile number"
+                },
+                "country": {
+                    "label": "Country",
+                    "placeholder": "Enter your country"
+                },
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "subject": {
+                    "label": "Subject",
+                    "placeholder": "Enter Subject",
+                    "options": {
+                        "listing": "Listing",
+                        "media_press": "Media Press",
+                        "collaboration": "Collaboration"
+                    }
+                },
+                "message": {
+                    "label": "How can we help?",
+                    "placeholder": "Please describe what you need for your business"
+                },
+                "submit": "Contact"
+            }
+        },    
+        "contact_community": {
+            "main_title": "Community",
+            "main_description": "Talk to our team about\nyour enterprise needs.",
+            "community_support": {
+                "title": "SNS",
+                "description": ""
+            },
+            "listing_support": {
+                "title": "Listing support",
+                "description": "",
+                "button": "Chat"
+            }
+        },
+        "footer": {
+            "slogan": "Let's share the IP, It's IP time",
+            "company_name": "IP Media Group Inc.",
+            "company_info": {
+                "ceo": "CEO: Lee Sung-yong",
+                "address": "Address: 1116, 151 Teheran-ro, Gangnam-gu, Seoul, Korea",
+                "phone": "Contact: +82-2-2238-4345",
+                "email": "Email: support@stipvelation.com",
+                "business_number": "Business Registration No.: 644-86-01439"
+            }
+        }
+    },
+    "ja": {
+        "nav": {
+            "main": "メイン",
+            "listing": "上場",
+            "about": "概要",
+            "product": "製品",
+            "contact": "問い合わせ"
+        },
+        "main": {
+            "logo_text": "Meet <span>STIP</span>",
+            "letter_titles": [
+                "あなたの知恵を世界と共有しましょう",
+                "進歩の種はあなたから始まります",
+                "知的な宝物は炎を灯します",
+                "共有された財産は革新を流れさせます"
+            ],
+            "bottom_text": [
+                "STIPはIPにおけるアルファでありオメガであり",
+                "最初であり最後、そして始まりであり終わりです"
+            ],
+            "buttons": {
+                "listing": "上場",
+                "watch_video": "動画"
+            }
+        },
+        "listing": {
+            "letter_title": [
+                "上場"
+            ],
+            "letter_title_p": [
+                "世界と知恵を分かち合いましょう",
+                "進歩の種はあなたから始まります"
+            ],
+            "form": {
+                "labels": {
+                    "name": "名前",
+                    "email": "メール",
+                    "mobile": "携帯電話",
+                    "uploadfile": "Upload File",
+                    "fileUploadTxt": "Drag and drop files or click to select them.",
+                    "fileDeleteTxt": "Delete",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria": "Delete File",
+                        "smart5Aria": "SMART5 特許評価レポートを提出してください"
+                    },
+                    "smart5": {
+                        "link": "SMART5",
+                        "text": " 特許評価レポートを提出してください"
+                    }
+                },
+                "placeholders": {
+                    "name": "名前を入力してください(カード名義の名前を入力)。",
+                    "email": "メールアドレスを入力してください。",
+                    "mobile": "連絡先を入力してください。"
+                },
+                "button": "提出"
+            },
+            "payment": {
+                "title": "支払い",
+                "card_number": "カード番号",
+                "expiry_date": "有効期限",
+                "cvv": "CVV",
+                "cardholder_name": "カード名義",
+                "amount": "金額",
+                "currency": "JPY",
+                "amount_value": "99,000",
+                "process_payment": "支払いを処理する",
+                "country_code": "+81",
+                "validation": {
+                    "email": "有効なメールアドレスを入力してください",
+                    "name_mismatch": "カード名義人の名前が一致しません"
+                }
+            }
+        },
+        "about": {
+            "title_area_h6": "Intellectual Property",
+            "title_area_h1": "Meets STIP",
+            "content_area": [
+                "<span>STIP(Share The Intellectual Property)</span> は<br>特許、商標、ドラマ、映画、漫画、フランチャイズ、音楽、ダンスなど<br>さまざまなデジタルIPを取引できる革新的なプラットフォームです",
+                "企業、研究機関、クリエイター、発明家が通常実施権のシステムを活用し、<br>IPの所有権を移転することなく資金を調達できる新しい機会を提供します<br><br><strong>Founder</strong><br>Hyundo Jeong"
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>IPを共有しよう、<br/>IPの時代だ</span>"
+        },
+        "contact": {
+            "title_h1": "問い合わせ",
+            "intro_text": "企業のニーズについて<br /> STIPチームにご相談ください",
+            "radius_boxes": [
+                {
+                    "title": "問い合わせ",
+                    "description": "",
+                    "button_text": "相談",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "お困りですか",
+                    "description": "",
+                    "button_text": "繋ぐ",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Contact",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "名",
+                        "placeholder": "あなたの名前を入力してください。"
+                    },
+                    "last": {
+                        "label": "姓",
+                        "placeholder": "あなたの姓を入力してください。"
+                    }
+                },
+                "company": {
+                    "label": "会社",
+                    "placeholder": "会社名を入力してください。"
+                },
+                "job_title": {
+                    "label": "役職",
+                    "placeholder": "役職を入力してください"
+                },
+                "mobile": {
+                    "label": "電話番号",
+                    "placeholder": "携帯電話番号を入力してください"
+                },
+                "country": {
+                    "label": "国",
+                    "placeholder": "あなたの国を入力してください"
+                },
+                "email": {
+                    "label": "メール",
+                    "placeholder": "メールアドレスを入力してください"
+                },
+                "subject": {
+                    "label": "主題",
+                    "placeholder": "主題を入力してください",
+                    "options": {
+                        "listing": "上場",
+                        "media_press": "メディア",
+                        "collaboration": "コラボ"
+                    }
+                },
+                "message": {
+                    "label": "どのようにサポートすれば宜しいですか？",
+                    "placeholder": "あなたのビジネスのために必要なものを説明してください"
+                },
+                "submit": "問い合わせ"
+            }
+        },
+        "contact_community": {
+            "main_title": "コミュニティ",
+            "main_description": "必要な内容をSTIPにご相談ください",
+            "community_support": {
+                "title": "SNS",
+                "description": ""
+            },
+            "listing_support": {
+                "title": "上場支援",
+                "description": "",
+                "button": "チャット"
+            }
+        },
+        "footer": {
+            "slogan": "IPを共有しよう、IPの時代だ",
+            "company_name": "株式会社IPメディアグループ",
+            "company_info": {
+                "ceo": "代表取締役: イ・ソンヨン",
+                "address": "住所: ソウル市江南区テヘラン路151 1116号",
+                "phone": "連絡先: 02-2238-4345",
+                "email": "メール: support@stipvelation.com",
+                "business_number": "事業者登録番号: 644-86-01439"
+            }
+        }
+    },
+    "zh": {
+        "nav": {
+            "main": "主页",
+            "listing": "上市",
+            "about": "我们",
+            "product": "产品",
+            "contact": "联系我们"
+        },
+        "main": {
+            "logo_text": "Meet <span>STIP</span>",
+            "letter_titles": [
+                "与世界分享你的智慧",
+                "进步的种子从你开始",
+                "知识财富点燃火花",
+                "共享财产让创新流动"
+            ],
+            "bottom_text": [
+                "STIP 是知识产权领域的阿尔法和欧米伽",
+                "是首先的也是末后的，是起初的也是终结的"
+            ],
+            "buttons": {
+                "listing": "上市",
+                "watch_video": "视频"
+            }
+        },
+        "listing": {
+            "letter_title": [
+                "上市"
+            ],
+            "letter_title_p": [
+                "与世界分享你的智慧",
+                "进步的种子始于你"
+            ],
+            "form": {
+                "labels": {
+                    "name": "姓名",
+                    "email": "电子邮箱",
+                    "mobile": "手机号码",
+                    "uploadfile": "Upload File",
+                    "fileUploadTxt": "Drag and drop files or click to select them.",
+                    "fileDeleteTxt": "Delete",
+                    "ariaLabel": {
+                        "fileSelectAria": "Select File",
+                        "fileDeleteAria": "Delete File",
+                        "smart5Aria": "SMART5 请提交专利评估报告"
+                    },
+                    "smart5": {
+                        "link": "SMART5",
+                        "text": " 请提交专利评估报告"
+                    }
+                },
+                "placeholders": {
+                    "name": "请输入您的姓名(输入持卡人姓名)。",
+                    "email": "请输入您的电子邮箱。",
+                    "mobile": "请输入您的联系方式。"
+                },
+                "button": "提交"
+            },
+            "payment": {
+                "title": "支付",
+                "card_number": "卡号",
+                "expiry_date": "有效期",
+                "cvv": "CVV",
+                "cardholder_name": "持卡人姓名",
+                "amount": "支付金额",
+                "currency": "CNY",
+                "amount_value": "99,000",
+                "process_payment": "确认支付",
+                "country_code": "+86",
+                "validation": {
+                    "email": "请输入有效的电子邮箱地址",
+                    "name_mismatch": "持卡人姓名不匹配"
+                }
+            }
+        },
+        "about": {
+            "title_area_h6": "Intellectual Property",            
+            "title_area_h1": "Meets STIP",
+            "content_area": [
+                "<span>STIP(Share The Intellectual Property)</span><br>是一个创新的平台，可用于交易专利、商标、电视剧、电影、漫画、特许经营、音乐<br>舞蹈等各种数字知识产权（IP）",
+                "该平台为企业、研究机构、创作者和发明者提供了一种新的机会<br>通过利用普通许可权系统，在不转让知识产权所有权的情况下获得资金。<br><br><strong>Founder</strong><br>Hyundo Jeong"
+            ],
+            "bottom_area": [
+                "",
+                ""
+            ]
+        },
+        "product": {
+            "letter_title": "<span>让我们共享 IP，<br/>现在是 IP 时间</span>"
+        },
+        "contact": {
+            "title_h1": "咨询",
+            "intro_text": "请与我们的团队洽谈您的需求",
+            "radius_boxes": [
+                {
+                    "title": "询问",
+                    "description": "",
+                    "button_text": "联系",
+                    "link": "contact-contact.html"
+                },
+                {
+                    "title": "需要帮助吗",
+                    "description": "",
+                    "button_text": "联系",
+                    "link": "contact-community.html"
+                }
+            ]
+        },
+        "contact_contact": {
+            "letter_title": "Contact",
+            "form": {
+                "name": {
+                    "first": {
+                        "label": "姓名",
+                        "placeholder": "输入你的名字"
+                    },
+                    "last": {
+                        "label": "姓氏",
+                        "placeholder": "请输入您的姓氏"
+                    }
+                },
+                "company": {
+                    "label": "公司",
+                    "placeholder": "输入您的公司名称"
+                },
+                "job_title": {
+                    "label": "职位名称",
+                    "placeholder": "输入您的公司名称"
+                },
+                "mobile": {
+                    "label": "移动",
+                    "placeholder": "输入您的手机号码"
+                },
+                "country": {
+                    "label": "国家",
+                    "placeholder": "输入您的国家"
+                },
+                "email": {
+                    "label": "电子邮件",
+                    "placeholder": "输入您的电子邮件"
+                },
+                "subject": {
+                    "label": "主题",
+                    "placeholder": "选择主题",
+                    "options": {
+                        "listing": "上市",
+                        "media_press": "媒体",
+                        "collaboration": "合作"
+                    }
+                },
+                "message": {
+                    "label": "我们能如何帮助您？",
+                    "placeholder": "请描述您的业务需求"
+                },
+                "submit": "联系我们"
+            }
+        },
+        "contact_community": {
+            "main_title": "咨询",
+            "main_description": "请与我们的团队洽谈您的需求",
+            "community_support": {
+                "title": "SNS",
+                "description": ""
+            },
+            "listing_support": {
+                "title": "上市支持",
+                "description": "",
+                "button": "开始聊天"
+            }
+        },
+        "footer": {
+            "slogan": "让我们共享IP，这是IP的时代",
+            "company_name": "IP媒体集团股份有限公司",
+            "company_info": {
+                "ceo": "董事长: 李成勇",
+                "address": "地址: 韩国首尔市江南区泰亨路151 1116室",
+                "phone": "联系电话: 02-2238-4345",
+                "email": "邮箱: support@stipvelation.com",
+                "business_number": "营业执照号: 644-86-01439"
+            }
+        }
+    }
+}

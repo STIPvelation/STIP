@@ -1,0 +1,243 @@
+@import url("../components/header.css");
+@import url("../components/button.css");
+@import url("../components/footer.css");
+@import url("../components/letter-title.css");
+@import url("../variable.css");
+
+/* 메인 레이아웃 */
+.root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+/* 비디오 배경 */
+.bg-video {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+/* 내비게이션 */
+.header-nav {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 메인 컨텐츠 */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding-top: 120px;
+  padding-left: 15%;
+}
+
+.letter-title {
+  font-size: 24px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.strong {
+  color: #00d9ff;
+  font-weight: bold;
+}
+
+/* 버튼 스타일 */
+.normal-button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 30px;
+}
+
+/* .watch-video-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+} */
+
+/* 슬라이더 */
+.logo-slider-section {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  /* background: rgba(0, 0, 0, 0.8); */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* .company-logo {
+  height: 60px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+} */
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+/* 버튼과 비디오 영역 */
+.content-bottom .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+/* .normal-button {
+  width: 180px;
+  height: 48px;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+} */
+
+/* From Uiverse.io by ZacharyCrespin */
+.normal-button {
+  width: 180px;
+  height: 48px;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: Helvetica, "sans-serif";
+  transition: all .2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #2997e1;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.normal-button>span {color: #fff; }
+
+.normal-button:hover {
+  background: #00e9a0;
+}
+
+.normal-button>svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.normal-button:hover svg {
+  transform: translateX(5px);
+}
+
+.normal-button:active {
+  transform: scale(0.95);
+}
+
+.watch-video-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* 슬라이더 이미지 */
+.swiper-slide {
+  width: 180px !important;
+  height: 60px !important;
+  background: #fff;
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.company-logo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  transform: scale(0.9);
+}
+
+/* Footer */
+.footer-container {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+ /* watch-video-area 스타일 */
+ .watch-video-area {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 8px;
+   cursor: pointer;
+ }
+
+ .watch-video-area .link-text {
+   color: transparent;
+ }
+
+ .watch-video-area span {
+   color: var(--white-color);
+   font-size: 16px;
+   font-weight: 500;
+   position: relative;
+   /* 밑줄을 추가하기 위해 position 설정 */
+
+   @media screen and (max-width: 768px) {
+     font-size: 14px;
+   }
+ }
+
+ /* 마우스 호버 시 밑줄 효과 */
+ .watch-video-area span::after {
+   content: '';
+   position: absolute;
+   bottom: -2px;
+   /* 글씨 아래 간격 */
+   left: 0;
+   width: 0;
+   /* 기본 상태에서 너비 0 */
+   height: 2px;
+   /* 밑줄 두께 */
+   background-color: var(--orange-color);
+   /* 밑줄 색상 */
+   transition: width 0.3s ease;
+   /* 밑줄 애니메이션 */
+ }
+
+ .watch-video-area:hover span::after {
+   width: 100%;
+   /* 마우스 호버 시 밑줄 전체 너비 */
+ }
