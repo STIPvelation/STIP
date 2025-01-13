@@ -358,6 +358,25 @@
 
         /* 반응형 디자인 */
         @media screen and (max-width: 768px) {
+
+          .radius-box {
+              min-height: 200px;
+              height: auto;
+              padding: 20px;
+          }
+
+          .radius-box .inner {
+              padding: 15px 0;
+          }
+
+          .radius-box .form-group {
+              margin-bottom: 15px;
+          }
+
+          .radius-box input,
+          .radius-box textarea {
+              margin-bottom: 10px;
+          }
           .icon-wrapper {
             width: 60px;
             height: 60px;
@@ -436,6 +455,11 @@
 
         /* 반응형 디자인 */
         @media screen and (max-width: 768px) {
+          .radius-box {
+              min-height: 200px;
+              height: auto;
+              padding: 20px;
+          }
           .radius-box .title-wrapper > span {
             font-size: 20px;
           }
@@ -713,6 +737,15 @@
       });
     </script>
     <!-- <script src="components/header.js" defer></script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          console.log('isMobileDevice:', window.deviceService.isMobileDevice());
+        } catch (error) {
+          console.warn('Device service check failed:', error);
+        }
+      });
+    </script> 
     <script src="js/updated-language-script.js"></script>
   </body>
 </html>

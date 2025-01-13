@@ -639,7 +639,7 @@
                   <nav class="side-bar-section">
                     <div class="side-bar-list">
                       <a
-                        class="side-bar-item navigate active"
+                        class="side-bar-item navigate"
                         href="index.html"
                         data-page="main"
                         onclick="handlePageSelection('main')"
@@ -660,7 +660,7 @@
                         >About us</a
                       >
                       <a
-                        class="side-bar-item navigate"
+                        class="side-bar-item navigate active"
                         href="product.html"
                         data-page="product"
                         onclick="handlePageSelection('product')"
@@ -711,7 +711,7 @@
               </li>
               <li>
                 <a
-                  class="nav-item navigate"
+                  class="nav-item navigate active"
                   href="product.html"
                   data-page="product"
                   onclick="handlePageSelection('product')"
@@ -2446,6 +2446,15 @@
       });
     </script>
     <!-- <script src="components/header.js" defer></script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          console.log('isMobileDevice:', window.deviceService.isMobileDevice());
+        } catch (error) {
+          console.warn('Device service check failed:', error);
+        }
+      });
+    </script> 
     <script src="js/updated-language-script.js"></script>
   </body>
 </html>

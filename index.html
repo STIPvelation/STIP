@@ -811,6 +811,15 @@
     </script>
     <!-- <script src="components/header.js" defer></script> -->
     <!-- <script src="js/header.js"></script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          console.log('isMobileDevice:', window.deviceService.isMobileDevice());
+        } catch (error) {
+          console.warn('Device service check failed:', error);
+        }
+      });
+    </script> 
 
     <script src="js/updated-language-script.js"></script>
   </body>
