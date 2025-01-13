@@ -37,14 +37,16 @@
   color: #fff;
   text-decoration: none;
 }
-.content-container .content-section{
-  position:relative;
+
+.content-container .content-section {
+  position: relative;
 }
 
-.content-text{
+.content-text {
   display: flex;
   flex-direction: column;
 }
+
 /* 메인 컨텐츠 */
 .content-wrapper {
   position: relative;
@@ -58,19 +60,22 @@
   justify-content: center;
 }
 
-.logo-wrapper{
+.logo-wrapper {
   display: flex;
   align-items: center;
-  padding-bottom:8px;
+  padding-bottom: 8px;
 }
-.logo-wrapper p{
-  margin-left:8px;
-  margin-bottom:unset;
-  color:#949698;
+
+.logo-wrapper p {
+  margin-left: 8px;
+  margin-bottom: unset;
+  color: #949698;
 }
-.logo-wrapper p span{
-  color:#fff;
+
+.logo-wrapper p span {
+  color: #fff;
 }
+
 .letter-title {
   font-size: 24px;
   line-height: 1.5;
@@ -79,8 +84,18 @@
 }
 
 .strong {
-  color: #00d9ff;
+  /* color: #00d9ff; */
+  color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
   font-weight: bold;
+  transition: text-shadow 0.3s ease;
+}
+
+.strong:hover {
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 /* 버튼 스타일 */
@@ -108,18 +123,27 @@
   -webkit-backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.2);
   z-index: 2;
-  position:absolute;
-  bottom:50px;
-  left:0;
+  position: absolute;
+  bottom: 50px;
+  left: 0;
 }
+
 @media (max-width: 768px) {
+  .letter-title {
+    font-size: 20px;
+    letter-spacing: -1px;
+  }
+
   .logo-slider-section {
-    position:relative;
-    bottom:unset;
-    margin:50px 0;
+    position: relative;
+    bottom: unset;
+    margin: 50px 0;
   }
 
 }
+
+
+
 /* .company-logo {
   height: 60px;
   background: #fff;
@@ -132,7 +156,7 @@
     padding-left: 5%;
     padding-right: 5%;
     height: unset;
-    padding-top:100px;
+    padding-top: 100px;
   }
 }
 
@@ -143,9 +167,11 @@
   align-items: center;
   gap: 24px;
 }
-.content-bottom .text{
-  color:#949698;
+
+.content-bottom .text {
+  color: #949698;
 }
+
 /* .normal-button {
   width: 180px;
   height: 48px;
@@ -170,16 +196,20 @@
   transition: all .2s;
   padding: 10px 20px;
   border-radius: 100px;
-  background: #2997e1;
-  border: 1px solid transparent;
+  /* background: #2997e1; */
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid #fcfcfc;
   display: flex;
   align-items: center;
   font-size: 15px;
 }
-.normal-button>span {color: #fff; }
+
+.normal-button>span {
+  color: #fff;
+}
 
 .normal-button:hover {
-  background: #00e9a0;
+  border: 2px solid #fff;
 }
 
 .normal-button>svg {
@@ -203,16 +233,26 @@
   cursor: pointer;
 }
 
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.swiper-container {
+  width: 100%;
+}
+
 /* 슬라이더 이미지 */
 .swiper-slide {
-  width: 180px !important;
-  height: 60px !important;
   border-radius: 4px;
-  padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+.swiper-slide img {
+  max-width: 180px !important;
+  height: 60px !important;
 }
 
 .company-logo {
@@ -231,49 +271,49 @@
   z-index: 1;
 }
 
- /* watch-video-area 스타일 */
- .watch-video-area {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   gap: 8px;
-   cursor: pointer;
- }
+/* watch-video-area 스타일 */
+.watch-video-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
- .watch-video-area .link-text {
-   color: transparent;
- }
+.watch-video-area .link-text {
+  color: transparent;
+}
 
- .watch-video-area span {
-   color: var(--white-color);
-   font-size: 16px;
-   font-weight: 500;
-   position: relative;
-   /* 밑줄을 추가하기 위해 position 설정 */
+.watch-video-area span {
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  /* 밑줄을 추가하기 위해 position 설정 */
 
-   @media screen and (max-width: 768px) {
-     font-size: 14px;
-   }
- }
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+}
 
- /* 마우스 호버 시 밑줄 효과 */
- .watch-video-area span::after {
-   content: '';
-   position: absolute;
-   bottom: -2px;
-   /* 글씨 아래 간격 */
-   left: 0;
-   width: 0;
-   /* 기본 상태에서 너비 0 */
-   height: 2px;
-   /* 밑줄 두께 */
-   background-color: var(--orange-color);
-   /* 밑줄 색상 */
-   transition: width 0.3s ease;
-   /* 밑줄 애니메이션 */
- }
+/* 마우스 호버 시 밑줄 효과 */
+.watch-video-area span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  /* 글씨 아래 간격 */
+  left: 0;
+  width: 0;
+  /* 기본 상태에서 너비 0 */
+  height: 2px;
+  /* 밑줄 두께 */
+  background-color: var(--orange-color);
+  /* 밑줄 색상 */
+  transition: width 0.3s ease;
+  /* 밑줄 애니메이션 */
+}
 
- .watch-video-area:hover span::after {
-   width: 100%;
-   /* 마우스 호버 시 밑줄 전체 너비 */
- }
+.watch-video-area:hover span::after {
+  width: 100%;
+  /* 마우스 호버 시 밑줄 전체 너비 */
+}

@@ -1,6 +1,7 @@
 // 페이지별 setLanguage 처리 스크립트
 let translations = {}; // 공통 번역 데이터를 담을 객체
 let currentPage = 'home'; // 기본 페이지를 'home'으로 설정
+let currentLang = localStorage.getItem('preferredLanguage') || 'en';
 
 // 언어 라벨 설정
 const langLabel = {
@@ -111,7 +112,9 @@ function handlePageSelection(page) {
 
 // 언어 변경 핸들러
 async function handleLangChange(lang, fromSidebar = false) {
-  // currentLang = lang;
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  
   // localStorage.setItem('preferredLanguage', lang);
   // updateCurrencyDisplay(lang);
 
@@ -136,6 +139,15 @@ async function handleLangChange(lang, fromSidebar = false) {
   // 24-12-27 update by lee d.h
   
   try {
+    // 로딩 시작
+    window.loadingService?.show();
+
+    // 언어 변경 전에 현재 스크롤 위치 저장
+    const scrollPosition = window.scrollY;
+
+    // 언어 데이터 로드 및 적용
+    await updateLanguageContent(lang);
+
     // 기존 코드 유지
     document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
       element.textContent = element.getAttribute('data-lang-' + lang);
@@ -144,26 +156,85 @@ async function handleLangChange(lang, fromSidebar = false) {
       }
     });
 
+    // 드롭다운 버튼 텍스트 업데이트
+    const dropdownButton = document.getElementById('dropdownMenuButton1');
+    if (dropdownButton && langLabel[lang]) {
+      dropdownButton.textContent = langLabel[lang];
+    }
+
+    // 사이드바 언어 항목 active 상태 업데이트
+    updateSidebarLanguageState(lang);
+
+    // 저장된 스크롤 위치로 복원
+    window.scrollTo(0, scrollPosition);
+
+    // 언어 변경 이벤트 발생
+    window.dispatchEvent(new Event('languageChanged'));
+
 
     // 가격 표시 업데이트 추가
-    const priceDisplay = document.getElementById('previewPrice');
-    if (priceDisplay && window.currencyService) {
-      const formattedPrice = await window.currencyService.updatePriceDisplay(lang);
-      priceDisplay.value = formattedPrice;
-    }    
+    // const priceDisplay = document.getElementById('previewPrice');
+    // if (priceDisplay && window.currencyService) {
+    //   const formattedPrice = await window.currencyService.updatePriceDisplay(lang);
+    //   priceDisplay.value = formattedPrice;
+    // }    
 
     // 페이지 언어 업데이트 추가
     updatePageLanguage(lang);
 
     setLanguage(lang);
+
+    // 로컬 스토리지에 언어 설정 저장
+    localStorage.setItem('preferredLanguage', lang);
+
     if (fromSidebar) {
       handleBurgerMenuClose();
     }
+
   } catch (error) {
     console.error('Error updating language and currency:', error);
+  } finally {
+    // 로딩 종료
+    await window.loadingService?.hide();
   }
 }
 
+// 사이드바 언어 상태 업데이트 함수
+function updateSidebarLanguageState(lang) {
+  document.querySelectorAll('.side-bar-list.lang .side-bar-item').forEach(item => {
+    item.classList.remove('active');
+    if (item.textContent === langLabel[lang]) {
+      item.classList.add('active');
+    }
+  });
+}
+
+// 사이드바 언어 선택 이벤트 리스너 설정
+function initializeLanguageSelection() {
+  // 현재 선택된 언어로 드롭다운 버튼 텍스트 설정
+  const currentLang = getCurrentLanguage();
+  const dropdownButton = document.getElementById('dropdownMenuButton1');
+  if (dropdownButton && langLabel[currentLang]) {
+    dropdownButton.textContent = langLabel[currentLang];
+  }
+
+  // 사이드바 언어 선택 상태 초기화
+  updateSidebarLanguageState(currentLang);
+}
+
+// 언어 컨텐츠 업데이트 함수
+async function updateLanguageContent(lang) {
+  // 실제 업데이트가 필요한 경우 지연 시간 시뮬레이션
+  await new Promise(resolve => setTimeout(resolve, 300));
+
+  // 여기에 실제 언어 데이터 업데이트 로직 구현
+  if (translations[lang]) {
+    currentLang = lang;
+    updatePageLanguage(lang);
+  } else {
+    throw new Error(`Translation not found for language: ${lang}`);
+  }
+}
 // 폼 언어 업데이트 함수
 function updateFormLanguage(form, lang) {
   // 일반 텍스트 요소 업데이트
@@ -222,11 +293,11 @@ function updatePageLanguage(lang) {
 
     // 가격 업데이트
     const priceInput = document.getElementById('previewPrice');
-    if (priceInput && window.currencyService) {
-      window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
-        priceInput.value = formattedPrice;
-      });
-    }
+    // if (priceInput && window.currencyService) {
+    //   window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
+    //     priceInput.value = formattedPrice;
+    //   });
+    // }
   }
 
   // orderForm 업데이트
@@ -327,9 +398,28 @@ function updateHomePage(lang) {
     if (logoWrapper) logoWrapper.innerHTML = translations[lang]?.main?.logo_text;
     letterTitles.forEach((el, index) => {
       const strongSpan = el.querySelector("span.strong");
+      const spans = el.querySelectorAll("span");
+      if (spans.length >= 2) {
+          const strongSpan = spans[0];  // 첫 번째 span (S, T, I, P)
+          const textSpan = spans[1];    // 두 번째 span (텍스트)
+          
+          // 아시아 언어(ko, ja, zh)일 때는 첫 번째 span 숨기기
+          if (['ko', 'ja', 'zh'].includes(lang)) {
+              strongSpan.style.display = 'none';
+              // 텍스트 span의 text-transform 제거
+              textSpan.style.textTransform = 'none';
+          } else {
+              // 영어일 때는 보이기
+              strongSpan.style.display = 'inline';
+              // 영어일 때는 첫 글자 대문자로
+              textSpan.style.textTransform = 'none';
+          }
+      }
+
       if (strongSpan) {
         el.querySelector("span:not(.strong)").textContent = translations[lang]?.main?.letter_titles[index] || "";
       }
+
     });
     contentBottomText.forEach((el, index) => {
       el.textContent = translations[lang]?.main?.bottom_text[index] || "";
@@ -427,6 +517,23 @@ function updateListingPage(lang) {
   const submitButton = document.querySelector('#submit');
   if (submitButton) {
     submitButton.textContent = formData.button;
+  }
+  const contentWrapper = document.querySelector(".content-wrapper");
+  const title_area = document.querySelector(".title-area");
+  // const letterTitle = contentWrapper.querySelector(".letter-title h1");
+  // const letterTitlep = contentWrapper.querySelectorAll(".letter-title p");
+  if (contentWrapper) {
+    const letterTitle = title_area.querySelector(".letter-title > span");
+    const letterTitlep = title_area.querySelectorAll("p");
+    letterTitle.textContent = translations[lang]?.listing?.letter_title || "";
+    letterTitlep.forEach((el, index) => {
+      const text = translations[lang]?.listing?.letter_title_p[index] || "";
+      if (text) {
+        const firstLetter = text.charAt(0);
+        const restOfText = text.slice(1);
+        el.innerHTML = `<span>${firstLetter}</span>${restOfText}`;
+      }
+    });
   }
 }
 
@@ -783,8 +890,12 @@ function handleBurgerMenuClose() {
   //   sideBarContainer.classList.remove('close');
   // }
   const nav = document.querySelector(".side-bar-container");
-  nav.classList.remove("open");
-  nav.classList.add("close");
+  // nav.classList.remove("open");
+  // nav.classList.add("close");
+  if (nav) {
+    nav.classList.remove("open");
+    nav.classList.add("close");
+  }
 }
 
 // Function to close sidebar
@@ -804,26 +915,99 @@ function closeSideBar() {
     }
 }
 
+// 초기화 함수
+async function initialize() {
+  try {
+    await loadTranslations();
+    currentLang = getCurrentLanguage();
+    await updateLanguageContent(currentLang);
+
+    // 사이드바 초기화
+    initializeSidebar();
+
+    // 현재 페이지 업데이트
+    const updater = pageUpdaters[currentPage];
+    if (updater) {
+      await updater(currentLang);
+    }
+
+    window.dispatchEvent(new Event('languageChanged'));
+  } catch (error) {
+    console.error('Initialization error:', error);
+    window.toastService?.show('Failed to initialize the page', 'error');
+  }
+}
+
+// 사이드바 초기화
+function initializeSidebar() {
+  const sidebarBackground = document.querySelector('.sidebar-background');
+  if (sidebarBackground) {
+    sidebarBackground.addEventListener('click', handleBurgerMenuClose);
+  }
+}
+
+// 사이드바 언어 선택 이벤트 리스너 설정
+function initializeSidebarLanguageSelection() {
+  const sidebarLangItems = document.querySelectorAll('.side-bar-list.lang .side-bar-item');
+  
+  sidebarLangItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+      const lang = event.currentTarget.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+      
+      if (lang) {
+        handleLangChange(lang, true); // true는 사이드바에서 호출됨을 나타냄
+        
+        // 다른 항목의 active 클래스 제거
+        sidebarLangItems.forEach(langItem => {
+          langItem.classList.remove('open');
+        });
+        
+        // 선택된 항목에 active 클래스 추가
+        event.currentTarget.classList.add('open');
+      }
+    });
+  });
+}
 
 // DOM 로드 후 초기화
-document.addEventListener("DOMContentLoaded", () => {
-  loadTranslations();
+// document.addEventListener("DOMContentLoaded", () => {
+//   loadTranslations();
   
-  const currentLang = getCurrentLanguage();
+//   const currentLang = getCurrentLanguage();
 
-  // fetchCountries(currentLang);
-
-  // 배경 클릭 시 사이드바 닫기
-  // const sidebarBackground = document.querySelector('.sidebar-background');
-  // if (sidebarBackground) {
-  //   sidebarBackground.addEventListener('click', handleBurgerMenuClose);
-  // }
-
-  updateListingPage(currentLang);
-  // updateContactSubPage(currentLang);
-  // updateContactComPage(currentLang);
-  // updatePaymentForm(currentLang);
+//   updateListingPage(currentLang);
   
-  document.querySelector('.sidebar-background').addEventListener('click', handleBurgerMenuClose);
+//   document.querySelector('.sidebar-background').addEventListener('click', handleBurgerMenuClose);
   
+// });
+
+// DOM 로드 후 초기화
+// 25-01-11 update 
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    // 번역 데이터 로드
+    await loadTranslations();
+    
+    // 현재 언어 가져오기
+    currentLang = getCurrentLanguage();
+
+    // 언어 초기 설정 적용
+    await updateLanguageContent(currentLang);
+
+    // 언어 선택 UI 초기화
+    initializeLanguageSelection();
+
+    // 사이드바 이벤트 리스너 설정
+    initializeSidebarLanguageSelection();
+
+    // 사이드바 배경 클릭 시 닫기 이벤트 설정
+    const sidebarBackground = document.querySelector('.sidebar-background');
+    if (sidebarBackground) {
+      sidebarBackground.addEventListener('click', handleBurgerMenuClose);
+    }
+
+  } catch (error) {
+    console.error('Initialization error:', error);
+    window.toastService?.show('Failed to initialize the page', 'error');
+  }
 });

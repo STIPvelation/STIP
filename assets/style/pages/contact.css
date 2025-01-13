@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: center;
   padding: 104px 0;
+
   @media screen and (max-width: 768px) {
     padding: 24px;
   }
@@ -55,6 +56,16 @@
   @media screen and (max-width: 768px) {
     padding-left: 24px;
     margin-bottom: 24px;
+    padding: 48px;
+  }
+
+  @media screen and (max-width: 480px) {
+    /* padding-left: 24px; */
+    /* margin-bottom: 24px; */
+    /* padding: 48px; */
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
   }
 }
 
@@ -66,9 +77,15 @@
   text-align: center;
 }
 
-.content-container .contact-wrapper > .title-wrapper {
+.content-container .contact-wrapper>.title-wrapper {
   @media screen and (max-width: 768px) {
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 39px;
+  }
+
+  @media screen and (max-width: 480px) {
+    align-items: center;
     width: 100%;
     margin-bottom: 39px;
   }
@@ -81,12 +98,18 @@
   @media screen and (max-width: 768px) {
     line-height: 36px;
   }
+
   @media screen and (max-width: 480px) {
     line-height: 20px;
   }
 }
 
-.title-wrapper h1 span br{
+.title-wrapper .letter-title {
+  justify-content: center;
+  align-items: center;
+}
+
+.title-wrapper h1 span br {
   display: block !important;
 }
 
@@ -95,14 +118,17 @@
   font-weight: 700;
   color: var(--white-color);
   line-height: 56px;
-  
+
   @media screen and (max-width: 768px) {
     font-size: 36px;
     line-height: 36px;
   }
+
   @media screen and (max-width: 480px) {
-    font-size: 20px;
+    padding-top: 48px;
+    font-size: 28px;
     line-height: 20px;
+    align-items: center;
   }
 }
 
@@ -166,7 +192,7 @@
   }
 }
 
-.row-wrapper .radius-box .title-wrapper > span {
+.row-wrapper .radius-box .title-wrapper>span {
   @media screen and (max-width: 768px) {
     text-align: center;
   }
@@ -228,10 +254,10 @@
 }
 
 .row-wrapper .radius-box.community .top-content-area h6 {
-  font-size: 56px;
-  font-weight: 700;
+  /* font-size: 56px; */
+  /* font-weight: 700; */
   color: var(--white-color);
-  line-height: 56px;
+  /* line-height: 56px; */
   margin-bottom: 16px;
 
   @media screen and (max-width: 768px) {
@@ -323,6 +349,11 @@
     padding: 24px;
     border-radius: 0;
   }
+
+  @media screen and (max-width: 480px) {
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .contact-wrapper .radius-box.form form {
@@ -355,24 +386,11 @@
   position: relative;
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .row-area
-  .input-box
-  .select-box.active
-  .box-area
-  img {
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box.active .box-area img {
   transform: rotate(180deg);
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .row-area
-  .input-box
-  .select-box
-  .box-list {
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box .box-list {
   display: none;
   position: absolute;
   width: 100%;
@@ -383,26 +401,13 @@
   padding-left: 0;
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .row-area
-  .input-box
-  .select-box
-  .box-list.active {
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box .box-list.active {
   display: flex;
   flex-direction: column;
   box-shadow: 2px 4px 8px 0px rgba(41, 151, 225, 0.1);
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .row-area
-  .input-box
-  .select-box
-  .box-list
-  .select-item {
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box .box-list .select-item {
   width: 100%;
   padding: 12px 16px;
   cursor: pointer;
@@ -412,13 +417,7 @@
   line-height: 16px;
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .row-area
-  .input-box
-  .select-box
-  .box-area {
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box .box-area {
   width: 100%;
   height: 30px;
   display: flex;
@@ -431,13 +430,7 @@
   color: var(--white-color);
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .row-area
-  .input-box
-  .select-box
-  .box-area.empty {
+.contact-wrapper .radius-box.form form .row-area .input-box .select-box .box-area.empty {
   color: var(--gray-color);
   font-size: 16px;
   font-weight: 500;
@@ -460,11 +453,7 @@
   outline: none;
 }
 
-.contact-wrapper
-  .radius-box.form
-  form
-  .input-box.textarea
-  textarea::placeholder {
+.contact-wrapper .radius-box.form form .input-box.textarea textarea::placeholder {
   color: var(--gray-color);
 
   @media screen and (max-width: 480px) {

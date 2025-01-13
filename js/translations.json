@@ -8,7 +8,7 @@
             "contact": "문의"
         },
         "main": {
-            "logo_text": "Meet <span>STIP</span>",
+            "logo_text": "<span>STIP</span>",
             "letter_titles": [
                 "당신의 지혜를 세상과 공유하세요",
                 "진보의 씨앗은 당신으로부터 시작됩니다",
@@ -124,35 +124,39 @@
             "title_area_h6": "Intellectual Property ",
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span> 는<br>특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등 다양한 디지털 IP를<br> 거래할 수 있는 혁신적인 플랫폼입니다.",
-                "기업, 연구기관, 창작자, 발명가들이 통상실시권 시스템을 활용하여<br>IP 소유권을 이전하지 않고도 자금을 조달할 수 있는 기회를 제공합니다.<br><br><strong>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span>",
+                "특허, 상표, 드라마, 영화, 만화, 프랜차이즈, 음악, 댄스 등<br /> 다양한 디지털 IP를 거래할 수 있는 혁신적인 플랫폼입니다.",
+                "기업, 연구기관, 창작자, 발명가들이 통상실시권 시스템을 활용하여<br />IP 소유권을 이전하지 않고도 자금을 조달할 수 있는 기회를 제공합니다."
             ],
             "bottom_area": [
-                "",
-                ""
+                "Founder",
+                "Hyundo Jeong"
             ]
         },
         "product": {
             "letter_title": "<span>I&nbsp;&nbsp;P&nbsp;를 공&nbsp;유&nbsp;하&nbsp;자<br/>지&nbsp;금&nbsp;은 &nbsp;&nbsp;I&nbsp;&nbsp;P&nbsp;시&nbsp;대.</span>"
         },
         "contact": {
-            "title_h1": "문의",
-            "intro_text": "필요한 내용을 저희 팀과 상담하세요",
+            "title_h1": "문의하기",
+            "intro_text": "",
+            "intro_text2": "필요한 내용을 저희 팀과 상담하세요",
             "contact_title": "Inquiry",
-            "contact_description": "당신의 지혜를 세상과 나누세요<br/>진보의 씨앗은 당신으로부터 시작됩니다.",
+            "contact_title2": "무엇을 도와드릴까요",
+            "contact_description": "무엇을 도와드릴까요",
             "community_title": "Need Help",
-            "community_description": "귀하의 비즈니스 요구 사항에 대해<br/>저희 팀과 상의하세요.",
+            "community_title2": "커뮤니티",
+            "community_description": "커뮤니티",
             "radius_boxes": [
                 {
                     "title": "문의하기",
-                    "description": "Share your wisdom with the world <br/>The seeds of progress begin with you.",
-                    "button_text": "연결",
+                    "description": "",
+                    "button_text": "연결하기",
                     "link": "contact-contact.html"
                 },
                 {
-                    "title": "도움이 필요하세요",
+                    "title": "커뮤니티",
                     "description": "Talk to our team about<br/>your enterprise needs.",
-                    "button_text": "연결",
+                    "button_text": "연결하기",
                     "link": "contact-community.html"
                 }
             ]
@@ -193,7 +197,7 @@
                 "subject": {
                     "label": "주제",
                     "placeholder": "주제 선택",
-                    "selectoption": "주제를 선택해주세요",
+                    "selectoption": "주제를 입력 해주세요",
                     "options": {
                         "selectoption": "주제를 선택해주세요",
                         "listing": "상장",
@@ -209,7 +213,7 @@
             }
         },
         "contact_community": {
-            "main_title": "도움이 필요하세요",
+            "main_title": "커뮤니티",
             "main_description": "",
             "community_support": {
                 "title": "SNS",
@@ -242,7 +246,7 @@
             "contact": "Contact"
         },
         "main": {
-            "logo_text": "Meet <span>STIP</span>",
+            "logo_text": "<span>STIP</span>",
             "letter_titles": [
                 "hare your wisdom with the world",
                 "he seeds of progress begin with you",
@@ -263,8 +267,8 @@
                 "Listing"
             ],
             "letter_title_p": [
-                "hare your wisdom with the world",
-                "he seeds of progress begin with you"
+                "Share your wisdom with the world",
+                "The seeds of progress begin with you"
             ],
             "form": {
                 "labels": {
@@ -354,12 +358,13 @@
             "title_area_h6": "Intellectual Property",
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span><br>is an innovative platform for trading a wide range of digital IP,<br>including patents, trademarks,dramas, films, comics, franchises,<br>music and dance.",
-                "It provides companies, research institutions, creators and inventors<br>with a new opportunity to secure funding by utilizing a non-exclusive<br> licensing system without transferring IP ownership.<br><br><strong>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span>",
+                "An innovative platform for trading a wide range of digital IP,<br/>including patents, trademarks,dramas, films, comics, franchises,<br/>music and dance.",
+                "It provides companies, research institutions, creators and inventors<br/>with a new opportunity to secure funding by utilizing a non-exclusive<br/> licensing system without transferring IP ownership."
             ],
             "bottom_area": [
-                "",
-                ""
+                "Founder",
+                "Hyundo Jeong"
             ]
         },
         "product": {
@@ -367,15 +372,17 @@
         },
         "contact": {
             "title_h1": "Contact",
-            "intro_text": "Talk to our team about<br /> your enterprise needs",
+            "intro_text": "",
+            "intro_text2": "Talk to our team <br>about your enterprise needs",
             "contact_title": "Inquiry",
-            "contact_description": "Share your wisdom with the world <br/>The seeds of progress begin with you.",
+            "contact_description": "Talk to our team",
+            "contact_description2": "Share your wisdom with the world <br/>The seeds of progress begin with you",
             "community_title": "Need Help",
-            "community_description": "Talk to our team about<br/>your enterprise needs.",
+            "community_description": "Community",
             "radius_boxes": [
                 {
                     "title": "Inquiry",
-                    "description": "Share your wisdom with the world <br/>The seeds of progress begin with you.",
+                    "description": "Talk to our team about your enterprise needs",
                     "button_text": "Connection",
                     "link": "contact-contact.html"
                 },
@@ -388,7 +395,7 @@
             ]           
         },
         "contact_contact": {
-            "letter_title": "Inquiry",
+            "letter_title": "Contact",
             "form": {
                 "name": {
                     "first": {
@@ -422,8 +429,9 @@
                 },
                 "subject": {
                     "label": "Subject",
-                    "placeholder": "Select Subject",
-                    "selectoption": "Please select a topic",
+                    "placeholder": "Enter Subject",
+                    "placeholder2": "Select Subject",
+                    "selectoption": "Enter subject",
                     "options": {
                         "selectoption": "Please select a topic",
                         "listing": "Listing",
@@ -440,7 +448,7 @@
         },    
         "contact_community": {
             "main_title": "Community",
-            "main_description": "Talk to our team about\nyour enterprise needs.",
+            "main_description": "",
             "community_support": {
                 "title": "SNS",
                 "description": ""
@@ -469,10 +477,10 @@
             "listing": "上場",
             "about": "概要",
             "product": "製品",
-            "contact": "問い合わせ"
+            "contact": "問合せ"
         },
         "main": {
-            "logo_text": "Meet <span>STIP</span>",
+            "logo_text": "<span>STIP</span>",
             "letter_titles": [
                 "あなたの知恵を世界と共有しましょう",
                 "進歩の種はあなたから始まります",
@@ -582,27 +590,31 @@
             "title_area_h6": "Intellectual Property",
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span><br>は特許、商標、ドラマ、映画、漫画、フランチャイズ、音楽、ダンスなど<br>さまざまなデジタルIPを取引できる革新的なプラットフォームです",
-                "企業、研究機関、クリエイター、発明家が通常実施権のシステムを活用し、<br>IPの所有権を移転することなく資金を調達できる新しい機会を提供します<br><br><strong>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span>",
+                "特許、商標、ドラマ、映画、漫画、フランチャイズ、音楽、ダンスなど<br>さまざまなデジタルIPを取引できる革新的なプラットフォームです",
+                "企業、研究機関、クリエイター、発明家が通常実施権のシステムを活用し、<br/>IPの所有権を移転することなく資金を調達できる新しい機会を提供します"
             ],
             "bottom_area": [
-                "",
-                ""
+                "Founder",
+                "Hyundo Jeong"
             ]
         },
         "product": {
             "letter_title": "<span>IPを共有しよう、<br/>IPの時代だ</span>"
         },
         "contact": {
-            "title_h1": "問い合わせ",
-            "intro_text": "企業のニーズについて<br /> STIPチームにご相談ください",
+            "title_h1": "問合せ",
+            "intro_text": "",
+            "intro_text2": "企業のニーズについて<br /> STIPチームにご相談ください",
             "contact_title": "Inquiry",
-            "contact_description": "あなたの知恵を世界と共有しましょう<br/>進歩の種はあなたから始まります。",
+            "contact_description": "助けが必要ですか",
+            "contact_description2": "あなたの知恵を世界と共有しましょう<br/>進歩の種はあなたから始まります。",
             "community_title": "Need Help",
-            "community_description": "あなたのビジネスニーズについて<br/>私たちのチームと話しましょう",
+            "community_description": "コミュニティ",
+            "community_description2": "あなたのビジネスニーズについて<br/>私たちのチームと話しましょう",
             "radius_boxes": [
                 {
-                    "title": "問い合わせ",
+                    "title": "問合せ",
                     "description": "",
                     "button_text": "相談",
                     "link": "contact-contact.html"
@@ -616,7 +628,7 @@
             ]
         },
         "contact_contact": {
-            "letter_title": "Contact",
+            "letter_title": "問合せ",
             "form": {
                 "name": {
                     "first": {
@@ -641,7 +653,7 @@
                     "placeholder": "携帯電話番号を入力してください"
                 },
                 "country": {
-                    "label": "国家",
+                    "label": "国",
                     "placeholder": "あなたの国を入力してください"
                 },
                 "email": {
@@ -650,8 +662,8 @@
                 },
                 "subject": {
                     "label": "主題",
-                    "placeholder": "件名を選択してください",
-                    "selectoption": "トピックを選択してください",
+                    "placeholder": "主題を入力してください",
+                    "selectoption": "主題を入力してください",
                     "options": {
                         "listing": "上場",
                         "media_press": "メディア",
@@ -662,12 +674,13 @@
                     "label": "どのようにサポートすれば宜しいですか？",
                     "placeholder": "あなたのビジネスのために必要なものを説明してください"
                 },
-                "submit": "問い合わせ"
+                "submit": "問合せ"
             }
         },
         "contact_community": {
             "main_title": "コミュニティ",
-            "main_description": "必要な内容をSTIPにご相談ください",
+            "main_description": "",
+            "main_description2": "必要な内容をSTIPにご相談ください",
             "community_support": {
                 "title": "SNS",
                 "description": ""
@@ -696,10 +709,10 @@
             "listing": "上市",
             "about": "我们",
             "product": "产品",
-            "contact": "联系我们"
+            "contact": "询问"
         },
         "main": {
-            "logo_text": "Meet <span>STIP</span>",
+            "logo_text": "<span>STIP</span>",
             "letter_titles": [
                 "与世界分享你的智慧",
                 "进步的种子从你开始",
@@ -810,41 +823,45 @@
             "title_area_h6": "Intellectual Property",            
             "title_area_h1": "Meets STIP",
             "content_area": [
-                "<span>STIP(Share The Intellectual Property)</span><br>是一个创新的平台，可用于交易专利、商标、电视剧、电影、漫画、特许经营、音乐<br>舞蹈等各种数字知识产权（IP）",
-                "该平台为企业、研究机构、创作者和发明者提供了一种新的机会<br>通过利用普通许可权系统，在不转让知识产权所有权的情况下获得资金。<br><br><strong>Founder</strong><br>Hyundo Jeong"
+                "<span>STIP(Share The Intellectual Property)</span>",
+                "是一个创新的平台，可用于交易专利、商标、电视剧、电影、漫画、特许经营、音乐<br/>舞蹈等各种数字知识产权（IP）",
+                "该平台为企业、研究机构、创作者和发明者提供了一种新的机会<br>通过利用普通许可权系统，在不转让知识产权所有权的情况下获得资金。"
             ],
             "bottom_area": [
-                "",
-                ""
+                "Founder",
+                "Hyundo Jeong"
             ]
         },
         "product": {
             "letter_title": "<span>让我们共享 IP，<br/>现在是 IP 时间</span>"
         },
         "contact": {
-            "title_h1": "咨询",
-            "intro_text": "请与我们的团队洽谈您的需求",
+            "title_h1": "询问",
+            "intro_text": "",
+            "intro_text2": "请与我们的团队洽谈您的需求",
             "contact_title": "Inquiry",
-            "contact_description": "将您的智慧分享给世界<br/>进步的种子从您开始。",
+            "contact_description": "有什么可以帮您的吗",
+            "contact_description2": "将您的智慧分享给世界<br/>进步的种子从您开始。",
             "community_title": "Need Help",
-            "community_description": "与我们的团队交流<br/>您的企业需求",
+            "community_description": "社区",
+            "community_description2": "与我们的团队交流<br/>您的企业需求",
             "radius_boxes": [
                 {
                     "title": "询问",
                     "description": "",
-                    "button_text": "联系",
+                    "button_text": "询问",
                     "link": "contact-contact.html"
                 },
                 {
                     "title": "需要帮助吗",
                     "description": "",
-                    "button_text": "联系",
+                    "button_text": "询问",
                     "link": "contact-community.html"
                 }
             ]
         },
         "contact_contact": {
-            "letter_title": "Contact",
+            "letter_title": "询问",
             "form": {
                 "name": {
                     "first": {
@@ -878,8 +895,8 @@
                 },
                 "subject": {
                     "label": "主题",
-                    "placeholder": "选择主题",
-                    "selectoption": "请选择一个主题",
+                    "placeholder": "请输入主题",
+                    "selectoption": "请输入主题",
                     "options": {
                         "listing": "上市",
                         "media_press": "媒体",
@@ -894,8 +911,9 @@
             }
         },
         "contact_community": {
-            "main_title": "咨询",
-            "main_description": "请与我们的团队洽谈您的需求",
+            "main_title": "社区",
+            "main_description": "",
+            "main_description2": "请与我们的团队洽谈您的需求",
             "community_support": {
                 "title": "SNS",
                 "description": ""

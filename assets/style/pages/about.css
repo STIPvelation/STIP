@@ -10,7 +10,7 @@
 }
 
 .content-container {
-  position:relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,12 +18,18 @@
 }
 
 @media (max-width: 900px) {
-  .content-container{
-    min-height: calc(100vh - 310px);
-    height: unset;
-    padding: 24px;
+  .content-container {
+    flex-direction: column;
+    justify-content: center;
   }
 }
+
+@media (max-width:600px) {
+  .content-container {
+    height: unset;
+  }
+}
+
 .logo-slider-section {
   bottom: 50px;
   width: 100%;
@@ -32,17 +38,19 @@
   -webkit-backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.2);
   z-index: 2;
-  position:absolute;
-  left:0;
+  position: absolute;
+  left: 0;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 900px) {
   .logo-slider-section {
-    position:relative;
-    bottom:unset;
-    margin:50px 0;
+    position: relative;
+    bottom: unset;
+    margin: 50px 0;
   }
 
 }
+
 .content-container .row-wrapper {
   display: flex;
   flex-direction: row;
@@ -51,8 +59,49 @@
 
   @media screen and (max-width: 900px) {
     flex-direction: column;
+    padding: 100px 15px 0;
     gap: 24px;
   }
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.swiper-container {
+  width: 100%;
+}
+
+.swiper-slide {
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.swiper-slide img {
+  max-width: 180px !important;
+  height: 60px !important;
+}
+
+.gradient-left {
+  left: 0;
+  background: rgba(0, 0, 0, 1);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6587228641456583) 70%, transparent 100%);
+  mask-repeat: no-repeat;
+  filter: blur(100px);
+  z-index: -1;
+
+}
+
+.gradient-right {
+  right: 0;
+  background: rgba(0, 0, 0, 1);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 1) 100%);
+  mask-repeat: no-repeat;
+  filter: blur(120px);
+  z-index: -1;
 }
 
 .content-container .content-wrapper {
@@ -131,7 +180,7 @@
   color: var(--white-color);
   font-size: 24px;
   font-weight: 700;
-  
+
   @media screen and (max-width: 560px) {
     font-size: 16px;
   }
@@ -179,6 +228,6 @@
 }
 
 /* Change color of each text in sphere on hover   */
-.tagcloud--item:hover {
-  /* color: #FFC300 ; */
-}
+/* .tagcloud--item:hover {
+  color: #FFC300 ;
+} */
