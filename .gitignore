@@ -1,11 +1,13 @@
 .env
-/.well-known/**
-/cafe24/**
-/favicon.icon2/**
-/gnuboard5/**
-/html/**
-/logs/**
-/uploads/**
+.well-known/
+api/
+cafe24/
+database/
+favicon.icon2/
+gnuboard5/
+html/
+logs/
+uploads/
 google.*
 *.env
 hosting_index.html
@@ -19,3 +21,4 @@ listing.html.*
 product.html.*
 robots.txt
 *.txt
+gnuboard5
