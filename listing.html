@@ -953,14 +953,15 @@
 
                 .product-info-section {
                   flex-direction: column;
-                  gap: 24px;
+                  /* gap: 24px; */
                 }
 
                 .product-image {
                   width: 100%;
-                  height: auto;
-                  aspect-ratio: 1;
-                  max-width: 320px;
+                  /* height: auto; */
+                  /* aspect-ratio: 1; */
+                  /* max-width: 320px; */
+                  max-width: 300px;
                   margin: 0 auto;
                 }
 
@@ -2370,6 +2371,7 @@
                 } catch (error) {
                   console.error('Product preview error:', error);
                   alert('처리 중 오류가 발생했습니다.');
+                  window.errorService.handleError(error, getCurrentLanguage(), 'form_submission_failed');
                 }
               });
 
@@ -2743,7 +2745,7 @@
     <footer class="footer-container">
       <div class="footer-wrapper">
         <div class="footer-logo">
-          <span>Let’s share the IP, It’s IP time</span>
+          <span>Let's share the IP, It's IP time</span>
           <img src="assets/images/logo.svg" alt="logo" />
         </div>
         <div class="company-name">주식회사 아이피미디어그룹</div>
@@ -3154,6 +3156,11 @@
         }
         listingBtn.textContent = divValue;
       }
+      
+      const debouncedFunction = window.deviceService.debounce(() => {
+        // 실행할 코드
+        handleDropdownClick(event);
+      }, 300); // 300ms 대기 시간
     });
 
     // 드롭다운 선택 시 태그 클라우드 업데이트

@@ -1,300 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta
+      name="description"
+      content="발명특허 트레이딩 공식 홈페이지입니다. 특허 거래와 발명특허 관련 전문 서비스를 제공합니다."
+    />
+    <meta
+      name="keywords"
+      content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권"
+    />
+    <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지" />
+    <meta
+      property="og:description"
+      content="발명특허 트레이딩 전문 서비스를 제공하는 공식 홈페이지입니다."
+    />
+    <meta name="robots" content="index, follow" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"> -->
-  <meta name="description" content="발명특허 트레이딩 공식 홈페이지입니다. 특허 거래와 발명특허 관련 전문 서비스를 제공합니다.">
-  <meta name="keywords" content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권">
-  <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지">
-  <meta property="og:description" content="발명특허 트레이딩 전문 서비스를 제공하는 공식 홈페이지입니다.">
-  <meta name="robots" content="index, follow">
+    <title>STIP HomePage stipvelation</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="favicon.ico2/android-icon-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png" />
+    <link rel="manifest" href="favicon.ico2/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
 
-  <title>STIP HomePage stipvelation</title>
-  <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
-  <link rel="manifest" href="favicon.ico2/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="assets/style/components/header.css" />
+    <link rel="stylesheet" href="assets/style/pages/about.css" />
+    <link rel="stylesheet" href="assets/style/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="assets/style/components/header.css" />
-  <link rel="stylesheet" href="assets/style/pages/about.css" />
-  <link rel="stylesheet" href="assets/style/reset.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+    <!-- Swiper CSS를 먼저 로드 -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /> -->
 
-  <!-- Swiper CSS를 먼저 로드 -->
-  <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /> -->
+    <!-- Swiper JS를 type="module" 없이 로드 -->
+    <!-- <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> -->
 
-  <!-- Swiper JS를 type="module" 없이 로드 -->
-  <!-- <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> -->
+    <!-- 기존 Swiper 링크를 제거하고 아래 주석 사이에 새로운 Splide.js 링크 추가 -->
+    <!-- REPLACE START: SLIDER LINKS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <!-- 기존 Swiper 링크를 제거하고 아래 주석 사이에 새로운 Splide.js 링크 추가 -->
-  <!-- REPLACE START: SLIDER LINKS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 
-  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <!-- REPLACE END: SLIDER LINKS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script> -->
 
-  <!-- REPLACE END: SLIDER LINKS -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script> -->
-
-  <!-- <script src="js/services/swiper-service.js" defer></script> -->
-  <script src="js/services/device-service.js" defer></script>
-
-
-  <style>
-    body {
-      font-family: "SUIT", sans-serif;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="root">
-    <header class="header-container">
-      <div class="header-wrapper">
-        <div class="header-logo">
-          <a href="index.html">
-            <img src="assets/images/logo.svg" alt="logo" />
-          </a>
-        </div>
-        <nav class="header-nav">
-          <div class="burger-menu-wrapper">
-            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
-            <div class="side-bar-container">
-              <div class="sidebar-background">
-                <div class="close-btn">
-                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
-                </div>
-              </div>
-              <div class="side-bar-wrapper">
-                <nav class="side-bar-section">
-                  <div class="side-bar-list">
-                    <a class="side-bar-item navigate" href="index.html" data-page="main"
-                      onclick="handlePageSelection('main')">main</a>
-                    <a class="side-bar-item navigate" href="listing.html" data-page="listing"
-                      onclick="handlePageSelection('listing')">Listing</a>
-                    <a class="side-bar-item navigate active" href="about.html" data-page="about"
-                      onclick="handlePageSelection('about')">About us</a>
-                    <a class="side-bar-item navigate" href="product.html" data-page="product"
-                      onclick="handlePageSelection('product')">Product</a>
-                    <a class="side-bar-item navigate" href="contact.html" data-page="contact"
-                      onclick="handlePageSelection('contact')">Contact</a>
-                  </div>
-                  <div class="side-bar-list lang">
-                    <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
-                    <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
-                    <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
-                    <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <ul>
-            <li><a class="nav-item navigate" href="listing.html" data-page="listing"
-                onclick="handlePageSelection('listing')">Listing</a></li>
-            <li><a class="nav-item navigate active" href="about.html" data-page="about"
-                onclick="handlePageSelection('about')">About us</a></li>
-            <li><a class="nav-item navigate" href="product.html" data-page="product"
-                onclick="handlePageSelection('product')">Product</a></li>
-            <li><a class="nav-item navigate" href="contact.html" data-page="contact"
-                onclick="handlePageSelection('contact')">Contact</a></li>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                한국어
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
-                </li>
-              </ul>
-            </div>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <script>
-      document.addEventListener('DOMContentLoaded', async function () {
-        console.log('Form handling script loaded');
-        const dropdown = document.querySelector('.dropdown');
-        const dropdown_menu = document.querySelector('.dropdown-menu');
-        // const Swiper = new SwiperService();
-        // let lang = [];
-        // const clickedDivValues = [];
-        let divValue = '';
-        let pageLang = '';
-
-        dropdown_menu.addEventListener('click', (event) => {
-          const liElement = event.target.closest('li');
-          if (liElement) {
-            const divElement = liElement.querySelector('div'); // li 안의 div 찾기
-            if (divElement) {
-              divValue = divElement.textContent.trim(); // div 값 가져오기
-
-              if (divValue == '한국어') {
-                pageLang = 'ko';
-              }
-              if (divValue == 'English') {
-                pageLang = 'en';
-              }
-              if (divValue == '日本語') {
-                pageLang = 'ja';
-              }
-              if (divValue == '中文') {
-                pageLang = 'zh';
-              }
-
-            }
-
-          }
-          console.log(`divValue + ${divValue}`, `pageLang + ${pageLang}`);
-        });
-      });
-
-    </script>
-    <!-- </html> -->
-    <!-- header end -->
-
-    <div class="bg-image">
-      <img src="assets/images/bg-image.jpg" alt="bg-image" />
-    </div>
-    <div class="bg-mobile-image">
-      <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
-    </div>
-    <main class="content-container">
-      <div class="row-wrapper">
-        <div class="content-wrapper">
-          <div class="title-area">
-            <h6>Intellectual Property</h6>
-            <h1 class="letter-title">
-              <span>Meet STIP</span>
-            </h1>
-          </div>
-          <div class="content-area">
-            <p>
-              <span>STIP</span>
-            </p>
-            <p>
-              <br />is an exchange platform supporting the trade of digital IPs,<br /> including patent, trademark,
-              drama, movie, comics, franchise, music,<br />dance, etc.
-            </p>
-            <p>
-              It provides companies, research institutions, creators, and inventors with<br /> opportunities to raise
-              funds without transferring IP ownership. Hyundo Jeong Founder
-            </p>
-          </div>
-          <div class="bottom-area">
-            <p>Hyundo Jeong</p>
-            <p>Founder</p>
-          </div>
-        </div>
-        <div class="circle-wrapper">
-          <span class="Sphere"></span>
-        </div>
-      </div>
-      <!-- row-wrapper End Here -->
-      <!-- slider section 25-01-04 lee -->
-      <div class="logo-slider-section">
-        <div class="slider-container">
-          <div class="gradient-overlay gradient-left"></div>
-          <div class="gradient-overlay gradient-right"></div>
-          <!-- 새로운 코드 시작 -->
-          <div class="swiper-container">
-            <div class="swiper" dir="ltr">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-01.png" alt="aippii" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-02.png" alt="한국지식재산서비스협회" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-03.png" alt="한국지식재산연구원" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-04.png" alt="한국발명진흥회" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-05.png" alt="한국특허정보원" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-06.png" alt="특허심판원" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-07.png" alt="한국특허기술진흥원" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-08.png" alt="한국특허전략개발원" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-09.png" alt="알막툼" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-10.png" alt="JSRAC" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-11.png" alt="특허청" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-12.png" alt="STIP Logo 6" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-13.png" alt="대한변리사" class="company-logo">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/logo/Main/logo-14.png" alt="대한변리사" class="company-logo">
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 새로운 코드 끝 -->
-        </div>
-      </div>
-      <!-- logo-slider-section End Here -->
-    </main>
+    <!-- <script src="js/services/swiper-service.js" defer></script> -->
+    <script src="js/services/device-service.js" defer></script>
 
     <style>
-      /* Logo Slider Styles */
-      /* .logo-slider-section {
+      body {
+        font-family: 'SUIT', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root">
+      <header class="header-container">
+        <div class="header-wrapper">
+          <div class="header-logo">
+            <a href="index.html">
+              <img src="assets/images/logo.svg" alt="logo" />
+            </a>
+          </div>
+          <nav class="header-nav">
+            <div class="burger-menu-wrapper">
+              <img
+                src="assets/images/mobile/menu.svg"
+                class="burger-menu"
+                alt="burger-menu"
+                onclick="handleBurgerMenu()"
+              />
+              <div class="side-bar-container">
+                <div class="sidebar-background">
+                  <div class="close-btn">
+                    <img
+                      src="assets/images/mobile/close.svg"
+                      alt="close"
+                      onclick="handleBurgerMenuClose()"
+                    />
+                  </div>
+                </div>
+                <div class="side-bar-wrapper">
+                  <nav class="side-bar-section">
+                    <div class="side-bar-list">
+                      <a
+                        class="side-bar-item navigate"
+                        href="index.html"
+                        data-page="main"
+                        onclick="handlePageSelection('main')"
+                        >main</a
+                      >
+                      <a
+                        class="side-bar-item navigate"
+                        href="listing.html"
+                        data-page="listing"
+                        onclick="handlePageSelection('listing')"
+                        >Listing</a
+                      >
+                      <a
+                        class="side-bar-item navigate active"
+                        href="about.html"
+                        data-page="about"
+                        onclick="handlePageSelection('about')"
+                        >About us</a
+                      >
+                      <a
+                        class="side-bar-item navigate"
+                        href="product.html"
+                        data-page="product"
+                        onclick="handlePageSelection('product')"
+                        >Product</a
+                      >
+                      <a
+                        class="side-bar-item navigate"
+                        href="contact.html"
+                        data-page="contact"
+                        onclick="handlePageSelection('contact')"
+                        >Contact</a
+                      >
+                    </div>
+                    <div class="side-bar-list lang">
+                      <span class="side-bar-item" onclick="handleLangChange('ko', true)"
+                        >한국어</span
+                      >
+                      <span class="side-bar-item" onclick="handleLangChange('en', true)"
+                        >English</span
+                      >
+                      <span class="side-bar-item" onclick="handleLangChange('ja', true)"
+                        >日本語</span
+                      >
+                      <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a
+                  class="nav-item navigate"
+                  href="listing.html"
+                  data-page="listing"
+                  onclick="handlePageSelection('listing')"
+                  >Listing</a
+                >
+              </li>
+              <li>
+                <a
+                  class="nav-item navigate active"
+                  href="about.html"
+                  data-page="about"
+                  onclick="handlePageSelection('about')"
+                  >About us</a
+                >
+              </li>
+              <li>
+                <a
+                  class="nav-item navigate"
+                  href="product.html"
+                  data-page="product"
+                  onclick="handlePageSelection('product')"
+                  >Product</a
+                >
+              </li>
+              <li>
+                <a
+                  class="nav-item navigate"
+                  href="contact.html"
+                  data-page="contact"
+                  onclick="handlePageSelection('contact')"
+                  >Contact</a
+                >
+              </li>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  한국어
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+          console.log('Form handling script loaded');
+          const dropdown = document.querySelector('.dropdown');
+          const dropdown_menu = document.querySelector('.dropdown-menu');
+          // const Swiper = new SwiperService();
+          // let lang = [];
+          // const clickedDivValues = [];
+          let divValue = '';
+          let pageLang = '';
+
+          dropdown_menu.addEventListener('click', event => {
+            const liElement = event.target.closest('li');
+            if (liElement) {
+              const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+              if (divElement) {
+                divValue = divElement.textContent.trim(); // div 값 가져오기
+
+                if (divValue == '한국어') {
+                  pageLang = 'ko';
+                }
+                if (divValue == 'English') {
+                  pageLang = 'en';
+                }
+                if (divValue == '日本語') {
+                  pageLang = 'ja';
+                }
+                if (divValue == '中文') {
+                  pageLang = 'zh';
+                }
+              }
+            }
+            console.log(`divValue + ${divValue}`, `pageLang + ${pageLang}`);
+          });
+        });
+      </script>
+      <!-- </html> -->
+      <!-- header end -->
+
+      <div class="bg-image">
+        <img src="assets/images/bg-image.jpg" alt="bg-image" />
+      </div>
+      <div class="bg-mobile-image">
+        <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
+      </div>
+      <main class="content-container">
+        <div class="row-wrapper">
+          <div class="content-wrapper">
+            <div class="title-area">
+              <h6>Intellectual Property</h6>
+              <h1 class="letter-title">
+                <span>Meet STIP</span>
+              </h1>
+            </div>
+            <div class="content-area">
+              <p>
+                <span>STIP</span>
+              </p>
+              <p>
+                <br />is an exchange platform supporting the trade of digital IPs,<br />
+                including patent, trademark, drama, movie, comics, franchise, music,<br />dance,
+                etc.
+              </p>
+              <p>
+                It provides companies, research institutions, creators, and inventors with<br />
+                opportunities to raise funds without transferring IP ownership. Hyundo Jeong Founder
+              </p>
+            </div>
+            <div class="bottom-area">
+              <p>Hyundo Jeong</p>
+              <p>Founder</p>
+            </div>
+          </div>
+          <div class="circle-wrapper">
+            <span class="Sphere"></span>
+          </div>
+        </div>
+        <!-- row-wrapper End Here -->
+        <!-- slider section 25-01-04 lee -->
+        <div class="logo-slider-section">
+          <div class="slider-container">
+            <div class="gradient-overlay gradient-left"></div>
+            <div class="gradient-overlay gradient-right"></div>
+            <!-- 새로운 코드 시작 -->
+            <div class="swiper-container">
+              <div class="swiper" dir="ltr">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-01.png"
+                      alt="aippii"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-02.png"
+                      alt="한국지식재산서비스협회"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-03.png"
+                      alt="한국지식재산연구원"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-04.png"
+                      alt="한국발명진흥회"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-05.png"
+                      alt="한국특허정보원"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-06.png"
+                      alt="특허심판원"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-07.png"
+                      alt="한국특허기술진흥원"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-08.png"
+                      alt="한국특허전략개발원"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-09.png"
+                      alt="알막툼"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-10.png"
+                      alt="JSRAC"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-11.png"
+                      alt="특허청"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-12.png"
+                      alt="STIP Logo 6"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-13.png"
+                      alt="대한변리사"
+                      class="company-logo"
+                    />
+                  </div>
+                  <div class="swiper-slide">
+                    <img
+                      src="assets/images/logo/Main/logo-14.png"
+                      alt="대한변리사"
+                      class="company-logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 새로운 코드 끝 -->
+          </div>
+        </div>
+        <!-- logo-slider-section End Here -->
+      </main>
+
+      <style>
+        /* Logo Slider Styles */
+        /* .logo-slider-section {
           width: 100%;
           margin-top: auto;
           padding: 50px 0;
           position: relative;
       } */
 
-      /* 슬라이더 */
-      /* .logo-slider-section {
+        /* 슬라이더 */
+        /* .logo-slider-section {
         position: relative;
         bottom: 0;
         width: 100%;
@@ -306,8 +454,7 @@
         z-index: 2;
       } */
 
-
-      /* .gradient-overlay {
+        /* .gradient-overlay {
           position: absolute;
           top: 0;
           bottom: 0;
@@ -318,10 +465,9 @@
           max-width: 500px;
       } */
 
+        /* background: linear-gradient(to left, #000 0%, rgba(0,0,0,0) 100%); */
 
-      /* background: linear-gradient(to left, #000 0%, rgba(0,0,0,0) 100%); */
-
-      /* .bottom-gradient {
+        /* .bottom-gradient {
           position: absolute;
           bottom: 0px;
           padding-top: 240px;
@@ -331,153 +477,169 @@
 
       } */
 
-
-      .swiper-slide {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        padding: 0 20px;
-        border-radius: 4px;
-      }
-
-      .company-logo {
-        max-width: 200px;
-
-        @media screen and (max-width: 768px) {
-          max-width: 78px;
-
+        .swiper-slide {
+          display: flex !important;
+          justify-content: center;
+          align-items: center;
+          padding: 0 20px;
+          border-radius: 4px;
         }
-      }
 
+        .company-logo {
+          max-width: 200px;
 
-      /* 슬라이더 이미지 */
+          @media screen and (max-width: 768px) {
+            max-width: 78px;
+          }
+        }
 
+        /* 슬라이더 이미지 */
 
-      .company-logo {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain;
-        transform: scale(0.9);
-      }
-    </style>
-    <!-- footer start -->
-    <footer class="footer-container">
-      <div class="footer-wrapper">
-        <div class="footer-logo">
-          <span>Let’s share the IP, It’s IP time</span>
-          <img src="assets/images/logo.svg" alt="logo" />
+        .company-logo {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: contain;
+          transform: scale(0.9);
+        }
+      </style>
+      <!-- footer start -->
+      <footer class="footer-container">
+        <div class="footer-wrapper">
+          <div class="footer-logo">
+            <span>Let’s share the IP, It’s IP time</span>
+            <img src="assets/images/logo.svg" alt="logo" />
+          </div>
+          <div class="company-name">주식회사 아이피미디어그룹</div>
+          <div class="company-info-grid">
+            <span>대표: 이성용</span>
+            <span>주소: 서울시 강남구 테헤란로151 1116호</span>
+            <span>연락처: 02-2238-4345</span>
+            <span>이메일: support@stipvelation.com</span>
+            <span>사업자등록번호: 644-86-01439</span>
+          </div>
         </div>
-        <div class="company-name">주식회사 아이피미디어그룹</div>
-        <div class="company-info-grid">
-          <span>대표: 이성용</span>
-          <span>주소: 서울시 강남구 테헤란로151 1116호</span>
-          <span>연락처: 02-2238-4345</span>
-          <span>이메일: support@stipvelation.com</span>
-          <span>사업자등록번호: 644-86-01439</span>
-        </div>
-      </div>
-    </footer>
-    <!-- footer end -->
-  </div>
-  <script>
-    // 텍스트 배열 정의
-    /**const Texts = [
+      </footer>
+      <!-- footer end -->
+    </div>
+    <script>
+      // 텍스트 배열 정의
+      /**const Texts = [
       "HTML", "CSS", "JavaScript", "React", "Node.js",
       "Angular", "Vue", "Python", "Django", "Flask",
       "Java", "Spring", "Kotlin", "Swift", "C++"
     ];**/
-    const Texts = [
-      "Patent", "Invention", "New Era", "Fund", "IP",
-      "Cutting Edge", "Sharing", "Meritocracy", "Amalgamate", "Founder",
-      "Inventor", "License", "Pioneer", "Trademark", "Copyright"
-    ];
-    // 각 텍스트에 색상 적용
-    const colors = [
-      "#E1F5FE", "#FBE9E7", "#FFF3E0", "#EEEEEE", "#FAFAFA",
-      "#F5F5F5", "#E0E0E0", "#FF6F00", "#57FF33", "#2196F3",
-      "#FFFFFF", "#B71C1C", "#ECEFF1", "#FFFDE7", "#F1F8E9"
-    ];
+      const Texts = [
+        'Patent',
+        'Invention',
+        'New Era',
+        'Fund',
+        'IP',
+        'Cutting Edge',
+        'Sharing',
+        'Meritocracy',
+        'Amalgamate',
+        'Founder',
+        'Inventor',
+        'License',
+        'Pioneer',
+        'Trademark',
+        'Copyright',
+      ];
+      // 각 텍스트에 색상 적용
+      const colors = [
+        '#E1F5FE',
+        '#FBE9E7',
+        '#FFF3E0',
+        '#EEEEEE',
+        '#FAFAFA',
+        '#F5F5F5',
+        '#E0E0E0',
+        '#FF6F00',
+        '#57FF33',
+        '#2196F3',
+        '#FFFFFF',
+        '#B71C1C',
+        '#ECEFF1',
+        '#FFFDE7',
+        '#F1F8E9',
+      ];
 
-    const radius = Math.max(
-      150,
-      Math.min(300, window.innerWidth - window.innerWidth * 0.95)
-    );
-    const tagCloud = TagCloud(".Sphere", Texts, {
-      // Sphere radius in px
-      radius: radius,
+      const radius = Math.max(150, Math.min(300, window.innerWidth - window.innerWidth * 0.95));
+      const tagCloud = TagCloud('.Sphere', Texts, {
+        // Sphere radius in px
+        radius: radius,
 
-      // slow, normal, fast
-      maxSpeed: "normal",
-      initSpeed: "normal",
+        // slow, normal, fast
+        maxSpeed: 'normal',
+        initSpeed: 'normal',
 
-      // Rolling direction [0 (top) , 90 (left), 135 (right-bottom)]
-      direction: 135,
+        // Rolling direction [0 (top) , 90 (left), 135 (right-bottom)]
+        direction: 135,
 
-      // interaction with mouse or not [Default true (decelerate to rolling init speed, and keep rolling with mouse).]
-      keep: true,
-    });
+        // interaction with mouse or not [Default true (decelerate to rolling init speed, and keep rolling with mouse).]
+        keep: true,
+      });
 
-    const cloudContainer = document.querySelector(".Sphere");
-    const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
-    tagElements.forEach((element, index) => {
-      element.style.color = colors[index % colors.length]; // 순환적으로 색상 적용
-    });
-    if (tagElements) {
-      for (let i = 0; i < tagElements.length; i++) {
-        if (tagElements[i].textContent === "Patent") {
-          tagElements[i].style.color = "#2997E1";
-          break;
+      const cloudContainer = document.querySelector('.Sphere');
+      const tagElements = cloudContainer.querySelectorAll('.tagcloud--item');
+      tagElements.forEach((element, index) => {
+        element.style.color = colors[index % colors.length]; // 순환적으로 색상 적용
+      });
+      if (tagElements) {
+        for (let i = 0; i < tagElements.length; i++) {
+          if (tagElements[i].textContent === 'Patent') {
+            tagElements[i].style.color = '#2997E1';
+            break;
+          }
         }
       }
-    }
-    var color = "#FF5733 ";
-    document.querySelector(".Sphere").style.color = color;
+      var color = '#FF5733 ';
+      document.querySelector('.Sphere').style.color = color;
 
-    // slider section script 25-01-04
-    const swiper = new Swiper('.swiper', {
-      autoplay: {
-        delay: 0, //add
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        900: {
-          slidesPerView: 4,
-          spaceBetween: 10,
+      // slider section script 25-01-04
+      const swiper = new Swiper('.swiper', {
+        autoplay: {
+          delay: 0, //add
+          disableOnInteraction: false,
         },
-        1100: {
-          slidesPerView: 5,
-          spaceBetween: 10,
+        breakpoints: {
+          900: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          1100: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          1200: {
+            slidesPerView: 6,
+            spaceBetween: 10,
+          },
         },
-        1200: {
-          slidesPerView: 6,
-          spaceBetween: 10,
-        },
-      },
-      responsive: [{
-        breakpoint: 900,
+        responsive: [
+          {
+            breakpoint: 900,
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+        ],
+        speed: 1000,
+        loop: true,
+        loopAdditionalSlides: 1,
         slidesPerView: 3,
         spaceBetween: 10,
-      },],
-      speed: 1000,
-      loop: true,
-      loopAdditionalSlides: 1,
-      slidesPerView: 3,
-      spaceBetween: 10,
-    })
+      });
 
-    // 마우스 호버 시 일시정지/재생
-    // const swiperContainer = document.querySelector('.swiper-container');
-    // swiperContainer.addEventListener('mouseenter', () => {
-    //   swiper.autoplay.stop();
-    // });
-    // swiperContainer.addEventListener('mouseleave', () => {
-    //   swiper.autoplay.start();
-    // });
-
-
-  </script>
-  <!-- <script src="components/header.js" defer></script> -->
-  <script src="js/updated-language-script.js"></script>
-</body>
-
+      // 마우스 호버 시 일시정지/재생
+      // const swiperContainer = document.querySelector('.swiper-container');
+      // swiperContainer.addEventListener('mouseenter', () => {
+      //   swiper.autoplay.stop();
+      // });
+      // swiperContainer.addEventListener('mouseleave', () => {
+      //   swiper.autoplay.start();
+      // });
+    </script>
+    <!-- <script src="components/header.js" defer></script> -->
+    <script src="js/updated-language-script.js"></script>
+  </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+  "cSpell.enabled": false,
+  "cSpell.ignorePaths": [
+    "node_modules",
+    "package-lock.json",
+    ".git",
+    "dist",
+    "build",
+    "특정폴더명"
+  ]
+} 

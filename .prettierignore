@@ -1,0 +1,9 @@
+# 빌드 출력
+dist
+build
+
+# 의존성 디렉토리
+node_modules
+
+# 로그 파일
+*.log 
