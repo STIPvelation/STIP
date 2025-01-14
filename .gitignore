@@ -1,4 +1,5 @@
 .env
+*.env
 .well-known/
 api/
 cafe24/
@@ -8,14 +9,14 @@ gnuboard5/
 html/
 logs/
 uploads/
-google.*
-*.env
-hosting_index.html
 about.html.*
 contact.html.*
 contact-contact.html.*
 contact-community.html.*
+config.php
+google.*
 
+hosting_index.html
 index.html.*
 listing.html.*
 product.html.*
