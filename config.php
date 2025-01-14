@@ -6,15 +6,15 @@
 // $db_name = 'sharetheipp';
 
 // real Server
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'sharetheipp');
-define('DB_USER', 'sharetheipp');
-define('DB_PASS', 'Leon0202!@');
-// local Server
 // define('DB_HOST', 'localhost');
-// define('DB_NAME', 'stipvelation');
-// define('DB_USER', 'root');
-// define('DB_PASS', '1234');
+// define('DB_NAME', 'sharetheipp');
+// define('DB_USER', 'sharetheipp');
+// define('DB_PASS', 'Leon0202!@');
+// local Server
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'stipvelation');
+define('DB_USER', 'root');
+define('DB_PASS', '1234');
 
 // NicePay 설정
 define('NICEPAY_MID', 'stipv0202m');

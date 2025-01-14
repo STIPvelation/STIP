@@ -72,6 +72,15 @@ function nicepaySubmit(){
 //[PC 결제창 전용]결제창 종료 함수 <<'nicepayClose()' 이름 수정 불가능>>
 function nicepayClose(){
 	alert("결제가 취소 되었습니다");
+	
+	// 부모 창이 있는 경우 부모 창으로 이동
+	if (window.opener) {
+		window.opener.location.href = 'listing.html';
+		window.close();
+	} else {
+		// 부모 창이 없는 경우 현재 창에서 이동
+		window.location.href = 'listing.html';
+	}
 }
 </script>
 </head>

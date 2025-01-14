@@ -2459,13 +2459,33 @@
                     payForm.action = 'payResult_utf.php';
                     payForm.style.display = 'none';
 
+                    // 결제 핸들러 객체 생성
+                    window.paymentHandler = {
+                        handlePaymentSuccess: function(response) {
+                            console.log('Payment Success:', response);
+                            // 성공 시 처리
+                            showToast('결제가 성공적으로 완료되었습니다.', 'success');
+                            setTimeout(() => {
+                                window.location.href = 'listing.html';
+                            }, 2000);
+                        },
+                        handlePaymentError: function(error) {
+                            console.error('Payment Error:', error);
+                            // 실패 시 처리
+                            showToast(error.message || '결제 처리 중 오류가 발생했습니다.', 'error');
+                            setTimeout(() => {
+                                window.location.href = 'listing.html';
+                            }, 2000);
+                        }
+                    };
+
                     // NicePay 결제 파라미터 설정
                     Object.entries(result.paymentData).forEach(([key, value]) => {
-                      const input = document.createElement('input');
-                      input.type = 'hidden';
-                      input.name = key;
-                      input.value = value;
-                      payForm.appendChild(input);
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = value;
+                        payForm.appendChild(input);
                     });
 
                     // body에 폼 추가
