@@ -156,10 +156,33 @@ async function handleLangChange(lang, fromSidebar = false) {
       }
     });
 
+    // 기존 다국어 처리
+    document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
+        if (element.tagName.toLowerCase() === 'input') {
+            if (element.type === 'text' || element.type === 'number') {
+                updateInputValue(element, lang);
+            }
+        } else {
+            element.textContent = element.getAttribute('data-lang-' + lang);
+        }
+    });
+
+    // 현재 페이지가 listing인 경우 updateListingPage 호출
+    if (currentPage === 'listing') {
+        await updateListingPage(lang);
+    }
+
+
     // 드롭다운 버튼 텍스트 업데이트
     const dropdownButton = document.getElementById('dropdownMenuButton1');
     if (dropdownButton && langLabel[lang]) {
       dropdownButton.textContent = langLabel[lang];
+    }
+
+    localStorage.setItem('preferredLanguage', lang);
+
+    if (fromSidebar) {
+      handleBurgerMenuClose();
     }
 
     // 사이드바 언어 항목 active 상태 업데이트
@@ -171,6 +194,7 @@ async function handleLangChange(lang, fromSidebar = false) {
     // 언어 변경 이벤트 발생
     window.dispatchEvent(new Event('languageChanged'));
 
+    
 
     // 가격 표시 업데이트 추가
     // const priceDisplay = document.getElementById('previewPrice');
@@ -448,6 +472,49 @@ function adjustTextareaHeight() {
 
 
 function updateListingPage(lang) {
+  // 제품 정보 데이터 정의
+  const productData = {
+      ko: {
+          productName: '특허뉴스PDF'
+      },
+      en: {
+          productName: 'Patent News PDF'
+      },
+      ja: {
+          productName: '特許ニュースPDF'
+      },
+      zh: {
+          productName: '专利新闻PDF'
+      }
+  };
+
+  // 제품명 업데이트
+  const previewProductName = document.getElementById('previewProductName');
+  if (previewProductName && productData[lang]) {
+      previewProductName.value = productData[lang].productName;
+  }
+
+  // 가격 업데이트
+  const previewPrice = document.getElementById('previewPrice');
+  if (previewPrice && window.currencyService) {
+      // 가격 업데이트를 즉시 실행
+      window.currencyService.formatCurrency(99000, lang)
+          .then(formattedPrice => {
+              previewPrice.value = formattedPrice;
+          })
+          .catch(error => {
+              console.error('Error updating price:', error);
+              // 에러 시 기본 한국어 가격 표시
+              previewPrice.value = '₩99,000';
+          });
+  } else {
+      // currencyService가 없는 경우 기본 한국어 가격 표시
+      if (previewPrice) {
+          previewPrice.value = '₩99,000';
+      }
+  }
+
+
   const previewProductEx = document.getElementById('previewProductEx');
   const formData = translations[lang]?.listing?.form;
   if (!formData) return;
@@ -871,6 +938,50 @@ function formatCurrency(amount, lang) {
     console.error('Currency formatting error:', e);
     return amount.toLocaleString() + ' ' + translations[lang].payment.currency;
   }
+}
+
+function updateListingPage(lang) {
+    // 제품 정보 데이터 정의
+    const productData = {
+        ko: {
+            productName: '특허뉴스PDF'
+        },
+        en: {
+            productName: 'Patent News PDF'
+        },
+        ja: {
+            productName: '特許ニュースPDF'
+        },
+        zh: {
+            productName: '专利新闻PDF'
+        }
+    };
+
+    // 제품명 업데이트
+    const previewProductName = document.getElementById('previewProductName');
+    const previewPrice = document.getElementById('previewPrice');
+
+    if (previewProductName && productData[lang]) {
+        previewProductName.value = productData[lang].productName;
+    }
+
+    // 가격 업데이트
+    if (previewPrice && window.currencyService) {
+        window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
+            previewPrice.value = formattedPrice;
+        });
+    }
+
+    // ProductEx textarea 업데이트
+    const previewProductEx = document.getElementById('previewProductEx');
+    if (previewProductEx) {
+        const contentArray = translations[lang].listing.previewProductEx;
+        if (contentArray) {
+            let formattedContent = contentArray.join('');
+            formattedContent = convertBrToNewline(formattedContent);
+            previewProductEx.value = formattedContent;
+        }
+    }
 }
 
 // 사이드바 제어 함수들

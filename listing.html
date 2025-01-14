@@ -89,6 +89,7 @@
   <!-- <script src="js/services/currency-service.js"></script> -->
   <script src="js/services/language-service.js"></script>
   <script src="js/services/device-service.js"></script>
+  <script src="js/services/currency-service.js"></script>
   <!-- <script src="js/services/country-service.js"></script> -->
   <!-- <script src="js/services/file-upload-service.js"></script> -->
   <!-- <script src="js/services/payment-service.js"></script> -->
@@ -96,7 +97,6 @@
   <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.5.0/dist/TagCloud.min.js"></script>
   <script src="js/services/tag-cloud-service.js"></script>
 
-  <!-- <script src="js/currency-service.js"></script> -->
 
   <!-- 결제 관련 스크립트 -->
   <!-- <script src="js/config.js"></script> -->
@@ -177,6 +177,63 @@
 
     .toast-success {
       background: #2ecc71;
+    }
+
+    .product-section {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      /* gap: 12px; */
+      /* width: 50%; */
+      box-sizing: content-box;
+    }
+
+    .product-image {
+      width: 240px;
+      height: 240px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .product-ex {
+      flex: 1 100px;
+      padding: 14px 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      /* box-sizing: border-box; */
+    }
+
+    .product-image:hover {
+      cursor: pointer;
+      border: 1px solid #007bff;
+    }
+
+    #previewProductEx {
+      width: 100%;
+      min-height: 200px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: #fcfcfc;
+      font-size: 14px;
+      line-height: 1.6;
+      resize: vertical;
+      transition: all 0.3s ease;
+      overflow-y: scroll;
+    }
+
+    #previewProductEx:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+
+    #previewProductCode {
+      text-align: center;
     }
   </style>
 </head>
@@ -281,7 +338,7 @@
               <!-- <input type="hidden" id="previewProductCode" name="productCode" value="0001" /> -->
               <!-- <input type="hidden" id="previewProductName" name="productName" value="특허뉴스PDF" /> -->
               <!-- <input type="hidden" id="previewQuantity" name="quantity" value="1" /> -->
-              <input type="hidden" id="previewPrice" name="price" value="99000.00" />
+              <!-- <input type="hidden" id="previewPrice" name="price" value="₩99,000"/> -->
               <!--<h2 class="form-title" data-lang-ko="상품 정보" data-lang-en="Product Information" data-lang-ja="商品情報"
                 data-lang-zh="产品信息"></h2>-->
               <h2 class="form-title" data-lang-ko="상품 정보" data-lang-en="Product Information" data-lang-ja="商品情報"
@@ -296,64 +353,6 @@
                     <!-- <p name="prueviewProductEx" id="prueviewProductEx"></p> -->
                   </div>
                 </div>
-                <style>
-                  .product-section {
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: center;
-                    /* gap: 12px; */
-                    /* width: 50%; */
-                    box-sizing: content-box;
-                  }
-
-                  .product-image {
-                    width: 240px;
-                    height: 240px;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    background: rgba(255, 255, 255, 0.1);
-                  }
-
-                  .product-ex {
-                    flex: 1 100px;
-                    padding: 14px 4px;
-                    background: rgba(255, 255, 255, 0.05);
-                    border-radius: 8px;
-                    /* box-sizing: border-box; */
-                  }
-
-                  .product-image:hover {
-                    cursor: pointer;
-                    border: 1px solid #007bff;
-                  }
-
-                  #previewProductEx {
-                    width: 100%;
-                    min-height: 200px;
-                    padding: 12px;
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 4px;
-                    color: #fcfcfc;
-                    font-size: 14px;
-                    line-height: 1.6;
-                    resize: vertical;
-                    transition: all 0.3s ease;
-                    overflow-y: scroll;
-                  }
-
-                  #previewProductEx:focus {
-                    outline: none;
-                    border-color: rgba(255, 255, 255, 0.2);
-                    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
-                  }
-
-                  #previewProductCode {
-                    text-align: center;
-                  }
-                </style>
                 <div class="product-details">
                   <div class="input-group">
                     <label for="previewProductCode" class="required">
@@ -369,7 +368,7 @@
                         data-lang-zh="产品名称"></span>
                       <span class="sr-only">(Required)</span>
                     </label>
-                    <input type="text" name="productName" id="previewProductName" value="특허뉴스PDF" readonly />
+                    <input type="text" name="productName" id="previewProductName" readonly />
                   </div>
                   <div class="input-group">
                     <label for="previewQuantity" class="required">
@@ -378,42 +377,13 @@
                     </label>
                     <input type="number" name="quantity" id="previewQuantity" value="1" readonly />
                   </div>
-                  <!--
                   <div class="input-group">
                     <label for="previewPrice" class="required">
                       <span data-lang-ko="가격" data-lang-en="Price" data-lang-ja="価格" data-lang-zh="价格"></span>
                       <span class="sr-only">(Required)</span>
                     </label>
                     <div class="price-input-wrapper">
-                      <input type="text" name="price" id="previewPrice" value="99000" readonly />
-                      <span class="currency">KRW</span>
-                    </div>
-                  </div>-->
-                  <!-- product-info-preview 폼의 가격 표시 부분 수정 -->
-                  <!--<div class="input-group">
-                    <label for="previewPrice" class="required">
-                      <span data-lang-ko="가격" data-lang-en="Price" data-lang-ja="価格" data-lang-zh="价格"></span>
-                      <span class="sr-only">(Required)</span>
-                    </label>
-                    <div class="price-input-wrapper">
-                      <input type="text" name="price" id="previewBasePrice" value="99000" readonly />
-                      <div class="currency-display">
-                        <span class="currency ko-price">₩99,000</span>
-                        <span class="currency en-price">$75.00</span>
-                        <span class="currency ja-price">¥11,000</span>
-                        <span class="currency zh-price">¥485.00</span>
-                      </div>
-                    </div>
-                  </div>-->
-                  <!-- 가격 부분 최신 수정본 -->
-                  <!-- listing.html의 product preview 폼 부분 -->
-                  <div class="input-group">
-                    <label for="previewPrice" class="required">
-                      <span data-lang-ko="가격" data-lang-en="Price" data-lang-ja="価格" data-lang-zh="价格"></span>
-                      <span class="sr-only">(Required)</span>
-                    </label>
-                    <div class="price-input-wrapper">
-                      <input type="text" name="price" id="previewPrice" value="₩99,000" readonly />
+                      <input type="text" name="price" id="previewPrice" readonly />
                     </div>
                   </div>
                 </div>
@@ -2461,31 +2431,31 @@
 
                     // 결제 핸들러 객체 생성
                     window.paymentHandler = {
-                        handlePaymentSuccess: function(response) {
-                            console.log('Payment Success:', response);
-                            // 성공 시 처리
-                            showToast('결제가 성공적으로 완료되었습니다.', 'success');
-                            setTimeout(() => {
-                                window.location.href = 'listing.html';
-                            }, 2000);
-                        },
-                        handlePaymentError: function(error) {
-                            console.error('Payment Error:', error);
-                            // 실패 시 처리
-                            showToast(error.message || '결제 처리 중 오류가 발생했습니다.', 'error');
-                            setTimeout(() => {
-                                window.location.href = 'listing.html';
-                            }, 2000);
-                        }
+                      handlePaymentSuccess: function (response) {
+                        console.log('Payment Success:', response);
+                        // 성공 시 처리
+                        showToast('결제가 성공적으로 완료되었습니다.', 'success');
+                        setTimeout(() => {
+                          window.location.href = 'listing.html';
+                        }, 2000);
+                      },
+                      handlePaymentError: function (error) {
+                        console.error('Payment Error:', error);
+                        // 실패 시 처리
+                        showToast(error.message || '결제 처리 중 오류가 발생했습니다.', 'error');
+                        setTimeout(() => {
+                          window.location.href = 'listing.html';
+                        }, 2000);
+                      }
                     };
 
                     // NicePay 결제 파라미터 설정
                     Object.entries(result.paymentData).forEach(([key, value]) => {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = key;
-                        input.value = value;
-                        payForm.appendChild(input);
+                      const input = document.createElement('input');
+                      input.type = 'hidden';
+                      input.name = key;
+                      input.value = value;
+                      payForm.appendChild(input);
                     });
 
                     // body에 폼 추가
@@ -3176,7 +3146,7 @@
         }
         listingBtn.textContent = divValue;
       }
-      
+
       const debouncedFunction = window.deviceService.debounce(() => {
         // 실행할 코드
         handleDropdownClick(event);

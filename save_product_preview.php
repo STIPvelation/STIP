@@ -1,213 +1,126 @@
 <?php
 // save_product_preview.php
-require_once 'config.php';
+
+// 1. 기본 설정
+session_start();
 header('Content-Type: application/json; charset=UTF-8');
 
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
-error_log("에러 메시지");
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-// 출력 버퍼링 시작
-// ob_start();
-// 데이터베이스 연결 설정
-// $db_host = 'localhost';
-// $db_user = 'root';
-// $db_pass = '1234';
-// $db_name = 'stipvelation';
+// 2. 디버그 모드 설정
+define('DEBUG_MODE', true);
 
-
-// 개발 모드 설정
-define('DEBUG_MODE', true);  // 개발 환경에서는 true, 운영 환경에서는 false
-
-// 디버그 모드에 따른 에러 표시 설정
-if (DEBUG_MODE) {
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
-} else {
-  error_reporting(0);
-  ini_set('display_errors', 0);
+// 3. 로그 함수 정의
+function writeLog($message, $type = 'info') {
+    $logFile = __DIR__ . '/logs/product_preview_' . date('Y-m-d') . '.log';
+    $logMessage = date('Y-m-d H:i:s') . " [{$type}] " . $message . PHP_EOL;
+    error_log($logMessage, 3, $logFile);
 }
 
-ob_start();
-
-// 콘솔 로그 함수 정의
-function consoleLog($data, $type = 'log')
-{
-  if (DEBUG_MODE) {
-    $jsonData = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    $output = "<script>console.{$type}(" . $jsonData . ");</script>\n";
-    echo $output;
-  }
+// 4. 가격 정리 함수
+function cleanPrice($price) {
+    return (float)str_replace(['₩', ','], '', $price);
 }
 
-// 에러 로그 함수
-function logError($message, $context = [])
-{
-  if (DEBUG_MODE) {
-    $logData = [
-      'timestamp' => date('Y-m-d H:i:s'),
-      'message' => $message,
-      'context' => $context
-    ];
-    consoleLog($logData, 'error');
-  }
-  error_log($message);
-}
-
-// 가격 데이터 정리
-function cleanPrice($price)
-{
-  // 통화 기호와 쉼표 제거
-  $price = str_replace(['₩', ','], '', $price);
-  // 숫자만 남기고 소수점 2자리까지 포맷
-  return number_format((float)$price, 2, '.', '');
-}
-
-// ob_start();
-// header('Content-Type: application/json; charset=UTF-8');
-
-// 응답 초기화
-$response = [
-  'success' => false,
-  'message' => '',
-  'data' => null,
-  'debug' => DEBUG_MODE ? [] : null
-];
-
+// 5. 메인 로직
 try {
-  // 요청 데이터 로깅
-  if (DEBUG_MODE) {
-    consoleLog([
-      'Request Method' => $_SERVER['REQUEST_METHOD'],
-      'Raw Input' => file_get_contents('php://input'),
-      'POST Data' => $_POST,
-      'Headers' => getallheaders()
-    ], 'info');
-  }
-
-  $input = json_decode(file_get_contents('php://input'), true);
-  if (json_last_error() !== JSON_ERROR_NONE) {
-    throw new Exception('JSON decode error: ' . json_last_error_msg());
-  }
-
-  // 입력 데이터 로깅
-  if (DEBUG_MODE) {
-    consoleLog(['Decoded Input' => $input], 'info');
-  }
-
-  // [이전 데이터베이스 연결 코드...]
-  // $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-  $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-  if ($conn->connect_error) {
-    throw new Exception("Database connection failed: " . $conn->connect_error);
-  }
-
-  // 데이터베이스 쿼리 로깅
-  if (DEBUG_MODE) {
-    $conn->query("SET profiling = 1");
-  }
-
-  // 트랜잭션 시작
-  $conn->begin_transaction();
-
-  try {
-
-    // 가격 정리
-    $cleanPrice = cleanPrice($input['price']);
-    // SQL 쿼리 실행
-    $stmt = $conn->prepare("INSERT INTO product_preview (product_code, product_name, quantity, price) VALUES (?, ?, ?, ?)");
-
-    if (DEBUG_MODE && !$stmt) {
-      consoleLog(['SQL Error' => $conn->error], 'error');
+    // 입력 데이터 받기
+    $input = json_decode(file_get_contents('php://input'), true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception('Invalid JSON input: ' . json_last_error_msg());
     }
 
-    $stmt->bind_param(
-      'ssid',
-      $input['productCode'],
-      $input['productName'],
-      $input['quantity'],
-      $cleanPrice /// $input['price']
-    );
-
-    $stmt->execute();
-
-    if (DEBUG_MODE) {
-      // 쿼리 프로파일링 결과
-      $result = $conn->query("SHOW PROFILES");
-      $profiles = [];
-      while ($row = $result->fetch_assoc()) {
-        $profiles[] = $row;
-      }
-      consoleLog(['Query Profiles' => $profiles], 'info');
-    }
-
-    $conn->commit();
-
-    $response['success'] = true;
-    $response['message'] = 'Data saved successfully';
-    $response['data'] = [
-      'id' => $conn->insert_id,
-      'productCode' => $input['productCode']
+    // PDO 연결 (.env 파일의 변수 사용)
+    $dsn = "mysql:host=".$_ENV['DB_HOST'].";dbname=".$_ENV['DB_NAME'].";charset=utf8mb4";
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false
     ];
-  } catch (Exception $e) {
-    $conn->rollback();
-    throw $e;
-  }
+
+    $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD'], $options);
+
+    // 트랜잭션 시작
+    $pdo->beginTransaction();
+
+    try {
+        // 가격 정리
+        $cleanPrice = cleanPrice($input['price']);
+
+        // SQL 쿼리 준비 및 실행
+        $sql = "INSERT INTO product_preview (
+            product_code, 
+            product_name, 
+            quantity, 
+            price,
+            created_at
+        ) VALUES (
+            :product_code,
+            :product_name,
+            :quantity,
+            :price,
+            NOW()
+        )";
+
+        $stmt = $pdo->prepare($sql);
+        
+        $result = $stmt->execute([
+            ':product_code' => $input['productCode'],
+            ':product_name' => $input['productName'],
+            ':quantity' => $input['quantity'],
+            ':price' => $cleanPrice
+        ]);
+
+        if (!$result) {
+            throw new Exception('Failed to insert data');
+        }
+
+        $insertId = $pdo->lastInsertId();
+        
+        // 트랜잭션 커밋
+        $pdo->commit();
+
+        // 성공 응답
+        echo json_encode([
+            'success' => true,
+            'message' => 'Data saved successfully',
+            'data' => [
+                'id' => $insertId,
+                'productCode' => $input['productCode']
+            ]
+        ], JSON_UNESCAPED_UNICODE);
+
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        throw $e;
+    }
+
 } catch (Exception $e) {
-  $response['success'] = false;
-  $response['message'] = $e->getMessage();
-
-  if (DEBUG_MODE) {
-    $response['debug'] = [
-      'error_type' => get_class($e),
-      'error_message' => $e->getMessage(),
-      'error_file' => $e->getFile(),
-      'error_line' => $e->getLine(),
-      'error_trace' => $e->getTraceAsString(),
-      'server_info' => [
-        'php_version' => PHP_VERSION,
-        'server_software' => $_SERVER['SERVER_SOFTWARE'],
-        'request_time' => date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME'])
-      ]
+    writeLog("Error: " . $e->getMessage(), 'error');
+    
+    $response = [
+        'success' => false,
+        'message' => $e->getMessage()
     ];
 
-    consoleLog([
-      'Error Details' => $response['debug']
-    ], 'error');
-  }
-} finally {
-  if (isset($conn)) {
     if (DEBUG_MODE) {
-      consoleLog(['Connection Stats' => [
-        'thread_id' => $conn->thread_id,
-        'affected_rows' => $conn->affected_rows,
-        'insert_id' => $conn->insert_id
-      ]], 'info');
+        $response['debug'] = [
+            'error_type' => get_class($e),
+            'error_trace' => $e->getTraceAsString(),
+            'error_file' => $e->getFile(),
+            'error_line' => $e->getLine()
+        ];
     }
-    $conn->close();
-  }
 
-  // 출력 버퍼 정리
-  $output = ob_get_clean();
-
-  if (DEBUG_MODE && !empty($output)) {
-    consoleLog(['Additional Output' => $output], 'warn');
-  }
-
-  echo json_encode($response, DEBUG_MODE ? JSON_PRETTY_PRINT : 0);
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
 }
 
-// 처리 시간 로깅
 if (DEBUG_MODE) {
-  $executionTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
-  consoleLog([
-    'Execution Time' => round($executionTime * 1000, 2) . 'ms',
-    'Memory Usage' => [
-      'current' => memory_get_usage(true),
-      'peak' => memory_get_peak_usage(true)
-    ]
-  ], 'info');
+    writeLog(json_encode([
+        'execution_time' => microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"],
+        'memory_usage' => memory_get_usage(true),
+        'peak_memory_usage' => memory_get_peak_usage(true)
+    ]), 'debug');
 }
-
-ob_clean();

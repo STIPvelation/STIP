@@ -71,12 +71,87 @@
 
 class CurrencyService {
   constructor() {
+    this.basePrice = 99000; // KRW 기준 가격
+    
+    // 고정 환율을 exchangeRates로 이름 변경
+    this.exchangeRates = {
+      KRW: 1,
+      USD: 0.00075,  // 1 KRW = 0.00075 USD
+      JPY: 0.11,     // 1 KRW = 0.11 JPY
+      CNY: 0.0049    // 1 KRW = 0.0049 CNY
+    };
+    
+    // 언어별 통화 설정
+    this.currencyConfig = {
+      ko: {
+        currency: 'KRW',
+        locale: 'ko-KR',
+        format: {
+          style: 'currency',
+          currency: 'KRW',
+          maximumFractionDigits: 0
+        }
+      },
+      en: {
+        currency: 'USD',
+        locale: 'en-US',
+        format: {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      },
+      ja: {
+        currency: 'JPY',
+        locale: 'ja-JP',
+        format: {
+          style: 'currency',
+          currency: 'JPY',
+          maximumFractionDigits: 0
+        }
+      },
+      zh: {
+        currency: 'CNY',
+        locale: 'zh-CN',
+        format: {
+          style: 'currency',
+          currency: 'CNY',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      }
+    };
+
     this.API_KEY = '90809c4e6dde58e47c6544bb'; // ExchangeRate-API 키
     this.BASE_URL = 'https://v6.exchangerate-api.com/v6/';
     this.basePrice = 99000; // KRW 기준 가격
     this.rates = null;
     this.lastUpdate = null;
     this.updateInterval = 1000 * 60 * 60; // 1시간마다 업데이트
+  }
+
+  formatCurrencyByLanguage(amount, lang) {
+    const format = this.currencyMapping[lang] || this.currencyMapping.ko;
+    const rate = this.fixedRates[format.currency];
+    const convertedAmount = amount * rate;
+
+    return new Intl.NumberFormat(format.locale, {
+      style: 'currency',
+      currency: format.currency,
+      minimumFractionDigits: format.currency === 'JPY' ? 0 : 2,
+      maximumFractionDigits: format.currency === 'JPY' ? 0 : 2
+    }).format(convertedAmount);
+  }
+
+  async updatePriceDisplay(lang) {
+    try {
+      return this.formatCurrencyByLanguage(this.basePrice, lang);
+    } catch (error) {
+      console.error('Price update error:', error);
+      // 에러 발생 시 KRW로 표시
+      return this.formatCurrencyByLanguage(this.basePrice, 'ko');
+    }
   }
 
   async fetchExchangeRates() {
@@ -108,13 +183,26 @@ class CurrencyService {
     };
   }
 
-  formatCurrency(amount, currency, locale) {
-    return new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: currency,
-      minimumFractionDigits: currency === 'JPY' ? 0 : 2,
-      maximumFractionDigits: currency === 'JPY' ? 0 : 2
-    }).format(amount);
+  formatCurrency(amount, lang) {
+      return new Promise((resolve, reject) => {
+          try {
+              const config = this.currencyConfig[lang] || this.currencyConfig.ko;
+              const rate = this.exchangeRates[config.currency];
+              const convertedAmount = amount * rate;
+
+              const formattedAmount = new Intl.NumberFormat(config.locale, config.format)
+                  .format(convertedAmount);
+              resolve(formattedAmount);
+          } catch (error) {
+              console.error('Currency formatting error:', error);
+              // 에러 발생 시 한국 원화로 표시
+              resolve(new Intl.NumberFormat('ko-KR', {
+                  style: 'currency',
+                  currency: 'KRW',
+                  maximumFractionDigits: 0
+              }).format(amount));
+          }
+      });
   }
 
   // formatCurrencyByLanguage 메서드 추가
@@ -134,31 +222,12 @@ class CurrencyService {
   }
 
   async updatePriceDisplay(lang) {
-    const rates = await this.fetchExchangeRates();
-    // const localeMap = {
-    //   ko: 'ko-KR',
-    //   en: 'en-US',
-    //   ja: 'ja-JP',
-    //   zh: 'zh-CN'
-    // };
-
-    const currencyMap = {
-      ko: { code: 'KRW', rate: 1 },
-      en: { code: 'USD', rate: rates.USD },
-      ja: { code: 'JPY', rate: rates.JPY },
-      zh: { code: 'CNY', rate: rates.CNY }
-    };
-
-    const mapping = currencyMap[lang] || currencyMap.ko;
-    const amount = this.basePrice * mapping.rate;
-    // const formattedAmount = this.formatCurrency(
-    //   amount,
-    //   mapping.code,
-    //   localeMap[lang] || 'ko-KR'
-    // );
-
-    // return formattedAmount;
-    return this.formatCurrencyByLanguage(amount, lang);
+    try {
+      return this.formatCurrency(this.basePrice, lang);
+    } catch (error) {
+      console.error('Price update error:', error);
+      return this.formatCurrency(this.basePrice, 'ko');
+    }
   }
 }
 
