@@ -40,7 +40,7 @@ try {
         PDO::ATTR_EMULATE_PREPARES => false
     ];
 
-    $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD'], $options);
+    $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASS'], $options);
 
     // 트랜잭션 시작
     $pdo->beginTransaction();
@@ -55,12 +55,14 @@ try {
             product_name, 
             quantity, 
             price,
+            currency,
             created_at
         ) VALUES (
             :product_code,
             :product_name,
             :quantity,
             :price,
+            :currency,
             NOW()
         )";
 
@@ -70,7 +72,8 @@ try {
             ':product_code' => $input['productCode'],
             ':product_name' => $input['productName'],
             ':quantity' => $input['quantity'],
-            ':price' => $cleanPrice
+            ':price' => $cleanPrice,
+            ':currency' => $input['currency']  // 통화 정보 추가
         ]);
 
         if (!$result) {
@@ -88,7 +91,8 @@ try {
             'message' => 'Data saved successfully',
             'data' => [
                 'id' => $insertId,
-                'productCode' => $input['productCode']
+                'productCode' => $input['productCode'],
+                'currency' => $input['currency']  // 응답에 통화 정보 포함
             ]
         ], JSON_UNESCAPED_UNICODE);
 

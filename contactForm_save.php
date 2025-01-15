@@ -12,9 +12,9 @@ ob_start();
 // require_once 'config/database.php';
 
 // 데이터베이스 연결 설정
-$db_user = 'sharetheipp';
-$db_pass = 'Leon0202!@';
-$db_name = 'sharetheipp';
+// $db_user = 'sharetheipp';
+// $db_pass = 'Leon0202!@';
+// $db_name = 'sharetheipp';
 
 // $db_host = 'localhost';
 // $db_user = 'root';

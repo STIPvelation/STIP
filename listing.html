@@ -99,6 +99,11 @@
 
 
   <!-- 결제 관련 스크립트 -->
+  <!-- 기존 스크립트들 아래에 추가 -->
+  <script src="js/services/payment-validator.js"></script>
+  <script src="js/services/session-manager.js"></script>
+  <script src="js/services/exchange-rate-service.js"></script>
+
   <!-- <script src="js/config.js"></script> -->
   <!-- <script src="js/currency-converter2.js"></script> -->
   <!-- <script src="js/payment-handler3.js"></script> -->
@@ -383,7 +388,9 @@
                       <span class="sr-only">(Required)</span>
                     </label>
                     <div class="price-input-wrapper">
-                      <input type="text" name="price" id="previewPrice" readonly />
+                      <input type="text" name="displayPrice" id="previewPrice" data-currency="KRW"
+                        data-currency-symbol="₩" readonly />
+                      <input type="hidden" id="hidden_orderPrice" name="price" value="99000" data-currency="KRW" />
                     </div>
                   </div>
                 </div>
@@ -506,7 +513,7 @@
                       <!-- <span>상품가격</span> -->
                       <span data-lang-ko="상품가격" data-lang-en="Product Price" data-lang-ja="商品価格"
                         data-lang-zh="产品价格"></span>
-                      <span class="amount" data-amount="99000"></span>
+                      <span class="amount"></span>
                       <!-- <span class="amount">99,000 KRW</span> -->
                     </div>
                     <div class="price-row discount">
@@ -1055,6 +1062,69 @@
                 clip: rect(0, 0, 0, 0);
                 border: 0;
               }
+
+              .normal-button {
+                background-color: rgba(0, 0, 0, 0.3);
+                /* 투명한 검정색 배경 */
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                /* 반투명한 흰색 테두리 */
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(5px);
+                /* 배경 블러 효과 */
+                margin-top: 20px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 120px;
+              }
+
+              .normal-button:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+                /* 호버시 더 진한 배경 */
+                border-color: rgba(255, 255, 255, 0.5);
+                /* 호버시 더 진한 테두리 */
+                transform: translateY(-2px);
+                /* 살짝 위로 움직이는 효과 */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                /* 그림자 효과 */
+              }
+
+              .normal-button:active {
+                transform: translateY(0);
+                /* 클릭시 원래 위치로 */
+              }
+
+              .normal-button:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+              }
+
+              .normal-button span {
+                color: white;
+                font-weight: 500;
+              }
+
+              /* 반응형 */
+              @media (max-width: 768px) {
+                .normal-button {
+                  padding: 10px 20px;
+                  font-size: 0.95rem;
+                  min-width: 100px;
+                }
+              }
+
+              @media (max-width: 480px) {
+                .normal-button {
+                  padding: 8px 16px;
+                  font-size: 0.9rem;
+                  min-width: 90px;
+                }
+              }
             </style>
             <div class="input-box button" style="display: none;">
               <label for="pay" class="required" aria-required="true">
@@ -1258,7 +1328,7 @@
               color: #666;
             }
 
-            .normal-button {
+            /* .normal-button {
               width: 100%;
               padding: 12px;
               background: var(--primary-color);
@@ -1272,7 +1342,7 @@
 
             .normal-button:hover {
               background: var(--primary-color-dark);
-            }
+            } */
 
             @media (max-width: 768px) {
               .product-info {
@@ -1909,7 +1979,7 @@
               let pageLang = '';
 
               // 로컬 스토리지에서 저장된 언어 설정을 가져옴
-              const currentLang2 = languageService.getCurrentLanguage(); // localStorage.getItem('preferredLanguage') || 'en';
+              const currentLang = languageService.getCurrentLanguage(); // localStorage.getItem('preferredLanguage') || 'en';
               // 현재 저장된 언어 가져오기
               const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
               const selectedLang = localStorage.getItem('preferredLanguage') || 'en'; // 기본값은 'ko'
@@ -1919,25 +1989,6 @@
                 console.error('Required DOM elements not found.');
                 return; // 필수 요소가 없을 때 스크립트 중단
               }
-
-
-              // try {
-              //     const previewManager = new PreviewProductExManager();
-              //     await previewManager.initializeContent();
-
-              //     // 페이지 로드 시 현재 URL 체크
-              //     const currentPath = window.location.pathname;
-              //     if (currentPath.includes('listing.html')) {
-              //         const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
-              //         if (currentLang !== pageLang) {
-              //         await previewManager.updateContent(pageLang);
-              //         }
-              //     }
-
-              // } catch (error) {
-              //     console.error('Failed to initialize PreviewProductExManager:', error);
-              // }
-
 
               dropdown_menu.addEventListener('click', (event) => {
                 const liElement = event.target.closest('li');
@@ -1962,15 +2013,16 @@
                   }
 
                 }
+                // debug line 324
                 console.log(`divValue + ${divValue}`, `pageLang + ${pageLang}`);
               })
 
 
 
-              // updatePageLanguage(currentLang);
+              updatePageLanguage(currentLang);
               // currencyService.updatePriceDisplay(selectedLang);
 
-              languageService.updatePageLanguage();
+              // languageService.updatePageLanguage();
 
               // console.log(`DOMContentLoaded ->  ${selectedLang}`);
 
@@ -1982,196 +2034,20 @@
                 document.body.classList.add('mobile');
               }
 
-
-
-              if (privacyTxt) {
-                // 언어별 텍스트 가져오기
-                const textKo = privacyTxt.getAttribute('data-lang-ko').split(' - ');
-                const textEn = privacyTxt.getAttribute('data-lang-en').split(' - ');
-                const textJa = privacyTxt.getAttribute('data-lang-ja').split(' - ');
-                const textZh = privacyTxt.getAttribute('data-lang-zh').split(' - ');
-
-
-                // 언어별 텍스트 출력
-                // console.log("한국어:", textKo);
-                // console.log("영어:", textEn);
-                // console.log("일본어:", textJa);
-                // console.log("중국어:", textZh);
-
-                // applyLanguageText(privacyTxt);
-
-              }
-
-
-              // const currencyService = new CurrencyService();
-
-              // if (textarea) {
-              //   // const processedText = processTextByLanguage(textarea);
-              //   // 텍스트 처리 및 적용
-              //   const processedText = applyLanguageText(textarea);
-
-              //   // 결과 출력 (디버깅용)
-              //   console.log('처리된 텍스트:', processedText);
-              //   console.log('현재 선택된 언어:', localStorage.getItem('preferredLanguage') || 'en');
-
-              //   // 결과 출력
-              //   // console.log('처리된 텍스트:', processedText);
-
-              //   // textarea.value = processedText;
-
-              //   // 각 언어별 결과 예시 출력
-              //   Object.entries(processedText).forEach(([langCode, lines]) => {
-              //     console.log(`\n${langCode} 언어 결과:`);
-              //     lines.forEach((line, index) => {
-              //       console.log(`${index + 1}. ${line}`);
-              //       textarea.value = `${line}`;
-              //     });
-              //   });
-              // }
-
-
-
-              // function isMobileDevice() {
-              //   const userAgentCheck = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-              //   const screenSizeCheck = window.matchMedia("(max-width: 768px)").matches;
-
-              //   return userAgentCheck || screenSizeCheck;
-              // }
-
-              // if (isMobileDevice()) {
-              //   console.log("모바일 기기 또는 작은 화면에서 접속 중입니다.");
-              // } else {
-              //   console.log("데스크톱 기기에서 접속 중입니다.");
-              // }
-
-              // 페이지 언어 업데이트 함수
-              // function updatePageLanguage(lang) {
-              //   // 상품 미리보기 폼 텍스트 업데이트
-              //   const elements = document.querySelectorAll('[data-lang-' + lang + ']');
-              //   elements.forEach(element => {
-              //     element.textContent = element.getAttribute('data-lang-' + lang);
-              //   });
-
-              //   // 가격 표시 업데이트
-              //   updateCurrencyDisplay(lang);
-              // }
-
-              // 화폐 표시 관련 함수 추가
-              // function updateCurrencyDisplay(lang) {
-              //   const allCurrencyElements = document.querySelectorAll('.currency');
-              //   allCurrencyElements.forEach(el => el.style.display = 'none');
-
-              //   const currencyMap = {
-              //     'ko': '.ko-price',
-              //     'en': '.en-price',
-              //     'ja': '.ja-price',
-              //     'zh': '.zh-price'
-              //   };
-
-              //   const selectedCurrency = document.querySelector(currencyMap[lang]);
-              //   if (selectedCurrency) {
-              //     selectedCurrency.style.display = 'block';
-              //   }
-              // }
-
-              // 국가 목록을 가져오는 함수
-              /**
-              async function fetchCountries(lang) {
-                try {
-                  const countrySelect = document.getElementById('country');
-                  const currentLang = lang
-
-                  if (countrySelect.options.length > 1) {
-                    return;
-                  }
-
-                  const response = await fetch(`api/country.php?lang=${currentLang}`);
-                  const data = await response.json();
-
-                  if (data.success) {
-                    while (countrySelect.options.length > 1) {
-                      countrySelect.remove(1);
-                    }
-
-                    data.data.forEach(country => {
-                      const option = document.createElement('option');
-                      option.value = country.country_code;
-                      option.textContent = country.country_name;
-                      countrySelect.appendChild(option);
-                    });
-
-                    const event = new Event('change');
-                    countrySelect.dispatchEvent(event);
-                  } else {
-                    console.error('Failed to fetch countries:', data.message);
-                    showError(getErrorMessage(currentLang, 'fetch_countries_failed'));
-                  }
-                } catch (error) {
-                  console.error('Error fetching countries:', error);
-                  showError(getErrorMessage(currentLang, 'fetch_countries_failed'));
-                }
-              } **/
-
-              // fetchCountries(currentLang);
-
-              // 국가 선택 관련 에러 메시지
-              // const countryErrorMessages = {
-              //   ko: {
-              //     fetch_countries_failed: '국가 목록을 불러오는데 실패했습니다.'
-              //   },
-              //   en: {
-              //     fetch_countries_failed: 'Failed to load country list.'
-              //   },
-              //   ja: {
-              //     fetch_countries_failed: '国リストの読み込みに失敗しました。'
-              //   },
-              //   zh: {
-              //     fetch_countries_failed: '加载国家列表失败。'
-              //   }
-              // };
-
-              // 현재 언어 설정을 가져오는 함수
-              // function getCurrentLanguage() {
-              //   let currentLang = localStorage.getItem('preferredLanguage');
-
-              //   if (!currentLang) {
-              //     const browserLang = navigator.language.slice(0, 2);
-              //     currentLang = ['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'ko';
-              //     localStorage.setItem('preferredLanguage', currentLang);
-              //   }
-
-              //   return currentLang;
-              // }
-
-              // 초기 언어 설정 적용
-              // updatePageLanguage(currentLang);
-
-
-              // 초기 환율 업데이트
-              // await currencyService.updatePriceDisplay();
-
-              // 주기적으로 환율 업데이트 (1시간마다)
-              // setInterval(() => {
-              //   currencyService.updatePriceDisplay();
-              // }, 1000 * 60 * 60);
-
-              // 초기 화폐 표시 업데이트
-              // updateCurrencyDisplay(currentLang || 'ko');
-
               // 초기 상태 설정
               productPreviewForm.style.display = 'block';
               orderForm.style.display = 'none';
               contactForm.style.display = 'none';
 
               // DOM 요소 존재 확인
-              if (!contactForm || !fileInput || !fileList || !errorMessage) {
-                console.error('Required DOM elements not found:', {
-                  contactForm: !!contactForm,
-                  fileInput: !!fileInput,
-                  fileList: !!fileList,
-                  errorMessage: !!errorMessage
-                });
-              }
+              // if (!contactForm || !fileInput || !fileList || !errorMessage) {
+              //   console.error('Required DOM elements not found:', {
+              //     contactForm: !!contactForm,
+              //     fileInput: !!fileInput,
+              //     fileList: !!fileList,
+              //     errorMessage: !!errorMessage
+              //   });
+              // }
 
               // 파일 업로드 관련 메시지의 다국어 처리
               const fileUploadMessages = {
@@ -2245,6 +2121,34 @@
                 }
               };
 
+              // 제품 정보 데이터 정의 - 실제 결제될 가격 설정
+              const productData = {
+                ko: {
+                  productName: '특허뉴스PDF',
+                  basePrice: 99000,  // KRW
+                  currency: 'KRW',
+                  currencySymbol: '₩'
+                },
+                en: {
+                  productName: 'Patent News PDF',
+                  basePrice: 75,     // USD
+                  currency: 'USD',
+                  currencySymbol: '$'
+                },
+                ja: {
+                  productName: '特許ニュースPDF',
+                  basePrice: 11000,  // JPY
+                  currency: 'JPY',
+                  currencySymbol: '¥'
+                },
+                zh: {
+                  productName: '专利新闻PDF',
+                  basePrice: 485,    // CNY
+                  currency: 'CNY',
+                  currencySymbol: '¥'
+                }
+              };
+
 
               // console.log(`savedLang ->  ${savedLang}`);
 
@@ -2252,16 +2156,18 @@
               // console.log(`선택된 언어: ${selectedLang}`);
 
               // 저장된 설정이 없으면 기본값으로 'ko' 사용
-              if (!currentLang2) {
-                // 브라우저의 언어 설정 확인
-                const browserLang = navigator.language.slice(0, 2);
-                // 지원하는 언어인지 확인
-                currentLang2 = ['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'ko';
-                // 설정을 로컬 스토리지에 저장
-                localStorage.setItem('preferredLanguage', currentLang2);
-                const selectLang = getCurrentLanguage();
-                // console.log(`선택된 언어2 : ${selectLang}`);
-              }
+              // if (!currentLang) {
+              //   // 브라우저의 언어 설정 확인
+              //   const browserLang = navigator.language.slice(0, 2);
+              //   // 지원하는 언어인지 확인
+              //   currentLang = ['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'ko';
+              //   // 설정을 로컬 스토리지에 저장
+              //   localStorage.setItem('preferredLanguage', currentLang);
+              //   const selectLang = getCurrentLanguage();
+              //   // console.log(`선택된 언어2 : ${selectLang}`);
+              // }
+
+
 
               // 현재 저장된 언어 가져오기
               // const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
@@ -2296,6 +2202,8 @@
 
                 productPreviewForm.style.display = 'none';
 
+                languageService.changeLanguage(currentLang2);
+
                 // orderForm 표시 및 언어 적용
                 // const orderForm = document.getElementById('orderForm');
                 // orderForm.style.display = 'block';
@@ -2303,22 +2211,34 @@
                 // orderForm의 텍스트 업데이트
                 // updateFormLanguage(orderForm, currentLang);
 
+                console.log('productPreviewForm -> ' + currentLang2);
+
+                // updatePageLanguage(currentLang);
+
                 try {
-                  // Product Preview 데이터 수집
-                  const previewData = {
+                  const previewPrice = document.getElementById('previewPrice');
+                  const hiddenPrice = document.getElementById('hidden_orderPrice');
+
+                  // 가격에서 통화 기호와 쉼표 제거
+                  const priceValue = hiddenPrice.value || previewPrice.value.replace(/[^0-9.-]+/g, '');
+                  const currency = hiddenPrice.getAttribute('data-currency') || 'KRW';
+
+                  const formData = {
                     productCode: document.getElementById('previewProductCode').value,
                     productName: document.getElementById('previewProductName').value,
                     quantity: document.getElementById('previewQuantity').value,
-                    price: document.getElementById('previewPrice').value
+                    price: priceValue,
+                    currency: currency
                   };
 
-                  // Product Preview 데이터 저장
+                  console.log('Sending preview data:', formData);
+
                   const saveResponse = await fetch('save_product_preview.php', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(previewData)
+                    body: JSON.stringify(formData)
                   });
 
                   if (!saveResponse.ok) {
@@ -2331,7 +2251,7 @@
                   orderForm.style.display = 'block';
 
                   // orderForm의 텍스트 업데이트
-                  updateFormLanguage(orderForm, currentLang2);
+                  updateFormLanguage(orderForm, currentLang);
 
                   // Order Form에 데이터 설정
                   // document.getElementById('hidden_productCode').value = previewData.productCode;
@@ -2340,7 +2260,8 @@
 
                 } catch (error) {
                   console.error('Product preview error:', error);
-                  alert('처리 중 오류가 발생했습니다.');
+                  // alert('처리 중 오류가 발생했습니다.');
+                  showToast(error.message || '처리 중 오류가 발생했습니다.', 'error');
                   window.errorService.handleError(error, getCurrentLanguage(), 'form_submission_failed');
                 }
               });
@@ -2353,6 +2274,25 @@
                 console.log('Order form submission started');
 
                 try {
+                  // 현재 선택된 언어에 따른 통화 결정
+                  const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
+                  const currencyMap = {
+                    ko: 'KRW',
+                    en: 'USD',
+                    ja: 'JPY',
+                    zh: 'CNY'
+                  };
+                  const currency = currencyMap[currentLang];
+
+                  // 환율이 적용된 가격 계산
+                  const originalPrice = document.getElementById('hidden_orderPrice').value;
+                  let convertedAmount;
+
+                  if (window.exchangeRateService) {
+                    // 환율 적용된 금액 (숫자만)
+                    convertedAmount = window.exchangeRateService.getNumericPrice(currency);
+                  }
+
                   // Product Preview 데이터 수집
                   // 1. 폼 데이터 수집
                   const orderData = {
@@ -2363,17 +2303,54 @@
                     productCode: document.getElementById('hidden_orderProductCode').value,
                     productName: document.getElementById('hidden_orderProductName').value,
                     quantity: document.getElementById('hidden_orderQuantity').value,
-                    price: document.getElementById('hidden_orderPrice').value,
+                    // price: document.getElementById('hidden_orderPrice').value,
+                    price: convertedAmount,  // 환율 적용된 금액
+                    currency: currency,      // 통화 정보 추가
                     privacyConsent: document.getElementById('privacyConsent').checked ? 'Y' : 'N',
                     //csrf_token: document.querySelector('input[name="csrf_token"]')?.value // CSRF 토큰은 일단 제외
                   };
 
                   console.log('Sending order data:', orderData); // 디버깅용 로그
 
+                  // 디버깅을 위한 로그
+                  console.log('Validation Data:', {
+                    productCode: orderData.productCode,
+                    price: orderData.price,
+                    currency: currency,
+                    lang: currentLang
+                  });
+
+                  // 가격 검증
+                  const isValidAmount = window.PaymentValidator.validatePaymentAmount(
+                    orderData.productCode,
+                    orderData.price,
+                    currentLang
+                  );
+
+                  if (!isValidAmount) {
+                    console.error('Price validation failed:', {
+                      actual: orderData.price,
+                      currency: orderData.currency
+                    });
+                    throw new Error('결제 금액이 유효하지 않습니다.');
+                  }
+
+                  // 결제 금액 검증
+                  if (!window.PaymentValidator.validatePaymentAmount(
+                    orderData.productCode,
+                    orderData.price,
+                    localStorage.getItem('preferredLanguage') || 'ko'
+                  )) {
+                    throw new Error('결제 금액이 유효하지 않습니다.');
+                  }
+
                   // 2. 데이터 검증
                   if (!orderData.orderName || !orderData.orderEmail || !orderData.orderPhone) {
                     throw new Error('필수 입력 항목을 모두 입력해주세요.');
                   }
+
+                  // 세션에 주문 데이터 저장
+                  window.paymentSessionManager.saveOrderData(orderData);
 
                   // 3. 서버로 데이터 전송
                   const response = await fetch('process_order.php', {
@@ -2433,19 +2410,36 @@
                     window.paymentHandler = {
                       handlePaymentSuccess: function (response) {
                         console.log('Payment Success:', response);
-                        // 성공 시 처리
                         showToast('결제가 성공적으로 완료되었습니다.', 'success');
-                        setTimeout(() => {
+                        // 결제창 닫기
+                        if (window.opener) {
+                          window.opener.location.href = 'listing.html';
+                          window.close();
+                        } else {
                           window.location.href = 'listing.html';
-                        }, 2000);
+                        }
                       },
                       handlePaymentError: function (error) {
                         console.error('Payment Error:', error);
-                        // 실패 시 처리
                         showToast(error.message || '결제 처리 중 오류가 발생했습니다.', 'error');
-                        setTimeout(() => {
+                        // 결제창 닫기
+                        if (window.opener) {
+                          window.opener.location.href = 'listing.html';
+                          window.close();
+                        } else {
                           window.location.href = 'listing.html';
-                        }, 2000);
+                        }
+                      }
+                    };
+
+                    // 결제 취소 시 처리 함수 추가
+                    window.nicepayClose = function () {
+                      showToast('결제가 취소되었습니다.', 'info');
+                      if (window.opener) {
+                        window.opener.location.href = 'listing.html';
+                        window.close();
+                      } else {
+                        window.location.href = 'listing.html';
                       }
                     };
 

@@ -271,12 +271,34 @@ function updateFormLanguage(form, lang) {
     element.placeholder = element.getAttribute(`data-lang-${lang}-placeholder`);
   });
 
-  // 금액 표시 업데이트
-  const amountElements = form.querySelectorAll('[data-amount]');
-  amountElements.forEach(element => {
-    const amount = parseInt(element.getAttribute('data-amount'));
-    const formattedAmount = formatCurrencyByLang(amount, lang);
-    element.textContent = formattedAmount;
+  // orderForm
+  const product_name = form.querySelector('.product-name');
+  const product_qty = form.querySelector('.product-quantity');
+  product_name.textContent = translations[lang].listing.orderForm.product_name;
+  product_qty.textContent = translations[lang].listing.orderForm.product_qty;
+
+  // orderForm 금액, 총금액
+  // 가격 정보 업데이트
+  const priceRows = form.querySelectorAll('.price-row');
+  priceRows.forEach(row => {
+    // 금액 포맷팅
+    const amount = row.querySelector('.amount');
+
+    // 기본 금액 (99000원)
+    let value = 99000;
+    
+    if (row.classList.contains('discount')) {
+        // 할인금액은 0원으로 고정
+        value = 0;
+        // 할인금액은 앞에 (-) 표시 추가
+        amount.textContent = `(-) ${formatCurrencyByLang(value, lang)}`;
+    } else if (row.classList.contains('total')) {
+        // 총 결제금액 (기본금액 - 할인금액)
+        amount.textContent = formatCurrencyByLang(value, lang);
+    } else {
+        // 상품가격 (기본금액)
+        amount.textContent = formatCurrencyByLang(value, lang);
+    }
   });  
 
 }
@@ -306,22 +328,104 @@ function updatePageLanguage(lang) {
     element.textContent = element.getAttribute(`data-lang-${lang}`);
   });
 
+  console.log('updatePageLanguage');
+
 
   // productPreviewForm이 있는 경우에만 처리
   const productPreviewForm = document.getElementById('productPreviewForm');
   if (productPreviewForm) {
     // 상품 미리보기 폼 텍스트 업데이트
-    const formTitle = productPreviewForm.querySelector('.form-title');
-    const labels = productPreviewForm.querySelectorAll('.label-text');
-    const submitButton = productPreviewForm.querySelector('button[type="submit"]');
+    // const formTitle = productPreviewForm.querySelector('.form-title');
+    // const labels = productPreviewForm.querySelectorAll('.label-text');
+    // const submitButton = productPreviewForm.querySelector('button[type="submit"]');
 
     // 가격 업데이트
-    const priceInput = document.getElementById('previewPrice');
+    // const priceInput = document.getElementById('previewPrice');
     // if (priceInput && window.currencyService) {
     //   window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
     //     priceInput.value = formattedPrice;
     //   });
     // }
+    // 제품 정보 데이터 정의
+    const productData = {
+      ko: {
+        title: '상품 정보',
+        productName: '특허뉴스PDF', 
+        basePrice: 99000,
+        currency: 'KRW',
+        currencySymbol: '₩'
+      },
+      en: {
+        title: 'Product Information',
+        productName: 'Patent News PDF',
+        basePrice: 75,
+        currency: 'USD', 
+        currencySymbol: '$'
+      },
+      ja: {
+        title: '商品情報',
+        productName: '特許ニュースPDF',
+        basePrice: 11000,
+        currency: 'JPY',
+        currencySymbol: '¥'
+      },
+      zh: {
+        title: '产品信息',
+        productName: '专利新闻PDF', 
+        basePrice: 485,
+        currency: 'CNY',
+        currencySymbol: '¥'
+      }
+    };
+
+    // 폼 제목 업데이트
+    const formTitle = productPreviewForm.querySelector('.form-title');
+    if (formTitle) {
+      formTitle.textContent = productData[lang].title;
+    }
+
+    // 라벨 업데이트
+    productPreviewForm.querySelectorAll('.required span:first-child').forEach(label => {
+      if (label.getAttribute(`data-lang-${lang}`)) {
+        label.textContent = label.getAttribute(`data-lang-${lang}`);
+      }
+    });
+
+    // 가격 업데이트
+    const previewPrice = document.getElementById('previewPrice');
+    const hiddenPrice = document.getElementById('hidden_orderPrice');
+    
+    if (previewPrice && hiddenPrice && productData[lang]) {
+      const { basePrice, currency, currencySymbol } = productData[lang];
+      
+      // 화면에 표시될 가격 포맷팅
+      const formatter = new Intl.NumberFormat(lang, {
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: currency === 'JPY' ? 0 : 2
+      });
+
+      // 가격 표시 업데이트
+      previewPrice.value = formatter.format(basePrice);
+      
+      // hidden input 업데이트
+      hiddenPrice.value = basePrice;
+      hiddenPrice.setAttribute('data-currency', currency);
+      hiddenPrice.setAttribute('data-currency-symbol', currencySymbol);
+    }
+
+    // 상품명 업데이트
+    const previewProductName = document.getElementById('previewProductName');
+    if (previewProductName) {
+      previewProductName.value = productData[lang].productName;
+    }
+
+    // 확인 버튼 텍스트 업데이트
+    const submitButton = productPreviewForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.textContent = submitButton.getAttribute(`data-lang-${lang}`) || '확인';
+    }
   }
 
   // orderForm 업데이트
@@ -465,67 +569,108 @@ function convertBrToNewline(text) {
       .replace(/^\s+|\s+$/g, '');    // 앞뒤 공백 제거
 }
 
-function adjustTextareaHeight() {
-  textarea.style.height = 'auto';
-  textarea.style.height = `${textarea.scrollHeight+2}px`;
+// textarea 높이 조절 함수 수정
+function adjustTextareaHeight(textarea) {
+    if (textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight + 2}px`;
+    }
 }
 
-
 function updateListingPage(lang) {
-  // 제품 정보 데이터 정의
+  // 제품 정보 데이터 정의 - 실제 결제될 가격 설정
   const productData = {
       ko: {
-          productName: '특허뉴스PDF'
+          productName: '특허뉴스PDF',
+          basePrice: 99000,  // KRW
+          currency: 'KRW',
+          currencySymbol: '₩'
       },
       en: {
-          productName: 'Patent News PDF'
+          productName: 'Patent News PDF',
+          basePrice: 75,     // USD
+          currency: 'USD',
+          currencySymbol: '$'
       },
       ja: {
-          productName: '特許ニュースPDF'
+          productName: '特許ニュースPDF',
+          basePrice: 11000,  // JPY
+          currency: 'JPY',
+          currencySymbol: '¥'
       },
       zh: {
-          productName: '专利新闻PDF'
+          productName: '专利新闻PDF',
+          basePrice: 485,    // CNY
+          currency: 'CNY',
+          currencySymbol: '¥'
       }
   };
 
-  // 제품명 업데이트
-  const previewProductName = document.getElementById('previewProductName');
-  if (previewProductName && productData[lang]) {
-      previewProductName.value = productData[lang].productName;
-  }
-
-  // 가격 업데이트
-  const previewPrice = document.getElementById('previewPrice');
-  if (previewPrice && window.currencyService) {
-      // 가격 업데이트를 즉시 실행
-      window.currencyService.formatCurrency(99000, lang)
-          .then(formattedPrice => {
-              previewPrice.value = formattedPrice;
-          })
-          .catch(error => {
-              console.error('Error updating price:', error);
-              // 에러 시 기본 한국어 가격 표시
-              previewPrice.value = '₩99,000';
-          });
-  } else {
-      // currencyService가 없는 경우 기본 한국어 가격 표시
-      if (previewPrice) {
-          previewPrice.value = '₩99,000';
-      }
-  }
-
-
-  const previewProductEx = document.getElementById('previewProductEx');
+  // const previewProductEx = document.getElementById('previewProductEx');
   const formData = translations[lang]?.listing?.form;
   if (!formData) return;
 
-  if (previewProductEx) {
-    const contentArray = translations[lang].listing.previewProductEx;
-    let formattedContent = contentArray.join(', ');
+  // 제품명과 가격 업데이트
+  const previewProductCode = document.getElementById('previewProductCode');
+  const previewProductName = document.getElementById('previewProductName');
+  const previewQuantity = document.getElementById('previewQuantity');
+  const previewPrice = document.getElementById('previewPrice');
+  const hiddenPrice = document.getElementById('hidden_orderPrice');
+
+  if (productData[lang]) {
+    // 기본 값 설정
+    if (previewProductCode) previewProductCode.value = '0001';
+    if (previewProductName) previewProductName.value = productData[lang].productName;
+    if (previewQuantity) previewQuantity.value = '1';
+
+    // 가격 포맷팅 및 설정
+    if (previewPrice || hiddenPrice) {
+      const { basePrice, currency, currencySymbol } = productData[lang];        
         
-    // this.#textarea.value = formattedContent;
-    previewProductEx.value = formattedContent;
+      // 화면에 표시될 가격 포맷팅
+      const formatter = new Intl.NumberFormat(lang, {
+          style: 'currency',
+          currency: currency,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: currency === 'JPY' ? 0 : 2
+      });
+      
+      // 화면 표시용 가격 설정
+      if (previewPrice) {
+        previewPrice.value = formatter.format(basePrice);
+        console.log('previewPrice ->' + previewPrice.value);
+      }
+      
+      // hidden input에 실제 결제될 가격 설정
+      if (hiddenPrice) {
+        // 통화 기호 없이 순수 숫자값만 저장
+        hiddenPrice.value = basePrice.toString();
+        
+        // 통화 정보도 함께 저장
+        hiddenPrice.setAttribute('data-currency', currency);
+        hiddenPrice.setAttribute('data-currency-symbol', currencySymbol);
+      }
+    }
   }
+
+  // ProductEx textarea 업데이트
+  const previewProductEx = document.getElementById('previewProductEx');
+  if (previewProductEx && translations[lang]?.listing?.previewProductEx) {
+      const contentArray = translations[lang].listing.previewProductEx;
+      let formattedContent = contentArray.join('');
+      formattedContent = convertBrToNewline(formattedContent);
+      previewProductEx.value = formattedContent;
+      // adjustTextareaHeight(previewProductEx);
+  }
+
+  // 폼 제출 이벤트 리스너 설정
+  // const productPreviewForm = document.getElementById('productPreviewForm');
+  // if (productPreviewForm) {
+  //     // 기존 이벤트 리스너 제거
+  //     productPreviewForm.removeEventListener('submit', handleProductPreviewSubmit);
+  //     // 새 이벤트 리스너 추가
+  //     productPreviewForm.addEventListener('submit', handleProductPreviewSubmit);
+  // }
   
   
 
@@ -601,6 +746,70 @@ function updateListingPage(lang) {
         el.innerHTML = `<span>${firstLetter}</span>${restOfText}`;
       }
     });
+  }
+}
+
+// 폼 제출 핸들러 수정
+async function handleProductPreviewSubmit(e) {
+  e.preventDefault();
+  console.log('Product Preview form submission started');
+
+  try {
+    const previewPrice = document.getElementById('previewPrice');
+    const hiddenPrice = document.getElementById('hidden_orderPrice');
+    const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
+    // const currency = hiddenPrice.getAttribute('data-currency');
+
+    // 가격에서 통화 기호와 쉼표 제거
+    const priceValue = hiddenPrice.value || previewPrice.value.replace(/[^0-9.-]+/g, '');
+    const currency = hiddenPrice.getAttribute('data-currency') || 'KRW';
+
+    const formData = {
+        productCode: document.getElementById('previewProductCode').value,
+        productName: document.getElementById('previewProductName').value,
+        quantity: document.getElementById('previewQuantity').value,
+        price: priceValue,
+        currency: currency // 통화 정보 추가
+    };
+
+    console.log('formData.price -> '+formData.price);
+    
+
+    console.log('Sending preview data:', formData);
+
+    const response = await fetch('save_product_preview.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+    console.log('Server response:', result);
+
+    if (result.success) {
+        document.getElementById('productPreviewForm').style.display = 'none';
+        const orderForm = document.getElementById('orderForm');
+        orderForm.style.display = 'block';
+
+        // hidden 필드 업데이트 - 실제 결제 금액과 통화 정보 포함
+        document.getElementById('hidden_orderProductCode').value = formData.productCode;
+        document.getElementById('hidden_orderProductName').value = formData.productName;
+        document.getElementById('hidden_orderQuantity').value = formData.quantity;
+        document.getElementById('hidden_orderPrice').value = formData.price;
+        document.getElementById('hidden_orderPrice').setAttribute('data-currency', formData.currency);
+
+        // 언어 업데이트
+        updateFormLanguage(orderForm, currentLang);
+
+    } else {
+        throw new Error(result.message || '저장에 실패했습니다.');
+    }
+
+  } catch (error) {
+    console.error('Product preview error:', error);
+    window.toastService?.show(error.message || '처리 중 오류가 발생했습니다.', 'error');
   }
 }
 
@@ -940,49 +1149,49 @@ function formatCurrency(amount, lang) {
   }
 }
 
-function updateListingPage(lang) {
-    // 제품 정보 데이터 정의
-    const productData = {
-        ko: {
-            productName: '특허뉴스PDF'
-        },
-        en: {
-            productName: 'Patent News PDF'
-        },
-        ja: {
-            productName: '特許ニュースPDF'
-        },
-        zh: {
-            productName: '专利新闻PDF'
-        }
-    };
+// function updateListingPage(lang) {
+//     // 제품 정보 데이터 정의
+//     const productData = {
+//         ko: {
+//             productName: '특허뉴스PDF'
+//         },
+//         en: {
+//             productName: 'Patent News PDF'
+//         },
+//         ja: {
+//             productName: '特許ニュースPDF'
+//         },
+//         zh: {
+//             productName: '专利新闻PDF'
+//         }
+//     };
 
-    // 제품명 업데이트
-    const previewProductName = document.getElementById('previewProductName');
-    const previewPrice = document.getElementById('previewPrice');
+//     // 제품명 업데이트
+//     const previewProductName = document.getElementById('previewProductName');
+//     const previewPrice = document.getElementById('previewPrice');
 
-    if (previewProductName && productData[lang]) {
-        previewProductName.value = productData[lang].productName;
-    }
+//     if (previewProductName && productData[lang]) {
+//         previewProductName.value = productData[lang].productName;
+//     }
 
-    // 가격 업데이트
-    if (previewPrice && window.currencyService) {
-        window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
-            previewPrice.value = formattedPrice;
-        });
-    }
+//     // 가격 업데이트
+//     if (previewPrice && window.currencyService) {
+//         window.currencyService.updatePriceDisplay(lang).then(formattedPrice => {
+//             previewPrice.value = formattedPrice;
+//         });
+//     }
 
-    // ProductEx textarea 업데이트
-    const previewProductEx = document.getElementById('previewProductEx');
-    if (previewProductEx) {
-        const contentArray = translations[lang].listing.previewProductEx;
-        if (contentArray) {
-            let formattedContent = contentArray.join('');
-            formattedContent = convertBrToNewline(formattedContent);
-            previewProductEx.value = formattedContent;
-        }
-    }
-}
+//     // ProductEx textarea 업데이트
+//     const previewProductEx = document.getElementById('previewProductEx');
+//     if (previewProductEx) {
+//         const contentArray = translations[lang].listing.previewProductEx;
+//         if (contentArray) {
+//             let formattedContent = contentArray.join('');
+//             formattedContent = convertBrToNewline(formattedContent);
+//             previewProductEx.value = formattedContent;
+//         }
+//     }
+// }
 
 // 사이드바 제어 함수들
 function handleBurgerMenu() {
@@ -1117,8 +1326,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       sidebarBackground.addEventListener('click', handleBurgerMenuClose);
     }
 
+    // price 초기값 설정을 위한 함수 호출
+    initializeProductPrice();
+
   } catch (error) {
     console.error('Initialization error:', error);
     window.toastService?.show('Failed to initialize the page', 'error');
   }
 });
+
+// price 초기화 함수 추가
+function initializeProductPrice() {
+  const previewPrice = document.getElementById('previewPrice');
+  const hiddenPrice = document.getElementById('hidden_orderPrice');
+  
+  if (previewPrice && hiddenPrice) {
+    const currentLang = getCurrentLanguage();
+    const basePrice = 99000; // 기본 KRW 가격
+
+    // 현재 언어에 따른 가격 설정
+    const priceData = {
+        ko: { price: 99000, currency: 'KRW' },
+        en: { price: 75, currency: 'USD' },
+        ja: { price: 11000, currency: 'JPY' },
+        zh: { price: 485, currency: 'CNY' }
+    };
+
+    const { price, currency } = priceData[currentLang];
+
+    // 화면에 표시될 가격 포맷팅
+    const formatter = new Intl.NumberFormat(currentLang, {
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: currency === 'JPY' ? 0 : 2
+    });
+
+    previewPrice.value = formatter.format(price);
+    hiddenPrice.value = price.toString();
+    hiddenPrice.setAttribute('data-currency', currency);
+  }
+}

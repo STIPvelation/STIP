@@ -118,7 +118,15 @@
                 "고객지원 안내",
                 "문의 이메일: support@[사이트명].com",
                 "운영 시간: 평일 09:00~18:00 (주말 및 공휴일 휴무)"
-            ]
+            ],
+            "orderForm": {
+                "product_name": "특허뉴스PDF",
+                "product_qty": " 1개",
+                "discount": "0",
+                "basePrice": "99000", 
+                "currency": "KRW",
+                "currencySymbol": "₩"
+            }
         },
         "about": {
             "title_area_h6": "Intellectual Property ",
@@ -352,7 +360,15 @@
                 "Customer Support",
                 "Inquiry Email: support@[site].com",
                 "Operating Hours: Weekdays 09:00–18:00 (Closed on weekends and public holidays)"
-            ]
+            ],
+            "orderForm": {
+                "product_name": "Product Information",
+                "product_qty": " 1EA",
+                "discount": "0",
+                "basePrice": "75", 
+                "currency": "USD",
+                "currencySymbol": "$"
+            }
         },
         "about": {
             "title_area_h6": "Intellectual Property",
@@ -584,7 +600,15 @@
                 "顧客サポート",
                 "•  お問い合わせメール: support@[site].com",
                 "•  営業時間: 平日09:00～18:00（週末・祝日休業）"
-            ]
+            ],
+            "orderForm": {
+                "product_name": "特許ニュースPDF",
+                "product_qty": " 1個",
+                "discount": "0",
+                "basePrice": "11000", 
+                "currency": "JPY",
+                "currencySymbol": "¥"
+            }
         },
         "about": {
             "title_area_h6": "Intellectual Property",
@@ -817,7 +841,16 @@
                 "•  咨询邮箱: support@[site].com",
                 "•  营业时间: 工作日09:00–18:00（周末及公共假期休息）"
 
-            ]
+            ],
+            "orderForm": {
+                "product_name": "专利新闻PDF",
+                "product_qty": " 一个",
+                "discount": "0",
+                "basePrice": "485", 
+                "currency": "CNY",
+                "currencySymbol": "¥"
+
+            }
         },
         "about": {
             "title_area_h6": "Intellectual Property",            

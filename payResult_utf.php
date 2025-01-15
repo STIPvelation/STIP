@@ -1,5 +1,9 @@
 <?php
-header("Content-Type:text/html; charset=utf-8;"); 
+header("Content-Type:text/html; charset=utf-8;");
+
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 // 1. 로깅 함수 추가
 function writeLog($message, $type = 'info') {
@@ -20,6 +24,15 @@ $amt = $_POST['Amt'];
 
 // 3. 결제 검증
 try {
+
+    // DB 연결
+    $pdo = new PDO(
+        "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] . ";charset=utf8mb4",
+        $_ENV['DB_USER'],
+        $_ENV['DB_PASS'],
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+
     // 해시 검증
     $merchantKey = $_ENV['NICE_MERCHANT_KEY'];
     $ediDate = date("YmdHis");
@@ -43,7 +56,7 @@ try {
         writeLog("Payment approval response: " . json_encode($response), 'info');
 
         // DB 업데이트
-        require_once 'config/db_config_pdo.php';
+        // require_once 'config/db_config_pdo.php';
         $pdo->beginTransaction();
         
         try {
@@ -80,14 +93,22 @@ try {
                 ]
             ];
             
-            echo "<script>
-                if (window.opener && window.opener.paymentHandler) {
-                    window.opener.paymentHandler.handlePaymentSuccess(" . json_encode($successResponse) . ");
-                    window.close();
-                } else {
-                    window.location.href = 'listing.html?payment=success&order_id=" . $moid . "';
-                }
-            </script>";
+            // echo "<script>
+            //     if (window.opener && window.opener.paymentHandler) {
+            //         window.opener.paymentHandler.handlePaymentSuccess(" . json_encode($successResponse) . ");
+            //         window.close();
+            //     } else {
+            //         window.location.href = 'listing.html?payment=success&order_id=" . $moid . "';
+            //     }
+            // </script>";
+            // 결제 완료 후 처리
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => true,
+                'redirect' => 'listing.html',
+                'response' => $successResponse
+            ]);
+            exit;
 
         } catch (Exception $e) {
             $pdo->rollBack();
@@ -104,14 +125,22 @@ try {
             'code' => $authResultCode
         ];
         
-        echo "<script>
-            if (window.opener && window.opener.paymentHandler) {
-                window.opener.paymentHandler.handlePaymentError(" . json_encode($errorResponse) . ");
-                window.close();
-            } else {
-                window.location.href = 'listing.html?payment=error&message=" . urlencode($authResultMsg) . "';
-            }
-        </script>";
+        // echo "<script>
+        //     if (window.opener && window.opener.paymentHandler) {
+        //         window.opener.paymentHandler.handlePaymentError(" . json_encode($errorResponse) . ");
+        //         window.close();
+        //     } else {
+        //         window.location.href = 'listing.html?payment=error&message=" . urlencode($authResultMsg) . "';
+        //     }
+        // </script>";
+        // 실패 응답 전송
+        header('Content-Type: application/json');
+        echo json_encode([
+            'success' => false,
+            'redirect' => 'listing.html',
+            'response' => $errorResponse
+        ]);
+        exit;
     }
 
 } catch (Exception $e) {
@@ -139,14 +168,26 @@ try {
         'error' => $e->getMessage()
     ];
     
-    echo "<script>
-        if (window.opener && window.opener.paymentHandler) {
-            window.opener.paymentHandler.handlePaymentError(" . json_encode($errorResponse) . ");
-            window.close();
-        } else {
-            window.location.href = 'listing.html?payment=error&message=" . urlencode($e->getMessage()) . "';
-        }
-    </script>";
+    // echo "<script>
+    //     if (window.opener && window.opener.paymentHandler) {
+    //         window.opener.paymentHandler.handlePaymentError(" . json_encode($errorResponse) . ");
+    //         window.close();
+    //     } else {
+    //         window.location.href = 'listing.html?payment=error&message=" . urlencode($e->getMessage()) . "';
+    //     }
+    // </script>";
+    // 에러 응답 전송
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => false,
+        'redirect' => 'listing.html',
+        'response' => [
+            'success' => false,
+            'message' => '결제 처리 중 오류가 발생했습니다.',
+            'error' => $e->getMessage()
+        ]
+    ]);
+    exit;
 }
 
 // API 호출 함수
