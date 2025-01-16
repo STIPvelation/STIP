@@ -43,6 +43,11 @@ class TagCloudService {
   // 이미지 데이터 초기화
   initializeImageData() {
     return {
+      "Patent":[
+        this.wrappingImgElement("Patent/logo-01.png"),
+        this.wrappingImgElement("Patent/logo-02.png"),
+        this.wrappingImgElement("Patent/logo-03.png"),
+      ],
       "Movie Drama Comics": [
         this.wrappingImgElement("Movie/Group 5005.png"),
         this.wrappingImgElement("Movie/Group.png"),
@@ -136,7 +141,7 @@ class TagCloudService {
   // 태그 클라우드 초기화
   initializeTagCloud() {
     try {
-      if (!this.cloudContainer || !this.tagCloudImages['Movie Drama Comics']) {
+      if (!this.cloudContainer || !this.tagCloudImages['Patent']) {
         throw new Error('Required elements or data not found');
       }
 
@@ -147,7 +152,7 @@ class TagCloudService {
       }
 
       // 새로운 TagCloud 인스턴스 생성
-      this.tagCloud = TagCloud(this.cloudContainer, this.tagCloudImages['Movie Drama Comics'], {
+      this.tagCloud = TagCloud(this.cloudContainer, this.tagCloudImages['Patent'], {
         radius: this.radius,
         maxSpeed: "normal",
         initSpeed: "normal",
@@ -156,7 +161,7 @@ class TagCloudService {
         useHTML: true
       });
       
-      this.tagCloud.pause(); // 초기에는 일시정지 상태
+      // this.tagCloud.pause(); // 초기에는 일시정지 상태
       console.log('TagCloud initialized successfully');
       
     } catch (error) {
@@ -181,11 +186,7 @@ class TagCloudService {
     const frameBox = document.querySelector('.frame');
     if (!frameBox) return;
 
-    if (category === "Patent") {
-      this.handlePatentCategory(frameBox);
-    } else {
-      this.handleOtherCategory(category, frameBox);
-    }
+    this.handleOtherCategory(category, frameBox);
 
     const listingBtn = document.querySelector('.listing-btn');
     if (listingBtn) {
@@ -194,17 +195,17 @@ class TagCloudService {
   }
 
   // 특허 카테고리 처리
-  handlePatentCategory(frameBox) {
-    if (this.swiperWrapper) this.swiperWrapper.style.display = "block";
-    if (this.singleSwiperWrapper) this.singleSwiperWrapper.style.display = "block";
-    if (this.circleWrapper) this.circleWrapper.style.display = "none";
+  // handlePatentCategory(frameBox) {
+  //   if (this.swiperWrapper) this.swiperWrapper.style.display = "block";
+  //   if (this.singleSwiperWrapper) this.singleSwiperWrapper.style.display = "block";
+  //   if (this.circleWrapper) this.circleWrapper.style.display = "none";
 
-    if (this.tagCloud) this.tagCloud.pause();
+  //   if (this.tagCloud) this.tagCloud.pause();
 
-    if (window.innerWidth < 768) {
-      frameBox.style.height = "204px";
-    }
-  }
+  //   if (window.innerWidth < 768) {
+  //     frameBox.style.height = "204px";
+  //   }
+  // }
 
   // 다른 카테고리 처리
   handleOtherCategory(category, frameBox) {
