@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="발명특허 트레이딩 공식 홈페이지입니다. 특허 거래와 발명특허 관련 전문 서비스를 제공합니다.">
+  <meta name="description" content="STIP은 IP 거래 플랫폼으로, 새로운 시대의 요구와 변화에 부합하는 혁신적이고 전문화된 거래소 입니다.">
   <meta name="keywords"
     content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권, IP거래, 지식재산권, 특허권, 상표권, 기술이전, 특허중개, 특허가치평가, 기술사업화, 라이센싱">
   <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지">
@@ -402,12 +402,6 @@
             <!-- Order Form -->
             <!-- 주문 폼  -->
             <form id="orderForm" class="order-form" style="display: none;">
-              <!-- <input type="hidden" id="hidden_orderName" name="orderName" /> -->
-              <!-- <input type="hidden" id="hidden_orderPhone" name="orderPhone" /> -->
-              <!-- <input type="hidden" id="hidden_orderEmail" name="orderEmail" /> -->
-              <!-- <input type="hidden" id="hidden_orderMemo" name="orderMemo" /> -->
-              <!-- <input type="hidden" id="hidden_privacyConsent" name="privacyConsent" /> -->
-              <!-- <input type="hidden" id="hidden_paymentMethod" name="paymentMethod" /> -->
               <input type="hidden" id="hidden_orderProductCode" name="productCode" value="0001" />
               <input type="hidden" id="hidden_orderProductName" name="productName" value="특허뉴스PDF" />
               <input type="hidden" id="hidden_orderQuantity" name="quantity" value="1" />
@@ -415,31 +409,20 @@
               <!-- 주문자 정보 -->
               <div class="order-detail-section">
                 <div class="input-box">
-                  <!-- <h3 class="form-subtitle">주문자 정보</h3> -->
                   <h3 class="form-subtitle" data-lang-ko="주문자 정보" data-lang-en="Order Information" data-lang-ja="注文者情報"
                     data-lang-zh="订购人信息"></h3>
                   <div class="order-info">
                     <div class="input-box">
-                      <!--<label for="orderName" class="required">
-                                    이름
-                                    <span class="sr-only">(Required)</span>
-                                  </label>-->
                       <label for="orderName" class="required">
                         <span data-lang-ko="이름" data-lang-en="Name" data-lang-ja="名前" data-lang-zh="姓名"></span>
                         <span class="sr-only" data-lang-ko="(필수)" data-lang-en="(Required)" data-lang-ja="(必須)"
                           data-lang-zh="(必填)"></span>
                       </label>
-                      <!-- <input type="text" id="orderName" name="orderName" required placeholder="주문자 이름을 입력하세요" /> -->
                       <input type="text" id="orderName" name="orderName" required
                         data-lang-ko-placeholder="주문자 이름을 입력하세요" data-lang-en-placeholder="Enter your name"
                         data-lang-ja-placeholder="注文者名を入力してください" data-lang-zh-placeholder="请输入订购人姓名" />
                     </div>
                     <div class="input-box">
-                      <!-- <label for="orderPhone" class="required">
-                                    연락처
-                                    <span class="sr-only">(Required)</span>
-                                  </label>
-                                  <input type="tel" id="orderPhone" name="orderPhone" required placeholder="연락처를 입력하세요" /> -->
                       <label for="orderPhone" class="required">
                         <span data-lang-ko="연락처" data-lang-en="Phone" data-lang-ja="連絡先" data-lang-zh="联系电话"></span>
                         <span class="sr-only" data-lang-ko="(필수)" data-lang-en="(Required)" data-lang-ja="(必須)"
@@ -450,11 +433,6 @@
                         data-lang-zh-placeholder="请输入联系电话" />
                     </div>
                     <div class="input-box">
-                      <!-- <label for="orderEmail" class="required">
-                                    이메일
-                                    <span class="sr-only">(Required)</span>
-                                  </label>
-                                  <input type="email" id="orderEmail" name="orderEmail" required placeholder="이메일을 입력하세요" /> -->
                       <label for="orderEmail" class="required">
                         <span data-lang-ko="이메일" data-lang-en="Email" data-lang-ja="メール" data-lang-zh="电子邮箱"></span>
                         <span class="sr-only" data-lang-ko="(필수)" data-lang-en="(Required)" data-lang-ja="(必須)"
@@ -465,11 +443,6 @@
                         data-lang-ja-placeholder="メールアドレスを入力してください" data-lang-zh-placeholder="请输入电子邮箱" />
                     </div>
                     <div class="input-box mb-3">
-                      <!-- <label for="orderMemo">
-                                    기타메모
-                                  </label>
-                                  <textarea id="orderMemo" name="orderMemo" rows="3"
-                                    placeholder="배송 시 요청사항이나 기타 메모를 입력하세요"></textarea> -->
                       <span style="color: #fcfcfc;" data-lang-ko="기타메모" data-lang-en="Additional Notes"
                         data-lang-ja="備考" data-lang-zh="备注"></span>
                       </label>
@@ -484,7 +457,6 @@
 
                 <!-- 상품 정보 -->
                 <div class="input-box mb-3">
-                  <!-- <h3 class="form-subtitle">상품 정보</h3> -->
                   <h3 class="form-subtitle" data-lang-ko="상품정보" data-lang-en="Product Information" data-lang-ja="商品情報"
                     data-lang-zh="产品信息"></h3>
                   <div class="product-info">
@@ -1680,142 +1652,51 @@
           </style>
           <script>
             // 언어 라벨 설정
-            const langLabel2 = {
-              ko: "한국어",
-              en: "English",
-              ja: "日本語",
-              zh: "中文"
-            };
-            /**
-             * 1. 초기 설정 관련 코드 (변경 필요)
-             * - currency-service.js 파일로 분리 필요
-             */
-            // const exchangeRates = {
-            //     KRW: 1,
-            //     USD: 0.00075, // 1 KRW = 0.00075 USD
-            //     JPY: 0.11,    // 1 KRW = 0.11 JPY
-            //     CNY: 0.0049   // 1 KRW = 0.0049 CNY
+            // const langLabel2 = {
+            //   ko: "한국어",
+            //   en: "English",
+            //   ja: "日本語",
+            //   zh: "中文"
             // };
 
-            /**
-             * 2. 통화 관련 함수들 (변경 필요)
-             * - currency-service.js 파일로 분리 필요
-             */
-            // function formatCurrency(amount, currency) {
-            //   const formatter = new Intl.NumberFormat(undefined, {
-            //     style: 'currency',
-            //     currency: currency,
-            //     minimumFractionDigits: currency === 'JPY' ? 0 : 2,
-            //     maximumFractionDigits: currency === 'JPY' ? 0 : 2
-            //   });
-            //   return formatter.format(amount);
+
+            // const showError = (message) => {
+            //   console.error('Error message:', message);
+            //   errorMessage.textContent = message;
+            //   errorMessage.style.display = 'block';
+            // };
+
+            // // privacy-text 포맷팅 함수
+            // function formatPrivacyText() {
+            //   const privacyTextarea = document.querySelector('textarea.privacy-text');
+            //   if (!privacyTextarea) return;
+
+            //   // 현재 언어 가져오기
+            //   const currentLang2 = getCurrentLanguage();
+
+            //   console.log(`formatPrivacyText -> ${currentLang2}`);
+
+            //   // 현재 언어의 텍스트 가져오기
+            //   let content = privacyTextarea.getAttribute(`data-lang-${currentLang2}`);
+            //   if (!content) return;
+
+            //   // 텍스트 포맷팅
+            //   content = content
+            //     // 1. 번호 앞에 줄바꿈 추가 (첫 번째 번호 제외)
+            //     .replace(/([^1]|\s)(\d+\.)/g, '$1\n$2')
+            //     // 2. 하이픈 앞에 줄바꿈과 들여쓰기 추가
+            //     .replace(/\s*-\s*/g, '\n    - ')
+            //     // 3. 연속된 공백 제거
+            //     .replace(/\s+/g, ' ')
+            //     // 4. 각 줄 앞뒤 공백 제거
+            //     .split('\n')
+            //     .map(line => line.trim())
+            //     .filter(line => line) // 빈 줄 제거
+            //     .join('\n');
+
+            //   // 포맷팅된 텍스트를 textarea에 설정
+            //   privacyTextarea.value = content;
             // }
-
-            // function updateCurrencyDisplay() {
-            //   const basePrice = 99000; // KRW
-            //   const currencies = document.querySelectorAll('.currency');
-
-            //   currencies.forEach(currency => {
-            //     if (currency.classList.contains('krw')) {
-            //       currency.textContent = formatCurrency(basePrice, 'KRW');
-            //     } else if (currency.classList.contains('usd')) {
-            //       currency.textContent = formatCurrency(basePrice * exchangeRates.USD, 'USD');
-            //     } else if (currency.classList.contains('jpy')) {
-            //       currency.textContent = formatCurrency(basePrice * exchangeRates.JPY, 'JPY');
-            //     } else if (currency.classList.contains('cny')) {
-            //       currency.textContent = formatCurrency(basePrice * exchangeRates.CNY, 'CNY');
-            //     }
-            //   });
-            // }
-
-            /**
-             * 3. 다국어 처리 관련 함수들 (변경 필요)
-             * - language-service.js 파일로 분리 필요
-             */
-            // 텍스트를 줄 단위로 나누고 공백을 제거하는 함수
-            // function processTextByLanguage(textarea) {
-            //   // 지원하는 언어 코드 배열
-            //   const langCodes = ['ko', 'en', 'ja', 'zh'];
-
-            //   // 각 언어별 결과를 저장할 객체
-            //   const results = {};
-
-            //   // 각 언어 코드에 대해 처리
-            //   langCodes.forEach(langCode => {
-            //     // data-lang-{code} 속성에서 텍스트 가져오기
-            //     if (langCode) {
-            //       const text = textarea.getAttribute(`data-lang-${langCode}`);
-            //     }
-
-            //     if (text) {
-            //       // 텍스트를 줄 단위로 나누기
-            //       const lines = text.split('\n')
-            //         .map(line => line.trim()) // 각 줄의 앞뒤 공백 제거
-            //         .filter(line => line !== ''); // 빈 줄 제거
-
-            //       results[langCode] = lines;
-            //     }
-            //   });
-
-            //   return results;
-            // }
-
-            // textarea에 선택된 언어의 텍스트를 적용하는 함수
-            // function applyLanguageText(textarea) {
-            //   // 현재 선택된 언어 가져오기
-            //   const currentLang = localStorage.getItem('preferredLanguage') || 'en';
-
-            //   // 텍스트 처리
-            //   const processedText = processTextByLanguage(textarea);
-
-            //   // 현재 언어에 해당하는 텍스트 가져오기
-            //   const currentLangLines = processedText[currentLang];
-
-            //   if (currentLangLines) {
-            //     // 줄바꿈으로 연결하여 textarea의 value로 설정
-            //     textarea.value = currentLangLines.join('\n');
-            //   }
-
-            //   return processedText;
-            // }
-
-            const showError = (message) => {
-              console.error('Error message:', message);
-              errorMessage.textContent = message;
-              errorMessage.style.display = 'block';
-            };
-
-            // privacy-text 포맷팅 함수
-            function formatPrivacyText() {
-              const privacyTextarea = document.querySelector('textarea.privacy-text');
-              if (!privacyTextarea) return;
-
-              // 현재 언어 가져오기
-              const currentLang2 = getCurrentLanguage();
-
-              console.log(`formatPrivacyText -> ${currentLang2}`);
-
-              // 현재 언어의 텍스트 가져오기
-              let content = privacyTextarea.getAttribute(`data-lang-${currentLang2}`);
-              if (!content) return;
-
-              // 텍스트 포맷팅
-              content = content
-                // 1. 번호 앞에 줄바꿈 추가 (첫 번째 번호 제외)
-                .replace(/([^1]|\s)(\d+\.)/g, '$1\n$2')
-                // 2. 하이픈 앞에 줄바꿈과 들여쓰기 추가
-                .replace(/\s*-\s*/g, '\n    - ')
-                // 3. 연속된 공백 제거
-                .replace(/\s+/g, ' ')
-                // 4. 각 줄 앞뒤 공백 제거
-                .split('\n')
-                .map(line => line.trim())
-                .filter(line => line) // 빈 줄 제거
-                .join('\n');
-
-              // 포맷팅된 텍스트를 textarea에 설정
-              privacyTextarea.value = content;
-            }
 
 
             // 여기에 아래 코드 추가
@@ -1824,98 +1705,98 @@
             // import { getErrorMessage, showError } from './error_messages.js';
 
             // PreviewProductService 클래스 정의
-            class PreviewProductExManager {
-              static #instance;
-              #textarea;
+            // class PreviewProductExManager {
+            //   static #instance;
+            //   #textarea;
 
-              constructor() {
-                if (PreviewProductExManager.#instance) {
-                  return PreviewProductExManager.#instance;
-                }
-                PreviewProductExManager.#instance = this;
+            //   constructor() {
+            //     if (PreviewProductExManager.#instance) {
+            //       return PreviewProductExManager.#instance;
+            //     }
+            //     PreviewProductExManager.#instance = this;
 
-                this.#textarea = document.getElementById('previewProductEx');
-                this.#initializeEventListeners();
-              }
+            //     this.#textarea = document.getElementById('previewProductEx');
+            //     this.#initializeEventListeners();
+            //   }
 
-              #initializeEventListeners() {
+            //   #initializeEventListeners() {
 
-                // 언어 변경을 감지하기 위해 dropdown과 sidebar의 언어 선택 요소들을 모니터링
-                document.querySelectorAll('.dropdown-menu .dropdown-item, .side-bar-list.lang .side-bar-item').forEach(item => {
-                  item.addEventListener('click', async () => {
-                    // 약간의 지연 후 현재 언어로 콘텐츠 업데이트
-                    setTimeout(async () => {
-                      await this.updateContent(getCurrentLanguage());
-                    }, 100);
-                  });
-                });
+            //     // 언어 변경을 감지하기 위해 dropdown과 sidebar의 언어 선택 요소들을 모니터링
+            //     document.querySelectorAll('.dropdown-menu .dropdown-item, .side-bar-list.lang .side-bar-item').forEach(item => {
+            //       item.addEventListener('click', async () => {
+            //         // 약간의 지연 후 현재 언어로 콘텐츠 업데이트
+            //         setTimeout(async () => {
+            //           await this.updateContent(getCurrentLanguage());
+            //         }, 100);
+            //       });
+            //     });
 
-                // 페이지 선택 이벤트 리스너
-                document.querySelectorAll('.nav-item').forEach(item => {
-                  item.addEventListener('click', async () => {
-                    if (item.getAttribute('data-page') === 'listing') {
-                      await this.updateContent(getCurrentLanguage());
-                    }
-                  });
-                });
-              }
+            //     // 페이지 선택 이벤트 리스너
+            //     document.querySelectorAll('.nav-item').forEach(item => {
+            //       item.addEventListener('click', async () => {
+            //         if (item.getAttribute('data-page') === 'listing') {
+            //           await this.updateContent(getCurrentLanguage());
+            //         }
+            //       });
+            //     });
+            //   }
 
-              async initializeContent() {
-                if (!this.#textarea) {
-                  console.error('Textarea element not found');
-                  return;
-                }
+            //   async initializeContent() {
+            //     if (!this.#textarea) {
+            //       console.error('Textarea element not found');
+            //       return;
+            //     }
 
-                try {
-                  const currentLang2 = localStorage.getItem('preferredLanguage') || 'ko';
-                  await this.updateContent(currentLang2);
-                } catch (error) {
-                  console.error('Failed to initialize content:', error);
-                }
-              }
+            //     try {
+            //       const currentLang2 = localStorage.getItem('preferredLanguage') || 'ko';
+            //       await this.updateContent(currentLang2);
+            //     } catch (error) {
+            //       console.error('Failed to initialize content:', error);
+            //     }
+            //   }
 
-              async updateContent(lang) {
-                try {
-                  const response = await fetch('js/translations.json');
-                  if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                  }
-                  const translationsData = await response.json();
+            //   async updateContent(lang) {
+            //     try {
+            //       const response = await fetch('js/translations.json');
+            //       if (!response.ok) {
+            //         throw new Error(`HTTP error! status: ${response.status}`);
+            //       }
+            //       const translationsData = await response.json();
 
-                  if (translationsData[lang]?.listing?.previewProductEx) {
-                    const contentArray = translationsData[lang].listing.previewProductEx;
-                    let formattedContent = contentArray.join('')
-                      .replace(/&lt;/g, '<')
-                      .replace(/&gt;/g, '>')
-                      .replace(/&quot;/g, '"')
-                      .replace(/&#039;/g, "'")
-                      .replace(/&amp;/g, '&');
+            //       if (translationsData[lang]?.listing?.previewProductEx) {
+            //         const contentArray = translationsData[lang].listing.previewProductEx;
+            //         let formattedContent = contentArray.join('')
+            //           .replace(/&lt;/g, '<')
+            //           .replace(/&gt;/g, '>')
+            //           .replace(/&quot;/g, '"')
+            //           .replace(/&#039;/g, "'")
+            //           .replace(/&amp;/g, '&');
 
-                    // this.#textarea.value = formattedContent;
-                    formattedContent = this.#convertBrToNewline(formattedContent);
-                    this.#textarea.value = formattedContent;
-                    this.#adjustTextareaHeight();
-                  }
-                } catch (error) {
-                  console.error('Error updating preview content:', error);
-                }
-              }
+            //         // this.#textarea.value = formattedContent;
+            //         formattedContent = this.#convertBrToNewline(formattedContent);
+            //         this.#textarea.value = formattedContent;
+            //         this.#adjustTextareaHeight();
+            //       }
+            //     } catch (error) {
+            //       console.error('Error updating preview content:', error);
+            //     }
+            //   }
 
-              // br 태그를 줄바꿈으로 변환하는 private 메서드 추가
-              #convertBrToNewline(text) {
-                // 다양한 형태의 br 태그 처리
-                return text
-                  .replace(/<br\s*\/?>/gi, '\n')  // <br>, <br/>, <br /> 등 모든 형태의 br 태그 처리
-                  .replace(/\\n/g, '\n')          // \n 문자열을 실제 줄바꿈으로 변환
-                  .replace(/\n\s*\n/g, '\n\n')    // 연속된 줄바꿈 정리
-                  .replace(/^\s+|\s+$/g, '');    // 앞뒤 공백 제거
-              }
+            //   // br 태그를 줄바꿈으로 변환하는 private 메서드 추가
+            //   #convertBrToNewline(text) {
+            //     // 다양한 형태의 br 태그 처리
+            //     return text
+            //       .replace(/<br\s*\/?>/gi, '\n')  // <br>, <br/>, <br /> 등 모든 형태의 br 태그 처리
+            //       .replace(/\\n/g, '\n')          // \n 문자열을 실제 줄바꿈으로 변환
+            //       .replace(/\n\s*\n/g, '\n\n')    // 연속된 줄바꿈 정리
+            //       .replace(/^\s+|\s+$/g, '');    // 앞뒤 공백 제거
+            //   }
 
-              #adjustTextareaHeight() {
-                this.#textarea.style.height = 'auto';
-                this.#textarea.style.height = `${this.#textarea.scrollHeight + 2}px`;
-              }
-            }
+            //   #adjustTextareaHeight() {
+            //     this.#textarea.style.height = 'auto';
+            //     this.#textarea.style.height = `${this.#textarea.scrollHeight + 2}px`;
+            //   }
+            // }
 
             // 기존 언어 변경 핸들러 수정
             /**
@@ -2020,13 +1901,6 @@
 
 
               updatePageLanguage(currentLang);
-              // currencyService.updatePriceDisplay(selectedLang);
-
-              // languageService.updatePageLanguage();
-
-              // console.log(`DOMContentLoaded ->  ${selectedLang}`);
-
-              // formatPrivacyText(selectedLang);
 
               // 디바이스 최적화
               if (deviceService.isMobileDevice()) {
@@ -2038,16 +1912,6 @@
               productPreviewForm.style.display = 'block';
               orderForm.style.display = 'none';
               contactForm.style.display = 'none';
-
-              // DOM 요소 존재 확인
-              // if (!contactForm || !fileInput || !fileList || !errorMessage) {
-              //   console.error('Required DOM elements not found:', {
-              //     contactForm: !!contactForm,
-              //     fileInput: !!fileInput,
-              //     fileList: !!fileList,
-              //     errorMessage: !!errorMessage
-              //   });
-              // }
 
               // 파일 업로드 관련 메시지의 다국어 처리
               const fileUploadMessages = {
@@ -2148,29 +2012,6 @@
                   currencySymbol: '¥'
                 }
               };
-
-
-              // console.log(`savedLang ->  ${savedLang}`);
-
-              // 선택된 언어를 콘솔에 출력
-              // console.log(`선택된 언어: ${selectedLang}`);
-
-              // 저장된 설정이 없으면 기본값으로 'ko' 사용
-              // if (!currentLang) {
-              //   // 브라우저의 언어 설정 확인
-              //   const browserLang = navigator.language.slice(0, 2);
-              //   // 지원하는 언어인지 확인
-              //   currentLang = ['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'ko';
-              //   // 설정을 로컬 스토리지에 저장
-              //   localStorage.setItem('preferredLanguage', currentLang);
-              //   const selectLang = getCurrentLanguage();
-              //   // console.log(`선택된 언어2 : ${selectLang}`);
-              // }
-
-
-
-              // 현재 저장된 언어 가져오기
-              // const savedLang = localStorage.getItem('preferredLanguage') || 'ko';
 
               // 드롭다운 버튼 텍스트 업데이트
               const dropdownButton = document.getElementById('dropdownMenuButton1');
@@ -2282,19 +2123,40 @@
                     ja: 'JPY',
                     zh: 'CNY'
                   };
-                  const currency = currencyMap[currentLang];
+                  // const currency = currencyMap[currentLang];
 
                   // 환율이 적용된 가격 계산
-                  const originalPrice = document.getElementById('hidden_orderPrice').value;
-                  let convertedAmount;
+                  // const originalPrice = document.getElementById('hidden_orderPrice').value;
+                  // let convertedAmount;
 
                   if (window.exchangeRateService) {
                     // 환율 적용된 금액 (숫자만)
                     convertedAmount = window.exchangeRateService.getNumericPrice(currency);
                   }
 
+                  // 가격과 통화 관련 변수들 (기존 코드)
+                  const originalPrice = document.getElementById('hidden_orderPrice').value; // KRW 가격
+                  const currency = getCurrentCurrency(); // 현재 선택된 통화
+                  const convertedAmount = getConvertedAmount(); // 환율 적용된 해당 통화 금액
+
                   // Product Preview 데이터 수집
                   // 1. 폼 데이터 수집
+                  // const orderData = {
+                  //   orderName: document.getElementById('orderName').value,
+                  //   orderEmail: document.getElementById('orderEmail').value,
+                  //   orderPhone: document.getElementById('orderPhone').value,
+                  //   orderMemo: document.getElementById('orderMemo').value,
+                  //   productCode: document.getElementById('hidden_orderProductCode').value,
+                  //   productName: document.getElementById('hidden_orderProductName').value,
+                  //   quantity: document.getElementById('hidden_orderQuantity').value,
+                  //   // price: document.getElementById('hidden_orderPrice').value,
+                  //   price: convertedAmount,  // 환율 적용된 금액
+                  //   currency: currency,      // 통화 정보 추가
+                  //   privacyConsent: document.getElementById('privacyConsent').checked ? 'Y' : 'N',
+                  //   //csrf_token: document.querySelector('input[name="csrf_token"]')?.value // CSRF 토큰은 일단 제외
+                  // };
+
+                  // orderData 객체 수정
                   const orderData = {
                     orderName: document.getElementById('orderName').value,
                     orderEmail: document.getElementById('orderEmail').value,
@@ -2303,12 +2165,17 @@
                     productCode: document.getElementById('hidden_orderProductCode').value,
                     productName: document.getElementById('hidden_orderProductName').value,
                     quantity: document.getElementById('hidden_orderQuantity').value,
-                    // price: document.getElementById('hidden_orderPrice').value,
-                    price: convertedAmount,  // 환율 적용된 금액
-                    currency: currency,      // 통화 정보 추가
-                    privacyConsent: document.getElementById('privacyConsent').checked ? 'Y' : 'N',
-                    //csrf_token: document.querySelector('input[name="csrf_token"]')?.value // CSRF 토큰은 일단 제외
+                    price: convertedAmount,        // 환율 적용된 해당 통화 금액
+                    price_krw: originalPrice,      // 원래 KRW 가격
+                    currency: currency,            // 통화 정보
+                    privacyConsent: document.getElementById('privacyConsent').checked ? 'Y' : 'N'
                   };
+
+                  // API 호출 전에 데이터 검증
+                  if (!orderData.orderName || !orderData.orderEmail || !orderData.orderPhone) {
+                    alert('필수 입력 항목을 모두 입력해주세요.');
+                    return;
+                  }
 
                   console.log('Sending order data:', orderData); // 디버깅용 로그
 
@@ -2367,36 +2234,6 @@
                   if (!result.success) {
                     throw new Error(result.message || '주문 처리에 실패했습니다.');
                   }
-
-                  // 성공 시 팝업 표시
-                  // showOrderCompletePopup();
-
-                  // NicePay 결제창 호출 준비
-                  // if (result.paymentData) {
-                  //   const payForm = document.createElement('form');
-                  //   payForm.name = 'payForm';
-                  //   payForm.method = 'post';
-                  //   payForm.action = result.paymentData.ReturnURL;
-                  //   payForm.target = '_self';
-                  //   payForm.style.display = 'none';
-
-                  //   // 결제 파라미터 폼에 추가
-                  //   Object.entries(result.paymentData).forEach(([key, value]) => {
-                  //     if (value !== undefined && value !== null) {
-                  //       const input = document.createElement('input');
-                  //       input.type = 'hidden';
-                  //       input.name = key;
-                  //       input.value = value;
-                  //       payForm.appendChild(input);
-                  //     }
-                  //   });
-
-                  //   // 폼을 body에 추가
-                  //   document.body.appendChild(payForm);
-
-                  //   // NicePay 결제창 호출
-                  //   goPay(payForm);
-                  // }
 
                   if (result.success) {
                     // 결제창 호출을 위한 폼 생성
@@ -2462,7 +2299,7 @@
                 } catch (error) {
                   console.error('Order submission error:', error);
                   showError(error.message);
-                  alert(error.message);
+                  // alert(error.message);
                 }
               });
               // order_form Listener End

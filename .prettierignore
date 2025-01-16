@@ -1,6 +1,7 @@
 # 빌드 출력
 dist
-build
+*.min.js
+build/
 
 # 의존성 디렉토리
 node_modules

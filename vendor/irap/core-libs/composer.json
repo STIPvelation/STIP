@@ -1,0 +1,24 @@
+{
+    "name": "irap/core-libs",
+    "type": "library",
+    "description": "Core libraries for PHP 7.0+",
+    "keywords": ["core","library"],
+    "homepage": "http://www.irap.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stuart Page",
+            "email": "stuart.page@irap-dev.org",
+            "homepage": "http://irap.org/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "iRAP\\CoreLibs\\": "src/"
+        }
+    }
+}

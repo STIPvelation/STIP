@@ -45,6 +45,11 @@ try {
         $priceInKRW = $price; // 이미 listing.html에서 변환된 금액
     }
 
+    // price_krw 처리
+    $price_krw = ($data['currency'] === 'KRW') ? 
+    str_replace(',', '', $data['price']) : 
+    str_replace(',', '', $data['price']); // 여기서 환율 적용된 금액이 이미 KRW로 전달됨
+
     // 아래와 같은 체크 로직 필요:
     if (!isset($_ENV['NICE_MERCHANT_KEY']) || !isset($_ENV['NICE_MERCHANT_ID']) || !isset($_ENV['NICE_RETURN_URL'])) {
         throw new Exception('필수 환경 설정이 누락되었습니다.');
@@ -95,10 +100,12 @@ try {
     // 주문 정보 저장
     $sql = "INSERT INTO order_form (
         order_id, order_name, order_email, order_phone, 
-        product_code, product_name, price, payment_status
+        product_code, product_name, price, currency, price_krw,
+        payment_status, order_memo, privacy_consent
     ) VALUES (
         :order_id, :order_name, :order_email, :order_phone,
-        :product_code, :product_name, :price, 'pending'
+        :product_code, :product_name, :price, :currency, :price_krw,
+        'pending', :order_memo, :privacy_consent
     )";
     
     $stmt = $pdo->prepare($sql);
@@ -109,8 +116,11 @@ try {
         ':order_phone' => $data['orderPhone'],
         ':product_code' => $data['productCode'],
         ':product_name' => $data['productName'],
-        ':price' => $input['price'],
-        ':currency' => $input['currency']
+        ':price' => str_replace(',', '', $data['price']),
+        ':currency' => $data['currency'],
+        ':price_krw' => str_replace(',', '', $data['price_krw']),
+        ':order_memo' => $data['orderMemo'] ?? '',
+        ':privacy_consent' => $data['privacyConsent']
     ]);
 
     
@@ -119,7 +129,8 @@ try {
     $merchantKey = $_ENV['NICE_MERCHANT_KEY'];
     $MID = $_ENV['NICE_MERCHANT_ID'];
     // $price = (int)str_replace(',', '', $data['price']);
-    $price = $input['price'];
+    // $price = $input['price'];
+    $price = str_replace(',', '', $data['price_krw']); // KRW 가격으로 설정
     $hashString = bin2hex(hash('sha256', $ediDate . $MID . $price . $merchantKey, true));
     
     // 결제 파라미터 설정

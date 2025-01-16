@@ -1,6 +1,9 @@
 {
     "require": {
         "phpmailer/phpmailer": "^6.9",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "respect/validation": "^2.2",
+        "geoip2/geoip2": "^2.13",
+        "irap/core-libs": "^1.1"
     }
 }

@@ -49,7 +49,7 @@ $ediDate = date("YmdHis");
 $hashString = bin2hex(hash('sha256', $ediDate.$MID.$price.$merchantKey, true));
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <title>NICEPAY PAY REQUEST(EUC-KR)</title>
 <meta charset="utf-8">
