@@ -118,13 +118,12 @@
   bottom: 0;
   width: 100%;
   padding: 20px 0;
-
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.2);
   z-index: 2;
   position: absolute;
-  bottom: 50px;
+  bottom: 0;
   left: 0;
 }
 
