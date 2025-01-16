@@ -133,11 +133,7 @@
     letter-spacing: -1px;
   }
 
-  .logo-slider-section {
-    position: relative;
-    bottom: unset;
-    margin: 50px 0;
-  }
+
 
 }
 
@@ -154,8 +150,8 @@
   .content-wrapper {
     padding-left: 5%;
     padding-right: 5%;
-    height: unset;
-    padding-top: 100px;
+    /* height: unset; */
+    /* padding-top: 100px; */
   }
 }
 

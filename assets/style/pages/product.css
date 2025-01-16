@@ -30,9 +30,10 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position:relative;
   @media screen and (max-width: 480px) {
     padding: unset;
-    height: calc(100vh - 56px);
+    /* height: calc(100vh - 56px); */
   }
 }
 
@@ -41,32 +42,7 @@
   flex-direction: row;
   align-items: flex-end;
   gap: 24px;
-
-  @media screen and (max-width: 1100px) {
-    scale: 0.9;
-    padding: 24px;
-  }
-
-  @media screen and (max-width: 950px) {
-    scale: 0.8;
-  }
-
-  @media screen and (max-width: 850px) {
-    scale: 0.7;
-  }
-
-  @media screen and (max-width: 750px) {
-    scale: 0.6;
-  }
-
-  @media screen and (max-width: 630px) {
-    scale: 0.5;
-  }
-
-  @media screen and (max-width: 480px) {
-    scale: 1;
-    gap: 16px;
-  }
+  padding:0px 8px;
 }
 
 .product-wrapper .phone-area img {
@@ -119,7 +95,7 @@
   flex-direction: row;
   gap: 24px;
   margin-top: 24px;
-
+  
   @media screen and (max-width: 480px) {
     gap: 8px;
     margin-top: 16px;
@@ -165,4 +141,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-slider-section {
+  width: 100%;
+  padding: 20px 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .letter-title {
+    font-size: 20px;
+    letter-spacing: -1px;
+  }
+
+
+
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.swiper-container {
+  width: 100%;
+}
+
+.company-logo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  transform: scale(0.9);
+}
+
+/* 슬라이더 이미지 */
+.swiper-slide {
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.swiper-slide img {
+  max-width: 180px !important;
+  height: 60px !important;
 }

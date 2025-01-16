@@ -2641,85 +2641,6 @@
               <div class="circle-wrapper">
                 <span class="Sphere"></span>
               </div>
-              <div class="swiper grid-swiper" id="swiperWrapper">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide swiper-grid-box">
-                    <img src="assets/images/news/news.png" alt="1" />
-                    <img src="assets/images/news/news-01.png" alt="2" />
-                    <img src="assets/images/news/news-02.png" alt="3" />
-                    <img src="assets/images/news/news-03.png" alt="4" />
-                    <img src="assets/images/news/news-04.png" alt="5" />
-                    <img src="assets/images/news/news-05.png" alt="6" />
-                  </div>
-                  <div class="swiper-slide swiper-grid-box">
-                    <img src="assets/images/news/news-06.png" alt="7" />
-                    <img src="assets/images/news/news-07.png" alt="8" />
-                    <img src="assets/images/news/news-08.png" alt="9" />
-                    <img src="assets/images/news/news-09.png" alt="10" />
-                    <img src="assets/images/news/news-10.png" alt="11" />
-                    <img src="assets/images/news/news-11.png" alt="12" />
-                  </div>
-                  <div class="swiper-slide swiper-grid-box">
-                    <img src="assets/images/news/news-12.png" alt="13" />
-                    <img src="assets/images/news/news-13.png" alt="14" />
-                    <img src="assets/images/news/news-14.png" alt="15" />
-                    <img src="assets/images/news/news-15.png" alt="16" />
-                  </div>
-                </div>
-                <div class="swiper-pagination"></div>
-              </div>
-              <div class="single-swiper" id="singleSwiperWrapper">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news.png" alt="1" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-01.png" alt="2" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-02.png" alt="3" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-03.png" alt="4" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-04.png" alt="5" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-05.png" alt="6" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-06.png" alt="7" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-07.png" alt="8" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-08.png" alt="9" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-09.png" alt="10" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-10.png" alt="11" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-11.png" alt="12" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-12.png" alt="13" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-13.png" alt="14" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-14.png" alt="15" />
-                  </div>
-                  <div class="swiper-slide single-view">
-                    <img src="assets/images/news/news-15.png" alt="16" />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -2745,345 +2666,8 @@
     <!-- footer end -->
   </div>
   <script>
-    /*
-    const swiperContainer = document.getElementById("swiperContainer");
-    const swiperWrapper = document.getElementById("swiperWrapper");
-    const singleSwiperWrapper = document.getElementById("singleSwiperWrapper");
-    let gridSwiperInstance = null;
-    let singleSwiperInstance = null;
-    const circleWrapper = document.querySelector('.circle-wrapper');
-
-    
-    function initializePatentView() {
-      swiperWrapper.style.display = "block";
-      singleSwiperWrapper.style.display = "block";
-      circleWrapper.style.display = "none";
-      if (window.innerWidth < 768) {
-        const frameBox = document.querySelector('.frame');
-        frameBox.style.height = "204px";
-      }
-    }
-
-    const isMobile = window.matchMedia("(max-width: 1000px)").matches;
-
-    function initializeSwipers() {
-      if (isMobile) {
-        singleSwiperInstance = new Swiper(".single-swiper", {
-          slidesPerView: "auto",
-          loop: false,
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
-          breakpoints: {
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            480: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            }
-          },
-          spaceBetween: 10,
-          speed: 1000
-        });
-      } else {
-        gridSwiperInstance = new Swiper(".grid-swiper", {
-          slidesPerView: 1,
-          loop: true,
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
-          speed: 1000,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          }
-        });
-      }
-    }
-
-    // 초기 Swiper 초기화
-    initializeSwipers();
-
-    // resize 이벤트 핸들러
-    window.addEventListener("resize", () => {
-      const currentIsMobile = window.matchMedia("(max-width: 1000px)").matches;
-
-      // 모바일/데스크톱 전환 시에만 Swiper 재초기화
-      if (currentIsMobile !== isMobile) {
-        if (singleSwiperInstance) {
-          singleSwiperInstance.destroy();
-          singleSwiperInstance = null;
-        }
-        if (gridSwiperInstance) {
-          gridSwiperInstance.destroy();
-          gridSwiperInstance = null;
-        }
-        initializeSwipers();
-      }
-
-      if (window.innerWidth < 768) {
-        const frameBox = document.querySelector('.frame');
-        frameBox.style.height = "204px";
-      }
-    });
-
-    // Patent 초기 선택을 위한 이벤트 리스너
-    document.addEventListener('DOMContentLoaded', function () {
-      const listingBtn = document.querySelector('.listing-btn');
-      if (listingBtn) {
-        listingBtn.textContent = 'Patent';
-        initializePatentView();
-      }
-
-      // 드롭다운 선택 이벤트 핸들러
-      document.querySelector('.dropdown-select').addEventListener('click', (event) => {
-        let divValue = null;
-
-        const liElement = event.target.closest('li');
-        if (liElement) {
-          const divElement = liElement.querySelector('div');
-          if (divElement) {
-            divValue = divElement.textContent.trim();
-          }
-        }
-
-        const listingBtn = document.querySelector('.listing-btn');
-        if (listingBtn && divValue) {
-          const frameBox = document.querySelector('.frame');
-          const squareBox = document.querySelector('.Sphere');
-          if (divValue === "Patent") {
-            swiperWrapper.style.display = "block";
-            singleSwiperWrapper.style.display = "block";
-            circleWrapper.style.display = "none";
-            if (tagCloud) tagCloud.pause();
-            if (window.innerWidth < 768) {
-              frameBox.style.height = "204px";
-            }
-          } else {
-            if (!tagCloud) {
-              tagCloud = TagCloud(".Sphere", tagCloudImages['Movie Drama Comics'], {
-                radius,
-                maxSpeed: "normal",
-                initSpeed: "normal",
-                direction: 205,
-                keep: true,
-                useHTML: true,
-              });
-            }
-            singleSwiperWrapper.style.display = "none";
-            swiperWrapper.style.display = "none";
-            circleWrapper.style.display = "flex";
-            if (window.innerWidth < 768) {
-              const padding = 64;
-              frameBox.style.height = squareBox.clientHeight + padding + "px";
-            }
-            tagCloud.resume();
-            tagCloud.update(tagCloudImages[divValue]);
-          }
-          listingBtn.textContent = divValue;
-        }
-      });
-    }); */
-  </script>
-  <script>
-    /*
-    const tagCloudImages = {
-      "Movie Drama Comics": [
-        wrappingImgElement("Movie/Group 5005.png"),
-        wrappingImgElement("Movie/Group.png"),
-        wrappingImgElement("Movie/Group-1.png"),
-        wrappingImgElement("Movie/Group-2.png"),
-        wrappingImgElement("Movie/Group-3.png"),
-        wrappingImgElement("Movie/Group-4.png"),
-      ],
-      "Music": [
-        wrappingImgElement("Music/Clip path group.png"),
-        wrappingImgElement("Music/Group.png"),
-        wrappingImgElement("Music/Group-1.png"),
-        wrappingImgElement("Music/Group-2.png"),
-        wrappingImgElement("Music/Group-3.png"),
-        wrappingImgElement("Music/Group-4.png"),
-        wrappingImgElement("Music/Group-5.png"),
-        wrappingImgElement("Music/Group-6.png"),
-        wrappingImgElement("Music/Group-7.png"),
-        wrappingImgElement("Music/Group-8.png"),
-      ],
-      "Dance": [
-        wrappingImgElement("Dance/Group 5006.png"),
-        wrappingImgElement("Dance/Group 5012.png"),
-        wrappingImgElement("Dance/Group-1.png"),
-        wrappingImgElement("Dance/Group-2.png"),
-        wrappingImgElement("Dance/Group-3.png"),
-        wrappingImgElement("Dance/Group-4.png"),
-        wrappingImgElement("Dance/Group-5.png"),
-        wrappingImgElement("Dance/Group-6.png"),
-      ],
-      "Franchise": [
-        wrappingImgElement("Franchise/Group.png"),
-        wrappingImgElement("Franchise/Group-1.png"),
-        wrappingImgElement("Franchise/Group-2.png"),
-        wrappingImgElement("Franchise/Group-3.png"),
-        wrappingImgElement("Franchise/Group-4.png"),
-        wrappingImgElement("Franchise/Group-5.png"),
-        wrappingImgElement("Franchise/Group-6.png"),
-        wrappingImgElement("Franchise/Group-7.png"),
-      ],
-      "Trademark": [
-        wrappingImgElement("Trademark/Group 5007.png"),
-        wrappingImgElement("Trademark/Group.png"),
-        wrappingImgElement("Trademark/Group-1.png"),
-        wrappingImgElement("Trademark/Group-2.png"),
-        wrappingImgElement("Trademark/Group-3.png"),
-      ],
-      "Character": [
-        wrappingImgElement("Character/Group 5008.png"),
-        wrappingImgElement("Character/Group 5009.png"),
-        wrappingImgElement("Character/Group.png"),
-        wrappingImgElement("Character/Group-1.png"),
-        wrappingImgElement("Character/Group-2.png"),
-        wrappingImgElement("Character/Group-3.png"),
-        wrappingImgElement("Character/Group-4.png"),
-        wrappingImgElement("Character/Group-5.png"),
-        wrappingImgElement("Character/Group-6.png"),
-      ],
-
-    }
-    function wrappingImgElement(src) {
-      return `<img width='120px' src='assets/images/logo/${src}' alt='' />`;
-    }
-
-    let tagCloud = null;
-    
-
-    const cloudContainer = document.querySelector(".Sphere");
-    const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
-    const dropdownSelect = document.querySelector('.dropdown-select');
-    const circleWrapper = document.querySelector('.circle-wrapper');
-    const radius = Math.max(
-      170,
-      Math.min(280, window.innerWidth - window.innerWidth * 0.95)
-    );
-
-
-    dropdownSelect.addEventListener('click', (event) => {
-      let divValue = null;
-
-      const liElement = event.target.closest('li');
-      if (liElement) {
-        const divElement = liElement.querySelector('div');
-        if (divElement) {
-          divValue = divElement.textContent.trim();
-        }
-      }
-      const listingBtn = document.querySelector('.listing-btn');
-
-      if (listingBtn && divValue) {
-        const frameBox = document.querySelector('.frame');
-        const squareBox = document.querySelector('.Sphere');
-        if (divValue === "Patent") {
-          swiperWrapper.style.display = "block";
-          singleSwiperWrapper.style.display = "block";
-          circleWrapper.style.display = "none";
-          if (tagCloud) tagCloud.pause();
-          if (window.innerWidth < 768) {
-            frameBox.style.height = "204px";
-          }
-        } else {
-
-          if (!tagCloud) {
-            tagCloud = TagCloud(".Sphere", tagCloudImages['Movie Drama Comics'], {
-              radius,
-              maxSpeed: "normal",
-              initSpeed: "normal",
-              direction: 205,
-              keep: true,
-              useHTML: true,
-            });
-          }
-          singleSwiperWrapper.style.display = "none";
-          swiperWrapper.style.display = "none";
-          circleWrapper.style.display = "flex";
-          if (window.innerWidth < 768) {
-            const padding = 64;
-            frameBox.style.height = squareBox.clientHeight + padding + "px";
-          }
-          tagCloud.resume();
-          tagCloud.update(tagCloudImages[divValue]);
-        }
-        listingBtn.textContent = divValue;
-      }
-    }); 
-    */
-
-    // 드롭다운 선택 시 태그 클라우드 업데이트
-    // const dropdownSelect = document.querySelector('.dropdown-select');
-    /*
-    if (dropdownSelect) {
-      dropdownSelect.addEventListener('click', (event) => {
-        const liElement = event.target.closest('li');
-        if (liElement) {
-          const divElement = liElement.querySelector('div');
-          if (divElement) {
-            const category = divElement.textContent.trim();
-
-            if (category === "Patent") {
-              swiperService.handleModeChange();
-              tagCloudService.pause();
-            } else {
-              tagCloudService.updateCategory(category);
-            }
-          }
-        }
-      });
-    } */
-    /*
-    dropdownSelect.addEventListener('click', (event) => {
-      let divValue = null;
-
-      const liElement = event.target.closest('li');
-      if (liElement) {
-        const divElement = liElement.querySelector('div');
-        if (divElement) {
-          divValue = divElement.textContent.trim();
-        }
-      }
-      const listingBtn = document.querySelector('.listing-btn');
-
-      if (listingBtn && divValue) {
-        const frameBox = document.querySelector('.frame');
-        const squareBox = document.querySelector('.Sphere');
-        if (divValue === "Patent") {
-          swiperWrapper.style.display = "block";
-          singleSwiperWrapper.style.display = "block";
-          circleWrapper.style.display = "none";
-          if (window.tagCloudService) {
-            window.tagCloudService.pause();
-          }
-          if (window.innerWidth < 768) {
-            frameBox.style.height = "204px";
-          }
-        } else {
-          if (window.tagCloudService) {
-            window.tagCloudService.updateCategory(divValue);
-          } else {
-            console.warn('Tag cloud service not initialized');
-          }
-        }
-        listingBtn.textContent = divValue;
-      }
-    }); */
-
     // 전역 변수 선언
     window.tagCloud = null;
-
     const cloudContainer = document.querySelector(".Sphere");
     const tagElements = cloudContainer.querySelectorAll(".tagcloud--item");
     const dropdownSelect = document.querySelector('.dropdown-select');
@@ -3109,25 +2693,17 @@
         const frameBox = document.querySelector('.frame');
         const squareBox = document.querySelector('.Sphere');
 
-        if (divValue === "Patent") {
-          swiperWrapper.style.display = "block";
-          singleSwiperWrapper.style.display = "block";
-          circleWrapper.style.display = "none";
-          if (window.tagCloud) window.tagCloud.pause();
-          if (window.innerWidth < 768) {
-            frameBox.style.height = "204px";
-          }
-        } else {
-          if (!window.tagCloud) {
-            window.tagCloud = TagCloud(".Sphere", window.tagCloudService.tagCloudImages['Movie Drama Comics'], {
-              radius,
-              maxSpeed: "normal",
-              initSpeed: "normal",
-              direction: 205,
-              keep: true,
-              useHTML: true,
-            });
-          }
+        //라이프 사이클 문제로 삭제
+          // if (!window.tagCloud) {
+          //   window.tagCloud = TagCloud(".Sphere", window.tagCloudService.tagCloudImages['Patent'], {
+          //     radius,
+          //     maxSpeed: "normal",
+          //     initSpeed: "normal",
+          //     direction: 205,
+          //     keep: true,
+          //     useHTML: true,
+          //   });
+          // }
           singleSwiperWrapper.style.display = "none";
           swiperWrapper.style.display = "none";
           circleWrapper.style.display = "flex";
@@ -3137,7 +2713,6 @@
           }
           window.tagCloud.resume();
           window.tagCloud.update(window.tagCloudService.tagCloudImages[divValue]);
-        }
         listingBtn.textContent = divValue;
       }
 
@@ -3155,13 +2730,9 @@
           const divElement = liElement.querySelector('div');
           if (divElement) {
             const category = divElement.textContent.trim();
-            if (category === "Patent") {
-              if (window.tagCloud) window.tagCloud.pause();
-            } else {
-              if (window.tagCloudService) {
+            if (window.tagCloudService) {
                 window.tagCloudService.updateCategory(category);
               }
-            }
           }
         }
       });
