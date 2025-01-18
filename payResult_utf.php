@@ -6,11 +6,27 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // 1. 로깅 함수 추가
+// 로깅 함수
 function writeLog($message, $type = 'info') {
-    $logFile = __DIR__ . '/logs/payment_' . date('Y-m-d') . '.log';
+    $logDir = __DIR__ . '/logs';
+    if (!is_dir($logDir)) {
+        mkdir($logDir, 0777, true);
+    }
+    $logFile = $logDir . '/payment_' . date('Y-m-d') . '.log';
     $logMessage = date('Y-m-d H:i:s') . " [{$type}] " . $message . PHP_EOL;
     error_log($logMessage, 3, $logFile);
 }
+
+// DB 연결 함수
+function getDbConnection() {
+    return new PDO(
+        "mysql:host=".$_ENV['DB_HOST'].";dbname=".$_ENV['DB_NAME'].";charset=utf8mb4",
+        $_ENV['DB_USER'],
+        $_ENV['DB_PASS'],
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+}
+
 
 // 2. 결제 결과 파라미터 받기
 $authResultCode = $_POST['AuthResultCode'];
@@ -21,173 +37,166 @@ $payMethod = $_POST['PayMethod'];
 $mid = $_POST['MID'];
 $moid = $_POST['Moid'];
 $amt = $_POST['Amt'];
+// 결제 결과 파라미터 받기 부분에 추가
+$nextAppURL = $_POST['NextAppURL'];       // 승인 요청 URL
+$netCancelURL = $_POST['NetCancelURL'];   // 망취소 요청 URL
+$reqReserved = $_POST['ReqReserved'];     // 상점 예약필드
+
+// 결제 검증 try 블록 앞에 추가
+$authSignature = $_POST['Signature'];   // Nicepay에서 내려준 응답값의 무결성 검증 Data
+// 인증 응답 Signature 검증
+$authComparisonSignature = bin2hex(hash('sha256', $authToken. $mid. $amt. $merchantKey, true));
 
 // 3. 결제 검증
 try {
+    // 결제 결과 파라미터
+    $authResultCode = $_POST['AuthResultCode'];
+    $authResultMsg = $_POST['AuthResultMsg'];
+    $nextAppURL = $_POST['NextAppURL'];
+    $txTid = $_POST['TxTid'];
+    $authToken = $_POST['AuthToken'];
+    $payMethod = $_POST['PayMethod'];
+    $mid = $_POST['MID'];
+    $moid = $_POST['Moid'];
+    $amt = $_POST['Amt'];
+    $reqReserved = $_POST['ReqReserved'];
+    $netCancelURL = $_POST['NetCancelURL'];
+    $authSignature = $_POST['Signature'];
 
-    // DB 연결
-    $pdo = new PDO(
-        "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] . ";charset=utf8mb4",
-        $_ENV['DB_USER'],
-        $_ENV['DB_PASS'],
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-
-    // 해시 검증
+    // 설정 로드
     $merchantKey = $_ENV['NICE_MERCHANT_KEY'];
-    $ediDate = date("YmdHis");
-    $signData = bin2hex(hash('sha256', $authToken . $mid . $amt . $ediDate . $merchantKey, true));
 
-    // 결제 성공 시
-    if($authResultCode === "0000") {
-        // 결제 승인 요청
-        $data = [
-            'TID' => $txTid,
-            'AuthToken' => $authToken,
-            'MID' => $mid,
-            'Amt' => $amt,
-            'EdiDate' => $ediDate,
-            'SignData' => $signData,
-            'CharSet' => 'utf-8'
-        ];
-        
+    // 로깅
+    writeLog("Payment Result - OrderID: {$moid}, Amount: {$amt}, Result: {$authResultCode}");
+
+    // 서명 검증
+    $authComparisonSignature = bin2hex(hash('sha256', $authToken.$mid.$amt.$merchantKey, true));
+
+    if($authResultCode === "0000" && $authSignature === $authComparisonSignature) {
         // 승인 요청
-        $response = reqPost($data, $_POST['NextAppURL']);
-        writeLog("Payment approval response: " . json_encode($response), 'info');
+        $ediDate = date("YmdHis");
+        $signData = bin2hex(hash('sha256', $authToken.$mid.$amt.$ediDate.$merchantKey, true));
 
-        // DB 업데이트
-        // require_once 'config/db_config_pdo.php';
-        $pdo->beginTransaction();
-        
         try {
-            // 주문 상태 업데이트
-            $sql = "UPDATE order_form SET 
-                payment_status = 'completed',
-                transaction_id = :tid,
-                paid_amount = :amount,
-                payment_date = NOW(),
-                payment_result_code = :result_code,
-                payment_result_msg = :result_msg
-                WHERE order_id = :moid";
-            
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([
-                ':tid' => $txTid,
-                ':amount' => $amt,
-                ':result_code' => $authResultCode,
-                ':result_msg' => $authResultMsg,
-                ':moid' => $moid
-            ]);
-            
-            $pdo->commit();
+            $pdo = getDbConnection();
+            $pdo->beginTransaction();
 
-            // 성공 응답
-            $successResponse = [
-                'success' => true,
-                'message' => '결제가 완료되었습니다.',
-                'data' => [
-                    'orderId' => $moid,
-                    'transactionId' => $txTid,
-                    'amount' => $amt,
-                    'paymentMethod' => $payMethod
-                ]
+            // 결제 승인 요청
+            $data = [
+                'TID' => $txTid,
+                'AuthToken' => $authToken,
+                'MID' => $mid,
+                'Amt' => $amt,
+                'EdiDate' => $ediDate,
+                'SignData' => $signData,
+                'CharSet' => 'utf-8'
             ];
             
-            // echo "<script>
-            //     if (window.opener && window.opener.paymentHandler) {
-            //         window.opener.paymentHandler.handlePaymentSuccess(" . json_encode($successResponse) . ");
-            //         window.close();
-            //     } else {
-            //         window.location.href = 'listing.html?payment=success&order_id=" . $moid . "';
-            //     }
-            // </script>";
-            // 결제 완료 후 처리
-            header('Content-Type: application/json');
-            echo json_encode([
-                'success' => true,
-                'redirect' => 'listing.html',
-                'response' => $successResponse
-            ]);
-            exit;
+            $response = reqPost($data, $nextAppURL);
+            $responseData = json_decode($response, true);
 
-        } catch (Exception $e) {
+            // 결제 결과 검증
+            $paySignature = bin2hex(hash('sha256', $txTid.$mid.$amt.$merchantKey, true));
+            
+            if($responseData['ResultCode'] === '3001' && $responseData['Signature'] === $paySignature) {
+                // 결제 성공 처리
+                $sql = "UPDATE payment_requests SET 
+                        status = 'PAID',
+                        transaction_id = ?,
+                        response_code = ?,
+                        updated_at = NOW()
+                        WHERE order_id = ?";
+                        
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$txTid, $responseData['ResultCode'], $moid]);
+
+                // 주문 상태 업데이트
+                $sql = "UPDATE order_form SET 
+                        status = 'PAID',
+                        payment_date = NOW(),
+                        payment_amount = ?,
+                        payment_method = ?,
+                        transaction_id = ?
+                        WHERE order_id = ?";
+                        
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$amt, $payMethod, $txTid, $moid]);
+
+                $pdo->commit();
+
+                // 성공 페이지로 리다이렉트
+                echo "<script>
+                    if(window.opener) {
+                        window.opener.location.href = 'listing.html?status=success&orderid=".$moid."';
+                        window.close();
+                    } else {
+                        window.location.href = 'listing.html?status=success&orderid=".$moid."';
+                    }
+                </script>";
+            } else {
+                throw new Exception("Payment verification failed");
+            }
+
+        } catch(Exception $e) {
             $pdo->rollBack();
+            writeLog("Payment Error: " . $e->getMessage(), 'error');
+
+            // 망취소 요청
+            $cancelData = [
+                'TID' => $txTid,
+                'AuthToken' => $authToken,
+                'MID' => $mid,
+                'Amt' => $amt,
+                'EdiDate' => $ediDate,
+                'SignData' => $signData,
+                'NetCancel' => '1',
+                'CharSet' => 'utf-8'
+            ];
+            reqPost($cancelData, $netCancelURL);
+            
             throw $e;
         }
-
     } else {
-        // 결제 실패 처리
-        writeLog("Payment failed: " . $authResultMsg, 'error');
-        
-        $errorResponse = [
-            'success' => false,
-            'message' => $authResultMsg,
-            'code' => $authResultCode
-        ];
-        
-        // echo "<script>
-        //     if (window.opener && window.opener.paymentHandler) {
-        //         window.opener.paymentHandler.handlePaymentError(" . json_encode($errorResponse) . ");
-        //         window.close();
-        //     } else {
-        //         window.location.href = 'listing.html?payment=error&message=" . urlencode($authResultMsg) . "';
-        //     }
-        // </script>";
-        // 실패 응답 전송
-        header('Content-Type: application/json');
-        echo json_encode([
-            'success' => false,
-            'redirect' => 'listing.html',
-            'response' => $errorResponse
-        ]);
-        exit;
+        throw new Exception($authResultMsg);
     }
 
-} catch (Exception $e) {
-    writeLog("Error in payment processing: " . $e->getMessage(), 'error');
-    
-    // 망취소 처리
-    if (isset($txTid)) {
-        $cancelData = [
-            'TID' => $txTid,
-            'AuthToken' => $authToken,
-            'MID' => $mid,
-            'Amt' => $amt,
-            'EdiDate' => $ediDate,
-            'SignData' => $signData,
-            'NetCancel' => '1',
-            'CharSet' => 'utf-8'
-        ];
-        reqPost($cancelData, $_POST['NetCancelURL']);
+} catch(Exception $e) {
+    writeLog("Payment Error: " . $e->getMessage(), 'error');
+    echo "<script>
+        if(window.opener) {
+            window.opener.location.href = 'listing.html?status=fail&message=".urlencode($e->getMessage())."';
+            window.close();
+        } else {
+            window.location.href = 'listing.html?status=fail&message=".urlencode($e->getMessage())."';
+        }
+    </script>";
+}
+// API 호출 함수 위에 추가
+function jsonRespDump($resp) {
+    global $mid, $merchantKey;
+    $respArr = json_decode($resp);
+    foreach ($respArr as $key => $value) {
+        // 승인 응답으로 받은 Signature 검증을 통해 무결성 검증 진행
+        if($key == "Amt" || $key == "CancelAmt"){
+			$payAmt = $value;
+		}
+		if($key == "TID"){
+			$tid = $value;
+		}
+        if($key == "Signature") {
+            $paySignature = bin2hex(hash('sha256', $tid. $mid. $payAmt. $merchantKey, true));
+            if($value != $paySignature) {
+                writeLog("Invalid transaction signature detected!", 'error');
+            }
+            if($value != $paySignature){
+				echo '비정상 거래! 취소 요청이 필요합니다.</br>';
+				echo '승인 응답 Signature : '. $value. '</br>';
+				echo '승인 생성 Signature : '. $paySignature. '</br>';
+			}
+        }
+        writeLog("$key: $value", 'info');
     }
-    
-    // 에러 응답
-    $errorResponse = [
-        'success' => false,
-        'message' => '결제 처리 중 오류가 발생했습니다.',
-        'error' => $e->getMessage()
-    ];
-    
-    // echo "<script>
-    //     if (window.opener && window.opener.paymentHandler) {
-    //         window.opener.paymentHandler.handlePaymentError(" . json_encode($errorResponse) . ");
-    //         window.close();
-    //     } else {
-    //         window.location.href = 'listing.html?payment=error&message=" . urlencode($e->getMessage()) . "';
-    //     }
-    // </script>";
-    // 에러 응답 전송
-    header('Content-Type: application/json');
-    echo json_encode([
-        'success' => false,
-        'redirect' => 'listing.html',
-        'response' => [
-            'success' => false,
-            'message' => '결제 처리 중 오류가 발생했습니다.',
-            'error' => $e->getMessage()
-        ]
-    ]);
-    exit;
+    return $respArr;
 }
 
 // API 호출 함수

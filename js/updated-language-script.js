@@ -5,10 +5,10 @@ let currentLang = localStorage.getItem('preferredLanguage') || 'en';
 
 // 언어 라벨 설정
 const langLabel = {
-  ko: "한국어",
-  en: "English", 
-  ja: "日本語",
-  zh: "中文"
+  ko: '한국어',
+  en: 'English',
+  ja: '日本語',
+  zh: '中文',
 };
 
 // 페이지별 업데이트 함수 매핑
@@ -19,46 +19,45 @@ const pageUpdaters = {
   product: updateProductPage,
   contact: updateContactPage,
   contact_contact: updateContactSubPage,
-  contact_community: updateContactComPage
+  contact_community: updateContactComPage,
 };
 
 // 번역 데이터를 로드하는 함수
 async function loadTranslations() {
   try {
-    const response = await fetch("js/translations.json");
+    const response = await fetch('js/translations.json');
     translations = await response.json();
 
     // 현재 페이지 확인
     const pathName = window.location.pathname;
     currentPage = pathName.split('/').pop().replace('.html', '') || 'index';
 
-    console.log('loadTranslations: => '+currentPage);
+    console.log('loadTranslations: => ' + currentPage);
 
-    if (currentPage == 'index')
-    {
+    if (currentPage == 'index') {
       currentPage = 'home';
     }
-    if (currentPage == 'contact-contact')
-    {
+    if (currentPage == 'contact-contact') {
       currentPage = 'contact_contact';
     }
     if (currentPage == 'contact-community') {
       currentPage = 'contact_community';
     }
-    
+
     // 기본 언어 설정: 저장된 언어 또는 브라우저 언어
-    const browserLang = navigator.language.split("-")[0];
-    const savedLang = localStorage.getItem("preferredLanguage");
-    const defaultLang = savedLang || (["ko", "en", "ja", "zh"].includes(browserLang) ? browserLang : "en");
+    const browserLang = navigator.language.split('-')[0];
+    const savedLang = localStorage.getItem('preferredLanguage');
+    const defaultLang =
+      savedLang ||
+      (['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'en');
 
     setLanguage(defaultLang);
   } catch (error) {
-    console.error("번역 데이터를 로드하는 데 실패했습니다.", error);
+    console.error('번역 데이터를 로드하는 데 실패했습니다.', error);
   }
 }
 
 // 국가 목록을 가져오는 함수
-
 
 // 현재 언어 설정을 가져오는 함수
 function getCurrentLanguage() {
@@ -70,7 +69,9 @@ function getCurrentLanguage() {
     // 브라우저의 언어 설정 확인
     const browserLang = navigator.language.slice(0, 2);
     // 지원하는 언어인지 확인
-    currentLang = ['ko', 'en', 'ja', 'zh'].includes(browserLang) ? browserLang : 'ko';
+    currentLang = ['ko', 'en', 'ja', 'zh'].includes(browserLang)
+      ? browserLang
+      : 'ko';
     // 설정을 로컬 스토리지에 저장
     localStorage.setItem('preferredLanguage', currentLang);
   }
@@ -87,13 +88,12 @@ function handlePageNavigation(filename) {
   // 파일명에서 확장자 제거
   const pageName = filename.replace('.html', '');
 
-  if (pageName === "contact-contact")
-  {
-    pageReName = "contact_contact";
+  if (pageName === 'contact-contact') {
+    pageReName = 'contact_contact';
   }
-  if (pageName === "contact-community") {
-    pageReName = "contact_community";
-  }  
+  if (pageName === 'contact-community') {
+    pageReName = 'contact_community';
+  }
 
   // 페이지 정보 저장
   localStorage.setItem('currentPage', pageReName);
@@ -102,11 +102,10 @@ function handlePageNavigation(filename) {
   handlePageSelection(pageReName);
 }
 
-
 // 페이지 선택 시 호출되는 함수
 function handlePageSelection(page) {
   currentPage = page;
-  const currentLang = localStorage.getItem("preferredLanguage") || 'en';
+  const currentLang = localStorage.getItem('preferredLanguage') || 'en';
   setLanguage(currentLang); // 페이지 변경 시 현재 언어로 콘텐츠 업데이트
 }
 
@@ -114,13 +113,13 @@ function handlePageSelection(page) {
 async function handleLangChange(lang, fromSidebar = false) {
   currentLang = lang;
   document.documentElement.setAttribute('lang', lang);
-  
+
   // localStorage.setItem('preferredLanguage', lang);
   // updateCurrencyDisplay(lang);
 
   // // 환율 업데이트
   // currencyService.updatePriceDisplay(lang);
-  
+
   // // 페이지의 다국어 요소 업데이트
   // document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
   //   element.textContent = element.getAttribute('data-lang-' + lang);
@@ -137,7 +136,7 @@ async function handleLangChange(lang, fromSidebar = false) {
   //   handleBurgerMenuClose(); // 사이드바에서 언어 변경 시 사이드바 닫기
   // }
   // 24-12-27 update by lee d.h
-  
+
   try {
     // 로딩 시작
     window.loadingService?.show();
@@ -149,7 +148,7 @@ async function handleLangChange(lang, fromSidebar = false) {
     await updateLanguageContent(lang);
 
     // 기존 코드 유지
-    document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
+    document.querySelectorAll('[data-lang-' + lang + ']').forEach((element) => {
       element.textContent = element.getAttribute('data-lang-' + lang);
       if (element.hasAttribute('data-placeholder-' + lang)) {
         element.placeholder = element.getAttribute('data-placeholder-' + lang);
@@ -157,21 +156,20 @@ async function handleLangChange(lang, fromSidebar = false) {
     });
 
     // 기존 다국어 처리
-    document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
-        if (element.tagName.toLowerCase() === 'input') {
-            if (element.type === 'text' || element.type === 'number') {
-                updateInputValue(element, lang);
-            }
-        } else {
-            element.textContent = element.getAttribute('data-lang-' + lang);
+    document.querySelectorAll('[data-lang-' + lang + ']').forEach((element) => {
+      if (element.tagName.toLowerCase() === 'input') {
+        if (element.type === 'text' || element.type === 'number') {
+          updateInputValue(element, lang);
         }
+      } else {
+        element.textContent = element.getAttribute('data-lang-' + lang);
+      }
     });
 
     // 현재 페이지가 listing인 경우 updateListingPage 호출
     if (currentPage === 'listing') {
-        await updateListingPage(lang);
+      await updateListingPage(lang);
     }
-
 
     // 드롭다운 버튼 텍스트 업데이트
     const dropdownButton = document.getElementById('dropdownMenuButton1');
@@ -194,14 +192,12 @@ async function handleLangChange(lang, fromSidebar = false) {
     // 언어 변경 이벤트 발생
     window.dispatchEvent(new Event('languageChanged'));
 
-    
-
     // 가격 표시 업데이트 추가
     // const priceDisplay = document.getElementById('previewPrice');
     // if (priceDisplay && window.currencyService) {
     //   const formattedPrice = await window.currencyService.updatePriceDisplay(lang);
     //   priceDisplay.value = formattedPrice;
-    // }    
+    // }
 
     // 페이지 언어 업데이트 추가
     updatePageLanguage(lang);
@@ -214,7 +210,6 @@ async function handleLangChange(lang, fromSidebar = false) {
     if (fromSidebar) {
       handleBurgerMenuClose();
     }
-
   } catch (error) {
     console.error('Error updating language and currency:', error);
   } finally {
@@ -225,12 +220,14 @@ async function handleLangChange(lang, fromSidebar = false) {
 
 // 사이드바 언어 상태 업데이트 함수
 function updateSidebarLanguageState(lang) {
-  document.querySelectorAll('.side-bar-list.lang .side-bar-item').forEach(item => {
-    item.classList.remove('active');
-    if (item.textContent === langLabel[lang]) {
-      item.classList.add('active');
-    }
-  });
+  document
+    .querySelectorAll('.side-bar-list.lang .side-bar-item')
+    .forEach((item) => {
+      item.classList.remove('active');
+      if (item.textContent === langLabel[lang]) {
+        item.classList.add('active');
+      }
+    });
 }
 
 // 사이드바 언어 선택 이벤트 리스너 설정
@@ -249,7 +246,7 @@ function initializeLanguageSelection() {
 // 언어 컨텐츠 업데이트 함수
 async function updateLanguageContent(lang) {
   // 실제 업데이트가 필요한 경우 지연 시간 시뮬레이션
-  await new Promise(resolve => setTimeout(resolve, 300));
+  await new Promise((resolve) => setTimeout(resolve, 300));
 
   // 여기에 실제 언어 데이터 업데이트 로직 구현
   if (translations[lang]) {
@@ -262,14 +259,18 @@ async function updateLanguageContent(lang) {
 // 폼 언어 업데이트 함수
 function updateFormLanguage(form, lang) {
   // 일반 텍스트 요소 업데이트
-  form.querySelectorAll(`[data-lang-${lang}]`).forEach(element => {
+  form.querySelectorAll(`[data-lang-${lang}]`).forEach((element) => {
     element.textContent = element.getAttribute(`data-lang-${lang}`);
   });
 
   // placeholder 업데이트
-  form.querySelectorAll(`[data-lang-${lang}-placeholder]`).forEach(element => {
-    element.placeholder = element.getAttribute(`data-lang-${lang}-placeholder`);
-  });
+  form
+    .querySelectorAll(`[data-lang-${lang}-placeholder]`)
+    .forEach((element) => {
+      element.placeholder = element.getAttribute(
+        `data-lang-${lang}-placeholder`
+      );
+    });
 
   // orderForm
   const product_name = form.querySelector('.product-name');
@@ -280,27 +281,26 @@ function updateFormLanguage(form, lang) {
   // orderForm 금액, 총금액
   // 가격 정보 업데이트
   const priceRows = form.querySelectorAll('.price-row');
-  priceRows.forEach(row => {
+  priceRows.forEach((row) => {
     // 금액 포맷팅
     const amount = row.querySelector('.amount');
 
     // 기본 금액 (99000원)
     let value = 99000;
-    
-    if (row.classList.contains('discount')) {
-        // 할인금액은 0원으로 고정
-        value = 0;
-        // 할인금액은 앞에 (-) 표시 추가
-        amount.textContent = `(-) ${formatCurrencyByLang(value, lang)}`;
-    } else if (row.classList.contains('total')) {
-        // 총 결제금액 (기본금액 - 할인금액)
-        amount.textContent = formatCurrencyByLang(value, lang);
-    } else {
-        // 상품가격 (기본금액)
-        amount.textContent = formatCurrencyByLang(value, lang);
-    }
-  });  
 
+    if (row.classList.contains('discount')) {
+      // 할인금액은 0원으로 고정
+      value = 0;
+      // 할인금액은 앞에 (-) 표시 추가
+      amount.textContent = `(-) ${formatCurrencyByLang(value, lang)}`;
+    } else if (row.classList.contains('total')) {
+      // 총 결제금액 (기본금액 - 할인금액)
+      amount.textContent = formatCurrencyByLang(value, lang);
+    } else {
+      // 상품가격 (기본금액)
+      amount.textContent = formatCurrencyByLang(value, lang);
+    }
+  });
 }
 
 // 언어별 통화 포맷 함수
@@ -309,7 +309,7 @@ function formatCurrencyByLang(amount, lang) {
     ko: { currency: 'KRW', locale: 'ko-KR' },
     en: { currency: 'USD', rate: 0.00075 },
     ja: { currency: 'JPY', rate: 0.11 },
-    zh: { currency: 'CNY', rate: 0.0049 }
+    zh: { currency: 'CNY', rate: 0.0049 },
   };
 
   const format = currencyFormats[lang];
@@ -317,19 +317,18 @@ function formatCurrencyByLang(amount, lang) {
 
   return new Intl.NumberFormat(format.locale || lang, {
     style: 'currency',
-    currency: format.currency
+    currency: format.currency,
   }).format(convertedAmount);
 }
 
 // updatePageLanguage 함수 정의
 function updatePageLanguage(lang) {
   // 페이지의 모든 다국어 요소 업데이트
-  document.querySelectorAll(`[data-lang-${lang}]`).forEach(element => {
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach((element) => {
     element.textContent = element.getAttribute(`data-lang-${lang}`);
   });
 
   console.log('updatePageLanguage');
-
 
   // productPreviewForm이 있는 경우에만 처리
   const productPreviewForm = document.getElementById('productPreviewForm');
@@ -350,32 +349,32 @@ function updatePageLanguage(lang) {
     const productData = {
       ko: {
         title: '상품 정보',
-        productName: '특허뉴스PDF', 
+        productName: '특허뉴스PDF',
         basePrice: 99000,
         currency: 'KRW',
-        currencySymbol: '₩'
+        currencySymbol: '₩',
       },
       en: {
         title: 'Product Information',
         productName: 'Patent News PDF',
         basePrice: 75,
-        currency: 'USD', 
-        currencySymbol: '$'
+        currency: 'USD',
+        currencySymbol: '$',
       },
       ja: {
         title: '商品情報',
         productName: '特許ニュースPDF',
         basePrice: 11000,
         currency: 'JPY',
-        currencySymbol: '¥'
+        currencySymbol: '¥',
       },
       zh: {
         title: '产品信息',
-        productName: '专利新闻PDF', 
+        productName: '专利新闻PDF',
         basePrice: 485,
         currency: 'CNY',
-        currencySymbol: '¥'
-      }
+        currencySymbol: '¥',
+      },
     };
 
     // 폼 제목 업데이트
@@ -385,30 +384,32 @@ function updatePageLanguage(lang) {
     }
 
     // 라벨 업데이트
-    productPreviewForm.querySelectorAll('.required span:first-child').forEach(label => {
-      if (label.getAttribute(`data-lang-${lang}`)) {
-        label.textContent = label.getAttribute(`data-lang-${lang}`);
-      }
-    });
+    productPreviewForm
+      .querySelectorAll('.required span:first-child')
+      .forEach((label) => {
+        if (label.getAttribute(`data-lang-${lang}`)) {
+          label.textContent = label.getAttribute(`data-lang-${lang}`);
+        }
+      });
 
     // 가격 업데이트
     const previewPrice = document.getElementById('previewPrice');
     const hiddenPrice = document.getElementById('hidden_orderPrice');
-    
+
     if (previewPrice && hiddenPrice && productData[lang]) {
       const { basePrice, currency, currencySymbol } = productData[lang];
-      
+
       // 화면에 표시될 가격 포맷팅
       const formatter = new Intl.NumberFormat(lang, {
         style: 'currency',
         currency: currency,
         minimumFractionDigits: 0,
-        maximumFractionDigits: currency === 'JPY' ? 0 : 2
+        maximumFractionDigits: currency === 'JPY' ? 0 : 2,
       });
 
       // 가격 표시 업데이트
       previewPrice.value = formatter.format(basePrice);
-      
+
       // hidden input 업데이트
       hiddenPrice.value = basePrice;
       hiddenPrice.setAttribute('data-currency', currency);
@@ -422,9 +423,12 @@ function updatePageLanguage(lang) {
     }
 
     // 확인 버튼 텍스트 업데이트
-    const submitButton = productPreviewForm.querySelector('button[type="submit"]');
+    const submitButton = productPreviewForm.querySelector(
+      'button[type="submit"]'
+    );
     if (submitButton) {
-      submitButton.textContent = submitButton.getAttribute(`data-lang-${lang}`) || '확인';
+      submitButton.textContent =
+        submitButton.getAttribute(`data-lang-${lang}`) || '확인';
     }
   }
 
@@ -457,7 +461,7 @@ function setLanguage(lang) {
   updateLanguageUI(lang);
 
   // 선택한 언어를 로컬 저장소에 저장
-  localStorage.setItem("preferredLanguage", lang);
+  localStorage.setItem('preferredLanguage', lang);
 
   // closeSideBar();
 }
@@ -465,24 +469,26 @@ function setLanguage(lang) {
 // 언어 선택 UI 업데이트
 function updateLanguageUI(lang) {
   // 드롭다운 버튼 텍스트 업데이트
-  const dropdownButton = document.getElementById("dropdownMenuButton1");
+  const dropdownButton = document.getElementById('dropdownMenuButton1');
   if (dropdownButton) {
     dropdownButton.textContent = langLabel[lang];
   }
 
   // 사이드바 및 드롭다운의 언어 항목 active 클래스 업데이트
-  document.querySelectorAll('.side-bar-item.lang span, .dropdown-item').forEach(el => {
-    el.classList.remove('active');
-    if (el.textContent.trim() === langLabel[lang]) {
-      el.classList.add('active');
-    }
-  });
+  document
+    .querySelectorAll('.side-bar-item.lang span, .dropdown-item')
+    .forEach((el) => {
+      el.classList.remove('active');
+      if (el.textContent.trim() === langLabel[lang]) {
+        el.classList.add('active');
+      }
+    });
 }
 
 // 공통 요소 업데이트 함수
 function updateCommonElements(lang) {
   // 네비게이션 메뉴 업데이트
-  document.querySelectorAll('[data-page]').forEach(el => {
+  document.querySelectorAll('[data-page]').forEach((el) => {
     const key = el.getAttribute('data-page');
     if (key && translations[lang].nav[key]) {
       el.textContent = translations[lang].nav[key];
@@ -490,14 +496,15 @@ function updateCommonElements(lang) {
   });
 
   // 푸터 업데이트
-  const footerWrapper = document.querySelector(".footer-wrapper");
+  const footerWrapper = document.querySelector('.footer-wrapper');
   if (footerWrapper) {
-    const footerLogo = footerWrapper.querySelector(".footer-logo span");
-    const companyName = footerWrapper.querySelector(".company-name");
-    const companyInfoGrid = footerWrapper.querySelector(".company-info-grid");
+    const footerLogo = footerWrapper.querySelector('.footer-logo span');
+    const companyName = footerWrapper.querySelector('.company-name');
+    const companyInfoGrid = footerWrapper.querySelector('.company-info-grid');
 
     if (footerLogo) footerLogo.textContent = translations[lang].footer.slogan;
-    if (companyName) companyName.textContent = translations[lang].footer.company_name;
+    if (companyName)
+      companyName.textContent = translations[lang].footer.company_name;
     if (companyInfoGrid && translations[lang].footer.company_info) {
       const info = translations[lang].footer.company_info;
       companyInfoGrid.innerHTML = `
@@ -513,97 +520,103 @@ function updateCommonElements(lang) {
 
 // 기존의 페이지별 업데이트 함수들 유지
 function updateHomePage(lang) {
-  const contentWrapper = document.querySelector(".content-wrapper");  
+  const contentWrapper = document.querySelector('.content-wrapper');
 
   if (contentWrapper && translations[lang].main) {
     // ... 기존 홈페이지 업데이트 코드 ...
-    const logoWrapper = contentWrapper.querySelector(".logo-wrapper p");
-    const letterTitles = contentWrapper.querySelectorAll(".letter-title");
-    const contentBottomText = contentWrapper.querySelectorAll(".content-bottom .text p");
-    const listingButton = contentWrapper.querySelector(".normal-button a");
-    const watchVideoSpan = contentWrapper.querySelector(".watch-video-area span");
+    const logoWrapper = contentWrapper.querySelector('.logo-wrapper p');
+    const letterTitles = contentWrapper.querySelectorAll('.letter-title');
+    const contentBottomText = contentWrapper.querySelectorAll(
+      '.content-bottom .text p'
+    );
+    const listingButton = contentWrapper.querySelector('.normal-button a');
+    const watchVideoSpan = contentWrapper.querySelector(
+      '.watch-video-area span'
+    );
 
-    if (logoWrapper) logoWrapper.innerHTML = translations[lang]?.main?.logo_text;
+    if (logoWrapper)
+      logoWrapper.innerHTML = translations[lang]?.main?.logo_text;
     letterTitles.forEach((el, index) => {
-      const strongSpan = el.querySelector("span.strong");
-      const spans = el.querySelectorAll("span");
+      const strongSpan = el.querySelector('span.strong');
+      const spans = el.querySelectorAll('span');
       if (spans.length >= 2) {
-          const strongSpan = spans[0];  // 첫 번째 span (S, T, I, P)
-          const textSpan = spans[1];    // 두 번째 span (텍스트)
-          
-          // 아시아 언어(ko, ja, zh)일 때는 첫 번째 span 숨기기
-          if (['ko', 'ja', 'zh'].includes(lang)) {
-              strongSpan.style.display = 'none';
-              // 텍스트 span의 text-transform 제거
-              textSpan.style.textTransform = 'none';
-          } else {
-              // 영어일 때는 보이기
-              strongSpan.style.display = 'inline';
-              // 영어일 때는 첫 글자 대문자로
-              textSpan.style.textTransform = 'none';
-          }
+        const strongSpan = spans[0]; // 첫 번째 span (S, T, I, P)
+        const textSpan = spans[1]; // 두 번째 span (텍스트)
+
+        // 아시아 언어(ko, ja, zh)일 때는 첫 번째 span 숨기기
+        if (['ko', 'ja', 'zh'].includes(lang)) {
+          strongSpan.style.display = 'none';
+          // 텍스트 span의 text-transform 제거
+          textSpan.style.textTransform = 'none';
+        } else {
+          // 영어일 때는 보이기
+          strongSpan.style.display = 'inline';
+          // 영어일 때는 첫 글자 대문자로
+          textSpan.style.textTransform = 'none';
+        }
       }
 
       if (strongSpan) {
-        el.querySelector("span:not(.strong)").textContent = translations[lang]?.main?.letter_titles[index] || "";
+        el.querySelector('span:not(.strong)').textContent =
+          translations[lang]?.main?.letter_titles[index] || '';
       }
-
     });
     contentBottomText.forEach((el, index) => {
-      el.textContent = translations[lang]?.main?.bottom_text[index] || "";
+      el.textContent = translations[lang]?.main?.bottom_text[index] || '';
     });
-    if (listingButton) listingButton.textContent = translations[lang]?.main?.buttons?.listing;
-    if (watchVideoSpan) watchVideoSpan.textContent = translations[lang]?.main?.buttons?.watch_video;
-  
+    if (listingButton)
+      listingButton.textContent = translations[lang]?.main?.buttons?.listing;
+    if (watchVideoSpan)
+      watchVideoSpan.textContent =
+        translations[lang]?.main?.buttons?.watch_video;
   }
-  
 }
 
 // br 태그를 줄바꿈으로 변환하는 private 메서드 추가
 function convertBrToNewline(text) {
   // 다양한 형태의 br 태그 처리
   return text
-      .replace(/<br\s*\/?>/gi, '\n')  // <br>, <br/>, <br /> 등 모든 형태의 br 태그 처리
-      .replace(/\\n/g, '\n')          // \n 문자열을 실제 줄바꿈으로 변환
-      .replace(/\n\s*\n/g, '\n\n')    // 연속된 줄바꿈 정리
-      .replace(/^\s+|\s+$/g, '');    // 앞뒤 공백 제거
+    .replace(/<br\s*\/?>/gi, '\n') // <br>, <br/>, <br /> 등 모든 형태의 br 태그 처리
+    .replace(/\\n/g, '\n') // \n 문자열을 실제 줄바꿈으로 변환
+    .replace(/\n\s*\n/g, '\n\n') // 연속된 줄바꿈 정리
+    .replace(/^\s+|\s+$/g, ''); // 앞뒤 공백 제거
 }
 
 // textarea 높이 조절 함수 수정
 function adjustTextareaHeight(textarea) {
-    if (textarea) {
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight + 2}px`;
-    }
+  if (textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight + 2}px`;
+  }
 }
 
 function updateListingPage(lang) {
   // 제품 정보 데이터 정의 - 실제 결제될 가격 설정
   const productData = {
-      ko: {
-          productName: '특허뉴스PDF',
-          basePrice: 99000,  // KRW
-          currency: 'KRW',
-          currencySymbol: '₩'
-      },
-      en: {
-          productName: 'Patent News PDF',
-          basePrice: 75,     // USD
-          currency: 'USD',
-          currencySymbol: '$'
-      },
-      ja: {
-          productName: '特許ニュースPDF',
-          basePrice: 11000,  // JPY
-          currency: 'JPY',
-          currencySymbol: '¥'
-      },
-      zh: {
-          productName: '专利新闻PDF',
-          basePrice: 485,    // CNY
-          currency: 'CNY',
-          currencySymbol: '¥'
-      }
+    ko: {
+      productName: '특허뉴스PDF',
+      basePrice: 99000, // KRW
+      currency: 'KRW',
+      currencySymbol: '₩',
+    },
+    en: {
+      productName: 'Patent News PDF',
+      basePrice: 75, // USD
+      currency: 'USD',
+      currencySymbol: '$',
+    },
+    ja: {
+      productName: '特許ニュースPDF',
+      basePrice: 11000, // JPY
+      currency: 'JPY',
+      currencySymbol: '¥',
+    },
+    zh: {
+      productName: '专利新闻PDF',
+      basePrice: 485, // CNY
+      currency: 'CNY',
+      currencySymbol: '¥',
+    },
   };
 
   // const previewProductEx = document.getElementById('previewProductEx');
@@ -620,32 +633,36 @@ function updateListingPage(lang) {
   if (productData[lang]) {
     // 기본 값 설정
     if (previewProductCode) previewProductCode.value = '0001';
-    if (previewProductName) previewProductName.value = productData[lang].productName;
+    if (previewProductName)
+      previewProductName.value = productData[lang].productName;
     if (previewQuantity) previewQuantity.value = '1';
 
     // 가격 포맷팅 및 설정
     if (previewPrice || hiddenPrice) {
-      const { basePrice, currency, currencySymbol } = productData[lang];        
-        
+      const { basePrice, currency, currencySymbol } = productData[lang];
+
       // 화면에 표시될 가격 포맷팅
       const formatter = new Intl.NumberFormat(lang, {
-          style: 'currency',
-          currency: currency,
-          minimumFractionDigits: 0,
-          maximumFractionDigits: currency === 'JPY' ? 0 : 2
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: currency === 'JPY' ? 0 : 2,
       });
-      
+
       // 화면 표시용 가격 설정
       if (previewPrice) {
         previewPrice.value = formatter.format(basePrice);
-        console.log('previewPrice ->' + previewPrice.value);
+        console.log(
+          'updated-language-script.js:updateListingPage previewPrice ->' +
+            previewPrice.value
+        );
       }
-      
+
       // hidden input에 실제 결제될 가격 설정
       if (hiddenPrice) {
         // 통화 기호 없이 순수 숫자값만 저장
         hiddenPrice.value = basePrice.toString();
-        
+
         // 통화 정보도 함께 저장
         hiddenPrice.setAttribute('data-currency', currency);
         hiddenPrice.setAttribute('data-currency-symbol', currencySymbol);
@@ -656,11 +673,11 @@ function updateListingPage(lang) {
   // ProductEx textarea 업데이트
   const previewProductEx = document.getElementById('previewProductEx');
   if (previewProductEx && translations[lang]?.listing?.previewProductEx) {
-      const contentArray = translations[lang].listing.previewProductEx;
-      let formattedContent = contentArray.join('');
-      formattedContent = convertBrToNewline(formattedContent);
-      previewProductEx.value = formattedContent;
-      // adjustTextareaHeight(previewProductEx);
+    const contentArray = translations[lang].listing.previewProductEx;
+    let formattedContent = contentArray.join('');
+    formattedContent = convertBrToNewline(formattedContent);
+    previewProductEx.value = formattedContent;
+    // adjustTextareaHeight(previewProductEx);
   }
 
   // 폼 제출 이벤트 리스너 설정
@@ -671,8 +688,6 @@ function updateListingPage(lang) {
   //     // 새 이벤트 리스너 추가
   //     productPreviewForm.addEventListener('submit', handleProductPreviewSubmit);
   // }
-  
-  
 
   // 라벨 업데이트
   const nameLabel = document.querySelector('label[for="name"]');
@@ -698,9 +713,6 @@ function updateListingPage(lang) {
   // fileInput.setAttribute('aria-label', formData.labels.fileSelectAria);
   // remove_file.setAttribute('aria-label', formData.labels.fileDeleteAria);
 
-  
- 
-
   // SMART5 라벨 특별 처리
   if (smart5Label) {
     const linkText = smart5Label.querySelector('.link-text');
@@ -709,8 +721,9 @@ function updateListingPage(lang) {
       linkText.textContent = formData.labels.smart5.link;
     }
     // 기존 텍스트 노드 업데이트
-    const textNodes = Array.from(smart5Label.childNodes)
-      .filter(node => node.nodeType === 3); // 텍스트 노드만 선택
+    const textNodes = Array.from(smart5Label.childNodes).filter(
+      (node) => node.nodeType === 3
+    ); // 텍스트 노드만 선택
     if (textNodes.length > 0) {
       textNodes[textNodes.length - 1].textContent = formData.labels.smart5.text;
     }
@@ -730,16 +743,16 @@ function updateListingPage(lang) {
   if (submitButton) {
     submitButton.textContent = formData.button;
   }
-  const contentWrapper = document.querySelector(".content-wrapper");
-  const title_area = document.querySelector(".title-area");
+  const contentWrapper = document.querySelector('.content-wrapper');
+  const title_area = document.querySelector('.title-area');
   // const letterTitle = contentWrapper.querySelector(".letter-title h1");
   // const letterTitlep = contentWrapper.querySelectorAll(".letter-title p");
   if (contentWrapper) {
-    const letterTitle = title_area.querySelector(".letter-title > span");
-    const letterTitlep = title_area.querySelectorAll("p");
-    letterTitle.textContent = translations[lang]?.listing?.letter_title || "";
+    const letterTitle = title_area.querySelector('.letter-title > span');
+    const letterTitlep = title_area.querySelectorAll('p');
+    letterTitle.textContent = translations[lang]?.listing?.letter_title || '';
     letterTitlep.forEach((el, index) => {
-      const text = translations[lang]?.listing?.letter_title_p[index] || "";
+      const text = translations[lang]?.listing?.letter_title_p[index] || '';
       if (text) {
         const firstLetter = text.charAt(0);
         const restOfText = text.slice(1);
@@ -761,55 +774,60 @@ async function handleProductPreviewSubmit(e) {
     // const currency = hiddenPrice.getAttribute('data-currency');
 
     // 가격에서 통화 기호와 쉼표 제거
-    const priceValue = hiddenPrice.value || previewPrice.value.replace(/[^0-9.-]+/g, '');
+    const priceValue =
+      hiddenPrice.value || previewPrice.value.replace(/[^0-9.-]+/g, '');
     const currency = hiddenPrice.getAttribute('data-currency') || 'KRW';
 
     const formData = {
-        productCode: document.getElementById('previewProductCode').value,
-        productName: document.getElementById('previewProductName').value,
-        quantity: document.getElementById('previewQuantity').value,
-        price: priceValue,
-        currency: currency // 통화 정보 추가
+      productCode: document.getElementById('previewProductCode').value,
+      productName: document.getElementById('previewProductName').value,
+      quantity: document.getElementById('previewQuantity').value,
+      price: priceValue,
+      currency: currency, // 통화 정보 추가
     };
 
-    console.log('formData.price -> '+formData.price);
-    
+    console.log('formData.price -> ' + formData.price);
 
     console.log('Sending preview data:', formData);
 
     const response = await fetch('save_product_preview.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     });
 
     const result = await response.json();
     console.log('Server response:', result);
 
     if (result.success) {
-        document.getElementById('productPreviewForm').style.display = 'none';
-        const orderForm = document.getElementById('orderForm');
-        orderForm.style.display = 'block';
+      document.getElementById('productPreviewForm').style.display = 'none';
+      const orderForm = document.getElementById('orderForm');
+      orderForm.style.display = 'block';
 
-        // hidden 필드 업데이트 - 실제 결제 금액과 통화 정보 포함
-        document.getElementById('hidden_orderProductCode').value = formData.productCode;
-        document.getElementById('hidden_orderProductName').value = formData.productName;
-        document.getElementById('hidden_orderQuantity').value = formData.quantity;
-        document.getElementById('hidden_orderPrice').value = formData.price;
-        document.getElementById('hidden_orderPrice').setAttribute('data-currency', formData.currency);
+      // hidden 필드 업데이트 - 실제 결제 금액과 통화 정보 포함
+      document.getElementById('hidden_orderProductCode').value =
+        formData.productCode;
+      document.getElementById('hidden_orderProductName').value =
+        formData.productName;
+      document.getElementById('hidden_orderQuantity').value = formData.quantity;
+      document.getElementById('hidden_orderPrice').value = formData.price;
+      document
+        .getElementById('hidden_orderPrice')
+        .setAttribute('data-currency', formData.currency);
 
-        // 언어 업데이트
-        updateFormLanguage(orderForm, currentLang);
-
+      // 언어 업데이트
+      updateFormLanguage(orderForm, currentLang);
     } else {
-        throw new Error(result.message || '저장에 실패했습니다.');
+      throw new Error(result.message || '저장에 실패했습니다.');
     }
-
   } catch (error) {
     console.error('Product preview error:', error);
-    window.toastService?.show(error.message || '처리 중 오류가 발생했습니다.', 'error');
+    window.toastService?.show(
+      error.message || '처리 중 오류가 발생했습니다.',
+      'error'
+    );
   }
 }
 
@@ -848,8 +866,6 @@ async function handleProductPreviewSubmit(e) {
 //     inputBox_inputs.forEach((input, index) => {
 //       input.placeholder = translations[lang]?.listing?.inputbox_inputs[index] || '';
 //     });
-    
-
 
 //     // letterTitle.textContent = translations[lang]?.listing?.letter_title || "";
 
@@ -868,45 +884,45 @@ async function handleProductPreviewSubmit(e) {
 
 function updateAboutPage(lang) {
   // ... 기존 어바웃 페이지 업데이트 코드 ...
-  const contentWrapper = document.querySelector(".content-wrapper");
-  
+  const contentWrapper = document.querySelector('.content-wrapper');
+
   if (contentWrapper) {
     // title-area의 h6 텍스트 변경
-    const h6Element = document.querySelector(".title-area h6");
+    const h6Element = document.querySelector('.title-area h6');
     if (h6Element) {
-      h6Element.textContent = translations[lang]?.about?.title_area_h6 || "";
+      h6Element.textContent = translations[lang]?.about?.title_area_h6 || '';
     }
     // title-area의 h1 span 텍스트 변경
-    const h1Span = document.querySelector(".title-area .letter-title span");
+    const h1Span = document.querySelector('.title-area .letter-title span');
     if (h1Span) {
-      h1Span.textContent = translations[lang]?.about?.title_area_h1 || "";
+      h1Span.textContent = translations[lang]?.about?.title_area_h1 || '';
     }
-    
+
     // content-area의 p 태그에서 span 태그 제외 나머지 텍스트 변경
-    const contentParagraphs = document.querySelectorAll(".content-area p");
+    const contentParagraphs = document.querySelectorAll('.content-area p');
     contentParagraphs.forEach((p, index) => {
-      p.innerHTML = translations[lang]?.about?.content_area[index] || "";
-    })
+      p.innerHTML = translations[lang]?.about?.content_area[index] || '';
+    });
 
     // bottom-area의 p 태그 텍스트 변경
-    const bottomParagraphs = document.querySelectorAll(".bottom-area p");
+    const bottomParagraphs = document.querySelectorAll('.bottom-area p');
     bottomParagraphs.forEach((btm, index) => {
-      btm.textContent = translations[lang]?.about?.bottom_area[index] || "";
-    })
+      btm.textContent = translations[lang]?.about?.bottom_area[index] || '';
+    });
   }
 }
 
 function updateProductPage(lang) {
   // ... 기존 프로덕트 페이지 업데이트 코드 ...
   const home_visual = document.querySelector('.home-visual .container');
-  const productContentArea = document.querySelector(".product-content-area");
+  const productContentArea = document.querySelector('.product-content-area');
   if (productContentArea) {
-    const letter_title = document.querySelector(".letter-title");
-    letter_title.innerHTML = translations[lang]?.product?.letter_title || "";
+    const letter_title = document.querySelector('.letter-title');
+    letter_title.innerHTML = translations[lang]?.product?.letter_title || '';
   }
   if (home_visual) {
     const text_content = document.querySelector('.text-content h2.main-title');
-    text_content.innerHTML = translations[lang]?.product?.letter_title || "";
+    text_content.innerHTML = translations[lang]?.product?.letter_title || '';
   }
 }
 
@@ -923,57 +939,69 @@ function updateContactPage(lang) {
   //   });
   // }
 
-  const contactWrapper = document.querySelector(".contact-wrapper");
+  const contactWrapper = document.querySelector('.contact-wrapper');
 
   if (contactWrapper) {
     // title-wrapper의 h1 span 텍스트 변경
-    const h1Span = document.querySelector(".title-wrapper .letter-title span");
+    const h1Span = document.querySelector('.title-wrapper .letter-title span');
     if (h1Span) {
-      h1Span.textContent = translations[lang]?.contact?.title_h1 || "";
+      h1Span.textContent = translations[lang]?.contact?.title_h1 || '';
     }
 
     // const title_wrapper_h1_span = document.querySelector(".title-wrapper h1 span");
 
     // title-wrapper의 span 텍스트 변경 (소개 텍스트)
-    const introText = document.querySelector(".title-wrapper span:nth-of-type(2)");
+    const introText = document.querySelector(
+      '.title-wrapper span:nth-of-type(2)'
+    );
     if (introText) {
-      introText.innerHTML = translations[lang]?.contact?.intro_text || "";
+      introText.innerHTML = translations[lang]?.contact?.intro_text || '';
     }
 
     // 모든 텍스트 요소 선택
-    const contactTitleSpan = document.querySelector('.row-wrapper .radius-box:first-child .title-wrapper h1 span');
-    const communityTitleSpan = document.querySelector('.row-wrapper .radius-box:last-child .title-wrapper h1 span');
-    const contactSpan = document.querySelector('.row-wrapper .radius-box:first-child .title-wrapper > span:not(h1 span)');
-    const communitySpan = document.querySelector('.row-wrapper .radius-box:last-child .title-wrapper > span:not(h1 span)');
+    const contactTitleSpan = document.querySelector(
+      '.row-wrapper .radius-box:first-child .title-wrapper h1 span'
+    );
+    const communityTitleSpan = document.querySelector(
+      '.row-wrapper .radius-box:last-child .title-wrapper h1 span'
+    );
+    const contactSpan = document.querySelector(
+      '.row-wrapper .radius-box:first-child .title-wrapper > span:not(h1 span)'
+    );
+    const communitySpan = document.querySelector(
+      '.row-wrapper .radius-box:last-child .title-wrapper > span:not(h1 span)'
+    );
 
-    contactTitleSpan.textContent = translations[lang]?.contact?.contact_title || "";
-    communityTitleSpan.textContent = translations[lang]?.contact?.community_title || "";
+    contactTitleSpan.textContent =
+      translations[lang]?.contact?.contact_title || '';
+    communityTitleSpan.textContent =
+      translations[lang]?.contact?.community_title || '';
 
-    contactSpan.innerHTML = translations[lang]?.contact?.contact_description || "";
-    communitySpan.innerHTML = translations[lang]?.contact?.community_description || "";
-
+    contactSpan.innerHTML =
+      translations[lang]?.contact?.contact_description || '';
+    communitySpan.innerHTML =
+      translations[lang]?.contact?.community_description || '';
 
     // row-wrapper 내 radius-box 요소 텍스트 변경
-    const radiusBoxes = document.querySelectorAll(".row-wrapper .radius-box");
-    const boxData = translations[lang]?.contact?.radius_boxes || [];   
-    
+    const radiusBoxes = document.querySelectorAll('.row-wrapper .radius-box');
+    const boxData = translations[lang]?.contact?.radius_boxes || [];
 
     radiusBoxes.forEach((box, index) => {
       // const title_wrapper_h1 = box.querySelector(".title-wrapper h1");
       // const title_wrpper_span = box.querySelector(".title-wrapper h1 span span");
 
-      const button = box.querySelector(".normal-button a");
+      const button = box.querySelector('.normal-button a');
 
       if (button) {
-        button.textContent = boxData[index]?.button_text || "";
-        button.href = boxData[index]?.link || "#";
+        button.textContent = boxData[index]?.button_text || '';
+        button.href = boxData[index]?.link || '#';
       }
     });
   }
 }
 
 function updateContactSubPage(lang) {
-  const letter_title = document.querySelector(".letter-title span");
+  const letter_title = document.querySelector('.letter-title span');
   letter_title.textContent = translations[lang].contact_contact.letter_title;
 
   const formData = translations[lang].contact_contact.form;
@@ -983,7 +1011,8 @@ function updateContactSubPage(lang) {
   const firstNameLabel = document.querySelector('label[for="firstName"]');
   const firstNameInput = document.getElementById('firstName');
   if (firstNameLabel) firstNameLabel.textContent = formData.name.first.label;
-  if (firstNameInput) firstNameInput.placeholder = formData.name.first.placeholder;
+  if (firstNameInput)
+    firstNameInput.placeholder = formData.name.first.placeholder;
 
   // Last Name
   const lastNameLabel = document.querySelector('label[for="lastName"]');
@@ -1038,8 +1067,7 @@ function updateContactSubPage(lang) {
 
   // Subject 선택 박스
   // const selectBox = document.querySelector('.select-box');
-  
-  
+
   // if (selectBox) {
   //   // placeholder (기본 선택 텍스트)
   //   // const placeholder = selectBox.querySelector('.selected-item');
@@ -1079,7 +1107,8 @@ function updateContactComPage(lang) {
   const mainDesc = document.querySelector('.title-wrapper > span');
 
   if (mainTitle) mainTitle.textContent = pageData.main_title;
-  if (mainDesc) mainDesc.innerHTML = pageData.main_description.replace('\n', '<br/>');
+  if (mainDesc)
+    mainDesc.innerHTML = pageData.main_description.replace('\n', '<br/>');
 
   // Community support 섹션 업데이트
   const communityBoxes = document.querySelectorAll('.radius-box.community');
@@ -1089,8 +1118,16 @@ function updateContactComPage(lang) {
     const commTitle = communityBoxes[0].querySelector('h6');
     const commDesc = communityBoxes[0].querySelector('span');
 
-    if (commTitle) commTitle.innerHTML = pageData.community_support.title.replace('\n', '<br/>');
-    if (commDesc) commDesc.innerHTML = pageData.community_support.description.replace('\n', '<br/>');
+    if (commTitle)
+      commTitle.innerHTML = pageData.community_support.title.replace(
+        '\n',
+        '<br/>'
+      );
+    if (commDesc)
+      commDesc.innerHTML = pageData.community_support.description.replace(
+        '\n',
+        '<br/>'
+      );
   }
 
   // 두 번째 박스 (Listing support)
@@ -1099,8 +1136,16 @@ function updateContactComPage(lang) {
     const listDesc = communityBoxes[1].querySelector('span');
     const listButton = communityBoxes[1].querySelector('.normal-button span');
 
-    if (listTitle) listTitle.innerHTML = pageData.listing_support.title.replace('\n', '<br/>');
-    if (listDesc) listDesc.innerHTML = pageData.listing_support.description.replace('\n', '<br/>');
+    if (listTitle)
+      listTitle.innerHTML = pageData.listing_support.title.replace(
+        '\n',
+        '<br/>'
+      );
+    if (listDesc)
+      listDesc.innerHTML = pageData.listing_support.description.replace(
+        '\n',
+        '<br/>'
+      );
     if (listButton) listButton.textContent = pageData.listing_support.button;
   }
 }
@@ -1137,7 +1182,7 @@ const currencyFormats = {
   ko: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
   en: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
   ja: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
-  zh: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }
+  zh: { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 },
 };
 
 function formatCurrency(amount, lang) {
@@ -1199,9 +1244,9 @@ function handleBurgerMenu() {
   // if (sideBarContainer) {
   //   sideBarContainer.classList.add('open');
   // }
-  const nav = document.querySelector(".side-bar-container");
-  nav.classList.add("open");
-  nav.classList.remove("close");
+  const nav = document.querySelector('.side-bar-container');
+  nav.classList.add('open');
+  nav.classList.remove('close');
 }
 
 function handleBurgerMenuClose() {
@@ -1209,30 +1254,30 @@ function handleBurgerMenuClose() {
   // if (sideBarContainer) {
   //   sideBarContainer.classList.remove('close');
   // }
-  const nav = document.querySelector(".side-bar-container");
+  const nav = document.querySelector('.side-bar-container');
   // nav.classList.remove("open");
   // nav.classList.add("close");
   if (nav) {
-    nav.classList.remove("open");
-    nav.classList.add("close");
+    nav.classList.remove('open');
+    nav.classList.add('close');
   }
 }
 
 // Function to close sidebar
 function closeSideBar() {
-    const sideBarContainer = document.querySelector('.side-bar-container');
-    const burgerMenu = document.querySelector('.burger-menu');
+  const sideBarContainer = document.querySelector('.side-bar-container');
+  const burgerMenu = document.querySelector('.burger-menu');
 
-    if (sideBarContainer) {
-        // sideBarContainer.classList.remove('active');
-        sideBarContainer.classList.remove("open");
-        sideBarContainer.classList.add("close");
-    }
+  if (sideBarContainer) {
+    // sideBarContainer.classList.remove('active');
+    sideBarContainer.classList.remove('open');
+    sideBarContainer.classList.add('close');
+  }
 
-    // Reset burger menu icon if needed
-    if (burgerMenu) {
-        burgerMenu.setAttribute('onclick', 'handleBurgerMenu()');
-    }
+  // Reset burger menu icon if needed
+  if (burgerMenu) {
+    burgerMenu.setAttribute('onclick', 'handleBurgerMenu()');
+  }
 }
 
 // 초기화 함수
@@ -1268,20 +1313,24 @@ function initializeSidebar() {
 
 // 사이드바 언어 선택 이벤트 리스너 설정
 function initializeSidebarLanguageSelection() {
-  const sidebarLangItems = document.querySelectorAll('.side-bar-list.lang .side-bar-item');
-  
-  sidebarLangItems.forEach(item => {
+  const sidebarLangItems = document.querySelectorAll(
+    '.side-bar-list.lang .side-bar-item'
+  );
+
+  sidebarLangItems.forEach((item) => {
     item.addEventListener('click', (event) => {
-      const lang = event.currentTarget.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
-      
+      const lang = event.currentTarget
+        .getAttribute('onclick')
+        ?.match(/'([^']+)'/)?.[1];
+
       if (lang) {
         handleLangChange(lang, true); // true는 사이드바에서 호출됨을 나타냄
-        
+
         // 다른 항목의 active 클래스 제거
-        sidebarLangItems.forEach(langItem => {
+        sidebarLangItems.forEach((langItem) => {
           langItem.classList.remove('open');
         });
-        
+
         // 선택된 항목에 active 클래스 추가
         event.currentTarget.classList.add('open');
       }
@@ -1292,22 +1341,22 @@ function initializeSidebarLanguageSelection() {
 // DOM 로드 후 초기화
 // document.addEventListener("DOMContentLoaded", () => {
 //   loadTranslations();
-  
+
 //   const currentLang = getCurrentLanguage();
 
 //   updateListingPage(currentLang);
-  
+
 //   document.querySelector('.sidebar-background').addEventListener('click', handleBurgerMenuClose);
-  
+
 // });
 
 // DOM 로드 후 초기화
-// 25-01-11 update 
-document.addEventListener("DOMContentLoaded", async () => {
+// 25-01-11 update
+document.addEventListener('DOMContentLoaded', async () => {
   try {
     // 번역 데이터 로드
     await loadTranslations();
-    
+
     // 현재 언어 가져오기
     currentLang = getCurrentLanguage();
 
@@ -1328,7 +1377,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // price 초기값 설정을 위한 함수 호출
     initializeProductPrice();
-
   } catch (error) {
     console.error('Initialization error:', error);
     window.toastService?.show('Failed to initialize the page', 'error');
@@ -1339,27 +1387,27 @@ document.addEventListener("DOMContentLoaded", async () => {
 function initializeProductPrice() {
   const previewPrice = document.getElementById('previewPrice');
   const hiddenPrice = document.getElementById('hidden_orderPrice');
-  
+
   if (previewPrice && hiddenPrice) {
     const currentLang = getCurrentLanguage();
     const basePrice = 99000; // 기본 KRW 가격
 
     // 현재 언어에 따른 가격 설정
     const priceData = {
-        ko: { price: 99000, currency: 'KRW' },
-        en: { price: 75, currency: 'USD' },
-        ja: { price: 11000, currency: 'JPY' },
-        zh: { price: 485, currency: 'CNY' }
+      ko: { price: 99000, currency: 'KRW' },
+      en: { price: 75, currency: 'USD' },
+      ja: { price: 11000, currency: 'JPY' },
+      zh: { price: 485, currency: 'CNY' },
     };
 
     const { price, currency } = priceData[currentLang];
 
     // 화면에 표시될 가격 포맷팅
     const formatter = new Intl.NumberFormat(currentLang, {
-        style: 'currency',
-        currency: currency,
-        minimumFractionDigits: 0,
-        maximumFractionDigits: currency === 'JPY' ? 0 : 2
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: currency === 'JPY' ? 0 : 2,
     });
 
     previewPrice.value = formatter.format(price);

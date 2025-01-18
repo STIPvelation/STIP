@@ -24,31 +24,47 @@ try {
         throw new Exception('Invalid JSON data received');
     }
 
-    writeLog('Received order data: ' . json_encode($input));
+    writeLog('Received order data: ' . json_encode($data));
+    // price 값을 orderData에서 가져오기
+    $price = $data['price'] ?? 0;
+    $price_krw = $data['price_krw'] ?? 0;
+    $currency = $data['currency'] ?? 'KRW';
+    // $exchange_free = $data['free'] ?? 0;
+
+    if ($price <= 0) {
+        throw new Exception('Invalid price value');
+    }
 
     // 필수 입력값 검증
     $requiredFields = ['orderName', 'orderEmail', 'orderPhone', 'productCode', 'price', 'currency'];
     foreach ($requiredFields as $field) {
-        if (empty($input[$field])) {
+        if (empty($data[$field])) {  // $input을 $data로 수정
             throw new Exception("Missing required field: {$field}");
         }
     }
 
-    $price = $input['price'];
-    $currency = $input['currency'];
+    // $price = $data['price'] ?? 0;
+    // $price_krw = $data['price_krw'] ?? 0;
+
+    // if ($price <= 0) {
+    //     throw new Exception('Invalid price value');
+    // }
+
+    // $price = $input['price'];
+    // $currency = $data['currency'];
 
     // 결제 금액을 원화로 변환 (다시 한번 검증)
-    $priceInKRW = $price;
+    // $priceInKRW = $price;
 
-    if ($currency !== 'KRW') {
-        // 여기서는 원화 기준 가격을 저장
-        $priceInKRW = $price; // 이미 listing.html에서 변환된 금액
-    }
+    // if ($currency !== 'KRW') {
+    //     // 여기서는 원화 기준 가격을 저장
+    //     $priceInKRW = $price; // 이미 listing.html에서 변환된 금액
+    // }
 
-    // price_krw 처리
-    $price_krw = ($data['currency'] === 'KRW') ? 
-    str_replace(',', '', $data['price']) : 
-    str_replace(',', '', $data['price']); // 여기서 환율 적용된 금액이 이미 KRW로 전달됨
+    // // price_krw 처리
+    // $price_krw = ($data['currency'] === 'KRW') ? 
+    // str_replace(',', '', $data['price']) : 
+    // str_replace(',', '', $data['price']); // 여기서 환율 적용된 금액이 이미 KRW로 전달됨
 
     // 아래와 같은 체크 로직 필요:
     if (!isset($_ENV['NICE_MERCHANT_KEY']) || !isset($_ENV['NICE_MERCHANT_ID']) || !isset($_ENV['NICE_RETURN_URL'])) {
@@ -81,7 +97,7 @@ try {
     }
 
     // 거래번호 생성
-    $orderId = generateCode();
+    $orderId = $data['order_id']; //generateCode();
     
     // DB 연결
     // PDO 연결 (.env 파일의 변수 사용)
@@ -99,28 +115,33 @@ try {
     
     // 주문 정보 저장
     $sql = "INSERT INTO order_form (
-        order_id, order_name, order_email, order_phone, 
-        product_code, product_name, price, currency, price_krw,
-        payment_status, order_memo, privacy_consent
-    ) VALUES (
-        :order_id, :order_name, :order_email, :order_phone,
-        :product_code, :product_name, :price, :currency, :price_krw,
-        'pending', :order_memo, :privacy_consent
+    order_id, order_name, order_email, order_phone, 
+    product_code, product_name, price, base_price_krw, calc_price,
+    currency, exchange_rate,
+    payment_status, order_memo, privacy_consent, exchange_free
+) VALUES (
+    :order_id, :order_name, :order_email, :order_phone,
+    :product_code, :product_name, :price, :base_price_krw, :calc_price,
+    :currency, :exchange_rate,
+    'pending', :order_memo, :privacy_consent, :exchange_free
     )";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':order_id' => $orderId,
+        ':order_id' => $data['order_id'],
         ':order_name' => $data['orderName'],
         ':order_email' => $data['orderEmail'],
         ':order_phone' => $data['orderPhone'],
         ':product_code' => $data['productCode'],
         ':product_name' => $data['productName'],
-        ':price' => str_replace(',', '', $data['price']),
-        ':currency' => $data['currency'],
-        ':price_krw' => str_replace(',', '', $data['price_krw']),
+        ':price' => $data['price'],                       // 변환된 가격
+        ':base_price_krw' => $data['price_krw'],               // 원화 가격
+        ':calc_price' => $data['price'],                       // 변환된 가격
+        ':currency' => $data['currency'],                 // 통화
+        ':exchange_rate' => $data['exchange_rate'],
         ':order_memo' => $data['orderMemo'] ?? '',
-        ':privacy_consent' => $data['privacyConsent']
+        ':privacy_consent' => $data['privacyConsent'],
+        ':exchange_free' => $data['exchange_free'] ?? 0
     ]);
 
     
@@ -137,7 +158,7 @@ try {
     $paymentData = [
         'PayMethod' => 'CARD',
         'MID' => $MID,
-        'Moid' => $orderId,
+        'Moid' => $data['order_id'],
         'GoodsName' => $data['productName'],
         'Amt' => $price,              // 환율 적용된 금액
         'BuyerName' => $data['orderName'],

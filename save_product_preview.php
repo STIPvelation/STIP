@@ -32,6 +32,8 @@ try {
         throw new Exception('Invalid JSON input: ' . json_last_error_msg());
     }
 
+    writeLog('Received order data: ' . json_encode($input));
+
     // PDO 연결 (.env 파일의 변수 사용)
     $dsn = "mysql:host=".$_ENV['DB_HOST'].";dbname=".$_ENV['DB_NAME'].";charset=utf8mb4";
     $options = [
@@ -56,6 +58,8 @@ try {
             quantity, 
             price,
             currency,
+            exchange_rate,
+            converted_price,
             created_at
         ) VALUES (
             :product_code,
@@ -63,6 +67,8 @@ try {
             :quantity,
             :price,
             :currency,
+            :exchange_rate,
+            :converted_price,
             NOW()
         )";
 
@@ -73,7 +79,9 @@ try {
             ':product_name' => $input['productName'],
             ':quantity' => $input['quantity'],
             ':price' => $cleanPrice,
-            ':currency' => $input['currency']  // 통화 정보 추가
+            ':currency' => $input['currency'],
+            ':exchange_rate' => $input['exchangeRate'],
+            ':converted_price' => $input['convertedPrice']
         ]);
 
         if (!$result) {

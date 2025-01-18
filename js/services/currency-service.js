@@ -2,85 +2,25 @@
 /**
  * currency-service.js
  * 통화 관련 기능을 처리하는 서비스
- * 
+ *
  * 주요 기능:
  * - 환율 정보 관리
  * - 통화 포맷팅
  * - 통화 표시 업데이트
  */
 
-// class CurrencyService {
-//   constructor() {
-//     // 기본 환율 설정
-//     this.exchangeRates = {
-//       KRW: 1,
-//       USD: 0.00075,  // 1 KRW = 0.00075 USD
-//       JPY: 0.11,     // 1 KRW = 0.11 JPY
-//       CNY: 0.0049    // 1 KRW = 0.0049 CNY
-//     };
-//   }
-
-//   formatCurrency(amount, currency) {
-//     const formatter = new Intl.NumberFormat(undefined, {
-//       style: 'currency',
-//       currency: currency,
-//       minimumFractionDigits: currency === 'JPY' ? 0 : 2,
-//       maximumFractionDigits: currency === 'JPY' ? 0 : 2
-//     });
-//     return formatter.format(amount);
-//   }
-
-//   updateCurrencyDisplay() {
-//     const basePrice = 99000; // KRW
-//     const currencies = document.querySelectorAll('.currency');
-
-//     currencies.forEach(currency => {
-//       if (currency.classList.contains('krw')) {
-//         currency.textContent = this.formatCurrency(basePrice, 'KRW');
-//       } else if (currency.classList.contains('usd')) {
-//         currency.textContent = this.formatCurrency(basePrice * this.exchangeRates.USD, 'USD');
-//       } else if (currency.classList.contains('jpy')) {
-//         currency.textContent = this.formatCurrency(basePrice * this.exchangeRates.JPY, 'JPY');
-//       } else if (currency.classList.contains('cny')) {
-//         currency.textContent = this.formatCurrency(basePrice * this.exchangeRates.CNY, 'CNY');
-//       }
-//     });
-//   }
-
-//   async updateExchangeRates() {
-//     try {
-//       // TODO: 실제 환율 API 연동 필요
-//       const response = await fetch('90809c4e6dde58e47c6544bb');
-//       const data = await response.json();
-//       this.exchangeRates = data.rates;
-//       console.log('Exchange rates updated');
-//     } catch (error) {
-//       console.error('Failed to update exchange rates:', error);
-//     }
-//   }
-// }
-
-// // 전역으로 사용할 수 있도록 인스턴스 생성
-// const currencyService = new CurrencyService();
-
-// // 1시간마다 환율 업데이트
-// setInterval(() => {
-//   currencyService.updateExchangeRates();
-// }, 1000 * 60 * 60);
-
-
 class CurrencyService {
   constructor() {
     this.basePrice = 99000; // KRW 기준 가격
-    
+
     // 고정 환율을 exchangeRates로 이름 변경
     this.exchangeRates = {
       KRW: 1,
-      USD: 0.00075,  // 1 KRW = 0.00075 USD
-      JPY: 0.11,     // 1 KRW = 0.11 JPY
-      CNY: 0.0049    // 1 KRW = 0.0049 CNY
+      USD: 0.00075, // 1 KRW = 0.00075 USD
+      JPY: 0.11, // 1 KRW = 0.11 JPY
+      CNY: 0.0049, // 1 KRW = 0.0049 CNY
     };
-    
+
     // 언어별 통화 설정
     this.currencyConfig = {
       ko: {
@@ -89,8 +29,8 @@ class CurrencyService {
         format: {
           style: 'currency',
           currency: 'KRW',
-          maximumFractionDigits: 0
-        }
+          maximumFractionDigits: 0,
+        },
       },
       en: {
         currency: 'USD',
@@ -99,8 +39,8 @@ class CurrencyService {
           style: 'currency',
           currency: 'USD',
           minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }
+          maximumFractionDigits: 2,
+        },
       },
       ja: {
         currency: 'JPY',
@@ -108,8 +48,8 @@ class CurrencyService {
         format: {
           style: 'currency',
           currency: 'JPY',
-          maximumFractionDigits: 0
-        }
+          maximumFractionDigits: 0,
+        },
       },
       zh: {
         currency: 'CNY',
@@ -118,9 +58,9 @@ class CurrencyService {
           style: 'currency',
           currency: 'CNY',
           minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }
-      }
+          maximumFractionDigits: 2,
+        },
+      },
     };
 
     this.API_KEY = '90809c4e6dde58e47c6544bb'; // ExchangeRate-API 키
@@ -140,7 +80,7 @@ class CurrencyService {
       style: 'currency',
       currency: format.currency,
       minimumFractionDigits: format.currency === 'JPY' ? 0 : 2,
-      maximumFractionDigits: format.currency === 'JPY' ? 0 : 2
+      maximumFractionDigits: format.currency === 'JPY' ? 0 : 2,
     }).format(convertedAmount);
   }
 
@@ -156,14 +96,16 @@ class CurrencyService {
 
   async fetchExchangeRates() {
     try {
-      const response = await fetch(`${this.BASE_URL}${this.API_KEY}/latest/KRW`);
+      const response = await fetch(
+        `${this.BASE_URL}${this.API_KEY}/latest/KRW`
+      );
       const data = await response.json();
 
       if (data.result === 'success') {
         this.rates = {
           USD: data.conversion_rates.USD,
           JPY: data.conversion_rates.JPY,
-          CNY: data.conversion_rates.CNY
+          CNY: data.conversion_rates.CNY,
         };
         this.lastUpdate = new Date();
         return this.rates;
@@ -179,30 +121,34 @@ class CurrencyService {
     return {
       USD: 0.00075,
       JPY: 0.11,
-      CNY: 0.0049
+      CNY: 0.0049,
     };
   }
 
   formatCurrency(amount, lang) {
-      return new Promise((resolve, reject) => {
-          try {
-              const config = this.currencyConfig[lang] || this.currencyConfig.ko;
-              const rate = this.exchangeRates[config.currency];
-              const convertedAmount = amount * rate;
+    return new Promise((resolve, reject) => {
+      try {
+        const config = this.currencyConfig[lang] || this.currencyConfig.ko;
+        const rate = this.exchangeRates[config.currency];
+        const convertedAmount = amount * rate;
 
-              const formattedAmount = new Intl.NumberFormat(config.locale, config.format)
-                  .format(convertedAmount);
-              resolve(formattedAmount);
-          } catch (error) {
-              console.error('Currency formatting error:', error);
-              // 에러 발생 시 한국 원화로 표시
-              resolve(new Intl.NumberFormat('ko-KR', {
-                  style: 'currency',
-                  currency: 'KRW',
-                  maximumFractionDigits: 0
-              }).format(amount));
-          }
-      });
+        const formattedAmount = new Intl.NumberFormat(
+          config.locale,
+          config.format
+        ).format(convertedAmount);
+        resolve(formattedAmount);
+      } catch (error) {
+        console.error('Currency formatting error:', error);
+        // 에러 발생 시 한국 원화로 표시
+        resolve(
+          new Intl.NumberFormat('ko-KR', {
+            style: 'currency',
+            currency: 'KRW',
+            maximumFractionDigits: 0,
+          }).format(amount)
+        );
+      }
+    });
   }
 
   // formatCurrencyByLanguage 메서드 추가
@@ -211,13 +157,13 @@ class CurrencyService {
       ko: { currency: 'KRW', locale: 'ko-KR' },
       en: { currency: 'USD', locale: 'en-US' },
       ja: { currency: 'JPY', locale: 'ja-JP' },
-      zh: { currency: 'CNY', locale: 'zh-CN' }
+      zh: { currency: 'CNY', locale: 'zh-CN' },
     };
 
     const format = currencyFormats[lang] || currencyFormats.en;
     return new Intl.NumberFormat(format.locale, {
       style: 'currency',
-      currency: format.currency
+      currency: format.currency,
     }).format(amount);
   }
 
@@ -233,4 +179,3 @@ class CurrencyService {
 
 // 전역 객체로 내보내기
 window.currencyService = new CurrencyService();
-
