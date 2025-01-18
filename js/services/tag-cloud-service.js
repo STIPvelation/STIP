@@ -22,7 +22,10 @@ class TagCloudService {
     this.singleSwiperWrapper = null;
 
     // 설정값
-    this.radius = Math.max(170, Math.min(280, window.innerWidth - window.innerWidth * 0.95));
+    this.radius = Math.max(
+      170,
+      Math.min(280, window.innerWidth - window.innerWidth * 0.95)
+    );
 
     // 이미지 데이터
     this.tagCloudImages = this.initializeImageData();
@@ -43,69 +46,70 @@ class TagCloudService {
   // 이미지 데이터 초기화
   initializeImageData() {
     return {
-      "Patent":[
-        this.wrappingImgElement("Patent/logo-01.png"),
-        this.wrappingImgElement("Patent/logo-02.png"),
-        this.wrappingImgElement("Patent/logo-03.png"),
+      Patent: [
+        this.wrappingImgElement('Patent/logo-01.png'),
+        this.wrappingImgElement('Patent/logo-02.png'),
+        this.wrappingImgElement('Patent/logo-03.png'),
+        this.wrappingImgElement('Patent/logo-04.png'),
       ],
-      "Movie Drama Comics": [
-        this.wrappingImgElement("Movie/Group 5005.png"),
-        this.wrappingImgElement("Movie/Group.png"),
-        this.wrappingImgElement("Movie/Group-1.png"),
-        this.wrappingImgElement("Movie/Group-2.png"),
-        this.wrappingImgElement("Movie/Group-3.png"),
-        this.wrappingImgElement("Movie/Group-4.png")
+      'Movie Drama Comics': [
+        this.wrappingImgElement('Movie/Group 5005.png'),
+        this.wrappingImgElement('Movie/Group.png'),
+        this.wrappingImgElement('Movie/Group-1.png'),
+        this.wrappingImgElement('Movie/Group-2.png'),
+        this.wrappingImgElement('Movie/Group-3.png'),
+        this.wrappingImgElement('Movie/Group-4.png'),
       ],
-      "Music": [
-        this.wrappingImgElement("Music/Clip path group.png"),
-        this.wrappingImgElement("Music/Group.png"),
-        this.wrappingImgElement("Music/Group-1.png"),
-        this.wrappingImgElement("Music/Group-2.png"),
-        this.wrappingImgElement("Music/Group-3.png"),
-        this.wrappingImgElement("Music/Group-4.png"),
-        this.wrappingImgElement("Music/Group-5.png"),
-        this.wrappingImgElement("Music/Group-6.png"),
-        this.wrappingImgElement("Music/Group-7.png"),
-        this.wrappingImgElement("Music/Group-8.png")
+      Music: [
+        this.wrappingImgElement('Music/Clip path group.png'),
+        this.wrappingImgElement('Music/Group.png'),
+        this.wrappingImgElement('Music/Group-1.png'),
+        this.wrappingImgElement('Music/Group-2.png'),
+        this.wrappingImgElement('Music/Group-3.png'),
+        this.wrappingImgElement('Music/Group-4.png'),
+        this.wrappingImgElement('Music/Group-5.png'),
+        this.wrappingImgElement('Music/Group-6.png'),
+        this.wrappingImgElement('Music/Group-7.png'),
+        this.wrappingImgElement('Music/Group-8.png'),
       ],
-      "Dance": [
-        this.wrappingImgElement("Dance/Group 5006.png"),
-        this.wrappingImgElement("Dance/Group 5012.png"),
-        this.wrappingImgElement("Dance/Group-1.png"),
-        this.wrappingImgElement("Dance/Group-2.png"),
-        this.wrappingImgElement("Dance/Group-3.png"),
-        this.wrappingImgElement("Dance/Group-4.png"),
-        this.wrappingImgElement("Dance/Group-5.png"),
-        this.wrappingImgElement("Dance/Group-6.png")
+      Dance: [
+        this.wrappingImgElement('Dance/Group 5006.png'),
+        this.wrappingImgElement('Dance/Group 5012.png'),
+        this.wrappingImgElement('Dance/Group-1.png'),
+        this.wrappingImgElement('Dance/Group-2.png'),
+        this.wrappingImgElement('Dance/Group-3.png'),
+        this.wrappingImgElement('Dance/Group-4.png'),
+        this.wrappingImgElement('Dance/Group-5.png'),
+        this.wrappingImgElement('Dance/Group-6.png'),
       ],
-      "Franchise": [
-        this.wrappingImgElement("Franchise/Group.png"),
-        this.wrappingImgElement("Franchise/Group-1.png"),
-        this.wrappingImgElement("Franchise/Group-2.png"),
-        this.wrappingImgElement("Franchise/Group-3.png"),
-        this.wrappingImgElement("Franchise/Group-4.png"),
-        this.wrappingImgElement("Franchise/Group-5.png"),
-        this.wrappingImgElement("Franchise/Group-6.png"),
-        this.wrappingImgElement("Franchise/Group-7.png")
+      Franchise: [
+        this.wrappingImgElement('Franchise/Group.png'),
+        this.wrappingImgElement('Franchise/Group-1.png'),
+        this.wrappingImgElement('Franchise/Group-2.png'),
+        this.wrappingImgElement('Franchise/Group-3.png'),
+        this.wrappingImgElement('Franchise/Group-4.png'),
+        this.wrappingImgElement('Franchise/Group-5.png'),
+        this.wrappingImgElement('Franchise/Group-6.png'),
+        this.wrappingImgElement('Franchise/Group-7.png'),
       ],
-      "Trademark": [
-        this.wrappingImgElement("Trademark/Group 5007.png"),
-        this.wrappingImgElement("Trademark/Group.png"),
-        this.wrappingImgElement("Trademark/Group-1.png"),
-        this.wrappingImgElement("Trademark/Group-2.png"),
-        this.wrappingImgElement("Trademark/Group-3.png")
+      Trademark: [
+        this.wrappingImgElement('Trademark/Group 5007.png'),
+        this.wrappingImgElement('Trademark/Group.png'),
+        this.wrappingImgElement('Trademark/Group-1.png'),
+        this.wrappingImgElement('Trademark/Group-2.png'),
+        this.wrappingImgElement('Trademark/Group-3.png'),
       ],
-      "Character": [
-        this.wrappingImgElement("Character/Group 5008.png"),
-        this.wrappingImgElement("Character/Group 5009.png"),
-        this.wrappingImgElement("Character/Group.png"),
-        this.wrappingImgElement("Character/Group-1.png"),
-        this.wrappingImgElement("Character/Group-2.png"),
-        this.wrappingImgElement("Character/Group-3.png"),
-        this.wrappingImgElement("Character/Group-4.png"),
-        this.wrappingImgElement("Character/Group-5.png"),
-        this.wrappingImgElement("Character/Group-6.png")
-      ]
+      Character: [
+        this.wrappingImgElement('Character/Group 5008.png'),
+        this.wrappingImgElement('Character/Group 5009.png'),
+        this.wrappingImgElement('Character/Group.png'),
+        this.wrappingImgElement('Character/Group-1.png'),
+        this.wrappingImgElement('Character/Group-2.png'),
+        this.wrappingImgElement('Character/Group-3.png'),
+        this.wrappingImgElement('Character/Group-4.png'),
+        this.wrappingImgElement('Character/Group-5.png'),
+        this.wrappingImgElement('Character/Group-6.png'),
+      ],
     };
   }
 
@@ -113,10 +117,10 @@ class TagCloudService {
   init() {
     try {
       // DOM 요소 초기화
-      this.cloudContainer = document.querySelector(".Sphere");
+      this.cloudContainer = document.querySelector('.Sphere');
       this.circleWrapper = document.querySelector('.circle-wrapper');
-      this.swiperWrapper = document.getElementById("swiperWrapper");
-      this.singleSwiperWrapper = document.getElementById("singleSwiperWrapper");
+      this.swiperWrapper = document.getElementById('swiperWrapper');
+      this.singleSwiperWrapper = document.getElementById('singleSwiperWrapper');
 
       if (!this.cloudContainer) {
         console.warn('Cloud container not found');
@@ -124,7 +128,7 @@ class TagCloudService {
       }
 
       this.setupEventListeners();
-      
+
       if (typeof TagCloud === 'undefined') {
         console.warn('TagCloud library not loaded');
         return;
@@ -132,7 +136,6 @@ class TagCloudService {
 
       this.initializeTagCloud();
       this.initialized = true;
-      
     } catch (error) {
       console.error('Initialization error:', error);
     }
@@ -152,18 +155,21 @@ class TagCloudService {
       }
 
       // 새로운 TagCloud 인스턴스 생성
-      this.tagCloud = TagCloud(this.cloudContainer, this.tagCloudImages['Patent'], {
-        radius: this.radius,
-        maxSpeed: "normal",
-        initSpeed: "normal",
-        direction: 205,
-        keep: true,
-        useHTML: true
-      });
-      
+      this.tagCloud = TagCloud(
+        this.cloudContainer,
+        this.tagCloudImages['Patent'],
+        {
+          radius: this.radius,
+          maxSpeed: 'normal',
+          initSpeed: 'normal',
+          direction: 205,
+          keep: true,
+          useHTML: true,
+        }
+      );
+
       // this.tagCloud.pause(); // 초기에는 일시정지 상태
       console.log('TagCloud initialized successfully');
-      
     } catch (error) {
       console.error('TagCloud initialization error:', error);
     }
@@ -213,14 +219,15 @@ class TagCloudService {
       this.initializeTagCloud();
     }
 
-    if (this.swiperWrapper) this.swiperWrapper.style.display = "none";
-    if (this.singleSwiperWrapper) this.singleSwiperWrapper.style.display = "none";
-    if (this.circleWrapper) this.circleWrapper.style.display = "flex";
+    if (this.swiperWrapper) this.swiperWrapper.style.display = 'none';
+    if (this.singleSwiperWrapper)
+      this.singleSwiperWrapper.style.display = 'none';
+    if (this.circleWrapper) this.circleWrapper.style.display = 'flex';
 
     const squareBox = document.querySelector('.Sphere');
     if (window.innerWidth < 768 && squareBox) {
       const padding = 64;
-      frameBox.style.height = squareBox.clientHeight + padding + "px";
+      frameBox.style.height = squareBox.clientHeight + padding + 'px';
     }
 
     if (this.tagCloud && this.tagCloudImages[category]) {
@@ -236,7 +243,7 @@ class TagCloudService {
       const squareBox = document.querySelector('.Sphere');
       if (frameBox && squareBox) {
         const padding = 64;
-        frameBox.style.height = squareBox.clientHeight + padding + "px";
+        frameBox.style.height = squareBox.clientHeight + padding + 'px';
       }
     }
   }
