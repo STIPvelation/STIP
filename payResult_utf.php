@@ -7,14 +7,21 @@ $dotenv->load();
 
 // 1. 로깅 함수 추가
 // 로깅 함수
-function writeLog($message, $type = 'info') {
+// 1. 에러 로깅 강화
+function writeLog($message, $type = 'info', $additional = array()) {
     $logDir = __DIR__ . '/logs';
     if (!is_dir($logDir)) {
         mkdir($logDir, 0777, true);
     }
+    
+    $logData = array_merge([
+        'timestamp' => date('Y-m-d H:i:s'),
+        'type' => $type,
+        'message' => $message
+    ], $additional);
+    
     $logFile = $logDir . '/payment_' . date('Y-m-d') . '.log';
-    $logMessage = date('Y-m-d H:i:s') . " [{$type}] " . $message . PHP_EOL;
-    error_log($logMessage, 3, $logFile);
+    error_log(json_encode($logData) . PHP_EOL, 3, $logFile);
 }
 
 // DB 연결 함수
@@ -66,6 +73,14 @@ try {
     // 설정 로드
     $merchantKey = $_ENV['NICE_MERCHANT_KEY'];
 
+    // Signature 검증 강화 코드 추가
+    $authComparisonSignature = bin2hex(hash('sha256', $authToken . $mid . $amt . $merchantKey, true));
+    if ($authSignature !== $authComparisonSignature) {
+        writeLog("Signature verification failed", 'error');
+        throw new Exception("Invalid signature");
+    }
+
+
     // 로깅
     writeLog("Payment Result - OrderID: {$moid}, Amount: {$amt}, Result: {$authResultCode}");
 
@@ -89,8 +104,29 @@ try {
                 'Amt' => $amt,
                 'EdiDate' => $ediDate,
                 'SignData' => $signData,
-                'CharSet' => 'utf-8'
+                'CharSet' => 'utf-8',
+                'EdiType' => 'JSON'  // 응답 형식 지정 추가
             ];
+
+            // === 위치 4: jsonRespDump 함수 선언 전에 결과 코드 처리 함수 추가 ===
+            function handleResultCode($resultCode) {
+                $successCodes = [
+                    'CARD' => '3001',
+                    'BANK' => '4000',
+                    'VBANK' => '4100',
+                    'CELLPHONE' => 'A000'
+                ];
+                
+                foreach ($successCodes as $method => $code) {
+                    if ($resultCode === $code) {
+                        writeLog("Payment success: {$method}", 'info');
+                        return true;
+                    }
+                }
+                
+                writeLog("Payment failed: {$resultCode}", 'error');
+                return false;
+            }
             
             $response = reqPost($data, $nextAppURL);
             $responseData = json_decode($response, true);
@@ -193,6 +229,9 @@ function jsonRespDump($resp) {
 				echo '승인 응답 Signature : '. $value. '</br>';
 				echo '승인 생성 Signature : '. $paySignature. '</br>';
 			}
+        }
+        if ($key == "ResultCode") {
+            handleResultCode($value);
         }
         writeLog("$key: $value", 'info');
     }

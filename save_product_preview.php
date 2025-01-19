@@ -27,12 +27,12 @@ function cleanPrice($price) {
 // 5. 메인 로직
 try {
     // 입력 데이터 받기
-    $input = json_decode(file_get_contents('php://input'), true);
+    $data = json_decode(file_get_contents('php://input'), true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         throw new Exception('Invalid JSON input: ' . json_last_error_msg());
     }
 
-    writeLog('Received order data: ' . json_encode($input));
+    writeLog('Received order data: ' . json_encode($data));
 
     // PDO 연결 (.env 파일의 변수 사용)
     $dsn = "mysql:host=".$_ENV['DB_HOST'].";dbname=".$_ENV['DB_NAME'].";charset=utf8mb4";
@@ -49,7 +49,21 @@ try {
 
     try {
         // 가격 정리
-        $cleanPrice = cleanPrice($input['price']);
+        // $cleanPrice = cleanPrice($input['price']);
+        // price 관련 처리 부분 수정
+        $price = str_replace(',', '', $data['price']);
+        $currency = $data['currency'];
+
+        // 금액 유효성 검증 강화
+        if (!is_numeric($price) || $price <= 0) {
+            throw new Exception('Invalid price value');
+        }
+
+        // 필수 값 검증
+        if (!isset($data['quantity']) || empty($data['quantity'])) {
+            throw new Exception('Quantity is required');
+        }
+
 
         // SQL 쿼리 준비 및 실행
         $sql = "INSERT INTO product_preview (
@@ -58,8 +72,6 @@ try {
             quantity, 
             price,
             currency,
-            exchange_rate,
-            converted_price,
             created_at
         ) VALUES (
             :product_code,
@@ -67,21 +79,17 @@ try {
             :quantity,
             :price,
             :currency,
-            :exchange_rate,
-            :converted_price,
             NOW()
         )";
 
         $stmt = $pdo->prepare($sql);
         
         $result = $stmt->execute([
-            ':product_code' => $input['productCode'],
-            ':product_name' => $input['productName'],
-            ':quantity' => $input['quantity'],
-            ':price' => $cleanPrice,
-            ':currency' => $input['currency'],
-            ':exchange_rate' => $input['exchangeRate'],
-            ':converted_price' => $input['convertedPrice']
+            ':product_code' => $data['productCode'],
+            ':product_name' => $data['productName'],
+            ':quantity' => $data['quantity'],
+            ':price' => $price, // $cleanPrice,
+            ':currency' => $currency //$input['currency'],
         ]);
 
         if (!$result) {
@@ -99,8 +107,8 @@ try {
             'message' => 'Data saved successfully',
             'data' => [
                 'id' => $insertId,
-                'productCode' => $input['productCode'],
-                'currency' => $input['currency']  // 응답에 통화 정보 포함
+                'productCode' => $data['productCode'],
+                'currency' => $data['currency']  // 응답에 통화 정보 포함
             ]
         ], JSON_UNESCAPED_UNICODE);
 
@@ -111,22 +119,24 @@ try {
 
 } catch (Exception $e) {
     writeLog("Error: " . $e->getMessage(), 'error');
+
+    if ($e instanceof PDOException) {
+        writeLog('Database error: ' . $e->getMessage(), 'error');
+    }
     
     $response = [
         'success' => false,
         'message' => $e->getMessage()
     ];
 
-    if (DEBUG_MODE) {
-        $response['debug'] = [
-            'error_type' => get_class($e),
-            'error_trace' => $e->getTraceAsString(),
-            'error_file' => $e->getFile(),
-            'error_line' => $e->getLine()
-        ];
-    }
+    // writeLog('Database error: ' . $e->getMessage(), 'error');
+    // throw new Exception('데이터 저장 중 오류가 발생했습니다.');
 
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    // echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    echo json_encode([
+        'success' => false,
+        'message' => DEBUG_MODE ? $e->getMessage() : '데이터 저장 중 오류가 발생했습니다.'
+    ], JSON_UNESCAPED_UNICODE);
 }
 
 if (DEBUG_MODE) {

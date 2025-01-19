@@ -10,30 +10,14 @@ define('MAXIMUM_PAYMENT_AMOUNT', 1000000000);
 
 // 1. 로깅 함수
 // 로깅 함수
-// 1. 에러 로깅 강화
-function writeLog($message, $type = 'info', $additional = array()) {
+function writeLog($message, $type = 'info') {
     $logDir = __DIR__ . '/logs';
     if (!is_dir($logDir)) {
         mkdir($logDir, 0777, true);
     }
-    
-    $logData = array_merge([
-        'timestamp' => date('Y-m-d H:i:s'),
-        'type' => $type,
-        'message' => $message
-    ], $additional);
-    
     $logFile = $logDir . '/payment_' . date('Y-m-d') . '.log';
-    error_log(json_encode($logData) . PHP_EOL, 3, $logFile);
-}
-
-
-function validatePaymentAmount($amount) {
-    $minAmount = 1000;
-    $maxAmount = 1000000000;
-    return is_numeric($amount) && 
-           $amount >= $minAmount && 
-           $amount <= $maxAmount;
+    $logMessage = date('Y-m-d H:i:s') . " [{$type}] " . $message . PHP_EOL;
+    error_log($logMessage, 3, $logFile);
 }
 
 /*
@@ -107,22 +91,11 @@ try {
 				throw new Exception("유효하지 않은 결제 금액입니다. (허용 범위: " . number_format(MINIMUM_PAYMENT_AMOUNT) . "원 ~ " . number_format(MAXIMUM_PAYMENT_AMOUNT) . "원)");
 		}
 		
-    $returnURL = $_ENV['NICE_RETURN_URL'] ?? "http://localhost:8080/payResult_utf.php";
     $buyerName = htmlspecialchars($_POST['orderName']);
     $buyerTel = htmlspecialchars($_POST['orderPhone']);
     $buyerEmail = htmlspecialchars($_POST['orderEmail']);
     $moid = htmlspecialchars($_POST['order_id']);
-
-		$payMethod = isset($_POST['PayMethod']) ? $_POST['PayMethod'] : 'CARD';
-		$goodsCl = isset($_POST['GoodsCl']) ? $_POST['GoodsCl'] : '0';
-		$transType = isset($_POST['TransType']) ? $_POST['TransType'] : '0';
-
-		// 3. 모바일 결제를 위한 추가 파라미터
-		if (isset($_POST['deviceType']) && $_POST['deviceType'] === 'mobile') {
-				// WapUrl과 IspCancelUrl 추가 (웹뷰 모바일 결제 필수)
-				$wapUrl = $_ENV['NICE_WAP_URL'] ?? "http://localhost:8080/wapRequest.php";
-				$ispCancelUrl = $_ENV['NICE_ISP_CANCEL_URL'] ?? "http://localhost:8080/ispCancel.php";
-		}
+    $returnURL = $_ENV['NICE_RETURN_URL'] ?? "http://localhost:8080/payResult_utf.php";
 
 		// 금액 유효성 검증
     if (!is_numeric($price) || $price <= 0) {
@@ -315,18 +288,13 @@ $hashString = bin2hex(hash('sha256', $ediDate.$MID.$price.$merchantKey, true));
 		<tr>
 			<th>가상계좌입금만료일(YYYYMMDD)</th>
 			<td><input type="text" name="VbankExpDate" value=""></td>
-		</tr>
+		</tr>		
 					
 		<!-- 옵션 -->	 
-		<input type="hidden" name="GoodsCl" value="0"/>						<!-- 상품구분(실물(1),컨텐츠(0)) -->
+		<input type="hidden" name="GoodsCl" value="1"/>						<!-- 상품구분(실물(1),컨텐츠(0)) -->
 		<input type="hidden" name="TransType" value="0"/>					<!-- 일반(0)/에스크로(1) --> 
 		<input type="hidden" name="CharSet" value="utf-8"/>				<!-- 응답 파라미터 인코딩 방식 -->
 		<input type="hidden" name="ReqReserved" value=""/>					<!-- 상점 예약필드 -->
-		
-		<?php if (isset($wapUrl)): ?>
-		<input type="hidden" name="WapUrl" value="<?php echo($wapUrl)?>"/>
-		<input type="hidden" name="IspCancelUrl" value="<?php echo($ispCancelUrl)?>"/>
-		<?php endif; ?>
 					
 		<!-- 변경 불가능 -->
 		<input type="hidden" name="EdiDate" value="<?php echo($ediDate)?>"/>			<!-- 전문 생성일시 -->

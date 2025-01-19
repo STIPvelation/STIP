@@ -9,7 +9,7 @@ $dotenv->load();
 
 // 2. 로그 설정
 function writeLog($message, $type = 'info') {
-    $logFile = __DIR__ . '/logs/payment_' . date('Y-m-d') . '.log';
+    $logFile = __DIR__ . '/logs/processOrder_' . date('Y-m-d') . '.log';
     $logMessage = date('Y-m-d H:i:s') . " [{$type}] " . $message . PHP_EOL;
     error_log($logMessage, 3, $logFile);
 }
@@ -181,7 +181,7 @@ try {
     // 응답 전송
     echo json_encode([
         'success' => true,
-        'message' => '주문이 성공적으로 처리되었습니다.',
+        'message' => '데이터가 성공적으로 저장되었습니다.',
         'order_id' => $orderId,
         'paymentData' => $paymentData
     ], JSON_UNESCAPED_UNICODE);

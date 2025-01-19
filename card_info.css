@@ -1,0 +1,116 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.payment-form {
+  width: 400px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-form h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+.payment-form label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.payment-form input,
+.payment-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.payment-form input::placeholder {
+  color: #aaa;
+}
+
+.card-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-input img {
+  width: 30px;
+  height: auto;
+  margin-left: 5px;
+}
+
+.card-details {
+  display: flex;
+  gap: 10px;
+}
+
+.agreement {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.agreement p {
+  margin-bottom: 10px;
+}
+
+.agreement label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.subscribe-btn,
+.linkless-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.subscribe-btn {
+  background-color: #28a745;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.linkless-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 20px;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

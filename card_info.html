@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제 세부사항 입력</title>
+    <link rel="stylesheet" href="card_info.css" />
+  </head>
+  <body>
+    <div class="payment-form">
+      <h2>결제 세부사항 입력</h2>
+      <form>
+        <div class="card-info">
+          <label for="card-number">카드 정보</label>
+          <div class="card-input">
+            <input
+              type="text"
+              id="card-number"
+              placeholder="1234 1234 1234 1234"
+              maxlength="19"
+            />
+            <img src="visa.png" alt="Visa" />
+            <img src="mastercard.png" alt="MasterCard" />
+            <img src="amex.png" alt="Amex" />
+          </div>
+          <div class="card-details">
+            <input
+              type="text"
+              id="card-expiry"
+              placeholder="MM/YY"
+              maxlength="5"
+            />
+            <input
+              type="text"
+              id="card-cvc"
+              placeholder="보안 코드(CVC)"
+              maxlength="3"
+            />
+          </div>
+        </div>
+
+        <div class="card-owner">
+          <label for="card-owner">카드 소유자 이름</label>
+          <input type="text" id="card-owner" placeholder="성명" />
+        </div>
+
+        <div class="billing-address">
+          <label for="country">청구 주소</label>
+          <select id="country">
+            <option value="대한민국">대한민국</option>
+          </select>
+          <select id="city">
+            <option value="">도시</option>
+          </select>
+          <input type="text" id="district" placeholder="시" />
+          <input type="text" id="town" placeholder="읍/면/동" />
+          <input type="text" id="address1" placeholder="주소란 1" />
+          <input type="text" id="address2" placeholder="주소란 2" />
+          <input type="text" id="zipcode" placeholder="우편번호" />
+        </div>
+
+        <!--<div class="agreement">
+                <p>계속하면 결제 방식을 Link에 저장하는 데 동의하는 것입니다.</p>
+                <label><input type="checkbox"> 비즈니스 목적으로 구매합니다</label>
+                <label><input type="checkbox"> 결제를 취소할 때까지 상기 안내된 기간마다 해당 금액이 청구됩니다.</label>
+            </div>-->
+
+        <button type="submit" class="subscribe-btn">결제하기</button>
+        <button type="button" class="linkless-btn">Link 없이 결제</button>
+      </form>
+      <footer>
+        <p>Powered by stipvelation.com</p>
+        <a href="#">약관</a>
+        |
+        <a href="#">개인정보 보호</a>
+      </footer>
+    </div>
+  </body>
+</html>
