@@ -108,9 +108,9 @@ try {
 		}
 		
     $returnURL = $_ENV['NICE_RETURN_URL'] ?? "http://localhost:8080/payResult_utf.php";
-    $buyerName = htmlspecialchars($_POST['orderName']);
-    $buyerTel = htmlspecialchars($_POST['orderPhone']);
-    $buyerEmail = htmlspecialchars($_POST['orderEmail']);
+    // $buyerName = htmlspecialchars($_POST['orderName']);
+    // $buyerTel = htmlspecialchars($_POST['orderPhone']);
+    // $buyerEmail = htmlspecialchars($_POST['orderEmail']);
     $moid = htmlspecialchars($_POST['order_id']);
 
 		$payMethod = isset($_POST['PayMethod']) ? $_POST['PayMethod'] : 'CARD';
@@ -134,7 +134,8 @@ try {
     $hashString = bin2hex(hash('sha256', $ediDate.$MID.$price.$merchantKey, true));
 
     // 결제 요청 로깅
-    writeLog("Payment Request - OrderID: {$moid}, Amount: {$price}, Buyer: {$buyerName}");
+    writeLog("Payment Request - OrderID: {$moid}, Amount: {$price}");
+    // writeLog("Payment Request - OrderID: {$moid}, Amount: {$price}, Buyer: {$buyerName}");
 
     // DB에 결제 요청 정보 저장
     $pdo = new PDO(
@@ -144,13 +145,13 @@ try {
     );
     
     $sql = "INSERT INTO payment_requests (
-        order_id, amount, buyer_name, buyer_email, buyer_tel,
+        order_id, amount,
         product_name, merchant_id, status, request_date
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, 'REQUESTED', NOW())";
+    ) VALUES (?, ?, ?, ?, 'REQUESTED', NOW())";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        $moid, $price, $buyerName, $buyerEmail, $buyerTel,
+        $moid, $price,
         $goodsName, $MID
     ]);
 
@@ -296,18 +297,18 @@ $hashString = bin2hex(hash('sha256', $ediDate.$MID.$price.$merchantKey, true));
 			<th>상품 주문번호</th>
 			<td><input type="text" name="Moid" value="<?php echo ($moid) ?>"></td>
 		</tr> 
-		<tr>
+		<!-- <tr>
 			<th>구매자명</th>
 			<td><input type="text" name="BuyerName" value="<?php echo ($buyerName) ?>"></td>
-		</tr>
-		<tr>
+		</tr> -->
+		<!-- <tr>
 			<th>구매자명 이메일</th>
 			<td><input type="text" name="BuyerEmail" value="<?php echo ($buyerEmail) ?>"></td>
-		</tr>		
-		<tr>
+		</tr>		 -->
+		<!-- <tr>
 			<th>구매자 연락처</th>
 			<td><input type="text" name="BuyerTel" value="<?php echo ($buyerTel) ?>"></td>
-		</tr>	 
+		</tr>	  -->
 		<tr>
 			<th>인증완료 결과처리 URL<!-- (모바일 결제창 전용)PC 결제창 사용시 필요 없음 --></th>
 			<td><input type="text" name="ReturnURL" value="<?php echo ($returnURL) ?>"></td>

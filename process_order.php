@@ -36,7 +36,8 @@ try {
     }
 
     // 필수 입력값 검증
-    $requiredFields = ['orderName', 'orderEmail', 'orderPhone', 'productCode', 'price', 'currency'];
+    $requiredFields = ['productCode', 'price', 'currency'];
+    // $requiredFields = ['orderName', 'orderEmail', 'orderPhone', 'productCode', 'price', 'currency'];
     foreach ($requiredFields as $field) {
         if (empty($data[$field])) {  // $input을 $data로 수정
             throw new Exception("Missing required field: {$field}");
@@ -115,23 +116,23 @@ try {
     
     // 주문 정보 저장
     $sql = "INSERT INTO order_form (
-    order_id, order_name, order_email, order_phone, 
+    order_id,
     product_code, product_name, price, base_price_krw, calc_price,
     currency, exchange_rate,
-    payment_status, order_memo, privacy_consent, exchange_free
+    payment_status, privacy_consent, exchange_free
 ) VALUES (
-    :order_id, :order_name, :order_email, :order_phone,
+    :order_id,
     :product_code, :product_name, :price, :base_price_krw, :calc_price,
     :currency, :exchange_rate,
-    'pending', :order_memo, :privacy_consent, :exchange_free
+    'pending', :privacy_consent, :exchange_free
     )";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':order_id' => $data['order_id'],
-        ':order_name' => $data['orderName'],
-        ':order_email' => $data['orderEmail'],
-        ':order_phone' => $data['orderPhone'],
+        // ':order_name' => $data['orderName'],
+        // ':order_email' => $data['orderEmail'],
+        // ':order_phone' => $data['orderPhone'],
         ':product_code' => $data['productCode'],
         ':product_name' => $data['productName'],
         ':price' => $data['price'],                       // 변환된 가격
@@ -139,7 +140,7 @@ try {
         ':calc_price' => $data['price'],                       // 변환된 가격
         ':currency' => $data['currency'],                 // 통화
         ':exchange_rate' => $data['exchange_rate'],
-        ':order_memo' => $data['orderMemo'] ?? '',
+        // ':order_memo' => $data['orderMemo'] ?? '',
         ':privacy_consent' => $data['privacyConsent'],
         ':exchange_free' => $data['exchange_free'] ?? 0
     ]);
@@ -161,9 +162,9 @@ try {
         'Moid' => $data['order_id'],
         'GoodsName' => $data['productName'],
         'Amt' => $price,              // 환율 적용된 금액
-        'BuyerName' => $data['orderName'],
-        'BuyerEmail' => $data['orderEmail'],
-        'BuyerTel' => $data['orderPhone'],
+        // 'BuyerName' => $data['orderName'],
+        // 'BuyerEmail' => $data['orderEmail'],
+        // 'BuyerTel' => $data['orderPhone'],
         'EdiDate' => $ediDate,
         'SignData' => $hashString,
         'ReturnURL' => $_ENV['NICE_RETURN_URL'],
