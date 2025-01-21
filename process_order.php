@@ -73,9 +73,9 @@ try {
     }
 
     // 데이터 유효성 검사 필요:
-    if (empty($data['orderName']) || empty($data['orderEmail']) || empty($data['orderPhone'])) {
-        throw new Exception('필수 입력값이 누락되었습니다.');
-    }
+    // if (empty($data['orderName']) || empty($data['orderEmail']) || empty($data['orderPhone'])) {
+    //     throw new Exception('필수 입력값이 누락되었습니다.');
+    // }
 
     // 1. SQL Injection 방지를 위한 price 값 검증 필요
     if (!is_numeric(str_replace(',', '', $data['price']))) {
@@ -116,33 +116,21 @@ try {
     
     // 주문 정보 저장
     $sql = "INSERT INTO order_form (
-    order_id,
-    product_code, product_name, price, base_price_krw, calc_price,
-    currency, exchange_rate,
-    payment_status, privacy_consent, exchange_free
+    order_id, product_code, product_name, price,
+    currency, payment_status, privacy_consent
 ) VALUES (
-    :order_id,
-    :product_code, :product_name, :price, :base_price_krw, :calc_price,
-    :currency, :exchange_rate,
-    'pending', :privacy_consent, :exchange_free
+    :order_id, :product_code, :product_name, :price,
+    :currency, 'pending', :privacy_consent
     )";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':order_id' => $data['order_id'],
-        // ':order_name' => $data['orderName'],
-        // ':order_email' => $data['orderEmail'],
-        // ':order_phone' => $data['orderPhone'],
         ':product_code' => $data['productCode'],
         ':product_name' => $data['productName'],
         ':price' => $data['price'],                       // 변환된 가격
-        ':base_price_krw' => $data['price_krw'],               // 원화 가격
-        ':calc_price' => $data['price'],                       // 변환된 가격
         ':currency' => $data['currency'],                 // 통화
-        ':exchange_rate' => $data['exchange_rate'],
-        // ':order_memo' => $data['orderMemo'] ?? '',
-        ':privacy_consent' => $data['privacyConsent'],
-        ':exchange_free' => $data['exchange_free'] ?? 0
+        ':privacy_consent' => $data['privacyConsent']
     ]);
 
     
@@ -152,7 +140,7 @@ try {
     $MID = $_ENV['NICE_MERCHANT_ID'];
     // $price = (int)str_replace(',', '', $data['price']);
     // $price = $input['price'];
-    $price = str_replace(',', '', $data['price_krw']); // KRW 가격으로 설정
+    $price = str_replace(',', '', $data['price']); // KRW 가격으로 설정
     $hashString = bin2hex(hash('sha256', $ediDate . $MID . $price . $merchantKey, true));
     
     // 결제 파라미터 설정
@@ -162,9 +150,6 @@ try {
         'Moid' => $data['order_id'],
         'GoodsName' => $data['productName'],
         'Amt' => $price,              // 환율 적용된 금액
-        // 'BuyerName' => $data['orderName'],
-        // 'BuyerEmail' => $data['orderEmail'],
-        // 'BuyerTel' => $data['orderPhone'],
         'EdiDate' => $ediDate,
         'SignData' => $hashString,
         'ReturnURL' => $_ENV['NICE_RETURN_URL'],

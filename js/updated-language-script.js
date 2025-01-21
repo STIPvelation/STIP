@@ -273,10 +273,80 @@ function updateFormLanguage(form, lang) {
     });
 
   // orderForm
-  const product_name = form.querySelector('.product-name');
-  const product_qty = form.querySelector('.product-quantity');
-  product_name.textContent = translations[lang].listing.orderForm.product_name;
-  product_qty.textContent = translations[lang].listing.orderForm.product_qty;
+  // const product_name = form.querySelector('.product-name');
+  // const product_qty = form.querySelector('.product-quantity');
+  // product_name.textContent = translations[lang].listing.orderForm.product_name;
+  // product_qty.textContent = translations[lang].listing.orderForm.product_qty;
+  // orderForm 상품 정보 업데이트
+  const productDetails = form.querySelector('.product-details');
+  if (productDetails) {
+    // 상품 데이터 정의
+    const productData = {
+      ko: {
+        code: '0001',
+        name: '특허뉴스PDF',
+        quantity: '1개',
+      },
+      en: {
+        code: '0001',
+        name: 'Patent News PDF',
+        quantity: '1 item',
+      },
+      ja: {
+        code: '0001',
+        name: '特許ニュースPDF',
+        quantity: '1点',
+      },
+      zh: {
+        code: '0001',
+        name: '专利新闻PDF',
+        quantity: '1个',
+      },
+    };
+
+    // 상품코드 업데이트
+    const productCodeElement = productDetails.querySelector('.product-code');
+    if (productCodeElement) {
+      const label = productCodeElement.querySelector('span');
+      const codeText = productCodeElement.lastChild;
+      if (label) {
+        label.textContent = label.getAttribute(`data-lang-${lang}`);
+      }
+      // 상품코드 값 업데이트 (텍스트 노드)
+      if (codeText) {
+        codeText.textContent = ` ${productData[lang].code}`;
+      }
+    }
+
+    // 상품명 업데이트
+    const productNameElement = productDetails.querySelector('.product-name');
+    if (productNameElement) {
+      const label = productNameElement.querySelector('span');
+      const nameText = productNameElement.lastChild;
+      if (label) {
+        label.textContent = label.getAttribute(`data-lang-${lang}`);
+      }
+      // 상품명 값 업데이트 (텍스트 노드)
+      if (nameText) {
+        nameText.textContent = ` ${productData[lang].name}`;
+      }
+    }
+
+    // 수량 업데이트
+    const productQuantityElement =
+      productDetails.querySelector('.product-quantity');
+    if (productQuantityElement) {
+      const label = productQuantityElement.querySelector('span');
+      const quantityText = productQuantityElement.lastChild;
+      if (label) {
+        label.textContent = label.getAttribute(`data-lang-${lang}`);
+      }
+      // 수량 값 업데이트 (텍스트 노드)
+      if (quantityText) {
+        quantityText.textContent = ` ${productData[lang].quantity}`;
+      }
+    }
+  }
 
   // orderForm 금액, 총금액
   // 가격 정보 업데이트
@@ -628,7 +698,7 @@ function updateListingPage(lang) {
   const previewProductName = document.getElementById('previewProductName');
   const previewQuantity = document.getElementById('previewQuantity');
   const previewPrice = document.getElementById('previewPrice');
-  const hiddenPrice = document.getElementById('hidden_orderPrice');
+  const hiddenPrice = document.getElementById('preview_hidden_price');
 
   if (productData[lang]) {
     // 기본 값 설정

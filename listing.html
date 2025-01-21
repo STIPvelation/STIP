@@ -396,7 +396,7 @@
                     <div class="price-input-wrapper">
                       <input type="text" name="displayPrice" id="previewPrice" data-currency="KRW"
                         data-currency-symbol="₩" readonly />
-                      <input type="hidden" id="hidden_orderPrice" name="price" value="99000" data-currency="KRW" />
+                      <input type="hidden" id="prewiew_hidden_price" name="price" value="99000" data-currency="KRW" />
                     </div>
                   </div>
                 </div>
@@ -1655,6 +1655,29 @@
             .complete-button:hover {
               background: var(--primary-color-dark, #388E3C);
             }
+
+            #cardPaymentPopup {
+                display: none; /* 초기 상태는 숨김 */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 10000;  /* 높은 z-index 값 설정 */
+                align-items: center;
+                justify-content: center;
+            }
+
+            #cardPaymentPopup .modal-content {
+                background: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                width: 90%;
+                max-width: 500px;
+                position: relative;
+                z-index: 10001; /* 오버레이보다 높은 z-index */
+            }
           </style>
           <script>
             // 언어 라벨 설정
@@ -2068,8 +2091,6 @@
                   currency: null
               };
 
-              
-
 
               // 상품 미리보기 폼 제출 처리
               productPreviewForm.addEventListener('submit', async function (e) {
@@ -2094,14 +2115,15 @@
 
                 // updatePageLanguage(currentLang);
 
+                // order_id 생성 함수
+                function generateOrderId() {
+                  const date = new Date();
+                  const timestamp = date.getTime().toString();
+                  const random = Math.random().toString(36).substring(2, 8);
+                  return `ORD${timestamp}${random}`;
+                }
+
                 try {
-                  // order_id 생성 함수
-                  function generateOrderId() {
-                    const date = new Date();
-                    const timestamp = date.getTime().toString();
-                    const random = Math.random().toString(36).substring(2, 8);
-                    return `ORD${timestamp}${random}`;
-                  }
 
                   // CurrencyService를 통한 현재 언어 및 통화 정보 가져오기
                   const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
@@ -2254,6 +2276,14 @@
                       throw new Error('결제 서비스 초기화 중입니다. 잠시 후 다시 시도해주세요.');
                   }
 
+                  // order_id 생성 함수
+                  function generateOrderId() {
+                    const date = new Date();
+                    const timestamp = date.getTime().toString();
+                    const random = Math.random().toString(36).substring(2, 8);
+                    return `ORD${timestamp}${random}`;
+                  }
+
                   // 2. 현재 언어 및 통화 설정 가져오기
                   const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
                   const currencyService = window.currencyService;
@@ -2360,7 +2390,7 @@
 
                   // 5. 주문 데이터 구성
                   const orderData = {
-                      order_id: orderId,
+                      order_id: generateOrderId(),
                       // orderName: document.getElementById('orderName').value,
                       // orderEmail: document.getElementById('orderEmail').value,
                       // orderPhone: document.getElementById('orderPhone').value,
@@ -2460,12 +2490,12 @@
                   // 세션에 주문 데이터 저장
                   // js/servics/session-manager.js
                   // 7. 세션 저장
-                  if (window.paymentSessionManager) {
-                      await window.paymentSessionManager.saveOrderData(orderData);
-                  }
+                  // if (window.paymentSessionManager) {
+                  //     await window.paymentSessionManager.saveOrderData(orderData);
+                  // }
                   // window.paymentSessionManager.saveOrderData(orderData);
 
-                  console.log('Sending order data:', orderData);
+                  // console.log('Sending order data:', orderData);
 
                   // 3. 서버로 데이터 전송
                   const response = await fetch('process_order.php', {
@@ -2483,9 +2513,9 @@
                   //   throw new Error(saveResult.message || '주문 저장에 실패했습니다.');
                   // }
 
-                  if (!result.success) {
-                    throw new Error(result.message || '주문 처리에 실패했습니다.');
-                  }
+                  // if (!result.success) {
+                  //   throw new Error(result.message || '주문 처리에 실패했습니다.');
+                  // }
 
 
 
@@ -2623,6 +2653,134 @@
                   //   // goPay(payForm);
                   // }
 
+                  // 주문 저장 성공 후 카드 결제 팝업 표시
+                  // const cardPaymentPopup = document.getElementById('cardPaymentPopup');
+                  if (result.success) {
+                    // 성공시 orderFormData를 세션 스토리지에 저장
+                    // sessionStorage.setItem('orderFormData', JSON.stringify(orderData));
+
+                    // 주문 저장 성공 시 cardKeyin_Request.php로 리다이렉션
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'cardKeyin_Request.php';
+
+                    // 현재 언어 정보 추가
+                    const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
+
+                    // 필요한 데이터 추가
+                    const formData = {
+                        'order_id': orderData.order_id,
+                        'productName': orderData.productName,
+                        'convertedAmount': orderData.price,
+                        'lang': currentLang  // 언어 정보 추가
+                    };
+
+                    // hidden input 필드 생성
+                    for (const [key, value] of Object.entries(formData)) {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = value;
+                        form.appendChild(input);
+                    }
+
+                    // 폼을 body에 추가하고 제출
+                    document.body.appendChild(form);
+                    form.submit();
+                    
+                    // 카드 결제 팝업 표시
+                    // const cardPaymentPopup = document.getElementById('cardPaymentPopup');
+                    // if (cardPaymentPopup) {
+                    //   // 기존 스타일 초기화 및 새로운 스타일 적용
+                    //   cardPaymentPopup.style.cssText = `
+                    //       display: flex !important;
+                    //       position: fixed;
+                    //       top: 0;
+                    //       left: 0;
+                    //       right: 0;
+                    //       bottom: 0;
+                    //       background: rgba(0, 0, 0, 0.7);
+                    //       z-index: 10000;
+                    //       align-items: center;
+                    //       justify-content: center;
+                    //   `;
+                      
+                    //   // 모달 내부 컨텐츠의 z-index 설정
+                    //   const modalContent = cardPaymentPopup.querySelector('.modal-content');
+                    //   if (modalContent) {
+                    //       modalContent.style.zIndex = '10001';
+                    //   }
+
+                    //   // 배경 스크롤 방지
+                    //   document.body.style.overflow = 'hidden';
+
+                    //   console.log('Popup element:', cardPaymentPopup);
+                    //   console.log('Result success:', result.success);
+                    // } else {
+                    //   console.error('Card payment popup element not found');
+                    // }
+
+                    // 결제 금액 업데이트
+                    // document.getElementById('paymentAmount').textContent = window.currencyService.formatCurrencyByLanguage(BASE_PRICE_KRW, localStorage.getItem('preferredLanguage') || 'ko');
+                 
+                  } else {
+                    throw new Error(result.message || '주문 처리 중 오류가 발생했습니다.');
+                  }
+
+                  // const paymentAmount = document.getElementById('paymentAmount');
+
+                  // 결제 금액 표시 업데이트
+                  // if (paymentAmount) {
+                  //     // 현재 언어에 맞는 통화 형식으로 금액 표시
+                  //     const formattedAmount = window.currencyService.formatCurrencyByLanguage(
+                  //         BASE_PRICE_KRW,
+                  //         'ko' // 카드결제는 항상 KRW로 처리
+                  //     );
+                  //     paymentAmount.textContent = formattedAmount;
+                  // }
+
+                  // 팝업 표시
+                  // if (cardPaymentPopup) {
+                  //     cardPaymentPopup.style.display = 'block';
+                  //     document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+                  // }
+
+                  // 카드 결제 폼 제출 이벤트 핸들러
+                  // const cardInfoForm = document.getElementById('cardInfoForm');
+                  // cardInfoForm.addEventListener('submit', async function(e) {
+                  //     e.preventDefault();
+                  //     if (!validateForm()) return;
+
+                  //     try {
+                  //         // 카드 정보를 포함한 결제 데이터 구성
+                  //         const formData = new FormData(this);
+                  //         formData.append('order_id', orderId);
+                  //         formData.append('convertedAmount', BASE_PRICE_KRW);
+                  //         formData.append('productName', orderData.productName);
+
+                  //         // cardKeyin_Request.php로 결제 요청
+                  //         const paymentResponse = await fetch('cardKeyin_Request.php', {
+                  //             method: 'POST',
+                  //             body: formData
+                  //         });
+
+                  //         const paymentResult = await paymentResponse.json();
+                          
+                  //         if (paymentResult.success) {
+                  //             // 결제 성공
+                  //             alert('결제가 성공적으로 완료되었습니다.');
+                  //             closeCardPopup();
+                  //             window.location.href = 'listing.html'; // 결제 완료 후 리디렉션
+                  //         } else {
+                  //             throw new Error(paymentResult.message || '결제 처리 중 오류가 발생했습니다.');
+                  //         }
+
+                  //     } catch (error) {
+                  //         console.error('Payment processing error:', error);
+                  //         alert(error.message || '결제 처리 중 오류가 발생했습니다.');
+                  //     }
+                  // });
+
                 } catch (error) {
                   // console.error('Order submission error:', error);
                   // showError(error.message);
@@ -2630,58 +2788,58 @@
                   console.error('주문 처리 중 오류:', error);
                   showError(error.message);
                   // 에러 발생 시 3초 후 listing.html로 리다이렉션
-                  setTimeout(() => {
-                    window.location.href = 'listing.html';
-                  }, 3000);
+                  // setTimeout(() => {
+                  //   window.location.href = 'listing.html';
+                  // }, 3000);
                 }
               });
 
               // 카드번호 포맷팅
-              document.getElementById('cardNumber').addEventListener('input', function(e) {
-                  let value = e.target.value.replace(/\D/g, '');
-                  value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-                  e.target.value = value.trim();
-              });
+              // document.getElementById('cardNumber').addEventListener('input', function(e) {
+              //     let value = e.target.value.replace(/\D/g, '');
+              //     value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+              //     e.target.value = value.trim();
+              // });
 
               // 유효기간 포맷팅
-              document.getElementById('cardExpiry').addEventListener('input', function(e) {
-                  let value = e.target.value.replace(/\D/g, '');
-                  if (value.length >= 2) {
-                      value = value.substr(0,2) + '/' + value.substr(2);
-                  }
-                  e.target.value = value;
-              });
+              // document.getElementById('cardExpiry').addEventListener('input', function(e) {
+              //     let value = e.target.value.replace(/\D/g, '');
+              //     if (value.length >= 2) {
+              //         value = value.substr(0,2) + '/' + value.substr(2);
+              //     }
+              //     e.target.value = value;
+              // });
 
               // 입력값 유효성 검사
-              function validateForm() {
-                  const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
-                  const cardExpiry = document.getElementById('cardExpiry').value;
-                  const authNum = document.getElementById('buyerAuthNum').value;
-                  const cardPwd = document.getElementById('cardPwd').value;
+              // function validateForm() {
+              //     const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+              //     const cardExpiry = document.getElementById('cardExpiry').value;
+              //     const authNum = document.getElementById('buyerAuthNum').value;
+              //     const cardPwd = document.getElementById('cardPwd').value;
 
-                  if (cardNumber.length !== 16 || !/^\d+$/.test(cardNumber)) {
-                      alert('올바른 카드번호를 입력해주세요.');
-                      return false;
-                  }
+              //     if (cardNumber.length !== 16 || !/^\d+$/.test(cardNumber)) {
+              //         alert('올바른 카드번호를 입력해주세요.');
+              //         return false;
+              //     }
 
-                  const [month, year] = cardExpiry.split('/');
-                  if (!month || !year || month > 12 || month < 1) {
-                      alert('올바른 유효기간을 입력해주세요.');
-                      return false;
-                  }
+              //     const [month, year] = cardExpiry.split('/');
+              //     if (!month || !year || month > 12 || month < 1) {
+              //         alert('올바른 유효기간을 입력해주세요.');
+              //         return false;
+              //     }
 
-                  if (authNum.length !== 6 && authNum.length !== 10) {
-                      alert('생년월일(6자리) 또는 사업자번호(10자리)를 입력해주세요.');
-                      return false;
-                  }
+              //     if (authNum.length !== 6 && authNum.length !== 10) {
+              //         alert('생년월일(6자리) 또는 사업자번호(10자리)를 입력해주세요.');
+              //         return false;
+              //     }
 
-                  if (cardPwd.length !== 2 || !/^\d+$/.test(cardPwd)) {
-                      alert('카드 비밀번호 앞 2자리를 입력해주세요.');
-                      return false;
-                  }
+              //     if (cardPwd.length !== 2 || !/^\d+$/.test(cardPwd)) {
+              //         alert('카드 비밀번호 앞 2자리를 입력해주세요.');
+              //         return false;
+              //     }
 
-                  return true;
-              }
+              //     return true;
+              // }
 
               // 카드 결제 팝업 닫기
               function closeCardPopup() {
@@ -2693,49 +2851,49 @@
               }
 
               // 폼 제출 처리
-              document.getElementById('cardInfoForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                if (!validateForm()) return;
+              // document.getElementById('cardInfoForm').addEventListener('submit', async function(e) {
+              //   e.preventDefault();
+              //   if (!validateForm()) return;
                 
-                // 여기에 결제 처리 로직 추가
-                try {
-                  const orderFormData = JSON.parse(sessionStorage.getItem('orderFormData'));
+              //   // 여기에 결제 처리 로직 추가
+              //   try {
+              //     const orderFormData = JSON.parse(sessionStorage.getItem('orderFormData'));
                     
-                  // FormData 객체 생성 및 카드 정보 추가
-                  const formData = new FormData(this);
+              //     // FormData 객체 생성 및 카드 정보 추가
+              //     const formData = new FormData(this);
                   
-                  // orderForm 데이터 추가
-                  Object.keys(orderFormData).forEach(key => {
-                    formData.append(key, orderFormData[key]);
-                  });
+              //     // orderForm 데이터 추가
+              //     Object.keys(orderFormData).forEach(key => {
+              //       formData.append(key, orderFormData[key]);
+              //     });
 
-                  // 디버깅용 로그
-                  for (let pair of formData.entries()) {
-                    console.log(pair[0] + ': ' + pair[1]);
-                  }
+              //     // 디버깅용 로그
+              //     for (let pair of formData.entries()) {
+              //       console.log(pair[0] + ': ' + pair[1]);
+              //     }
 
-                  // cardKeyin_Request.php로 데이터 전송
-                  const response = await fetch('cardKeyin_Request.php', {
-                    method: 'POST',
-                    body: formData
-                  });
+              //     // cardKeyin_Request.php로 데이터 전송
+              //     const response = await fetch('cardKeyin_Request.php', {
+              //       method: 'POST',
+              //       body: formData
+              //     });
 
-                  const result = await response.json();
+              //     const result = await response.json();
                   
-                  if (result.success) {
-                    alert('결제가 성공적으로 처리되었습니다.');
-                    // 세션 스토리지 정리
-                    sessionStorage.removeItem('orderFormData');
-                    window.location.href = 'listing.html';
-                  } else {
-                    throw new Error(result.message || '결제 처리 중 오류가 발생했습니다.');
-                  }
+              //     if (result.success) {
+              //       alert('결제가 성공적으로 처리되었습니다.');
+              //       // 세션 스토리지 정리
+              //       sessionStorage.removeItem('orderFormData');
+              //       window.location.href = 'listing.html';
+              //     } else {
+              //       throw new Error(result.message || '결제 처리 중 오류가 발생했습니다.');
+              //     }
 
-                } catch (error) {
-                  console.error('Payment error:', error);
-                  alert(error.message || '결제 처리 중 오류가 발생했습니다.');
-                }
-              });
+              //   } catch (error) {
+              //     console.error('Payment error:', error);
+              //     alert(error.message || '결제 처리 중 오류가 발생했습니다.');
+              //   }
+              // });
 
 
               // order_form Listener End
@@ -2937,8 +3095,8 @@
       </div>
     </footer>
     <!-- footer end -->
-    <!-- 카드 결제 정보 입력 팝업 -->
-    <div id="cardPaymentPopup" class="modal-overlay" style="display: none;">
+    <!-- 카드 결제 정보 입력 팝업 lee -->
+    <div id="cardPaymentPopup" class="modal-overlay">
       <div class="modal-content payment-form">
         <h2 class="form-title" data-lang-ko="결제 정보 입력" data-lang-en="Payment Information" 
             data-lang-ja="決済情報入力" data-lang-zh="支付信息输入">결제 정보 입력</h2>
