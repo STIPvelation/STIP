@@ -1656,28 +1656,7 @@
               background: var(--primary-color-dark, #388E3C);
             }
 
-            #cardPaymentPopup {
-                display: none; /* 초기 상태는 숨김 */
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.7);
-                z-index: 10000;  /* 높은 z-index 값 설정 */
-                align-items: center;
-                justify-content: center;
-            }
-
-            #cardPaymentPopup .modal-content {
-                background: #fff;
-                padding: 20px;
-                border-radius: 8px;
-                width: 90%;
-                max-width: 500px;
-                position: relative;
-                z-index: 10001; /* 오버레이보다 높은 z-index */
-            }
+            
           </style>
           <script>
             // 언어 라벨 설정
@@ -1960,7 +1939,7 @@
                 document.body.classList.add('mobile');
               }
 
-              // 초기 상태 설정
+              // 초기 상태 설정 lee
               productPreviewForm.style.display = 'none';
               orderForm.style.display = 'block';
               contactForm.style.display = 'none';
@@ -2228,6 +2207,7 @@
                   productPreviewForm.style.display = 'none';
                   const orderForm = document.getElementById('orderForm');
                   orderForm.style.display = 'block';
+
 
                   // orderForm의 텍스트 업데이트
                   updateFormLanguage(orderForm, currentLang);
@@ -2660,60 +2640,74 @@
                     // sessionStorage.setItem('orderFormData', JSON.stringify(orderData));
 
                     // 주문 저장 성공 시 cardKeyin_Request.php로 리다이렉션
-                    const form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = 'cardKeyin_Request.php';
+                    // const form = document.createElement('form');
+                    // form.method = 'POST';
+                    // form.action = 'cardKeyin_Request.php';
 
                     // 현재 언어 정보 추가
                     const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
 
                     // 필요한 데이터 추가
-                    const formData = {
-                        'order_id': orderData.order_id,
-                        'productName': orderData.productName,
-                        'convertedAmount': orderData.price,
-                        'lang': currentLang  // 언어 정보 추가
-                    };
+                    // const formData = {
+                    //     'order_id': orderData.order_id,
+                    //     'productName': orderData.productName,
+                    //     'convertedAmount': orderData.price,
+                    //     'lang': currentLang  // 언어 정보 추가
+                    // };
 
                     // hidden input 필드 생성
-                    for (const [key, value] of Object.entries(formData)) {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = key;
-                        input.value = value;
-                        form.appendChild(input);
-                    }
+                    // for (const [key, value] of Object.entries(formData)) {
+                    //     const input = document.createElement('input');
+                    //     input.type = 'hidden';
+                    //     input.name = key;
+                    //     input.value = value;
+                    //     form.appendChild(input);
+                    // }
 
-                    // 폼을 body에 추가하고 제출
-                    document.body.appendChild(form);
-                    form.submit();
-                    
-                    // 카드 결제 팝업 표시
+                    // 폼을 body에 추가하고 제출  lee
+                    // document.body.appendChild(form);
+                    // form.submit();
+
+                    // 카드 폼 초기화 함수 호출
+                    initializeCardForm();
+
+                    orderForm.style.display = 'none';
+
+                    const cardPaymentPopup = document.getElementById('cardPaymentPopup');
+                    if (cardPaymentPopup) {
+                        // 결제 금액 업데이트
+                        updatePaymentAmount(BASE_PRICE_KRW);
+                        showCardPaymentPopup();
+                    }
+                    // 카드 결제 팝업 표시 lee
                     // const cardPaymentPopup = document.getElementById('cardPaymentPopup');
+                    
                     // if (cardPaymentPopup) {
+                    //   cardPaymentPopup.style.display = 'flex';
                     //   // 기존 스타일 초기화 및 새로운 스타일 적용
-                    //   cardPaymentPopup.style.cssText = `
-                    //       display: flex !important;
-                    //       position: fixed;
-                    //       top: 0;
-                    //       left: 0;
-                    //       right: 0;
-                    //       bottom: 0;
-                    //       background: rgba(0, 0, 0, 0.7);
-                    //       z-index: 10000;
-                    //       align-items: center;
-                    //       justify-content: center;
-                    //   `;
+                    //   // cardPaymentPopup.style.cssText = `
+                    //   //     display: flex !important;
+                    //   //     position: fixed;
+                    //   //     top: 0;
+                    //   //     left: 0;
+                    //   //     right: 0;
+                    //   //     bottom: 0;
+                    //   //     background: rgba(0, 0, 0, 0.7);
+                    //   //     z-index: 100001;
+                    //   //     align-items: center;
+                    //   //     justify-content: center;
+                    //   // `;
                       
                     //   // 모달 내부 컨텐츠의 z-index 설정
-                    //   const modalContent = cardPaymentPopup.querySelector('.modal-content');
-                    //   if (modalContent) {
-                    //       modalContent.style.zIndex = '10001';
-                    //   }
-
+                    //   // const modalContent = cardPaymentPopup.querySelector('.cardinfo-form');
+                    //   // if (modalContent) {
+                    //   //     modalContent.style.display = 'flex';
+                    //   //     modalContent.style.zIndex = '100001';
+                    //   // }
+                        
                     //   // 배경 스크롤 방지
-                    //   document.body.style.overflow = 'hidden';
-
+                    //   // document.body.style.overflow = 'hidden';
+                        
                     //   console.log('Popup element:', cardPaymentPopup);
                     //   console.log('Result success:', result.success);
                     // } else {
@@ -2841,14 +2835,9 @@
               //     return true;
               // }
 
-              // 카드 결제 팝업 닫기
-              function closeCardPopup() {
-                const cardPaymentPopup = document.getElementById('cardPaymentPopup');
-                  if (cardPaymentPopup) {
-                    cardPaymentPopup.style.display = 'none';
-                    document.body.style.overflow = 'auto'; 
-                  }
-              }
+
+              
+
 
               // 폼 제출 처리
               // document.getElementById('cardInfoForm').addEventListener('submit', async function(e) {
@@ -3096,115 +3085,484 @@
     </footer>
     <!-- footer end -->
     <!-- 카드 결제 정보 입력 팝업 lee -->
-    <div id="cardPaymentPopup" class="modal-overlay">
-      <div class="modal-content payment-form">
-        <h2 class="form-title" data-lang-ko="결제 정보 입력" data-lang-en="Payment Information" 
-            data-lang-ja="決済情報入力" data-lang-zh="支付信息输入">결제 정보 입력</h2>
-        <form id="cardInfoForm">
-          <!-- 카드 정보 섹션 -->
-          <div class="card-info">
-            <!-- 카드 번호 입력 -->
-            <div class="input-group">
-              <label for="cardNumber" class="required">
-                <span data-lang-ko="카드번호" data-lang-en="Card Number" 
-                      data-lang-ja="カード番号" data-lang-zh="信用卡号"></span>
-              </label>
-              <div class="card-input">
+    <div id="cardPaymentPopup" class="modal-overlay" style="display: none;">
+      <div class="cardinfo-modal">
+        <!-- 닫기 버튼 추가 -->
+        <button type="button" class="close-button" onclick="closeCardPopup()">
+          <span class="close-icon">×</span>
+        </button>
+        <form id="cardInfoForm" class="cardinfo-form" action="cardKeyin_Request.php">
+          <div class="cardform-container">
+            <h2 class="form-title" data-lang-ko="결제 정보 입력" data-lang-en="Payment Information" 
+                data-lang-ja="決済情報入力" data-lang-zh="支付信息输入">결제 정보 입력</h2>
+
+            <!-- 카드 정보 섹션 -->
+            <div class="card-info">
+              <!-- 카드 구분 체크박스 -->
+              <div class="input-group">
+                <label class="required">
+                  <span data-lang-ko="카드 구분" data-lang-en="Card Type" 
+                        data-lang-ja="カード区分" data-lang-zh="卡类型"></span>
+                </label>
+                <div class="checkbox-group">
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="cardTypePersonal" name="cardType" value="personal" checked>
+                    <span class="checkmark" display="none"></span>
+                    <span class="checkbox-text" data-lang-ko="개인" data-lang-en="Personal" 
+                          data-lang-ja="個人" data-lang-zh="个人"></span>
+                  </label>
+                  <label class="custom-checkbox">
+                    <input type="checkbox" id="cardTypeBusiness" name="cardType" value="business">
+                    <span class="checkmark"></span>
+                    <span class="checkbox-text" data-lang-ko="법인" data-lang-en="Business" 
+                          data-lang-ja="法人" data-lang-zh="法人"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 카드 번호 입력 -->
+              <div class="input-group">
+                <label for="cardNumber" class="required">
+                  <span data-lang-ko="카드번호" data-lang-en="Card Number" 
+                        data-lang-ja="カード番号" data-lang-zh="信用卡号"></span>
+                </label>
+                <div class="card-input">
+                  <input type="text" 
+                        id="cardNumber" 
+                        name="cardNo"
+                        maxlength="19" 
+                        required
+                        autocomplete="false"
+                        pattern="\d*"
+                        autocomplete="cc-number"
+                        data-lang-ko-placeholder="1234 5678 9012 3456"
+                        data-lang-en-placeholder="1234 5678 9012 3456"
+                        data-lang-ja-placeholder="1234 5678 9012 3456"
+                        data-lang-zh-placeholder="1234 5678 9012 3456" />
+                  <div class="card-type-icon"></div>
+                </div>
+              </div>
+
+              <!-- 유효기간 입력 -->
+              <div class="input-group">
+                <label for="cardExpiry" class="required">
+                  <span data-lang-ko="유효기간" data-lang-en="Expiry Date" 
+                        data-lang-ja="有効期限" data-lang-zh="有效期"></span>
+                </label>
                 <input type="text" 
-                      id="cardNumber" 
-                      name="cardNo"
-                      maxlength="16" 
+                      id="cardExpiry" 
+                      name="cardExpire"
+                      maxlength="5" 
                       required
-                      pattern="\d*"
-                      autocomplete="cc-number"
-                      data-lang-ko-placeholder="1234 5678 9012 3456"
-                      data-lang-en-placeholder="1234 5678 9012 3456"
-                      data-lang-ja-placeholder="1234 5678 9012 3456"
-                      data-lang-zh-placeholder="1234 5678 9012 3456" />
-                <div class="card-type-icon"></div>
+                      autocomplete="false"
+                      pattern="\d{2}/\d{2}"
+                      autocomplete="cc-exp"
+                      placeholder="MM/YY" />
               </div>
             </div>
 
-            <!-- 유효기간 입력 -->
-            <div class="input-group">
-              <label for="cardExpiry" class="required">
-                <span data-lang-ko="유효기간" data-lang-en="Expiry Date" 
-                      data-lang-ja="有効期限" data-lang-zh="有效期"></span>
-              </label>
-              <input type="text" 
-                    id="cardExpiry" 
-                    name="cardExpire"
-                    maxlength="5" 
-                    required
-                    pattern="\d{2}/\d{2}"
-                    autocomplete="cc-exp"
-                    placeholder="MM/YY" />
-            </div>
-          </div>
-
-          <!-- 인증 정보 섹션 -->
-          <div class="auth-info">
-            <div class="input-group">
-              <label for="buyerAuthNum" class="required">
-                <span data-lang-ko="생년월일/사업자번호" data-lang-en="Birth Date/Business Number" 
-                      data-lang-ja="生年月日/事業者番号" data-lang-zh="出生日期/营业执照号"></span>
-                <small class="help-text" data-lang-ko="(생년월일 6자리 또는 사업자번호 10자리)"
-                      data-lang-en="(6 digits for birth date or 10 digits for business)"
-                      data-lang-ja="(生年月日6桁または事業者番号10桁)"
-                      data-lang-zh="(出生日期6位或营业执照号10位)"></small>
-              </label>
-              <input type="text" 
-                    id="buyerAuthNum" 
-                    name="buyerAuthNum"
-                    maxlength="10" 
-                    required
-                    pattern="\d*"
-                    inputmode="numeric" />
-            </div>
-
-            <div class="input-group">
-              <label for="cardPwd" class="required">
-                <span data-lang-ko="비밀번호" data-lang-en="Password" 
-                      data-lang-ja="パスワード" data-lang-zh="密码"></span>
-                <small class="help-text" data-lang-ko="(앞 2자리)"
-                      data-lang-en="(First 2 digits)"
-                      data-lang-ja="(最初の2桁)"
-                      data-lang-zh="(前2位)"></small>
-              </label>
-              <div class="password-input">
-                <input type="password" 
-                      id="cardPwd" 
-                      name="cardPwd"
-                      maxlength="2" 
+            <!-- 인증 정보 섹션 -->
+            <div class="auth-info">
+              <div class="input-group">
+                <label for="buyerAuthNum" class="required">
+                  <span data-lang-ko="생년월일/사업자번호" data-lang-en="Birth Date/Business Number" 
+                        data-lang-ja="生年月日/事業者番号" data-lang-zh="出生日期/营业执照号"></span>
+                  <small class="help-text" data-lang-ko="(생년월일 6자리 또는 사업자번호 10자리)"
+                        data-lang-en="(6 digits for birth date or 10 digits for business)"
+                        data-lang-ja="(生年月日6桁または事業者番号10桁)"
+                        data-lang-zh="(出生日期6位或营业执照号10位)"></small>
+                </label>
+                <input type="text" 
+                      id="buyerAuthNum" 
+                      name="buyerAuthNum"
+                      maxlength="10" 
                       required
-                      pattern="\d{2}"
+                      autocomplete="new-password"
+                      pattern="\d*"
                       inputmode="numeric" />
               </div>
+
+              <div class="input-group">
+                <label for="cardPwd" class="required">
+                  <span data-lang-ko="비밀번호" data-lang-en="Password" 
+                        data-lang-ja="パスワード" data-lang-zh="密码"></span>
+                  <small class="help-text" data-lang-ko="(앞 2자리)"
+                        data-lang-en="(First 2 digits)"
+                        data-lang-ja="(最初の2桁)"
+                        data-lang-zh="(前2位)"></small>
+                </label>
+                <div class="password-input">
+                  <input type="password" 
+                        id="cardPwd" 
+                        name="cardPwd"
+                        maxlength="2" 
+                        required
+                        autocomplete="new-password"
+                        pattern="\d{2}"
+                        inputmode="numeric" />
+                </div>
+                <div class="input-group">
+                  <label for="email" class="required">
+                    <span data-lang-ko="이메일" data-lang-en="Email" 
+                          data-lang-ja="メール" data-lang-zh="电子邮件"></span>
+                  </label>
+                  <input type="email" 
+                        id="email" 
+                        name="email"
+                        required
+                        autocomplete="false" />
+                </div>
+                <div style="display: none;">
+                  <input type="text" id="hidden_input" readonly />
+                </div>
+              </div>
             </div>
-          </div>
 
-          <!-- 결제 금액 표시 -->
-          <div class="payment-summary">
-            <span class="amount-label" data-lang-ko="결제 금액" data-lang-en="Amount" 
-                  data-lang-ja="決済金額" data-lang-zh="支付金额"></span>
-            <span class="amount" id="paymentAmount">99,000 KRW</span>
-          </div>
+            <!-- 결제 금액 표시 -->
+            <div class="payment-summary">
+              <span class="amount-label" data-lang-ko="결제 금액" data-lang-en="Amount" 
+                    data-lang-ja="決済金額" data-lang-zh="支付金额"></span>
+              <span class="amount" id="paymentAmount">99,000 KRW</span>
+            </div>
 
-          <!-- 버튼 그룹 -->
-          <div class="button-group">
-            <button type="submit" class="normal-button" data-lang-ko="결제하기" data-lang-en="Pay Now" 
-                    data-lang-ja="決済する" data-lang-zh="立即支付">
-              <span class="button-text">결제하기</span>
-              <span class="button-amount"></span>
-            </button>
-            <button type="button" class="cancel-button" onclick="closeCardPopup()" 
-                    data-lang-ko="취소" data-lang-en="Cancel" 
-                    data-lang-ja="キャンセル" data-lang-zh="取消">취소</button>
+            <!-- 버튼 그룹 수정 -->
+            <div class="button-group">
+              <button type="submit" class="normal-button">
+                <span data-lang-ko="결제하기" data-lang-en="Pay Now" 
+                      data-lang-ja="決済する" data-lang-zh="立即支付">결제하기</span>
+              </button>
+              <button type="button" class="normal-button cancel" onclick="closeCardPopup()">
+                <span data-lang-ko="취소" data-lang-en="Cancel" 
+                      data-lang-ja="キャンセル" data-lang-zh="取消">취소</span>
+              </button>
+            </div>
           </div>
         </form>
       </div>
     </div> 
   </div>
+  <style>
+/* 카드 결제 모달 애니메이션 및 위치 스타일 */
+#cardPaymentPopup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#cardPaymentPopup.active {
+  display: block;
+  opacity: 1;
+}
+
+.cardinfo-modal {
+  position: absolute;
+  top: 0;
+  right: -440px; /* 초기 위치: 화면 밖 */
+  width: 440px;
+  height: 100%;
+  background: #1a1a1a;
+  border-radius: 12px 0 0 12px;
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+}
+
+#cardPaymentPopup.active .cardinfo-modal {
+  right: 0; /* 활성화 시 오른쪽으로 이동 */
+}
+
+.cardform-container {
+  padding: 24px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#cardInfoForm {
+  height: 100%;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #fcfcfc;
+}
+
+.card-info,
+.auth-info {
+  margin-bottom: 6px;
+}
+
+.input-group {
+  margin-bottom: 6px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fcfcfc;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #fcfcfc;
+}
+
+/* .payment-summary {
+  margin-top: auto;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 4px;
+} */
+
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 480px) {
+  .cardinfo-modal {
+    width: 100%;
+    border-radius: 0;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+    .cardinfo-modal {
+        width: 100%;
+        right: -100%; /* 모바일에서는 전체 너비만큼 밖으로 */
+        border-radius: 0;
+    }
+    
+    .cardform-container {
+        padding: 16px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+}
+
+/* 결제 금액 표시 영역 스타일 */
+.payment-summary {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 4px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount-label {
+  color: #fcfcfc;
+  font-size: 16px;
+}
+
+#paymentAmount {
+  color: #fcfcfc;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 금액 강조 스타일 */
+.amount {
+  color: #fcfcfc;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* 닫기 버튼 스타일 */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+  border-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.close-icon {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 버튼 그룹 수정 */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.button-group .normal-button {
+  flex: 1;
+  min-height: 48px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fcfcfc;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-group .normal-button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button-group .normal-button:active {
+  transform: translateY(0);
+}
+
+/* 모바일 대응 */
+@media (max-width: 480px) {
+  .close-button {
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .button-group {
+    flex-direction: column;
+    padding: 0 16px 20px;
+  }
+
+  .button-group .normal-button {
+    width: 100%;
+  }
+}
+
+/* 체크박스 그룹 스타일 */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* 체크박스 사이 간격 */
+}
+
+/* 커스텀 체크박스 컨테이너 */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    padding-left: 28px; /* 체크마크 공간 확보 */
+    user-select: none;
+}
+
+/* 기본 체크박스 숨기기 */
+/* .custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+} */
+
+/* 기본 체크박스 완전히 숨기기 */
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* 커스텀 체크마크 스타일 */
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    border: 2px solid #ddd;
+    border-radius: 50%; /* 원형 모양 */
+    transition: all 0.2s ease;
+}
+
+/* 체크박스 호버 효과 */
+.custom-checkbox:hover input ~ .checkmark {
+    border-color: #ccc;
+}
+
+/* 선택된 체크마크 스타일 */
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #fff;
+    border-color: #4CAF50; /* 초록색 테두리 */
+}
+
+/* 선택된 체크마크 안의 원 */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4CAF50; /* 초록색 */
+}
+
+/* 체크박스 선택 시 내부 원 표시 */
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* 체크박스 텍스트 스타일 */
+.checkbox-text {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #fff;
+}
+  </style>
   <script>
     // 전역 변수 선언
     window.tagCloud = null;
@@ -3216,6 +3574,266 @@
       170,
       Math.min(280, window.innerWidth - window.innerWidth * 0.95)
     );
+
+    // 카드 결제 관련 함수들
+    function initializeCardForm() {
+      const cardForm = document.getElementById('cardInfoForm');
+      const cardNumber = document.getElementById('cardNumber');
+      const cardExpiry = document.getElementById('cardExpiry');
+      const buyerAuthNum = document.getElementById('buyerAuthNum');
+      const buyerTypeRadios = document.getElementsByName('buyerType');
+      const email = document.getElementById('email');
+
+      if (!cardForm) return; // 폼이 존재하지 않으면 실행하지 않음
+
+      // 체크박스 상호 배타적 선택 처리
+      function handleCheckboxChange(checkedBox, otherBox) {
+          if (checkedBox.checked) {
+              otherBox.checked = false;
+          } else if (!otherBox.checked) {
+              // 둘 다 체크 해제되는 것 방지
+              checkedBox.checked = true;
+          }
+          updateAuthNumField();
+      }
+
+      // 체크박스 이벤트 리스너
+      cardTypePersonal?.addEventListener('change', function() {
+          handleCheckboxChange(cardTypePersonal, cardTypeBusiness);
+      });
+
+      cardTypeBusiness?.addEventListener('change', function() {
+          handleCheckboxChange(cardTypeBusiness, cardTypePersonal);
+      });
+
+      // 생년월일/사업자번호 필드 업데이트 함수
+      function updateAuthNumField() {
+          if (buyerAuthNum) {
+              buyerAuthNum.value = ''; // 값 초기화
+              
+              // 라벨과 도움말 텍스트 변경
+              const label = buyerAuthNum.previousElementSibling;
+              const helpText = label.querySelector('.help-text');
+              
+              if (cardTypePersonal.checked) {
+                  label.querySelector('span').textContent = '생년월일';
+                  helpText.textContent = '(생년월일 6자리)';
+                  buyerAuthNum.placeholder = '예: 901231';
+                  buyerAuthNum.maxLength = 6;
+              } else {
+                  label.querySelector('span').textContent = '사업자번호';
+                  helpText.textContent = '(사업자번호 10자리)';
+                  buyerAuthNum.placeholder = '예: 123-45-67890';
+                  buyerAuthNum.maxLength = 12;
+              }
+          }
+      }
+
+      // 초기 필드 상태 설정
+      updateAuthNumField();
+
+      // 카드 번호 포맷팅
+      cardNumber?.addEventListener('input', function(e) {
+          let value = e.target.value.replace(/\D/g, '');
+          let formattedValue = '';
+          
+          for (let i = 0; i < value.length && i < 16; i++) {
+              if (i > 0 && i % 4 === 0) {
+                  formattedValue += ' ';
+              }
+              formattedValue += value[i];
+          }
+          
+          e.target.value = formattedValue;
+      });
+
+      // 카드 번호 포맷팅
+      // cardNumber?.addEventListener('input', function(e) {
+      //     let value = e.target.value.replace(/\D/g, '');
+      //     let formattedValue = '';
+          
+      //     for (let i = 0; i < value.length && i < 16; i++) {
+      //         if (i > 0 && i % 4 === 0) {
+      //             formattedValue += ' ';
+      //         }
+      //         formattedValue += value[i];
+      //     }
+          
+      //     e.target.value = formattedValue;
+      // });
+
+      // 카드 유효기간 포맷팅
+      cardExpiry?.addEventListener('input', function(e) {
+          let value = e.target.value.replace(/\D/g, '');
+          
+          if (value.length > 0) {
+              let month = value.substring(0, 2);
+              let year = value.substring(2, 4);
+              
+              if (month.length === 2) {
+                  month = Math.min(Math.max(parseInt(month), 1), 12).toString().padStart(2, '0');
+              }
+              
+              if (value.length > 2) {
+                  e.target.value = `${month}/${year}`;
+              } else {
+                  e.target.value = month;
+              }
+          }
+      });
+
+      // 생년월일/사업자번호 포맷팅
+      buyerAuthNum?.addEventListener('input', function(e) {
+          const isPersonal = document.querySelector('input[name="buyerType"]:checked').value === 'personal';
+          let value = e.target.value.replace(/\D/g, '');
+          
+          if (isPersonal) {
+              e.target.value = value.substring(0, 6);
+              e.target.maxLength = 6;
+          } else {
+              let formattedValue = '';
+              if (value.length > 0) {
+                  formattedValue = value.substring(0, 3);
+                  if (value.length > 3) {
+                      formattedValue += '-' + value.substring(3, 5);
+                  }
+                  if (value.length > 5) {
+                      formattedValue += '-' + value.substring(5, 10);
+                  }
+              }
+              e.target.value = formattedValue;
+              e.target.maxLength = 12;
+          }
+      });
+
+      // 사업자 구분 변경 이벤트
+      buyerTypeRadios.forEach(radio => {
+          radio?.addEventListener('change', function() {
+              if (buyerAuthNum) buyerAuthNum.value = '';
+          });
+      });
+
+      // 폼 제출 이벤트
+      cardForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        if (!validateCardForm()) return;
+        
+        // 여기에 실제 폼 제출 로직 추가
+        // cardKeyin_Request.php 
+        // $goodsName = '';
+        // $price = 0;
+        const formData = {
+          order_id: orderId,              // 생성된 order_id 추가
+          productCode: document.getElementById('previewProductCode').value,
+          productName: document.getElementById('previewProductName').value,
+          quantity: document.getElementById('previewQuantity').value,
+          price: basePrice,
+          currency: currency,
+          exchangeRate: rateInfo.exchangeRate,
+          convertedPrice: rateInfo.convertedPrice
+        };
+
+        console.log('Sending preview data:', formData);
+
+        const saveResponse = await fetch('cardKeyin_Request.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!saveResponse.ok) {
+          throw new Error('Failed to result NicePay');
+        }
+        console.log('폼 검증 완료, 제출 진행');
+      });
+    }
+
+    // 폼 유효성 검사 함수
+    function validateCardForm() {
+        const cardNumber = document.getElementById('cardNumber');
+        const cardExpiry = document.getElementById('cardExpiry');
+        const buyerAuthNum = document.getElementById('buyerAuthNum');
+        const email = document.getElementById('email');
+
+        // 카드번호 검사
+        const cardNumberValue = cardNumber.value.replace(/\s/g, '');
+        if (cardNumberValue.length !== 16) {
+            alert('올바른 카드번호를 입력해주세요.');
+            cardNumber.focus();
+            return false;
+        }
+
+        // 유효기간 검사
+        if (!/^\d{2}\/\d{2}$/.test(cardExpiry.value)) {
+            alert('올바른 유효기간을 입력해주세요.');
+            cardExpiry.focus();
+            return false;
+        }
+
+        // 생년월일/사업자번호 검사
+        const isPersonal = document.querySelector('input[name="buyerType"]:checked').value === 'personal';
+        const authNumValue = buyerAuthNum.value.replace(/\D/g, '');
+        if (isPersonal && authNumValue.length !== 6) {
+            alert('올바른 생년월일을 입력해주세요.');
+            buyerAuthNum.focus();
+            return false;
+        } else if (!isPersonal && authNumValue.length !== 10) {
+            alert('올바른 사업자번호를 입력해주세요.');
+            buyerAuthNum.focus();
+            return false;
+        }
+
+        // 이메일 검사
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+            alert('올바른 이메일 주소를 입력해주세요.');
+            email.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    // 결제 금액 업데이트 함수
+    function updatePaymentAmount(amount) {
+        const paymentAmount = document.getElementById('paymentAmount');
+        if (paymentAmount) {
+            // 현재 언어에 맞는 통화 형식으로 금액 표시
+            const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
+            const formattedAmount = window.currencyService.formatCurrencyByLanguage(
+                amount,
+                currentLang
+            );
+            paymentAmount.textContent = formattedAmount;
+        }
+    }
+                  // 카드 결제 폼 표시 함수
+    function showCardPaymentPopup() {
+        const popup = document.getElementById('cardPaymentPopup');
+        if (popup) {
+            popup.style.display = 'block';
+            // 강제 리플로우 발생
+            popup.offsetHeight;
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+    }
+
+    function closeCardPopup() {
+        const popup = document.getElementById('cardPaymentPopup');
+        if (popup) {
+            popup.classList.remove('active');
+            // 애니메이션 완료 후 처리
+            setTimeout(() => {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                // listing.html 페이지로 이동
+                window.location.href = 'listing.html';
+            }, 300);
+        }
+    }
 
     dropdownSelect.addEventListener('click', (event) => {
       let divValue = null;
