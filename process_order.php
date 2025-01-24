@@ -151,8 +151,8 @@ try {
         'GoodsName' => $data['productName'],
         'Amt' => $price,              // 환율 적용된 금액
         'EdiDate' => $ediDate,
-        'SignData' => $hashString,
-        'ReturnURL' => $_ENV['NICE_RETURN_URL'],
+        // 'SignData' => $hashString,
+        // 'ReturnURL' => $_ENV['NICE_RETURN_URL'],
         'CharSet' => 'utf-8'
     ];
     

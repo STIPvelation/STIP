@@ -3,16 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="STIP은 IP 거래 플랫폼으로, 새로운 시대의 요구와 변화에 부합하는 혁신적이고 전문화된 거래소 입니다.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 주석: 추가된 WAI-ARIA 관련 메타 태그 -->
+  <meta name="application-name" content="STIP IP Exchange Official Website">
+  <meta name="author" content="STIP">
+  <meta name="description" content="Intellectual property trading platform">
+  <!-- 검색엔진 최적화를 위한 추가 메타 태그 -->
   <meta name="keywords"
-    content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권, IP거래, 지식재산권, 특허권, 상표권, 기술이전, 특허중개, 특허가치평가, 기술사업화, 라이센싱">
-  <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지">
-  <meta property="og:description" content="발명특허 트레이딩 전문 서비스를 제공하는 공식 홈페이지입니다.">
-  <meta name="subject" content="발명특허 거래 및 중개 플랫폼">
+    content="Intellectual Property Trading Platform, Buy and Sell Patents, Trademark Exchange, Global IP Marketplace, IP Licensing">
+  <meta property="og:title" content="STIP IP Exchange Official Website">
+  <meta property="og:description" content="Intellectual property trading platform">  
+  <meta name="subject" content="STIP IP Exchange Official Website">
   <meta name="copyright" content="Copyright (c) STIP. All rights reserved.">
   <meta name="publisher" content="STIP">
-  <meta name="category" content="특허/지식재산권 거래">
+  <meta name="category" content="STIP IP Exchange Official Website">
   <meta name="coverage" content="Worldwide">
   <meta name="distribution" content="Global">
   <meta name="rating" content="General">
@@ -20,27 +24,28 @@
 
   <!-- Open Graph 추가 태그 -->
   <meta property="og:type" content="business.business">
-  <meta property="og:url" content="https://stipvelation.com">
-  <meta property="og:image" content="https://stipvelation.com/assets/images/og-image.jpg">
-  <meta property="og:site_name" content="STIP - 글로벌 특허거래 플랫폼">
+  <meta property="og:url" content="https://stipvelation.com/">
+  <meta property="og:image" content="https://stipvelation.com/assets/images/images/p002.jpg">
+  <meta property="og:site_name" content="STIP IP Exchange Official Website">
   <meta property="business:contact_data:street_address" content="서울시 강남구 테헤란로151 1116호">
   <meta property="business:contact_data:country_name" content="Korea">
 
   <!-- 소셜 미디어 최적화를 위한 추가 태그 -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="STIP - 글로벌 특허거래 플랫폼">
-  <meta name="twitter:description" content="글로벌 특허 거래 및 기술이전 전문 플랫폼">
+  <meta name="twitter:title" content="STIP IP Exchange Official Website">
+  <meta name="twitter:description" content="Intellectual property trading platform">
   <meta name="twitter:image" content="https://stipvelation.com/assets/images/twitter-image.jpg">
 
   <!-- 추가 검색엔진 최적화 태그 -->
-  <link rel="canonical" href="https://stipvelation.com">
+  <link rel="canonical" href="https://stipvelation.com/">
   <meta name="google-site-verification" content="google-site-verification=GOZJABKmCzKGcPRTvfWr85NEmZ0f0jmJooxEk6PhvGM">
-  <meta name="naver-site-verification" content="3d9f84392f2f8c5adb989466c29ed24f43b23232">
-
+  <meta name="naver-site-verification" content="3d9f84392f2f8c5adb989466c29ed24f43b23232"">
+      
   <!-- 메타 태그 추가 끝 -->
   <meta name=" robots" content="index, follow">
 
-  <title>발명특허 트레이딩 - STIP HomePage</title>
+  <!-- <title>STIP HomePage stipvelation</title> -->
+  <title>STIP IP Exchange Official Website</title>
   <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
@@ -1852,6 +1857,23 @@
                 console.error('Error in handleLangChange:', error);
               }
             } **/
+            
+            // function generateOrderId() {
+            //   const date = new Date();
+            //   const timestamp = date.getTime().toString();
+            //   const random = Math.random().toString(36).substring(2, 8);
+            //   return `ORD${timestamp}${random}`;
+            // }
+
+            
+            // order_id 생성 함수
+            function generateOrderId() {
+              const date = new Date();
+              const timestamp = date.getTime().toString();
+              const random = Math.random().toString(36).substring(2, 8);
+              return `ORD${timestamp}${random}`;
+            }
+           
 
             /**
              * 4. 메인 이벤트 리스너 (변경 필요)
@@ -1901,6 +1923,9 @@
                 console.error('Required DOM elements not found.');
                 return; // 필수 요소가 없을 때 스크립트 중단
               }
+
+              // 거래 id 생성
+              orderId = generateOrderId();
 
               dropdown_menu.addEventListener('click', (event) => {
                 const liElement = event.target.closest('li');
@@ -2095,12 +2120,7 @@
                 // updatePageLanguage(currentLang);
 
                 // order_id 생성 함수
-                function generateOrderId() {
-                  const date = new Date();
-                  const timestamp = date.getTime().toString();
-                  const random = Math.random().toString(36).substring(2, 8);
-                  return `ORD${timestamp}${random}`;
-                }
+                
 
                 try {
 
@@ -2125,7 +2145,7 @@
                   // const basePrice = document.getElementById('hidden_orderPrice').value;
                   // const convertedPrice = basePrice * currencyService.exchangeRates[currencyConfig.currency];
 
-                  orderId = generateOrderId(); // order_id 생성
+                  // orderId = generateOrderId(); // order_id 생성
 
                   // 기본 가격(KRW)
                   const basePrice = 99000;
@@ -2256,14 +2276,6 @@
                       throw new Error('결제 서비스 초기화 중입니다. 잠시 후 다시 시도해주세요.');
                   }
 
-                  // order_id 생성 함수
-                  function generateOrderId() {
-                    const date = new Date();
-                    const timestamp = date.getTime().toString();
-                    const random = Math.random().toString(36).substring(2, 8);
-                    return `ORD${timestamp}${random}`;
-                  }
-
                   // 2. 현재 언어 및 통화 설정 가져오기
                   const currentLang = localStorage.getItem('preferredLanguage') || 'ko';
                   const currencyService = window.currencyService;
@@ -2368,9 +2380,9 @@
                   }
 
 
-                  // 5. 주문 데이터 구성
+                  // 5. 주문 데이터 구성 lee
                   const orderData = {
-                      order_id: generateOrderId(),
+                      order_id: orderId,
                       // orderName: document.getElementById('orderName').value,
                       // orderEmail: document.getElementById('orderEmail').value,
                       // orderPhone: document.getElementById('orderPhone').value,
@@ -3106,13 +3118,13 @@
                 </label>
                 <div class="checkbox-group">
                   <label class="custom-checkbox">
-                    <input type="checkbox" id="cardTypePersonal" name="cardType" value="personal" checked>
+                    <input type="radio" id="cardTypePersonal" name="cardType" value="personal" checked>
                     <span class="checkmark" display="none"></span>
                     <span class="checkbox-text" data-lang-ko="개인" data-lang-en="Personal" 
                           data-lang-ja="個人" data-lang-zh="个人"></span>
                   </label>
                   <label class="custom-checkbox">
-                    <input type="checkbox" id="cardTypeBusiness" name="cardType" value="business">
+                    <input type="radio" id="cardTypeBusiness" name="cardType" value="business">
                     <span class="checkmark"></span>
                     <span class="checkbox-text" data-lang-ko="법인" data-lang-en="Business" 
                           data-lang-ja="法人" data-lang-zh="法人"></span>
@@ -3202,13 +3214,13 @@
                         inputmode="numeric" />
                 </div>
                 <div class="input-group">
-                  <label for="email" class="required">
+                  <label for="buyerEmail" class="required">
                     <span data-lang-ko="이메일" data-lang-en="Email" 
                           data-lang-ja="メール" data-lang-zh="电子邮件"></span>
                   </label>
                   <input type="email" 
-                        id="email" 
-                        name="email"
+                        id="buyerEmail" 
+                        name="buyerEmail"
                         required
                         autocomplete="false" />
                 </div>
@@ -3582,18 +3594,20 @@
       const cardExpiry = document.getElementById('cardExpiry');
       const buyerAuthNum = document.getElementById('buyerAuthNum');
       const buyerTypeRadios = document.getElementsByName('buyerType');
-      const email = document.getElementById('email');
+      const cardPwd = document.getElementById('cardPwd');
+      const buyerEmail = document.getElementById('buyerEmail');
 
       if (!cardForm) return; // 폼이 존재하지 않으면 실행하지 않음
 
+
       // 체크박스 상호 배타적 선택 처리
-      function handleCheckboxChange(checkedBox, otherBox) {
-          if (checkedBox.checked) {
-              otherBox.checked = false;
-          } else if (!otherBox.checked) {
-              // 둘 다 체크 해제되는 것 방지
-              checkedBox.checked = true;
-          }
+      function handleCheckboxChange(radioBox, otherBox) {
+          // if (radioBox.checked) {
+          //     otherBox.checked = false;
+          // } else if (!otherBox.checked) {
+          //     // 둘 다 체크 해제되는 것 방지
+          //     radioBox.checked = true;
+          // }
           updateAuthNumField();
       }
 
@@ -3645,6 +3659,7 @@
           }
           
           e.target.value = formattedValue;
+          // console.log(`${formattedValue}`);
       });
 
       // 카드 번호 포맷팅
@@ -3684,10 +3699,16 @@
 
       // 생년월일/사업자번호 포맷팅
       buyerAuthNum?.addEventListener('input', function(e) {
-          const isPersonal = document.querySelector('input[name="buyerType"]:checked').value === 'personal';
+          // const isPersonal = document.querySelector('input[name="buyerType"]:checked').value ;
+          let cardType = '';
           let value = e.target.value.replace(/\D/g, '');
+          if (document.getElementById('cardTypePersonal').checked) {
+            cardType = 'personal';
+          } else if (document.getElementById('cardTypeBusiness').checked) {
+            cardType = 'business';
+          }
           
-          if (isPersonal) {
+          if (cardType === 'personal') {
               e.target.value = value.substring(0, 6);
               e.target.maxLength = 6;
           } else {
@@ -3706,11 +3727,19 @@
           }
       });
 
+      // 라디오 버튼과 인증 번호 필드 가져오기
+      // const buyerTypeRadios = document.querySelectorAll('input[name="cardType"]');
+      // const buyerAuthNum = document.getElementById('buyerAuthNum');
       // 사업자 구분 변경 이벤트
       buyerTypeRadios.forEach(radio => {
-          radio?.addEventListener('change', function() {
-              if (buyerAuthNum) buyerAuthNum.value = '';
-          });
+        console.log('선택된 카드 타입:', radio[0].checked ? '개인' : '법인'); // 선택된 값 출력
+        radio?.addEventListener('change', () => {
+            // if (buyerAuthNum) buyerAuthNum.value = '';
+            if (buyerAuthNum) {
+                buyerAuthNum.value = ''; // 인증 번호 필드 초기화
+            }
+            
+        });
       });
 
       // 폼 제출 이벤트
@@ -3718,31 +3747,94 @@
         e.preventDefault();
         
         if (!validateCardForm()) return;
+
+        const formData = new FormData(form);
+        // 카드 종류 선택 처리 (체크박스 처리 로직)
+        let cardType = '';
+        if (document.getElementById('cardTypePersonal').checked) {
+          cardType = 'personal';
+        } else if (document.getElementById('cardTypeBusiness').checked) {
+          cardType = 'business';
+        }
+
         
-        // 여기에 실제 폼 제출 로직 추가
-        // cardKeyin_Request.php 
-        // $goodsName = '';
-        // $price = 0;
-        const formData = {
+        const cardformData = {
           order_id: orderId,              // 생성된 order_id 추가
-          productCode: document.getElementById('previewProductCode').value,
-          productName: document.getElementById('previewProductName').value,
-          quantity: document.getElementById('previewQuantity').value,
-          price: basePrice,
-          currency: currency,
-          exchangeRate: rateInfo.exchangeRate,
-          convertedPrice: rateInfo.convertedPrice
+          productCode: document.getElementById('hidden_orderProductCode').value,
+          productName: document.getElementById('hidden_orderProductName').value,
+          quantity: document.getElementById('hidden_orderQuantity').value,
+          price: BASE_PRICE_KRW,
+          currency: currencyInfo.currency
         };
 
-        console.log('Sending preview data:', formData);
+        console.log('Sending CardInfo data:', cardformData);
 
-        const saveResponse = await fetch('cardKeyin_Request.php', {
+        // const cardForm = document.getElementById('cardInfoForm');
+        // const cardNumber = document.getElementById('cardNumber');
+        // const cardExpiry = document.getElementById('cardExpiry');
+        // const buyerAuthNum = document.getElementById('buyerAuthNum');
+        // const buyerTypeRadios = document.getElementsByName('buyerType');
+        // const cardPwd = document.getElementById('cardPwd');
+        // const email = document.getElementById('email');
+
+        formData.set('cardType', buyerTypeRadios[0].checked ? 'personal' : 'business');
+        formData.set('cardNumber', cardNumber);
+        formData.set('cardExpiry', cardExpiry);
+        formData.set('buyerAuthNum', buyerAuthNum);
+        formData.set('cardPwd', cardPwd);
+        formData.set('buyerEmail', buyerEmail);
+        formData.set('order_id', orderId);
+        formData.set('productCode', document.getElementById('hidden_orderProductCode').value);
+        formData.set('productName', document.getElementById('hidden_orderProductName').value);
+        formData.set('quantity', document.getElementById('hidden_orderQuantity').value);
+        formData.set('price', BASE_PRICE_KRW);
+        formData.set('currency', currencyInfo.currency);
+        
+        fetch(form.action, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if (!response.ok) {  // 응답 코드가 200-299 범위를 벗어난 경우
+            throw new Error(`HTTP error! status: ${response.status}`); // 명시적으로 에러 발생
+          }
+          return response.json(); // 성공적인 응답 처리
+        })
+        .then(result => {
+            if (result.success) {
+              // 결제 성공 로직
+                alert("결제가 성공적으로 완료되었습니다.");
+                window.location.href = "listing.html"; //  결제 완료 페이지 URL
+            } else {
+              // 결제 실패 로직
+              console.error("결제 실패:", result.message);
+                alert("결제에 실패했습니다. 다시 시도해주세요.");
+            }
+        })
+        .catch(error => {
+          console.error("결제 요청 또는 응답 처리 중 오류 발생:", error);
+          alert("결제 처리 중 오류가 발생했습니다.");
         });
+
+        
+        // 여기에 실제 폼 제출 로직 추가
+        // cardKeyin_Request.php 
+        // $goodsName = '';
+        // $price = 0;
+        
+
+        // console.log('Sending preview data:', cardformData);
+
+        // const saveResponse = await fetch('cardKeyin_Request.php', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(cardformData)
+        // });
 
         if (!saveResponse.ok) {
           throw new Error('Failed to result NicePay');
@@ -3756,10 +3848,11 @@
         const cardNumber = document.getElementById('cardNumber');
         const cardExpiry = document.getElementById('cardExpiry');
         const buyerAuthNum = document.getElementById('buyerAuthNum');
-        const email = document.getElementById('email');
+        const buyerEmail = document.getElementById('buyerEmail');
 
         // 카드번호 검사
         const cardNumberValue = cardNumber.value.replace(/\s/g, '');
+        console.log(`${carNumValue}`);
         if (cardNumberValue.length !== 16) {
             alert('올바른 카드번호를 입력해주세요.');
             cardNumber.focus();
@@ -3774,9 +3867,9 @@
         }
 
         // 생년월일/사업자번호 검사
-        const isPersonal = document.querySelector('input[name="buyerType"]:checked').value === 'personal';
+        const isPersonal = document.querySelector('input[name="buyerType"]:checked').value;
         const authNumValue = buyerAuthNum.value.replace(/\D/g, '');
-        if (isPersonal && authNumValue.length !== 6) {
+        if (isPersonal === 'personal' && authNumValue.length !== 6) {
             alert('올바른 생년월일을 입력해주세요.');
             buyerAuthNum.focus();
             return false;
@@ -3787,9 +3880,10 @@
         }
 
         // 이메일 검사
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(buyerEmail.value)) {
             alert('올바른 이메일 주소를 입력해주세요.');
-            email.focus();
+            buyerEmail = '';
+            buyerEmail.focus();
             return false;
         }
 

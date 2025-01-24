@@ -1,595 +1,911 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 주석: 추가된 WAI-ARIA 관련 메타 태그 -->
+    <meta name="application-name" content="STIP IP Exchange Official Website" />
+    <meta name="author" content="STIP" />
+    <meta name="description" content="Intellectual property trading platform" />
+    <!-- 검색엔진 최적화를 위한 추가 메타 태그 -->
+    <meta
+      name="keywords"
+      content="Intellectual Property Trading Platform, Buy and Sell Patents, Trademark Exchange, Global IP Marketplace, IP Licensing"
+    />
+    <meta property="og:title" content="STIP IP Exchange Official Website" />
+    <meta
+      property="og:description"
+      content="Intellectual property trading platform"
+    />
+    <meta name="subject" content="STIP IP Exchange Official Website" />
+    <meta name="copyright" content="Copyright (c) STIP. All rights reserved." />
+    <meta name="publisher" content="STIP" />
+    <meta name="category" content="STIP IP Exchange Official Website" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="distribution" content="Global" />
+    <meta name="rating" content="General" />
+    <meta name="revisit-after" content="7 days" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="발명특허 트레이딩 공식 홈페이지입니다. 특허 거래와 발명특허 관련 전문 서비스를 제공합니다.">
-  <meta name="keywords"
-    content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권, IP거래, 지식재산권, 특허권, 상표권, 기술이전, 특허중개, 특허가치평가, 기술사업화, 라이센싱">
-  <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지">
-  <meta property="og:description" content="발명특허 트레이딩 전문 서비스를 제공하는 공식 홈페이지입니다.">
-  <meta name="subject" content="발명특허 거래 및 중개 플랫폼">
-  <meta name="copyright" content="Copyright (c) STIP. All rights reserved.">
-  <meta name="publisher" content="STIP">
-  <meta name="category" content="특허/지식재산권 거래">
-  <meta name="coverage" content="Worldwide">
-  <meta name="distribution" content="Global">
-  <meta name="rating" content="General">
-  <meta name="revisit-after" content="7 days">
+    <!-- Open Graph 추가 태그 -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="https://stipvelation.com/" />
+    <meta
+      property="og:image"
+      content="https://stipvelation.com/assets/images/images/p002.jpg"
+    />
+    <meta property="og:site_name" content="STIP IP Exchange Official Website" />
+    <meta
+      property="business:contact_data:street_address"
+      content="서울시 강남구 테헤란로151 1116호"
+    />
+    <meta property="business:contact_data:country_name" content="Korea" />
 
-  <!-- Open Graph 추가 태그 -->
-  <meta property="og:type" content="business.business">
-  <meta property="og:url" content="https://stipvelation.com">
-  <meta property="og:image" content="https://stipvelation.com/assets/images/og-image.jpg">
-  <meta property="og:site_name" content="STIP - 글로벌 특허거래 플랫폼">
-  <meta property="business:contact_data:street_address" content="서울시 강남구 테헤란로151 1116호">
-  <meta property="business:contact_data:country_name" content="Korea">
+    <!-- 소셜 미디어 최적화를 위한 추가 태그 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="STIP IP Exchange Official Website" />
+    <meta
+      name="twitter:description"
+      content="Intellectual property trading platform"
+    />
+    <meta
+      name="twitter:image"
+      content="https://stipvelation.com/assets/images/twitter-image.jpg"
+    />
 
-  <!-- 소셜 미디어 최적화를 위한 추가 태그 -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="STIP - 글로벌 특허거래 플랫폼">
-  <meta name="twitter:description" content="글로벌 특허 거래 및 기술이전 전문 플랫폼">
-  <meta name="twitter:image" content="https://stipvelation.com/assets/images/twitter-image.jpg">
+    <!-- 추가 검색엔진 최적화 태그 -->
+    <link rel="canonical" href="https://stipvelation.com/" />
+    <meta
+      name="google-site-verification"
+      content="google-site-verification=GOZJABKmCzKGcPRTvfWr85NEmZ0f0jmJooxEk6PhvGM"
+    />
+    <meta name="naver-site-verification"
+    content="3d9f84392f2f8c5adb989466c29ed24f43b23232"">
 
-  <!-- 추가 검색엔진 최적화 태그 -->
-  <link rel="canonical" href="https://stipvelation.com">
-  <meta name="google-site-verification" content="google-site-verification=GOZJABKmCzKGcPRTvfWr85NEmZ0f0jmJooxEk6PhvGM">
-  <meta name="naver-site-verification" content="3d9f84392f2f8c5adb989466c29ed24f43b23232">
+    <!-- 메타 태그 추가 끝 -->
+    <meta name=" robots" content="index, follow" />
 
-  <!-- 메타 태그 추가 끝 -->
-  <meta name=" robots" content="index, follow">
+    <!-- <title>STIP HomePage stipvelation</title> -->
+    <title>STIP IP Exchange Official Website</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="favicon.ico2/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="favicon.ico2/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="favicon.ico2/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="favicon.ico2/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="favicon.ico2/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="favicon.ico2/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="favicon.ico2/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="favicon.ico2/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon.ico2/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="favicon.ico2/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon.ico2/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="favicon.ico2/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon.ico2/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicon.ico2/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="favicon.ico2/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
-  <title>발명특허 트레이딩 - STIP HomePage</title>
-  <link rel="apple-touch-icon" sizes="57x57" href="favicon.ico2/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="favicon.ico2/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico2/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="favicon.ico2/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico2/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="favicon.ico2/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="favicon.ico2/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="favicon.ico2/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico2/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon.ico2/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico2/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon.ico2/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico2/favicon-16x16.png">
-  <link rel="manifest" href="favicon.ico2/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="favicon.ico2/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="assets/style/components/header.css" />
+    <link rel="stylesheet" href="assets/style/pages/contact.css" />
+    <link rel="stylesheet" href="assets/style/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="assets/style/components/header.css" />
-  <link rel="stylesheet" href="assets/style/pages/contact.css" />
-  <link rel="stylesheet" href="assets/style/reset.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-
-  <style>
-    body {
-      font-family: "SUIT", sans-serif;
-    }
-
-    .content-container {
-      padding: 20px 0;
-    }
-
-    /* SNS 텍스트 (왼쪽 박스) */
-    .radius-box.community:has(.social-link-list) .top-content-area h6 {
-      font-size: clamp(4rem, 15vw, 10rem);
-      font-weight: bold;
-      margin-bottom: 1rem;
-      text-align: center;
-      color: white;
-      text-shadow:
-        0 0 5px rgba(255, 255, 255, 0.8),
-        0 0 10px rgba(255, 255, 255, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.3);
-      transition: text-shadow 0.3s ease;
-      line-height: 1;
-      padding: 5px 10px;
-    }
-
-    /* Listing support 텍스트 (오른쪽 박스) */
-    .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
-      font-size: 5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      text-align: center;
-      color: white;
-      text-shadow:
-        0 0 5px rgba(255, 255, 255, 0.8),
-        0 0 10px rgba(255, 255, 255, 0.5),
-        0 0 15px rgba(255, 255, 255, 0.3);
-      transition: text-shadow 0.3s ease;
-      line-height: 1.2;
-    }
-
-    /* 한국어, 일본어, 중국어일 때의 스타일 */
-    html[lang="ko"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6,
-    html[lang="ja"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6,
-    html[lang="zh"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
-      font-size: 7rem;
-    }
-
-    /* 태블릿 크기 반응형 */
-    @media (max-width: 768px) {
-      .radius-box.community:has(.social-link-list) .top-content-area h6 {
-        font-size: clamp(5.5rem, 10vw, 6rem);
-        padding-top: 30px;
-      }
-
-      .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
-        font-size: 3.5rem;
-      }
-
-      /* 한국어, 일본어, 중국어 반응형 */
-      html[lang="ko"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6,
-      html[lang="ja"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6,
-      html[lang="zh"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
-        font-size: 5rem;
-      }
-
-      .radius-box.community {
-        min-height: 200px;
-        /* 박스 높이 조정 */
-        padding: 1.5rem;
-      }
-    }
-
-    /* 모바일 크기 반응형 */
-    @media (max-width: 480px) {
-      .radius-box.community:has(.social-link-list) .top-content-area h6 {
-        font-size: clamp(5.5rem, 8vw, 4rem);
-        padding-top: 30px;
-      }
-
-      .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
-        font-size: 2.5rem;
-      }
-
-      /* 한국어, 일본어, 중국어 모바일 반응형 */
-      html[lang="ko"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6,
-      html[lang="ja"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6,
-      html[lang="zh"] .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
-        font-size: 3.5rem;
-      }
-
-      .radius-box.community {
-        min-height: 180px;
-        padding: 1rem;
-      }
-
-      .top-content-area span {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="root">
-    <header class="header-container">
-      <div class="header-wrapper">
-        <div class="header-logo">
-          <a href="index.html">
-            <img src="assets/images/logo.svg" alt="logo" />
-          </a>
-        </div>
-        <nav class="header-nav">
-          <div class="burger-menu-wrapper">
-            <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu" onclick="handleBurgerMenu()">
-            <div class="side-bar-container">
-              <div class="sidebar-background">
-                <div class="close-btn">
-                  <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
-                </div>
-              </div>
-              <div class="side-bar-wrapper">
-                <nav class="side-bar-section">
-                  <div class="side-bar-list">
-                    <a class="side-bar-item navigate" href="index.html" data-page="main"
-                      onclick="handlePageSelection('main')">main</a>
-                    <a class="side-bar-item navigate" href="listing.html" data-page="listing"
-                      onclick="handlePageSelection('listing')">Listing</a>
-                    <a class="side-bar-item navigate" href="about.html" data-page="about"
-                      onclick="handlePageSelection('about')">About us</a>
-                    <a class="side-bar-item navigate" href="product.html" data-page="product"
-                      onclick="handlePageSelection('product')">Product</a>
-                    <a class="side-bar-item navigate active" href="contact.html" data-page="contact"
-                      onclick="handlePageSelection('contact')">Contact</a>
-                  </div>
-                  <div class="side-bar-list lang">
-                    <span class="side-bar-item" onclick="handleLangChange('ko', true)">한국어</span>
-                    <span class="side-bar-item" onclick="handleLangChange('en', true)">English</span>
-                    <span class="side-bar-item" onclick="handleLangChange('ja', true)">日本語</span>
-                    <span class="side-bar-item" onclick="handleLangChange('zh', true)">中文</span>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-          <ul>
-            <li><a class="nav-item navigate" href="listing.html" data-page="listing"
-                onclick="handlePageSelection('listing')">Listing</a></li>
-            <li><a class="nav-item navigate" href="about.html" data-page="about"
-                onclick="handlePageSelection('about')">About us</a></li>
-            <li><a class="nav-item navigate" href="product.html" data-page="product"
-                onclick="handlePageSelection('product')">Product</a></li>
-            <li><a class="nav-item navigate active" href="contact.html" data-page="contact"
-                onclick="handlePageSelection('contact')">Contact</a></li>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                한국어
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ko')">한국어</div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('en')">English</div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('ja')">日本語</div>
-                </li>
-                <li>
-                  <div class="dropdown-item" onclick="handleLangChange('zh')">中文</div>
-                </li>
-              </ul>
-            </div>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <script>
-      const dropdown = document.querySelector('.dropdown');
-      const dropdown_menu = document.querySelector('.dropdown-menu');
-      // let lang = [];
-      // const clickedDivValues = [];
-      let divValue = '';
-
-      dropdown_menu.addEventListener('click', (event) => {
-        const liElement = event.target.closest('li');
-        if (liElement) {
-          const divElement = liElement.querySelector('div'); // li 안의 div 찾기
-          if (divElement) {
-            divValue = divElement.textContent.trim(); // div 값 가져오기
-
-            // div 값 기록
-            // if (!clickedDivValues.includes(divValue)) {
-            // clickedDivValues.push(divValue);
-            // }
-
-            // 결과를 화면에 표시
-            // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
-          }
-
-        }
-        console.log(`${divValue}`);
-      })
-
-    </script>
-    <!-- </html> -->
-    <!-- header end -->
-    <div class="bg-image">
-      <img src="assets/images/bg-image.jpg" alt="bg-image" />
-    </div>
-    <div class="bg-mobile-image">
-      <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
-    </div>
-    <main class="content-container">
-      <div class="contact-wrapper">
-        <div class="title-wrapper">
-          <h1 class="letter-title">
-            <span>Community</span>
-          </h1>
-          <span></span>
-        </div>
-        <div class="row-wrapper">
-          <div class="radius-box community">
-            <div class="top-content-area">
-              <h6>SNS</h6>
-              <span></span>
-            </div>
-            <div class="social-link-list">
-              <div class="link-box">
-                <a href="https://www.linkedin.com/company/sharetheip/?viewAsMember=true" target="_blank"
-                  rel="noopener noreferrer" aria-label="Sharethip의 LinkedIn 페이지로 이동">
-                  <img src="assets/images/linkedIn.png" alt="Sharethip의 LinkedIn 로고" />
-                </a>
-              </div>
-              <div class="link-box">
-                <a href="https://www.youtube.com/channel/UCdFLJJQInX8rCad5dB4QpaA" target="_blank"
-                  rel="noopener noreferrer" aria-label="Sharethip의 YouTube 채널로 이동">
-                  <img src="assets/images/youtube.png" alt="Sharethip의 YouTube 로고" />
-                </a>
-              </div>
-              <div class="link-box">
-                <a href="https://x.com/home?lang=ko" target="_blank" rel="noopener noreferrer"
-                  aria-label="Sharethip의 X (구 Twitter) 페이지로 이동">
-                  <img src="assets/images/twitterX.png" alt="Sharethip의 X (구 Twitter) 로고" />
-                </a>
-              </div>
-              <div class="link-box">
-                <a href="https://t.me/sharetheip" target="_blank" rel="noopener noreferrer"
-                  aria-label="Sharethip의 Telegram 채널로 이동">
-                  <img src="assets/images/telegram.png" alt="Sharethip의 Telegram 로고" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="radius-box community">
-            <div class="top-content-area">
-              <h6>
-                Listing<br />
-                support
-              </h6>
-              <span>
-                Get help with your project<br />from the Community
-              </span>
-            </div>
-            <button class="normal-button" onclick="showPopup()">
-              <span></span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </main>
-    <!-- slider section 25-01-04 lee -->
-    <div class="logo-slider-section">
-      <div class="bottom-gradient"></div>
-      <div class="slider-container">
-        <!-- 그라데이션 오버레이 -->
-        <div class="gradient-overlay gradient-left"></div>
-        <div class="gradient-overlay gradient-right"></div>
-
-        <!-- 슬라이더 -->
-
-        <!-- 새로운 코드 시작 -->
-        <div class="swiper-container">
-          <div class="swiper" dir="ltr">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="aippii" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국지식재산서비스협회" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국지식재산연구원" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국발명진흥회" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국특허정보원" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="특허심판원" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국특허기술진흥원" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국특허전략개발원" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="알막툼" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="한국지식재산서비스협회" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="특허청" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="STIP Logo 6" class="company-logo">
-              </div>
-              <div class="swiper-slide">
-                <img src="assets/images/logo.png" alt="대한변리사" class="company-logo">
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 새로운 코드 끝 -->
-      </div>
-    </div>
-    <!-- logo-slider-section End Here -->
     <style>
-      /* radius-box */
-      .row-wrapper {
-        display: flex;
-        gap: 20px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px;
+      body {
+        font-family: 'SUIT', sans-serif;
       }
 
-      .radius-box.community {
-        flex: 1;
-        min-height: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      .content-container {
+        padding: 20px 0;
+      }
+
+      /* SNS 텍스트 (왼쪽 박스) */
+      .radius-box.community:has(.social-link-list) .top-content-area h6 {
+        font-size: clamp(4rem, 15vw, 10rem);
+        font-weight: bold;
+        margin-bottom: 1rem;
         text-align: center;
-        padding: 2rem;
+        color: white;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+          0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
+        transition: text-shadow 0.3s ease;
+        line-height: 1;
+        padding: 5px 10px;
       }
 
-      .top-content-area {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2rem;
-        width: 100%;
-      }
-
-      .top-content-area h6 {
+      /* Listing support 텍스트 (오른쪽 박스) */
+      .radius-box.community:not(:has(.social-link-list)) .top-content-area h6 {
         font-size: 5rem;
         font-weight: bold;
         margin-bottom: 1rem;
         text-align: center;
         color: white;
-        text-shadow:
-          0 0 5px rgba(255, 255, 255, 0.8),
-          0 0 10px rgba(255, 255, 255, 0.5),
-          0 0 15px rgba(255, 255, 255, 0.3);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+          0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
         transition: text-shadow 0.3s ease;
+        line-height: 1.2;
       }
 
-      .top-content-area h6:hover {
-        text-shadow:
-          0 0 8px rgba(255, 255, 255, 0.9),
-          0 0 15px rgba(255, 255, 255, 0.6),
-          0 0 20px rgba(255, 255, 255, 0.4);
+      /* 한국어, 일본어, 중국어일 때의 스타일 */
+      html[lang='ko']
+        .radius-box.community:not(:has(.social-link-list))
+        .top-content-area
+        h6,
+      html[lang='ja']
+        .radius-box.community:not(:has(.social-link-list))
+        .top-content-area
+        h6,
+      html[lang='zh']
+        .radius-box.community:not(:has(.social-link-list))
+        .top-content-area
+        h6 {
+        font-size: 7rem;
       }
 
-      .top-content-area span {
-        font-size: 1.1rem;
-        text-align: center;
-        color: white;
-        display: block;
-        line-height: 1.5;
-      }
-
-      .social-link-list {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* Start chat 버튼 스타일 */
-      .normal-button {
-        background-color: rgba(0, 0, 0, 0.3);
-        /* 투명한 검정색 배경 */
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        /* 반투명한 흰색 테두리 */
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(5px);
-        /* 배경 블러 효과 */
-        margin-top: 20px;
-      }
-
-      .normal-button:hover {
-        background-color: rgba(0, 0, 0, 0.5);
-        /* 호버시 더 진한 배경 */
-        border-color: rgba(255, 255, 255, 0.5);
-        /* 호버시 더 진한 테두리 */
-        transform: translateY(-2px);
-        /* 살짝 위로 움직이는 효과 */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        /* 그림자 효과 */
-      }
-
-      .normal-button:active {
-        transform: translateY(0);
-        /* 클릭시 원래 위치로 */
-      }
-
-      .normal-button span {
-        color: white;
-        font-weight: 500;
-      }
-
-      /* 반응형 디자인 */
+      /* 태블릿 크기 반응형 */
       @media (max-width: 768px) {
-        .row-wrapper {
-          flex-direction: column;
+        .radius-box.community:has(.social-link-list) .top-content-area h6 {
+          font-size: clamp(5.5rem, 10vw, 6rem);
+          padding-top: 30px;
+        }
+
+        .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6 {
+          font-size: 3.5rem;
+        }
+
+        /* 한국어, 일본어, 중국어 반응형 */
+        html[lang='ko']
+          .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6,
+        html[lang='ja']
+          .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6,
+        html[lang='zh']
+          .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6 {
+          font-size: 5rem;
         }
 
         .radius-box.community {
-          min-height: 250px;
-        }
-
-        .top-content-area h6 {
-          font-size: 2.5rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .top-content-area h6 {
-          font-size: 2rem;
-        }
-
-        .top-content-area span {
-          font-size: 1rem;
-        }
-
-        .radius-box.community {
+          min-height: 200px;
+          /* 박스 높이 조정 */
           padding: 1.5rem;
         }
       }
 
-      /* 슬라이더 */
-      .logo-slider-section {
-        position: relative;
-        width: 100%;
-        padding: 30px 0;
-        background: rgba(0, 0, 0, 0.8);
-        /* 배경색 조정 */
-        backdrop-filter: blur(10px);
-        /* 배경 흐림 효과 */
-        z-index: 1;
-        /* 푸터보다 위에 표시 */
+      /* 모바일 크기 반응형 */
+      @media (max-width: 480px) {
+        .radius-box.community:has(.social-link-list) .top-content-area h6 {
+          font-size: clamp(5.5rem, 8vw, 4rem);
+          padding-top: 30px;
+        }
+
+        .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6 {
+          font-size: 2.5rem;
+        }
+
+        /* 한국어, 일본어, 중국어 모바일 반응형 */
+        html[lang='ko']
+          .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6,
+        html[lang='ja']
+          .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6,
+        html[lang='zh']
+          .radius-box.community:not(:has(.social-link-list))
+          .top-content-area
+          h6 {
+          font-size: 3.5rem;
+        }
+
+        .radius-box.community {
+          min-height: 180px;
+          padding: 1rem;
+        }
+
+        .top-content-area span {
+          font-size: 0.9rem;
+        }
       }
+    </style>
+  </head>
 
-      /* 슬라이더 컨테이너 */
-      .slider-container {
-        /* position: relative; */
-        max-width: 1920px;
-        margin: 0 auto;
+  <body>
+    <div class="root">
+      <header class="header-container">
+        <div class="header-wrapper">
+          <div class="header-logo">
+            <a href="index.html">
+              <img src="assets/images/logo.svg" alt="logo" />
+            </a>
+          </div>
+          <nav class="header-nav">
+            <div class="burger-menu-wrapper">
+              <img
+                src="assets/images/mobile/menu.svg"
+                class="burger-menu"
+                alt="burger-menu"
+                onclick="handleBurgerMenu()"
+              />
+              <div class="side-bar-container">
+                <div class="sidebar-background">
+                  <div class="close-btn">
+                    <img
+                      src="assets/images/mobile/close.svg"
+                      alt="close"
+                      onclick="handleBurgerMenuClose()"
+                    />
+                  </div>
+                </div>
+                <div class="side-bar-wrapper">
+                  <nav class="side-bar-section">
+                    <div class="side-bar-list">
+                      <a
+                        class="side-bar-item navigate"
+                        href="index.html"
+                        data-page="main"
+                        onclick="handlePageSelection('main')"
+                      >
+                        main
+                      </a>
+                      <a
+                        class="side-bar-item navigate"
+                        href="listing.html"
+                        data-page="listing"
+                        onclick="handlePageSelection('listing')"
+                      >
+                        Listing
+                      </a>
+                      <a
+                        class="side-bar-item navigate"
+                        href="about.html"
+                        data-page="about"
+                        onclick="handlePageSelection('about')"
+                      >
+                        About us
+                      </a>
+                      <a
+                        class="side-bar-item navigate"
+                        href="product.html"
+                        data-page="product"
+                        onclick="handlePageSelection('product')"
+                      >
+                        Product
+                      </a>
+                      <a
+                        class="side-bar-item navigate active"
+                        href="contact.html"
+                        data-page="contact"
+                        onclick="handlePageSelection('contact')"
+                      >
+                        Contact
+                      </a>
+                    </div>
+                    <div class="side-bar-list lang">
+                      <span
+                        class="side-bar-item"
+                        onclick="handleLangChange('ko', true)"
+                      >
+                        한국어
+                      </span>
+                      <span
+                        class="side-bar-item"
+                        onclick="handleLangChange('en', true)"
+                      >
+                        English
+                      </span>
+                      <span
+                        class="side-bar-item"
+                        onclick="handleLangChange('ja', true)"
+                      >
+                        日本語
+                      </span>
+                      <span
+                        class="side-bar-item"
+                        onclick="handleLangChange('zh', true)"
+                      >
+                        中文
+                      </span>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a
+                  class="nav-item navigate"
+                  href="listing.html"
+                  data-page="listing"
+                  onclick="handlePageSelection('listing')"
+                >
+                  Listing
+                </a>
+              </li>
+              <li>
+                <a
+                  class="nav-item navigate"
+                  href="about.html"
+                  data-page="about"
+                  onclick="handlePageSelection('about')"
+                >
+                  About us
+                </a>
+              </li>
+              <li>
+                <a
+                  class="nav-item navigate"
+                  href="product.html"
+                  data-page="product"
+                  onclick="handlePageSelection('product')"
+                >
+                  Product
+                </a>
+              </li>
+              <li>
+                <a
+                  class="nav-item navigate active"
+                  href="contact.html"
+                  data-page="contact"
+                  onclick="handlePageSelection('contact')"
+                >
+                  Contact
+                </a>
+              </li>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  한국어
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('ko')">
+                      한국어
+                    </div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('en')">
+                      English
+                    </div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('ja')">
+                      日本語
+                    </div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item" onclick="handleLangChange('zh')">
+                      中文
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <script>
+        const dropdown = document.querySelector('.dropdown');
+        const dropdown_menu = document.querySelector('.dropdown-menu');
+        // let lang = [];
+        // const clickedDivValues = [];
+        let divValue = '';
 
-      }
+        dropdown_menu.addEventListener('click', (event) => {
+          const liElement = event.target.closest('li');
+          if (liElement) {
+            const divElement = liElement.querySelector('div'); // li 안의 div 찾기
+            if (divElement) {
+              divValue = divElement.textContent.trim(); // div 값 가져오기
 
-      /* 그라데이션 오버레이 */
-      .gradient-overlay {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(1, 5, 9, 0) 0%, #010509 100%);
-        height: 200px;
-        top: -52px;
-        width: 26.042%;
-        max-width: 500px;
-      }
+              // div 값 기록
+              // if (!clickedDivValues.includes(divValue)) {
+              // clickedDivValues.push(divValue);
+              // }
 
-      .gradient-left {
-        left: 0;
-        background: rgba(0, 0, 0, 1);
-        mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6587228641456583) 70%, transparent 100%);
-        mask-repeat: no-repeat;
-        filter: blur(100px);
-        z-index: -1;
+              // 결과를 화면에 표시
+              // resultElement.textContent = `클릭한 div 값: ${clickedDivValues.join(' → ')}`;
+            }
+          }
+          console.log(`${divValue}`);
+        });
+      </script>
+      <!-- </html> -->
+      <!-- header end -->
+      <div class="bg-image">
+        <img src="assets/images/bg-image.jpg" alt="bg-image" />
+      </div>
+      <div class="bg-mobile-image">
+        <img src="assets/images/light-bg-image.png" alt="bg-mobile-image" />
+      </div>
+      <main class="content-container">
+        <div class="contact-wrapper">
+          <div class="title-wrapper">
+            <h1 class="letter-title">
+              <span>Community</span>
+            </h1>
+            <span></span>
+          </div>
+          <div class="row-wrapper">
+            <div class="radius-box community">
+              <div class="top-content-area">
+                <h6>SNS</h6>
+                <span></span>
+              </div>
+              <div class="social-link-list">
+                <div class="link-box">
+                  <a
+                    href="https://www.linkedin.com/company/sharetheip/?viewAsMember=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Sharethip의 LinkedIn 페이지로 이동"
+                  >
+                    <img
+                      src="assets/images/linkedIn.png"
+                      alt="Sharethip의 LinkedIn 로고"
+                    />
+                  </a>
+                </div>
+                <div class="link-box">
+                  <a
+                    href="https://www.youtube.com/channel/UCdFLJJQInX8rCad5dB4QpaA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Sharethip의 YouTube 채널로 이동"
+                  >
+                    <img
+                      src="assets/images/youtube.png"
+                      alt="Sharethip의 YouTube 로고"
+                    />
+                  </a>
+                </div>
+                <div class="link-box">
+                  <a
+                    href="https://x.com/home?lang=ko"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Sharethip의 X (구 Twitter) 페이지로 이동"
+                  >
+                    <img
+                      src="assets/images/twitterX.png"
+                      alt="Sharethip의 X (구 Twitter) 로고"
+                    />
+                  </a>
+                </div>
+                <div class="link-box">
+                  <a
+                    href="https://t.me/sharetheip"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Sharethip의 Telegram 채널로 이동"
+                  >
+                    <img
+                      src="assets/images/telegram.png"
+                      alt="Sharethip의 Telegram 로고"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="radius-box community">
+              <div class="top-content-area">
+                <h6>
+                  Listing
+                  <br />
+                  support
+                </h6>
+                <span>
+                  Get help with your project
+                  <br />
+                  from the Community
+                </span>
+              </div>
+              <button class="normal-button" onclick="showPopup()">
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- slider section 25-01-04 lee -->
+      <div class="logo-slider-section">
+        <div class="bottom-gradient"></div>
+        <div class="slider-container">
+          <!-- 그라데이션 오버레이 -->
+          <div class="gradient-overlay gradient-left"></div>
+          <div class="gradient-overlay gradient-right"></div>
 
-      }
+          <!-- 슬라이더 -->
 
-      .gradient-right {
-        right: 0;
-        background: rgba(0, 0, 0, 1);
-        mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 1) 100%);
-        mask-repeat: no-repeat;
-        filter: blur(120px);
-        /* background: linear-gradient(to left, #000 0%, rgba(0,0,0,0) 100%); */
-        z-index: -1;
-      }
+          <!-- 새로운 코드 시작 -->
+          <div class="swiper-container">
+            <div class="swiper" dir="ltr">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="aippii"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국지식재산서비스협회"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국지식재산연구원"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국발명진흥회"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국특허정보원"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="특허심판원"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국특허기술진흥원"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국특허전략개발원"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="알막툼"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="한국지식재산서비스협회"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="특허청"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="STIP Logo 6"
+                    class="company-logo"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/images/logo.png"
+                    alt="대한변리사"
+                    class="company-logo"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 새로운 코드 끝 -->
+        </div>
+      </div>
+      <!-- logo-slider-section End Here -->
+      <style>
+        /* radius-box */
+        .row-wrapper {
+          display: flex;
+          gap: 20px;
+          width: 100%;
+          margin: 0 auto;
+          padding: 20px;
+        }
 
-      /* .bottom-gradient {
+        .radius-box.community {
+          flex: 1;
+          min-height: 300px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 2rem;
+        }
+
+        .top-content-area {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 2rem;
+          width: 100%;
+        }
+
+        .top-content-area h6 {
+          font-size: 5rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+          text-align: center;
+          color: white;
+          text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+            0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
+          transition: text-shadow 0.3s ease;
+        }
+
+        .top-content-area h6:hover {
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.9),
+            0 0 15px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .top-content-area span {
+          font-size: 1.1rem;
+          text-align: center;
+          color: white;
+          display: block;
+          line-height: 1.5;
+        }
+
+        .social-link-list {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          align-items: center;
+        }
+
+        /* Start chat 버튼 스타일 */
+        .normal-button {
+          background-color: rgba(0, 0, 0, 0.3);
+          /* 투명한 검정색 배경 */
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          /* 반투명한 흰색 테두리 */
+          color: white;
+          padding: 12px 24px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(5px);
+          /* 배경 블러 효과 */
+          margin-top: 20px;
+        }
+
+        .normal-button:hover {
+          background-color: rgba(0, 0, 0, 0.5);
+          /* 호버시 더 진한 배경 */
+          border-color: rgba(255, 255, 255, 0.5);
+          /* 호버시 더 진한 테두리 */
+          transform: translateY(-2px);
+          /* 살짝 위로 움직이는 효과 */
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          /* 그림자 효과 */
+        }
+
+        .normal-button:active {
+          transform: translateY(0);
+          /* 클릭시 원래 위치로 */
+        }
+
+        .normal-button span {
+          color: white;
+          font-weight: 500;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+          .row-wrapper {
+            flex-direction: column;
+          }
+
+          .radius-box.community {
+            min-height: 250px;
+          }
+
+          .top-content-area h6 {
+            font-size: 2.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .top-content-area h6 {
+            font-size: 2rem;
+          }
+
+          .top-content-area span {
+            font-size: 1rem;
+          }
+
+          .radius-box.community {
+            padding: 1.5rem;
+          }
+        }
+
+        /* 슬라이더 */
+        .logo-slider-section {
+          position: relative;
+          width: 100%;
+          padding: 30px 0;
+          background: rgba(0, 0, 0, 0.8);
+          /* 배경색 조정 */
+          backdrop-filter: blur(10px);
+          /* 배경 흐림 효과 */
+          z-index: 1;
+          /* 푸터보다 위에 표시 */
+        }
+
+        /* 슬라이더 컨테이너 */
+        .slider-container {
+          /* position: relative; */
+          max-width: 1920px;
+          margin: 0 auto;
+        }
+
+        /* 그라데이션 오버레이 */
+        .gradient-overlay {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          background: linear-gradient(
+            180deg,
+            rgba(1, 5, 9, 0) 0%,
+            #010509 100%
+          );
+          height: 200px;
+          top: -52px;
+          width: 26.042%;
+          max-width: 500px;
+        }
+
+        .gradient-left {
+          left: 0;
+          background: rgba(0, 0, 0, 1);
+          mask-image: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.6587228641456583) 70%,
+            transparent 100%
+          );
+          mask-repeat: no-repeat;
+          filter: blur(100px);
+          z-index: -1;
+        }
+
+        .gradient-right {
+          right: 0;
+          background: rgba(0, 0, 0, 1);
+          mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 1) 100%
+          );
+          mask-repeat: no-repeat;
+          filter: blur(120px);
+          /* background: linear-gradient(to left, #000 0%, rgba(0,0,0,0) 100%); */
+          z-index: -1;
+        }
+
+        /* .bottom-gradient {
               position: absolute;
               bottom: 0px;
               padding-top: 240px;
@@ -598,13 +914,13 @@
               background: radial-gradient(50% 32% at 50% 100%, #a7d5f1 0%, rgba(0, 217, 255, 0.25) 53%, rgba(0, 119, 255, 0.15) 79%, rgba(0, 178, 255, 0) 100%);
     
           } */
-      .swiper {
-        width: 100%;
-        height: 100px;
-        z-index: -1 !important;
-      }
+        .swiper {
+          width: 100%;
+          height: 100px;
+          z-index: -1 !important;
+        }
 
-      /* .swiper-slide {
+        /* .swiper-slide {
         display: flex !important;
         justify-content: center;
         align-items: center;
@@ -613,259 +929,257 @@
         border-radius: 4px;
       } */
 
-      .company-logo {
-        max-width: 200px;
+        .company-logo {
+          max-width: 200px;
 
-        @media screen and (max-width: 768px) {
-          max-width: 78px;
-
+          @media screen and (max-width: 768px) {
+            max-width: 78px;
+          }
         }
-      }
 
-      /* .swiper-container {
+        /* .swiper-container {
             position: absolute;
             bottom: 0;
           } */
 
-      /* 슬라이더 이미지 */
-      .swiper-slide {
-        width: 180px;
-        height: 60px;
-        background: transparent;
-        /* background: #fff; */
-        border-radius: 4px;
-        padding: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      }
+        /* 슬라이더 이미지 */
+        .swiper-slide {
+          width: 180px;
+          height: 60px;
+          background: transparent;
+          /* background: #fff; */
+          border-radius: 4px;
+          padding: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
 
-      .company-logo {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transform: scale(0.9);
-      }
+        .company-logo {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transform: scale(0.9);
+        }
 
-      /* .swiper-wrapper {
+        /* .swiper-wrapper {
         transition-timing-function: linear !important;
       } */
 
-      /* .slider-container {
+        /* .slider-container {
         display: flex;
         overflow: hidden;
         margin: 0 auto;
         position: relative;
       } */
 
-      /* .swiper-wrapper {
+        /* .swiper-wrapper {
         display: flex;
 
       } */
 
-      .swiper-slide {
-        flex: 0 0 auto;
-        /* width: 180px; */
-        /* height: 60px; */
-        margin-right: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .company-logo {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-      }
-
-      /* 팝업 스타일 */
-      .popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 15px 25px;
-        border-radius: 5px;
-        z-index: 1000;
-        font-size: 0.9rem;
-        animation: fadeIn 0.3s ease-in-out;
-      }
-
-      .popup-content {
-        text-align: center;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translate(-50%, -40%);
+        .swiper-slide {
+          flex: 0 0 auto;
+          /* width: 180px; */
+          /* height: 60px; */
+          margin-right: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
-        to {
-          opacity: 1;
+        .company-logo {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+
+        /* 팝업 스타일 */
+        .popup {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
           transform: translate(-50%, -50%);
+          background-color: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 15px 25px;
+          border-radius: 5px;
+          z-index: 1000;
+          font-size: 0.9rem;
+          animation: fadeIn 0.3s ease-in-out;
         }
-      }
 
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-          transform: translate(-50%, -50%);
+        .popup-content {
+          text-align: center;
         }
 
-        to {
-          opacity: 0;
-          transform: translate(-50%, -60%);
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+          }
         }
-      }
 
-      .fade-out {
-        animation: fadeOut 0.3s ease-in-out;
-      }
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+          }
 
-      /* 팝업 텍스트 스타일 */
-      .popup-text {
-        display: none;
-      }
+          to {
+            opacity: 0;
+            transform: translate(-50%, -60%);
+          }
+        }
 
-      .popup-text.active {
-        display: block;
-      }
-    </style>
-    <!-- footer start -->
-    <footer class="footer-container">
-      <div class="footer-wrapper">
-        <div class="footer-logo">
-          <span>Let’s share the IP, It’s IP time</span>
-          <img src="assets/images/logo.svg" alt="logo" />
+        .fade-out {
+          animation: fadeOut 0.3s ease-in-out;
+        }
+
+        /* 팝업 텍스트 스타일 */
+        .popup-text {
+          display: none;
+        }
+
+        .popup-text.active {
+          display: block;
+        }
+      </style>
+      <!-- footer start -->
+      <footer class="footer-container">
+        <div class="footer-wrapper">
+          <div class="footer-logo">
+            <span>Let’s share the IP, It’s IP time</span>
+            <img src="assets/images/logo.svg" alt="logo" />
+          </div>
+          <div class="company-name">주식회사 아이피미디어그룹</div>
+          <div class="company-info-grid">
+            <span>대표: 이성용</span>
+            <span>주소: 서울시 강남구 테헤란로151 1116호</span>
+            <span>연락처: 02-2238-4345</span>
+            <span>이메일: support@stipvelation.com</span>
+            <span>사업자등록번호: 644-86-01439</span>
+            <!-- <span>사업자등록번호: 123-45-67890</span> -->
+          </div>
         </div>
-        <div class="company-name">주식회사 아이피미디어그룹</div>
-        <div class="company-info-grid">
-          <span>대표: 이성용</span>
-          <span>주소: 서울시 강남구 테헤란로151 1116호</span>
-          <span>연락처: 02-2238-4345</span>
-          <span>이메일: support@stipvelation.com</span>
-          <span>사업자등록번호: 644-86-01439</span>
-          <!-- <span>사업자등록번호: 123-45-67890</span> -->
+      </footer>
+      <!-- footer end -->
+      <!-- 팝업 div 추가 (body 태그 안쪽, 마지막 script 태그 위에 추가) -->
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <span class="popup-text" data-lang="ko">준비 중입니다</span>
+          <span class="popup-text" data-lang="en">Coming Soon</span>
+          <span class="popup-text" data-lang="ja">準備中です</span>
+          <span class="popup-text" data-lang="zh">准备中</span>
         </div>
-      </div>
-    </footer>
-    <!-- footer end -->
-    <!-- 팝업 div 추가 (body 태그 안쪽, 마지막 script 태그 위에 추가) -->
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <span class="popup-text" data-lang="ko">준비 중입니다</span>
-        <span class="popup-text" data-lang="en">Coming Soon</span>
-        <span class="popup-text" data-lang="ja">準備中です</span>
-        <span class="popup-text" data-lang="zh">准备中</span>
       </div>
     </div>
-  </div>
-  <script>
-    // chat button here
-    // 팝업 표시 함수 수정
-    function showPopup() {
-      const popup = document.getElementById('popup');
-      const popupTexts = popup.querySelectorAll('.popup-text');
+    <script>
+      // chat button here
+      // 팝업 표시 함수 수정
+      function showPopup() {
+        const popup = document.getElementById('popup');
+        const popupTexts = popup.querySelectorAll('.popup-text');
 
-      // 모든 텍스트 숨기기
-      popupTexts.forEach(text => text.classList.remove('active'));
+        // 모든 텍스트 숨기기
+        popupTexts.forEach((text) => text.classList.remove('active'));
 
-      // 현재 언어에 맞는 텍스트만 표시
-      const currentText = popup.querySelector(`[data-lang="${currentLang}"]`);
-      if (currentText) {
-        currentText.classList.add('active');
+        // 현재 언어에 맞는 텍스트만 표시
+        const currentText = popup.querySelector(`[data-lang="${currentLang}"]`);
+        if (currentText) {
+          currentText.classList.add('active');
+        }
+
+        // 팝업 표시
+        popup.style.display = 'block';
+
+        // 2초 후에 팝업 닫기
+        setTimeout(() => {
+          popup.classList.add('fade-out');
+          setTimeout(() => {
+            popup.style.display = 'none';
+            popup.classList.remove('fade-out');
+          }, 300);
+        }, 2000);
       }
 
-      // 팝업 표시
-      popup.style.display = 'block';
-
-      // 2초 후에 팝업 닫기
-      setTimeout(() => {
-        popup.classList.add('fade-out');
-        setTimeout(() => {
-          popup.style.display = 'none';
-          popup.classList.remove('fade-out');
-        }, 300);
-      }, 2000);
-    }
-
-    // const swiper = new Swiper('.swiper', {
-    //   autoplay: {
-    //     delay: 0, //add
-    //     disableOnInteraction: false,
-    //   },
-    //   breakpoints: {
-    //     900: {
-    //       slidesPerView: 4,
-    //       spaceBetween: 10,
-    //     },
-    //     1100: {
-    //       slidesPerView: 5,
-    //       spaceBetween: 10,
-    //     },
-    //     1200: {
-    //       slidesPerView: 6,
-    //       spaceBetween: 10,
-    //     },
-    //   },
-    //   responsive: [{
-    //     breakpoint: 900,
-    //     slidesPerView: 3,
-    //     spaceBetween: 10,
-    //   },],
-    //   speed: 1000,
-    //   loop: true,
-    //   loopAdditionalSlides: 1,
-    //   slidesPerView: 3,
-    //   spaceBetween: 0,
-    // })
-    // swiper here
-    const swiper = new Swiper('.swiper', {
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-      },
-      speed: 1000, // 전체 슬라이드 애니메이션 속도
-      loop: true,
-      loopAdditionalSlides: 1,
-      slidesPerView: 3,
-      spaceBetween: 0,
-      allowTouchMove: false, // 드래그 방지
-      cssMode: false, // 부드러운 스크롤을 위해 비활성화
-      loopAdditionalSlides: 3, // 더 많은 슬라이드 복제
-      breakpoints: {
-        900: {
-          slidesPerView: 4,
-          spaceBetween: 10,
+      // const swiper = new Swiper('.swiper', {
+      //   autoplay: {
+      //     delay: 0, //add
+      //     disableOnInteraction: false,
+      //   },
+      //   breakpoints: {
+      //     900: {
+      //       slidesPerView: 4,
+      //       spaceBetween: 10,
+      //     },
+      //     1100: {
+      //       slidesPerView: 5,
+      //       spaceBetween: 10,
+      //     },
+      //     1200: {
+      //       slidesPerView: 6,
+      //       spaceBetween: 10,
+      //     },
+      //   },
+      //   responsive: [{
+      //     breakpoint: 900,
+      //     slidesPerView: 3,
+      //     spaceBetween: 10,
+      //   },],
+      //   speed: 1000,
+      //   loop: true,
+      //   loopAdditionalSlides: 1,
+      //   slidesPerView: 3,
+      //   spaceBetween: 0,
+      // })
+      // swiper here
+      const swiper = new Swiper('.swiper', {
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
         },
-        1100: {
-          slidesPerView: 5,
-          spaceBetween: 10,
+        speed: 1000, // 전체 슬라이드 애니메이션 속도
+        loop: true,
+        loopAdditionalSlides: 1,
+        slidesPerView: 3,
+        spaceBetween: 0,
+        allowTouchMove: false, // 드래그 방지
+        cssMode: false, // 부드러운 스크롤을 위해 비활성화
+        loopAdditionalSlides: 3, // 더 많은 슬라이드 복제
+        breakpoints: {
+          900: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          1100: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          1200: {
+            slidesPerView: 6,
+            spaceBetween: 10,
+          },
         },
-        1200: {
-          slidesPerView: 6,
-          spaceBetween: 10,
-        },
-      },
-    });
+      });
 
-    // 마우스 호버 시 일시정지/재생
-    // const swiperContainer = document.querySelector('.swiper-container');
-    // swiperContainer.addEventListener('mouseenter', () => {
-    //   swiper.autoplay.stop();
-    // });
-    // swiperContainer.addEventListener('mouseleave', () => {
-    //   swiper.autoplay.start();
-    // });
-  </script>
-  <!-- <script src="components/header.js" defer></script> -->
-  <script src="js/updated-language-script.js"></script>
-</body>
-
+      // 마우스 호버 시 일시정지/재생
+      // const swiperContainer = document.querySelector('.swiper-container');
+      // swiperContainer.addEventListener('mouseenter', () => {
+      //   swiper.autoplay.stop();
+      // });
+      // swiperContainer.addEventListener('mouseleave', () => {
+      //   swiper.autoplay.start();
+      // });
+    </script>
+    <!-- <script src="components/header.js" defer></script> -->
+    <script src="js/updated-language-script.js"></script>
+  </body>
 </html>
