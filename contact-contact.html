@@ -4,26 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 주석: 추가된 WAI-ARIA 관련 메타 태그 -->
-    <meta name="application-name" content="STIP HomePage" />
+    <meta name="application-name" content="STIP IP Exchange Official Website" />
     <meta name="author" content="STIP" />
-    <meta
-      name="description"
-      content="발명특허 트레이딩 공식 홈페이지입니다. 특허 거래와 발명특허 관련 전문 서비스를 제공합니다."
-    />
+    <meta name="description" content="Intellectual property trading platform" />
     <!-- 검색엔진 최적화를 위한 추가 메타 태그 -->
     <meta
       name="keywords"
-      content="발명특허, 특허거래, 발명특허 트레이딩, 특허 중개, 특허 관리, 지식재산권,특허거래, IP거래, 지식재산권, 특허권, 상표권, 기술이전, 특허중개, 특허가치평가, 기술사업화, 라이센싱"
+      content="Intellectual Property Trading Platform, Buy and Sell Patents, Trademark Exchange, Global IP Marketplace, IP Licensing"
     />
-    <meta property="og:title" content="발명특허 트레이딩 공식 홈페이지" />
+    <meta property="og:title" content="STIP IP Exchange Official Website" />
     <meta
       property="og:description"
-      content="발명특허 트레이딩 전문 서비스를 제공하는 공식 홈페이지입니다."
+      content="Intellectual property trading platform"
     />
-    <meta name="subject" content="발명특허 거래 및 중개 플랫폼" />
+    <meta name="subject" content="STIP IP Exchange Official Website" />
     <meta name="copyright" content="Copyright (c) STIP. All rights reserved." />
     <meta name="publisher" content="STIP" />
-    <meta name="category" content="특허/지식재산권 거래" />
+    <meta name="category" content="STIP IP Exchange Official Website" />
     <meta name="coverage" content="Worldwide" />
     <meta name="distribution" content="Global" />
     <meta name="rating" content="General" />
@@ -31,12 +28,12 @@
 
     <!-- Open Graph 추가 태그 -->
     <meta property="og:type" content="business.business" />
-    <meta property="og:url" content="https://stipvelation.com" />
+    <meta property="og:url" content="https://stipvelation.com/" />
     <meta
       property="og:image"
-      content="https://stipvelation.com/assets/images/og-image.jpg"
+      content="https://stipvelation.com/assets/images/images/p002.jpg"
     />
-    <meta property="og:site_name" content="STIP - 글로벌 특허거래 플랫폼" />
+    <meta property="og:site_name" content="STIP IP Exchange Official Website" />
     <meta
       property="business:contact_data:street_address"
       content="서울시 강남구 테헤란로151 1116호"
@@ -45,10 +42,10 @@
 
     <!-- 소셜 미디어 최적화를 위한 추가 태그 -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="STIP - 글로벌 특허거래 플랫폼" />
+    <meta name="twitter:title" content="STIP IP Exchange Official Website" />
     <meta
       name="twitter:description"
-      content="글로벌 특허 거래 및 기술이전 전문 플랫폼"
+      content="Intellectual property trading platform"
     />
     <meta
       name="twitter:image"
@@ -56,19 +53,21 @@
     />
 
     <!-- 추가 검색엔진 최적화 태그 -->
-    <link rel="canonical" href="https://stipvelation.com" />
+    <link rel="canonical" href="https://stipvelation.com/" />
     <meta
       name="google-site-verification"
       content="google-site-verification=GOZJABKmCzKGcPRTvfWr85NEmZ0f0jmJooxEk6PhvGM"
     />
-    <meta name="naver-site-verification"
-    content="3d9f84392f2f8c5adb989466c29ed24f43b23232"">
+    <meta
+      name="naver-site-verification"
+      content="3d9f84392f2f8c5adb989466c29ed24f43b23232"
+    />
 
     <!-- 메타 태그 추가 끝 -->
     <meta name=" robots" content="index, follow" />
 
     <!-- <title>STIP HomePage stipvelation</title> -->
-    <title>발명특허 트레이딩 - STIP HomePage</title>
+    <title>STIP IP Exchange Official Website</title>
     <link
       rel="apple-touch-icon"
       sizes="57x57"
@@ -560,16 +559,16 @@
             <form
               id="contactForm"
               method="POST"
-              action="contact-contact-form.php"
+              action="contact_contact_form.php"
               enctype="multipart/form-data"
               novalidate
             >
               <!-- CSRF 토큰 -->
-              <input
+              <!-- <input
                 type="hidden"
                 name="csrf_token"
                 value="<?php echo $_SESSION['csrf_token']; ?>"
-              />
+              /> -->
 
               <div class="row-area">
                 <div class="input-box">
@@ -679,7 +678,7 @@
                     id="email"
                     name="email"
                     required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     placeholder="메일을 입력해주세요."
                     aria-required="true"
                     data-error="올바른 이메일 형식이 아닙니다"
@@ -1010,19 +1009,22 @@
           }
 
           const contactData = {
-            first_name: document.getElementById('firstName').value,
-            last_name: document.getElementById('lastName').value,
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
             company: document.getElementById('company').value,
-            job_title: document.getElementById('jobTitle').value,
+            jobTitle: document.getElementById('jobTitle').value,
             mobile: document.getElementById('mobile').value,
             email: document.getElementById('email').value,
+            country: document.getElementById('country').value,
             subject: document.getElementById('subject').value,
             message: document.getElementById('message').value,
           };
 
+          console.log(contactData);
+
           // 3. 필수 입력값 검증
           if (
-            !contactData.first_name ||
+            !contactData.firstName ||
             !contactData.email ||
             !contactData.mobile
           ) {
@@ -1030,10 +1032,10 @@
           }
 
           // 폼 데이터 수집
-          const formData = new FormData(contactForm);
+          // const formData = new FormData(contactForm);
 
           // AJAX 요청
-          const response = await fetch('contact-contact-form.php', {
+          const response = await fetch('contact_contact_form.php', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

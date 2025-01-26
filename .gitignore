@@ -1,5 +1,8 @@
 .env
 *.env
+*.windsurfrules
+.prettierrc
+vendor/
 .well-known/
 api/
 cafe24/
@@ -23,3 +26,6 @@ product.html.*
 robots.txt
 *.txt
 gnuboard5
+*.zip
+*.json
+
